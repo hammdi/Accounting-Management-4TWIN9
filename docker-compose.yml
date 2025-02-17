@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend  # Chemin vers ton backend
+    ports:
+      - "5000:5000"        # Expose le port 5000 pour ton backend
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/accounting_db  # URL de connexion MongoDB
+    depends_on:
+      - mongo               # MongoDB doit démarrer avant le backend
+
+  mongo:
+    image: mongo:latest    # Utilise l'image officielle MongoDB
+    ports:
+      - "27017:27017"      # Expose le port 27017 pour MongoDB
