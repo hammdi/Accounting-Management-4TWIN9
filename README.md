@@ -1,2 +1,0 @@
-# Accounting-Management
-Accounting Management
