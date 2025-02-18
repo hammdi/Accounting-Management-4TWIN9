@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'user'
     }
-}, { timestamps: true });
+}, /*{ timestamps: true }*/);
 
 // Créer le modèle à partir du schéma
 module.exports = mongoose.model('User', userSchema);
