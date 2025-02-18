@@ -36,7 +36,7 @@ app.use('/api/users', userRoutes);
 app.get('/', (req, res) => {
     res.send('🚀 Backend Node.js fonctionne !');
 });
-app.post('/api/users', async (req, res) => {
+/*app.post('/api/users', async (req, res) => {
     try {
         const newUser = new User(req.body);
         await newUser.save();
@@ -44,7 +44,7 @@ app.post('/api/users', async (req, res) => {
     }catch (e) {
         res.status(500).send(e.message);
     }
-})
+})*/
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
