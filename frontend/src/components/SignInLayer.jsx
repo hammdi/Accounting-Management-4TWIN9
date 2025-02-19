@@ -1,14 +1,15 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useEffect,useState} from "react";
+import {toast} from "react-toastify";
 
 const SignInLayer = () => {
   const [email, setEmail]= useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false)
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,6 +32,21 @@ const SignInLayer = () => {
       alert("Login failed! Please check your credentials.");
     }
   };
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.message) {
+      toast.info(location.state.message, {
+        position: "top-right", // ✅ Show in top-right
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [location]);
 
   return (
     <section className='auth bg-base d-flex flex-wrap'>
@@ -64,26 +80,25 @@ const SignInLayer = () => {
               />
             </div>
             <div className='position-relative mb-20'>
-  <div className='icon-field'>
-    <span className='icon top-50 translate-middle-y'>
-      <Icon icon='solar:lock-password-outline' />
-    </span>
-    <input
-      type={showPassword ? 'text' : 'password'} // Change le type selon showPassword
-      className='form-control h-56-px bg-neutral-50 radius-12'
-      id='your-password'
-      placeholder='Password'
-      value={password} // Link state
-      onChange={(e) => setPassword(e.target.value)} // Update state
-    />
-  </div>
-  <span
-    className='toggle-password cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light'
-    onClick={() => setShowPassword(!showPassword)} // Toggle showPassword
-  >
-    <Icon icon={showPassword ? 'ri-eye-off-line' : 'ri-eye-line'} /> {/* Change icon based on state */}
-  </span>
-</div>
+              <div className='icon-field'>
+                <span className='icon top-50 translate-middle-y'>
+                  <Icon icon='solar:lock-password-outline' />
+                </span>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className='form-control h-56-px bg-neutral-50 radius-12'
+                  id='your-password'
+                  placeholder='Password'
+                  value={password} // ✅ Link state
+                  onChange={(e) => setPassword(e.target.value)} // ✅ Update state
+                />
+              </div>
+              <span
+                className='toggle-password ri-eye-line cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light'
+                data-toggle='#your-password'
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </div>
             <div className=''>
               <div className='d-flex justify-content-between gap-2'>
                 <div className='form-check style-check d-flex align-items-center'>
