@@ -1,8 +1,36 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import React from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import axios from "axios";
+import {useEffect,useState} from "react";
 
 const SignInLayer = () => {
+  const [email, setEmail]= useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/users/login", {
+        email,
+        password,
+      });
+
+      console.log("Response:", response.data);
+
+      // Check if the response contains a token (successful login)
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token); // Save token
+        navigate("/home");
+      } else {
+        alert("Login failed: " + response.data.message);
+      }
+    } catch (error) {
+      console.error("Login error:", error.response?.data || error.message);
+      alert("Login failed! Please check your credentials.");
+    }
+  };
+
   return (
     <section className='auth bg-base d-flex flex-wrap'>
       <div className='auth-left d-lg-block d-none'>
@@ -21,7 +49,7 @@ const SignInLayer = () => {
               Welcome back! please enter your detail
             </p>
           </div>
-          <form action='#'>
+          <form onSubmit = {handleSubmit}/*action='#'*/>
             <div className='icon-field mb-16'>
               <span className='icon top-50 translate-middle-y'>
                 <Icon icon='mage:email' />
@@ -30,6 +58,8 @@ const SignInLayer = () => {
                 type='email'
                 className='form-control h-56-px bg-neutral-50 radius-12'
                 placeholder='Email'
+                value={email} // ✅ Link state
+                onChange={(e) => setEmail(e.target.value)} // ✅ Update state
               />
             </div>
             <div className='position-relative mb-20'>
@@ -42,6 +72,8 @@ const SignInLayer = () => {
                   className='form-control h-56-px bg-neutral-50 radius-12'
                   id='your-password'
                   placeholder='Password'
+                  value={password} // ✅ Link state
+                  onChange={(e) => setPassword(e.target.value)} // ✅ Update state
                 />
               </div>
               <span
