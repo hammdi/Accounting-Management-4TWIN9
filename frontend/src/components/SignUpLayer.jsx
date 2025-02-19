@@ -1,8 +1,12 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 import { Link } from "react-router-dom";
+import {useEffect,useState} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUpLayer = () => {
+
   return (
     <section className='auth bg-base d-flex flex-wrap'>
       <div className='auth-left d-lg-block d-none'>
