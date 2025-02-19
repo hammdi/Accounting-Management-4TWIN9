@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+
+// Définir le schéma pour l'utilisateur
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        default: 'user'
+    }
+}, { timestamps: true });
+
+// Créer le modèle à partir du schéma
+module.exports = mongoose.model('User', userSchema);
