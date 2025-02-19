@@ -1,12 +1,14 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useEffect,useState} from "react";
+import {toast} from "react-toastify";
 
 const SignInLayer = () => {
   const [email, setEmail]= useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +32,33 @@ const SignInLayer = () => {
       alert("Login failed! Please check your credentials.");
     }
   };
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.message) {
+      toast.info(<div>
+    <span className="d-flex align-items-center gap-2">
+      <Icon icon="logos:google-gmail" className="text-xl" />
+      <a
+          href="https://mail.google.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-600 fw-semibold"
+      >
+        Check your Gmail
+      </a>
+    </span>
+      </div>, {
+        position: "top-right", // ✅ Show in top-right
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [location]);
 
   return (
     <section className='auth bg-base d-flex flex-wrap'>
@@ -68,7 +97,7 @@ const SignInLayer = () => {
                   <Icon icon='solar:lock-password-outline' />
                 </span>
                 <input
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
                   className='form-control h-56-px bg-neutral-50 radius-12'
                   id='your-password'
                   placeholder='Password'
@@ -79,6 +108,7 @@ const SignInLayer = () => {
               <span
                 className='toggle-password ri-eye-line cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light'
                 data-toggle='#your-password'
+                onClick={() => setShowPassword(!showPassword)}
               />
             </div>
             <div className=''>
@@ -118,7 +148,7 @@ const SignInLayer = () => {
                   icon='ic:baseline-facebook'
                   className='text-primary-600 text-xl line-height-1'
                 />
-                Google
+                Facebook
               </button>
               <button
                 type='button'

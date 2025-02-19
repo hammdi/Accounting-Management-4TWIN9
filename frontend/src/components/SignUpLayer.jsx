@@ -1,12 +1,35 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 import { Link } from "react-router-dom";
-import {useEffect,useState} from "react";
+import {/*useEffect,*/useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const SignUpLayer = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail]= useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false)
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+        .post("http://localhost:5000/api/users/register", {
+          name: name,
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          console.log(response);
+          // Navigate to login with a state message
+          navigate("/", { state: { message: "Go check your email!" }  });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  };
   return (
     <section className='auth bg-base d-flex flex-wrap'>
       <div className='auth-left d-lg-block d-none'>
@@ -25,7 +48,7 @@ const SignUpLayer = () => {
               Welcome back! please enter your detail
             </p>
           </div>
-          <form action='#'>
+          <form onSubmit = {handleSubmit}/*action='#'*/>
             <div className='icon-field mb-16'>
               <span className='icon top-50 translate-middle-y'>
                 <Icon icon='f7:person' />
@@ -34,6 +57,7 @@ const SignUpLayer = () => {
                 type='text'
                 className='form-control h-56-px bg-neutral-50 radius-12'
                 placeholder='Username'
+                onChange={(e)=> setName (e.target.value)}
               />
             </div>
             <div className='icon-field mb-16'>
@@ -44,6 +68,7 @@ const SignUpLayer = () => {
                 type='email'
                 className='form-control h-56-px bg-neutral-50 radius-12'
                 placeholder='Email'
+                onChange={(e)=> setEmail (e.target.value)}
               />
             </div>
             <div className='mb-20'>
@@ -53,15 +78,17 @@ const SignUpLayer = () => {
                     <Icon icon='solar:lock-password-outline' />
                   </span>
                   <input
-                    type='password'
+                      type={showPassword ? 'text' : 'password'}
                     className='form-control h-56-px bg-neutral-50 radius-12'
                     id='your-password'
                     placeholder='Password'
+                    onChange={(e)=> setPassword (e.target.value)}
                   />
                 </div>
                 <span
                   className='toggle-password ri-eye-line cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light'
                   data-toggle='#your-password'
+                  onClick={() => setShowPassword(!showPassword)}
                 />
               </div>
               <span className='mt-12 text-sm text-secondary-light'>

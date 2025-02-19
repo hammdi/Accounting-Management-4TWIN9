@@ -96,10 +96,12 @@ import ComingSoonPage from "./pages/ComingSoonPage";
 import AccessDeniedPage from "./pages/AccessDeniedPage";
 import MaintenancePage from "./pages/MaintenancePage";
 import BlankPagePage from "./pages/BlankPagePage";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
-  return (
-    <BrowserRouter>
+  return (<>
+        <ToastContainer />
+        <BrowserRouter>
       <RouteScrollToTop />
       <Routes>
         <Route exact path='/' element={<SignInPage />} />
@@ -225,6 +227,7 @@ function App() {
         <Route exact path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
+      </>
   );
 }
 
