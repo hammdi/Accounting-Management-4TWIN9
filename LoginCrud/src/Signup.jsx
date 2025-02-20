@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import OAuth from "./OAuth.jsx";
 
 function Signup() {
 const [name, setName] = useState("");   
@@ -50,6 +51,7 @@ const handleSubmit = (e) => {
                     
                     
                     <Link to="/login" className=" btn btn-default border w-100 bg-light rounded-0 "> Login </Link>
+                    <OAuth />
                     <p> Already have an account ?  </p>
                 </form>
 

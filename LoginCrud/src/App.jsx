@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './Login.jsx'
 import Users from './Users.jsx'
 import UpdateUser from './UpadateUser.jsx'
+import LatestRegisteredOne from './LatestRegisteredOne.jsx';
+import { useParams } from 'react-router-dom'
 
 function App() {
 
@@ -15,8 +17,9 @@ function App() {
       <Route path="/" element= {<Signup />} />
       <Route path="/login" element= {<Login />} />
       <Route path="/home" element= {<Users /> } />
-      <Route path="/update" element= {<UpdateUser />} />
+      <Route path="/update/:id" element= {<UpdateUser />} />
       <Route path="*" element= {<h1> 404 Not Found </h1>} />
+      <Route path="/latest-registered" element={<LatestRegisteredOne />} />
      </Routes>
     </BrowserRouter>
     
