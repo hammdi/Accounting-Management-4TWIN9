@@ -33,8 +33,16 @@ const SignInLayer = () => {
     }
   };
     const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const accountActivated = queryParams.get("accountActivated");
 
   useEffect(() => {
+    if (accountActivated) {
+      toast.success("Your account has been activated! You can now log in.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
     if (location.state?.message) {
       toast.info(<div>
     <span className="d-flex align-items-center gap-2">
@@ -58,7 +66,7 @@ const SignInLayer = () => {
         progress: undefined,
       });
     }
-  }, [location]);
+  }, [location,accountActivated]);
 
   return (
     <section className='auth bg-base d-flex flex-wrap'>
