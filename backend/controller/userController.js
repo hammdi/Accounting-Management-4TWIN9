@@ -151,3 +151,52 @@ exports.getAllUsers = async (req, res) => {
         res.status(500).json({ message: 'Erreur serveur' });
     }
 };
+const generateRandomPassword = (length = 10) => {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$!";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return password;
+};
+
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        // Check if user exists
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Generate new random password
+        const newPassword = generateRandomPassword();
+
+        // Hash the new password before saving
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        await user.save();
+
+        // Send email with the new password
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL_USER, // Use environment variables for security
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: user.email,
+            subject: "Your New Password",
+            text: `Your new password is: ${newPassword}\nPlease log in and change it immediately.`,
+        };
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: "A new password has been sent to your email." });
+    } catch (error) {
+        console.error("Forgot Password Error:", error);
+        res.status(500).json({ message: error.message });
+    }
+};

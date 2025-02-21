@@ -1,8 +1,26 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
-import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPasswordLayer = () => {
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent page reload
+
+        console.log("Submitting forgot password request...");
+
+        try {
+            await axios.post("http://localhost:5000/api/users/forgot-password", { email });
+
+            navigate("/", { state: { message: "Go check your email and get the new password" } });
+        } catch (error) {
+            console.log(error.response?.data?.message || "Something went wrong. Please try again.");
+        }
+    };
     return (
         <>
             <section className="auth forgot-password-page bg-base d-flex flex-wrap">
@@ -20,7 +38,7 @@ const ForgotPasswordLayer = () => {
                                 send you a link to reset your password.
                             </p>
                         </div>
-                        <form action="#">
+                        <form onSubmit={handleSubmit}>
                             <div className="icon-field">
                                 <span className="icon top-50 translate-middle-y">
                                     <Icon icon="mage:email" />
@@ -29,25 +47,27 @@ const ForgotPasswordLayer = () => {
                                     type="email"
                                     className="form-control h-56-px bg-neutral-50 radius-12"
                                     placeholder="Enter Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <button
-                                type="button"
+                                type="submit"
                                 className="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
+                               /* data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"*/
                             >
                                 Continue
                             </button>
                             <div className="text-center">
-                                <Link to="/sign-in" className="text-primary-600 fw-bold mt-24">
+                                <Link to="/" className="text-primary-600 fw-bold mt-24">
                                     Back to Sign In
                                 </Link>
                             </div>
                             <div className="mt-120 text-center text-sm">
                                 <p className="mb-0">
                                     Already have an account?{" "}
-                                    <Link to="/sign-in" className="text-primary-600 fw-semibold">
+                                    <Link to="/" className="text-primary-600 fw-semibold">
                                         Sign In
                                     </Link>
                                 </p>
@@ -71,11 +91,15 @@ const ForgotPasswordLayer = () => {
                             </div>
                             <h6 className="mb-12">Verify your Email</h6>
                             <p className="text-secondary-light text-sm mb-0">
-                                Thank you, check your email for instructions to reset your password
+                                Thank you, check your email to get your new password
                             </p>
                             <button
                                 type="button"
                                 className="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32"
+                                onClick={() => {
+                                    window.open("https://mail.google.com/", "_blank"); // Open Gmail
+                                    navigate("/"); // Redirect to sign-in
+                                }}
                             >
                                 Skip
                             </button>
