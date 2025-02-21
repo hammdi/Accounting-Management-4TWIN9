@@ -43,6 +43,11 @@ const SignInLayer = () => {
         autoClose: 3000,
       });
     }
+    if(location.state?.message==="Go check your email and get the new password")
+      toast.info("Please check your email and get the new password.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     if (location.state?.message) {
       toast.info(<div>
     <span className="d-flex align-items-center gap-2">
@@ -132,7 +137,7 @@ const SignInLayer = () => {
                     Remember me{" "}
                   </label>
                 </div>
-                <Link to='#' className='text-primary-600 fw-medium'>
+                <Link to='/forgot-password' className='text-primary-600 fw-medium'>
                   Forgot Password?
                 </Link>
               </div>

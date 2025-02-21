@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, loginUser, getUser, updateUser, deleteUser,getAllUsers } = require('../controller/userController');
+const { registerUser, loginUser, getUser, updateUser, deleteUser,getAllUsers,forgotPassword } = require('../controller/userController');
 const router = express.Router();
 const authenticateJWT = require('../middleware/authMiddleware');
 const User = require("../models/userModel");
@@ -38,5 +38,6 @@ router.get("/verify/:token", async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+router.post("/forgot-password", forgotPassword);
 
 module.exports = router;
