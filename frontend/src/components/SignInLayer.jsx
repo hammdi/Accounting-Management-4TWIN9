@@ -17,19 +17,31 @@ const SignInLayer = () => {
         email,
         password,
       });
-
-      console.log("Response:", response.data);
-
       // Check if the response contains a token (successful login)
       if (response.data.token) {
         localStorage.setItem("token", response.data.token); // Save token
         navigate("/home");
       } else {
-        alert("Login failed: " + response.data.message);
+       // console.log(response.data.message)
+       // toast.error("Échec de la connexion: " + response.data.message, { position: "top-right" });
       }
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
-      alert("Login failed! Please check your credentials.");
+      if (error.response) {
+        const {  message } = error.response.data;
+        if (error.status === 404&& message === "Utilisateur non trouvé") {
+          toast.error("Utilisateur non trouvé ❌", { position: "top-right" });
+        } else if (error.status === 400 && message === "activation required") {
+          toast.warning("Votre compte n'est pas activé. Veuillez vérifier votre e-mail. ⚠️", { position: "top-right" });
+        } else if (error.status === 400 && message === "Mot de passe incorrect") {
+          toast.error("Mot de passe incorrect. Veuillez réessayer. 🔑", { position: "top-right" });
+        } else {
+          toast.error("Erreur inconnue: " + message, { position: "top-right" });
+        }
+      } else {
+        toast.error("Erreur de connexion au serveur. Vérifiez votre connexion internet.", { position: "top-right" });
+      }
+
     }
   };
     const location = useLocation();
