@@ -60,6 +60,7 @@ exports.loginUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
+        if(user.status=="Inactive") return res.status(400).json({ message: 'activation required'})
         // Comparer le mot de passe
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -80,7 +81,7 @@ exports.loginUser = async (req, res) => {
             }*/
         });
     } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur' });
+        res.status(500).json({ message: error.message });
     }
 };
 
