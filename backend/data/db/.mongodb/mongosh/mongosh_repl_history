@@ -1,0 +1,12 @@
+db.users.find()
+use accounting-db
+db.users.find()
+show dbs
+use accounting-db
+db.users.find()
+show collections
+db.accounting-db.find()
+find
+use accounting-db
+show dbs
+mongo
