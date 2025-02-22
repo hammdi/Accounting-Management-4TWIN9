@@ -9,6 +9,7 @@ router.get('/me', authMiddleware, async (req, res) => {
         console.log("req.user:", req.user); // Affiche l'objet `req.user`
         console.log("req.user.id:", req.user.id); // Affiche `req.user.id`
 
+
         const user = await User.findById(req.user.userId).select('-password'); // Exclure le mot de passe
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
