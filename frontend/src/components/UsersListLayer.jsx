@@ -65,7 +65,7 @@ const UsersListLayer = () => {
         setSelectedUser(user);
     }
 
-    const handleSubmit = async (e, userId) => {
+    const handleSubmit = async (/*e,*/ userId) => {
         //e.preventDefault(); // Prevent default form submission
 
         const token = localStorage.getItem("token"); // Retrieve token from local storage
@@ -254,7 +254,7 @@ const UsersListLayer = () => {
                             </tbody>
                         </table>
                     </div>
-                    {/*<div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+                    {<div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
                     <span>Showing 1 to 10 of 12 entries</span>
                     <ul className="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
                         <li className="page-item">
@@ -315,7 +315,7 @@ const UsersListLayer = () => {
                             </Link>
                         </li>
                     </ul>
-                </div>*/}
+                </div>}
                 </div>
             </div>
 
@@ -373,7 +373,7 @@ const UsersListLayer = () => {
                                 </div>
                             </div>
                             {/* Upload Image End */}
-                            <form onSubmit={(e) => handleSubmit(e, selectedUser ? selectedUser._id : "")}
+                            <form onSubmit={() => handleSubmit(selectedUser ? selectedUser._id : "") /*(e) => handleSubmit(e, selectedUser ? selectedUser._id : "")*/}
                                   className="row gy-3 needs-validation">
                                 <div className="col-md-6">
                                     <label
@@ -457,8 +457,8 @@ const UsersListLayer = () => {
                                         value={selectedUser?.role || "user"}
                                         onChange={handleChange}>
                                         <option value='Accountant'>Accountant</option>
-                                        <option value='Product Owner'>Product Owner</option>
-                                        <option value='user'>user</option>
+                                        <option value='BusinessOwner'>Business Owner</option>
+                                        <option value='User'>User</option>
                                     </select>
                                 </div>
                                 <div className="col-12 mb-20">
