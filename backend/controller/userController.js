@@ -101,7 +101,7 @@ exports.getUser = async (req, res) => {
 
 // Mettre à jour un utilisateur (Update user details)
 exports.updateUser = async (req, res) => {
-    const { name, email, password, role, phone, status } = req.body;
+    const { name, email, password, role, phone, status, avatar } = req.body;
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
