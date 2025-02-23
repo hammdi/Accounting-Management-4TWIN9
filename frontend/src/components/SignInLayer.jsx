@@ -17,26 +17,63 @@ const SignInLayer = () => {
         email,
         password,
       });
-
-      console.log("Response:", response.data);
-
       // Check if the response contains a token (successful login)
       if (response.data.token) {
         localStorage.setItem("token", response.data.token); // Save token
         navigate("/home");
       } else {
-        alert("Login failed: " + response.data.message);
+       // console.log(response.data.message)
+       // toast.error("Échec de la connexion: " + response.data.message, { position: "top-right" });
       }
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
-      alert("Login failed! Please check your credentials.");
+      if (error.response) {
+        const {  message } = error.response.data;
+        if (error.status === 404&& message === "Utilisateur non trouvé") {
+          toast.error("Utilisateur non trouvé ❌", { position: "top-right" });
+        } else if (error.status === 400 && message === "activation required") {
+          toast.warning("Votre compte n'est pas activé. Veuillez vérifier votre e-mail. ⚠️", { position: "top-right" });
+        } else if (error.status === 400 && message === "Mot de passe incorrect") {
+          toast.error("Mot de passe incorrect. Veuillez réessayer. 🔑", { position: "top-right" });
+        } else {
+          toast.error("Erreur inconnue: " + message, { position: "top-right" });
+        }
+      } else {
+        toast.error("Erreur de connexion au serveur. Vérifiez votre connexion internet.", { position: "top-right" });
+      }
+
     }
   };
     const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const accountActivated = queryParams.get("accountActivated");
 
   useEffect(() => {
+    if (accountActivated) {
+      toast.success("Your account has been activated! You can now log in.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
+    if(location.state?.message==="Go check your email and get the new password")
+      toast.info("Please check your email and get the new password.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     if (location.state?.message) {
-      toast.info(location.state.message, {
+      toast.info(<div>
+    <span className="d-flex align-items-center gap-2">
+      <Icon icon="logos:google-gmail" className="text-xl" />
+      <a
+          href="https://mail.google.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-600 fw-semibold"
+      >
+        Check your Gmail
+      </a>
+    </span>
+      </div>, {
         position: "top-right", // ✅ Show in top-right
         autoClose: 5000,
         hideProgressBar: false,
@@ -46,7 +83,7 @@ const SignInLayer = () => {
         progress: undefined,
       });
     }
-  }, [location]);
+  }, [location,accountActivated]);
 
   return (
     <section className='auth bg-base d-flex flex-wrap'>
@@ -112,7 +149,7 @@ const SignInLayer = () => {
                     Remember me{" "}
                   </label>
                 </div>
-                <Link to='#' className='text-primary-600 fw-medium'>
+                <Link to='/forgot-password' className='text-primary-600 fw-medium'>
                   Forgot Password?
                 </Link>
               </div>
@@ -136,7 +173,7 @@ const SignInLayer = () => {
                   icon='ic:baseline-facebook'
                   className='text-primary-600 text-xl line-height-1'
                 />
-                Google
+                Facebook
               </button>
               <button
                 type='button'

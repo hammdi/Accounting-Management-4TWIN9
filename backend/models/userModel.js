@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-
-
 // Définir le schéma pour l'utilisateur
 const userSchema = new mongoose.Schema({
     name: {
@@ -31,7 +29,7 @@ const userSchema = new mongoose.Schema({
         //default: 'Active', // Default to Active if no status is provided
     },
     verificationToken: { type: String, required: false }, // Token for email verification
-    is_2fa_enabled: {type: Boolean, default: false}, // 2FA enabled by default
+    is_2fa_enabled: {type: Boolean, default: false},
     avatar: { 
         type: Buffer, // Stockage de l'image en binaire
         required: false 

@@ -60,6 +60,7 @@ exports.loginUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
+        if(user.status=="Inactive") return res.status(400).json({ message: 'activation required'})
         // Comparer le mot de passe
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -70,17 +71,17 @@ exports.loginUser = async (req, res) => {
 
         res.status(200).json({
             message: 'Connexion réussie',
-            token,
-            user: {
+            token,user
+            /*user: {
                 name: user.name,
                 email: user.email,
                 role: user.role,
                 phone: user.phone,
                 status: user.status
-            }
+            }*/
         });
     } catch (error) {
-        res.status(500).json({ message: 'Erreur serveur' });
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -100,7 +101,7 @@ exports.getUser = async (req, res) => {
 
 // Mettre à jour un utilisateur (Update user details)
 exports.updateUser = async (req, res) => {
-    const { name, email, password, role, phone, status, avatar} = req.body;
+    const { name, email, password, role, phone, status } = req.body;
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
@@ -113,14 +114,6 @@ exports.updateUser = async (req, res) => {
             updatedPassword = await bcrypt.hash(password, 10);
         }
 
-
-
-
-
-
-
-
-
         // Update user fields
         user.name = name || user.name;
         user.email = email || user.email;
@@ -129,12 +122,12 @@ exports.updateUser = async (req, res) => {
         user.phone = phone || user.phone;
         user.status = status || user.status;
 
+
   // Mise à jour de l'avatar si fourni (conversion base64 -> Buffer)
   if (avatar) {
     const buffer = Buffer.from(avatar, 'base64');
     user.avatar = buffer;
 }
-
 
 
 
@@ -165,8 +158,6 @@ exports.deleteUser = async (req, res) => {
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await User.find().select('-password'); // Exclude passwords for security
-
-        
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: 'Erreur serveur' });

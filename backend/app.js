@@ -4,6 +4,7 @@ const cors = require('cors');
 const User = require('./models/userModel');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/auth');
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ mongoose.connection.on("error", (err) => {
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
     res.send('🚀 Backend Node.js fonctionne !');

@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 
 
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////
 const getUserAvatar = (avatar) => {
     if (avatar) {
@@ -41,6 +44,18 @@ const arrayBufferToBase64 = (uint8Array) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 const UsersListLayer = () => {
     const [users, setUsers] = useState([]);
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
@@ -49,11 +64,7 @@ const UsersListLayer = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreviewUrl(reader.result); // Prévisualisation
-                setSelectedUser((prevUser) => ({
-                    ...prevUser,
-                    avatar: reader.result.split(",")[1], // Enlever le préfixe "data:image/png;base64,"
-                }));
+                setImagePreviewUrl(reader.result);
             };
             reader.readAsDataURL(file);
         }
@@ -107,7 +118,7 @@ const UsersListLayer = () => {
         setSelectedUser(user);
     }
 
-    const handleSubmit = async (e, userId) => {
+    const handleSubmit = async (/*e,*/ userId) => {
         //e.preventDefault(); // Prevent default form submission
 
         const token = localStorage.getItem("token"); // Retrieve token from local storage
@@ -129,11 +140,6 @@ const UsersListLayer = () => {
     };
     return (
         <>
-
-
-
-
-
             <div className="card h-100 p-0 radius-12">
                 <div
                     className="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
@@ -301,7 +307,7 @@ const UsersListLayer = () => {
                             </tbody>
                         </table>
                     </div>
-                    {/*<div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+                    {<div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
                     <span>Showing 1 to 10 of 12 entries</span>
                     <ul className="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
                         <li className="page-item">
@@ -362,7 +368,7 @@ const UsersListLayer = () => {
                             </Link>
                         </li>
                     </ul>
-                </div>*/}
+                </div>}
                 </div>
             </div>
 
@@ -420,7 +426,7 @@ const UsersListLayer = () => {
                                 </div>
                             </div>
                             {/* Upload Image End */}
-                            <form onSubmit={(e) => handleSubmit(e, selectedUser ? selectedUser._id : "")}
+                            <form onSubmit={() => handleSubmit(selectedUser ? selectedUser._id : "") /*(e) => handleSubmit(e, selectedUser ? selectedUser._id : "")*/}
                                   className="row gy-3 needs-validation">
                                 <div className="col-md-6">
                                     <label

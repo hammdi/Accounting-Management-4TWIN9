@@ -1,21 +1,15 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import React, { useState } from 'react';
-
+import React, {useEffect, useState} from 'react';
+import {getCurrentUser} from "../services/authService";
+import axios from "axios";
 const ViewProfileLayer = () => {
     const [imagePreview, setImagePreview] = useState('assets/images/user-grid/user-grid-img13.png');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
     // Toggle function for password field
-    const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
-    };
-
+    const togglePasswordVisibility = () => {setPasswordVisible(!passwordVisible);};
     // Toggle function for confirm password field
-    const toggleConfirmPasswordVisibility = () => {
-        setConfirmPasswordVisible(!confirmPasswordVisible);
-    };
-
+    const toggleConfirmPasswordVisibility = () => {setConfirmPasswordVisible(!confirmPasswordVisible);};
     const readURL = (input) => {
         if (input.target.files && input.target.files[0]) {
             const reader = new FileReader();
@@ -25,6 +19,48 @@ const ViewProfileLayer = () => {
             reader.readAsDataURL(input.target.files[0]);
         }
     };
+    const [user, setUser] = useState(null);
+    const [userData, setuserData] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const userData = await getCurrentUser();
+            console.log(userData)
+            if (userData) {
+                setUser(userData);
+                setuserData(userData);
+            }
+        };
+        fetchUser().then(r => console.log("omk"));
+    }, []);
+    /*const handleChange = (e) => {
+        const {name, value} = e.target;
+        setUser((prevUser) => ({
+            ...prevUser,
+            [name]: value, // Met à jour dynamiquement n'importe quel champ
+        }));
+    };*/
+    const handleSubmit = async (/*e,*/ userId) => {
+        //e.preventDefault(); // Prevent default form submission
+
+        const token = localStorage.getItem("token"); // Retrieve token from local storage
+
+        try {
+            await axios.put(
+                `http://localhost:5000/api/users/user/${userId}`,
+                user, // Send updated user data
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Send token in request headers
+                        "Content-Type": "application/json", // Ensure proper request format
+                    },
+                }
+            );
+        } catch (error) {
+            console.error("Error updating user:", error);
+        }
+    };
+
     return (
         <div className="row gy-4">
             <div className="col-lg-4">
@@ -41,8 +77,8 @@ const ViewProfileLayer = () => {
                                 alt=""
                                 className="border br-white border-width-2-px w-200-px h-200-px rounded-circle object-fit-cover"
                             />
-                            <h6 className="mb-0 mt-16">Jacob Jones</h6>
-                            <span className="text-secondary-light mb-16">ifrandom@gmail.com</span>
+                            <h6 className="mb-0 mt-16">{userData ? userData.name : ""}</h6>
+                            <span className="text-secondary-light mb-16">{user ? user.email : ""}</span>
                         </div>
                         <div className="mt-24">
                             <h6 className="text-xl mb-16">Personal Info</h6>
@@ -52,7 +88,7 @@ const ViewProfileLayer = () => {
                                         Full Name
                                     </span>
                                     <span className="w-70 text-secondary-light fw-medium">
-                                        : Will Jonto
+                                        : {user ? user.name : ""}
                                     </span>
                                 </li>
                                 <li className="d-flex align-items-center gap-1 mb-12">
@@ -61,7 +97,7 @@ const ViewProfileLayer = () => {
                                         Email
                                     </span>
                                     <span className="w-70 text-secondary-light fw-medium">
-                                        : willjontoax@gmail.com
+                                        : {user ? user.email : ""}
                                     </span>
                                 </li>
                                 <li className="d-flex align-items-center gap-1 mb-12">
@@ -70,7 +106,7 @@ const ViewProfileLayer = () => {
                                         Phone Number
                                     </span>
                                     <span className="w-70 text-secondary-light fw-medium">
-                                        : (1) 2536 2561 2365
+                                        : +216 {user ? user.phone : ""}
                                     </span>
                                 </li>
                                 <li className="d-flex align-items-center gap-1 mb-12">
@@ -208,7 +244,7 @@ const ViewProfileLayer = () => {
                                     </div>
                                 </div>
                                 {/* Upload Image End */}
-                                <form action="#">
+                                <form onSubmit={() => handleSubmit(user ? user._id : "") }>
                                     <div className="row">
                                         <div className="col-sm-6">
                                             <div className="mb-20">
@@ -224,6 +260,9 @@ const ViewProfileLayer = () => {
                                                     className="form-control radius-8"
                                                     id="name"
                                                     placeholder="Enter Full Name"
+                                                    value={user ? user.name : ""}
+                                                    onChange={(e) => setUser({...user, name: e.target.value})}
+
                                                 />
                                             </div>
                                         </div>
@@ -240,6 +279,9 @@ const ViewProfileLayer = () => {
                                                     className="form-control radius-8"
                                                     id="email"
                                                     placeholder="Enter email address"
+                                                    value={user ? user.email : ""}
+                                                    onChange={(e) => setUser({...user, email: e.target.value})}
+
                                                 />
                                             </div>
                                         </div>
@@ -252,10 +294,13 @@ const ViewProfileLayer = () => {
                                                     Phone
                                                 </label>
                                                 <input
-                                                    type="email"
+                                                    type="number"
                                                     className="form-control radius-8"
                                                     id="number"
                                                     placeholder="Enter phone number"
+                                                    value={user ? user.phone : ""}
+                                                    onChange={(e) => setUser({...user, phone: e.target.value})}
+
                                                 />
                                             </div>
                                         </div>
@@ -355,7 +400,7 @@ const ViewProfileLayer = () => {
                                             Cancel
                                         </button>
                                         <button
-                                            type="button"
+                                            type="submit"
                                             className="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8"
                                         >
                                             Save
