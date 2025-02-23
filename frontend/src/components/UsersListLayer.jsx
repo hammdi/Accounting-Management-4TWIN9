@@ -3,10 +3,6 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////
 const getUserAvatar = (avatar) => {
     if (avatar) {
@@ -41,7 +37,6 @@ const arrayBufferToBase64 = (uint8Array) => {
     return window.btoa(binary); // Convertir en Base64
 };
 ///////////////////////////////////////////////////////////////////////////////////////
-
 
 
 

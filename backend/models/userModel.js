@@ -35,7 +35,9 @@ const userSchema = new mongoose.Schema({
         type: Buffer, // Stockage de l'image en binaire
         required: false 
     },
-
+    nametest: {
+        type: String,
+    },
 }, { timestamps: true });
 
 // Créer le modèle à partir du schéma

@@ -2,6 +2,39 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React, {useEffect, useState} from 'react';
 import {getCurrentUser} from "../services/authService";
 import axios from "axios";
+////////////////////////////
+const getUserAvatar = (avatar) => {
+    if (avatar) {
+        console.log("Avatar:", avatar);
+
+        // Vérifie si l'avatar est déjà une chaîne Base64
+        if (typeof avatar === 'string' && avatar.startsWith('data:image/png;base64,')) {
+            return avatar; // L'avatar est déjà au format Base64
+        }
+
+        // Si l'avatar est un objet Buffer avec un tableau de données
+        if (avatar && avatar.data && Array.isArray(avatar.data)) {
+            // Convertir les données du tableau en chaîne Base64
+            const base64Avatar = arrayBufferToBase64(new Uint8Array(avatar.data));
+            console.log("Avatar converti en Base64:", base64Avatar); // Affiche l'avatar converti
+            return `data:image/png;base64,${base64Avatar}`;
+        }
+
+        console.log("L'avatar n'est pas un format valide.");
+    }
+
+    return "default-avatar.png"; // Image par défaut si l'avatar est vide ou invalide
+};
+
+// Fonction utilitaire pour convertir un tableau Uint8Array en chaîne Base64
+const arrayBufferToBase64 = (uint8Array) => {
+    let binary = '';
+    const len = uint8Array.length;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+    }
+    return window.btoa(binary); // Convertir en Base64
+};//////////////////////
 const ViewProfileLayer = () => {
     const [imagePreview, setImagePreview] = useState('assets/images/user-grid/user-grid-img13.png');
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -10,13 +43,18 @@ const ViewProfileLayer = () => {
     const togglePasswordVisibility = () => {setPasswordVisible(!passwordVisible);};
     // Toggle function for confirm password field
     const toggleConfirmPasswordVisibility = () => {setConfirmPasswordVisible(!confirmPasswordVisible);};
-    const readURL = (input) => {
-        if (input.target.files && input.target.files[0]) {
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
             const reader = new FileReader();
-            reader.onload = (e) => {
-                setImagePreview(e.target.result);
+            reader.onloadend = () => {
+                setImagePreview(reader.result); // Prévisualisation
+                setuserData((prevUser) => ({
+                    ...prevUser,
+                    avatar: reader.result.split(",")[1], // Enlever le préfixe "data:image/png;base64,"
+                }));
             };
-            reader.readAsDataURL(input.target.files[0]);
+            reader.readAsDataURL(file);
         }
     };
     const [user, setUser] = useState(null);
@@ -73,7 +111,7 @@ const ViewProfileLayer = () => {
                     <div className="pb-24 ms-16 mb-24 me-16  mt--100">
                         <div className="text-center border border-top-0 border-start-0 border-end-0">
                             <img
-                                src="assets/images/user-grid/user-grid-img14.png"
+                                src={getUserAvatar(userData? userData.avatar:"")}
                                 alt=""
                                 className="border br-white border-width-2-px w-200-px h-200-px rounded-circle object-fit-cover"
                             />
@@ -222,7 +260,7 @@ const ViewProfileLayer = () => {
                                                 id="imageUpload"
                                                 accept=".png, .jpg, .jpeg"
                                                 hidden
-                                                onChange={readURL}
+                                                onChange={handleImageChange}
                                             />
                                             <label
                                                 htmlFor="imageUpload"
