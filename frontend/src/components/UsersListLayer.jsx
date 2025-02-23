@@ -64,11 +64,16 @@ const UsersListLayer = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreviewUrl(reader.result);
+                setImagePreviewUrl(reader.result); // Prévisualisation
+                setSelectedUser((prevUser) => ({
+                    ...prevUser,
+                    avatar: reader.result.split(",")[1], // Enlever le préfixe "data:image/png;base64,"
+                }));
             };
             reader.readAsDataURL(file);
         }
     };
+    
     const handleDelete = async (userId) => {
         const token = localStorage.getItem("token"); // Retrieve token from local storage
         try {
