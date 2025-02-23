@@ -3,10 +3,6 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////
 const getUserAvatar = (avatar) => {
     if (avatar) {
@@ -46,7 +42,6 @@ const arrayBufferToBase64 = (uint8Array) => {
 
 
 
-
 const UsersListLayer = () => {
     const [users, setUsers] = useState([]);
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
@@ -55,7 +50,11 @@ const UsersListLayer = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreviewUrl(reader.result);
+                setImagePreviewUrl(reader.result); // Prévisualisation
+                setSelectedUser((prevUser) => ({
+                    ...prevUser,
+                    avatar: reader.result.split(",")[1], // Enlever le préfixe "data:image/png;base64,"
+                }));
             };
             reader.readAsDataURL(file);
         }
