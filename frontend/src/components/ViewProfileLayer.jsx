@@ -261,7 +261,6 @@ const ViewProfileLayer = () => {
                                                     id="name"
                                                     placeholder="Enter Full Name"
                                                     value={user ? user.name : ""}
-                                                    //onChange={handleChange}
                                                     onChange={(e) => setUser({...user, name: e.target.value})}
 
                                                 />
@@ -280,6 +279,9 @@ const ViewProfileLayer = () => {
                                                     className="form-control radius-8"
                                                     id="email"
                                                     placeholder="Enter email address"
+                                                    value={user ? user.email : ""}
+                                                    onChange={(e) => setUser({...user, email: e.target.value})}
+
                                                 />
                                             </div>
                                         </div>
@@ -292,10 +294,13 @@ const ViewProfileLayer = () => {
                                                     Phone
                                                 </label>
                                                 <input
-                                                    type="email"
+                                                    type="number"
                                                     className="form-control radius-8"
                                                     id="number"
                                                     placeholder="Enter phone number"
+                                                    value={user ? user.phone : ""}
+                                                    onChange={(e) => setUser({...user, phone: e.target.value})}
+
                                                 />
                                             </div>
                                         </div>
