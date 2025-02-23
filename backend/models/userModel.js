@@ -29,7 +29,13 @@ const userSchema = new mongoose.Schema({
         //default: 'Active', // Default to Active if no status is provided
     },
     verificationToken: { type: String, required: false }, // Token for email verification
-    is_2fa_enabled: {type: Boolean, default: false}
+
+    is_2fa_enabled: {type: Boolean, default: false},
+    avatar: { 
+        type: Buffer, // Stockage de l'image en binaire
+        required: false 
+    },
+
 }, { timestamps: true });
 
 // Créer le modèle à partir du schéma

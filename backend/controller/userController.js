@@ -122,6 +122,16 @@ exports.updateUser = async (req, res) => {
         user.phone = phone || user.phone;
         user.status = status || user.status;
 
+      
+  // Mise à jour de l'avatar si fourni (conversion base64 -> Buffer)
+  if (avatar) {
+    const buffer = Buffer.from(avatar, 'base64');
+    user.avatar = buffer;
+}
+
+
+
+
         await user.save();
         res.status(200).json({ message: 'Utilisateur mis à jour avec succès' });
     } catch (error) {
