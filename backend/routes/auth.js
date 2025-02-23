@@ -6,9 +6,6 @@ const authMiddleware = require('../middleware/authMiddleware'); // Middleware po
 // Route pour récupérer l'utilisateur connecté
 router.get('/me', authMiddleware, async (req, res) => {
     try {
-        console.log("req.user:", req.user); // Affiche l'objet `req.user`
-        console.log("req.user.id:", req.user.id); // Affiche `req.user.id`
-
 
         const user = await User.findById(req.user.userId).select('-password'); // Exclure le mot de passe
         if (!user) {
