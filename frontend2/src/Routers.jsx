@@ -6,6 +6,8 @@ import Home3 from './pages/homePages/Home3';
 import Home4 from './pages/homePages/Home4';
 import Home5 from './pages/homePages/Home5';
 
+import SignIn from './components/login/SignIn';
+
 import AboutUsPage from './pages/innerPages/AboutUsPage';
 import AboutUs2Page from './pages/innerPages/AboutUs2Page';
 import TeamPage from './pages/innerPages/TeamPage';
@@ -42,6 +44,8 @@ const Routers = () => {
                 <Route path='/home-3' element={<Home3 />}></Route>
                 <Route path='/home-4' element={<Home4 />}></Route>
                 <Route path='/home-5' element={<Home5 />}></Route>
+
+                <Route path="/sign-in" element={<SignIn />} />
 
                 <Route path='/about-us' element={<AboutUsPage />}></Route>
                 <Route path='/about-us-2' element={<AboutUs2Page />}></Route>

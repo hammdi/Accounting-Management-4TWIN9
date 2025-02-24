@@ -34,9 +34,12 @@ const HeaderV1 = () => {
                         <div className="attr-right">
                             <div className="attr-nav">
                                 <ul>
-                                    <li className="button">
-                                        <Link to="/contact-us">Get consultant</Link>
-                                    </li>
+                                <li className="button" style={{ marginRight: '15px' }}>
+                                        <Link to="/sign-in">Sign In</Link>
+                                </li>
+                                <li className="button">
+                                        <Link to="/contact-us">Company Demo</Link>
+                                </li>
                                 </ul>
                             </div>
                         </div>
