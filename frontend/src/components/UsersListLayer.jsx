@@ -93,7 +93,7 @@ const UsersListLayer = () => {
             }
         };
 
-        fetchUsers().then(r => (console.log("omk")));
+        fetchUsers().then(r => (console.log("test execution")));
     }, []);
     const [selectedUser, setSelectedUser] = useState(null);
     const handleChange = (e) => {
