@@ -75,7 +75,7 @@ const SignIn = () => {
                 <div className="d-flex justify-content-center gap-3">
                     <button className="btn btn-light d-flex align-items-center px-4 border border-secondary">
                         <img 
-                            src="https://cdn-icons-png.flaticon.com/512/270/270798.png" 
+                            src="https://cdn.iconscout.com/icon/free/png-256/free-github-40-432516.png?f=webp" 
                             alt="Facebook Icon" 
                             style={{ width: '20px', height: '20px' }} 
                             className="me-2" 
