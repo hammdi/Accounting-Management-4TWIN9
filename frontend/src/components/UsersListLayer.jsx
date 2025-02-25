@@ -93,7 +93,7 @@ const UsersListLayer = () => {
             }
         };
 
-        fetchUsers().then(r => (console.log("omk")));
+        fetchUsers().then(r => (console.log("")));
     }, []);
     const [selectedUser, setSelectedUser] = useState(null);
     const handleChange = (e) => {
@@ -500,7 +500,7 @@ const UsersListLayer = () => {
                                         value={selectedUser?.role || "user"}
                                         onChange={handleChange}>
                                         <option value='Accountant'>Accountant</option>
-                                        <option value='Product Owner'>Product Owner</option>
+                                        <option value='Business Owner'>Business Owner</option>
                                         <option value='user'>user</option>
                                     </select>
                                 </div>

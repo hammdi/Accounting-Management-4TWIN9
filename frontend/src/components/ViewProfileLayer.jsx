@@ -5,18 +5,15 @@ import axios from "axios";
 ////////////////////////////
 const getUserAvatar = (avatar) => {
     if (avatar) {
-        console.log("Avatar:", avatar);
-
         // Vérifie si l'avatar est déjà une chaîne Base64
         if (typeof avatar === 'string' && avatar.startsWith('data:image/png;base64,')) {
             return avatar; // L'avatar est déjà au format Base64
         }
-
         // Si l'avatar est un objet Buffer avec un tableau de données
         if (avatar && avatar.data && Array.isArray(avatar.data)) {
             // Convertir les données du tableau en chaîne Base64
             const base64Avatar = arrayBufferToBase64(new Uint8Array(avatar.data));
-            console.log("Avatar converti en Base64:", base64Avatar); // Affiche l'avatar converti
+            //console.log("Avatar converti en Base64:", base64Avatar); // Affiche l'avatar converti
             return `data:image/png;base64,${base64Avatar}`;
         }
 
@@ -35,10 +32,15 @@ const arrayBufferToBase64 = (uint8Array) => {
     }
     return window.btoa(binary); // Convertir en Base64
 };//////////////////////
+
+
+
 const ViewProfileLayer = () => {
-    const [imagePreview, setImagePreview] = useState('assets/images/user-grid/user-grid-img13.png');
+    const [imagePreview, setImagePreview] = useState();
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     // Toggle function for password field
     const togglePasswordVisibility = () => {setPasswordVisible(!passwordVisible);};
     // Toggle function for confirm password field
@@ -49,14 +51,16 @@ const ViewProfileLayer = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result); // Prévisualisation
-                setuserData((prevUser) => ({
+
+                setUser((prevUser) => ({
                     ...prevUser,
-                    avatar: reader.result.split(",")[1], // Enlever le préfixe "data:image/png;base64,"
+                    avatar: reader.result.split(",")[1], // Garde le préfixe "data:image/png;base64,"
                 }));
             };
             reader.readAsDataURL(file);
         }
     };
+
     const [user, setUser] = useState(null);
     const [userData, setuserData] = useState(null);
 
@@ -67,22 +71,15 @@ const ViewProfileLayer = () => {
             if (userData) {
                 setUser(userData);
                 setuserData(userData);
+                setImagePreview(getUserAvatar(userData ? userData.avatar : ""))
             }
         };
-        fetchUser().then(r => console.log("omk"));
+        fetchUser().then(r => console.log(""));
     }, []);
-    /*const handleChange = (e) => {
-        const {name, value} = e.target;
-        setUser((prevUser) => ({
-            ...prevUser,
-            [name]: value, // Met à jour dynamiquement n'importe quel champ
-        }));
-    };*/
     const handleSubmit = async (/*e,*/ userId) => {
         //e.preventDefault(); // Prevent default form submission
-
         const token = localStorage.getItem("token"); // Retrieve token from local storage
-
+        console.log("Données envoyées:", user); // Vérifie si l'avatar est bien présent
         try {
             await axios.put(
                 `http://localhost:5000/api/users/user/${userId}`,
@@ -96,6 +93,32 @@ const ViewProfileLayer = () => {
             );
         } catch (error) {
             console.error("Error updating user:", error);
+        }
+    };
+    const handlePasswordUpdate = async () => {
+        if (newPassword !== confirmPassword) {
+            alert("Les mots de passe ne correspondent pas !");
+            return;
+        }
+
+        const token = localStorage.getItem("token");
+        try {
+            const response = await axios.put(
+                "http://localhost:5000/api/users/update-password",
+                { password: newPassword },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            alert("Mot de passe mis à jour avec succès !");
+            setNewPassword("");
+            setConfirmPassword("");
+        } catch (error) {
+            console.error("Erreur lors de la mise à jour du mot de passe:", error);
+            alert("Échec de la mise à jour du mot de passe.");
         }
     };
 
@@ -260,6 +283,8 @@ const ViewProfileLayer = () => {
                                                 id="imageUpload"
                                                 accept=".png, .jpg, .jpeg"
                                                 hidden
+
+                                             //   file={getUserAvatar(user? user.avatar : "")}
                                                 onChange={handleImageChange}
                                             />
                                             <label
@@ -274,6 +299,7 @@ const ViewProfileLayer = () => {
                                                 id="imagePreview"
                                                 style={{
                                                     backgroundImage: `url(${imagePreview})`,
+                                                    //backgroundImage: `url(${getUserAvatar(user ? user.avatar : "")})`, // Utilise l'avatar de l'utilisateur
                                                     backgroundSize: 'cover',
                                                     backgroundPosition: 'center'
                                                 }}
@@ -447,6 +473,7 @@ const ViewProfileLayer = () => {
                                 </form>
                             </div>
                             <div className="tab-pane fade" id="pills-change-passwork" role="tabpanel" aria-labelledby="pills-change-passwork-tab" tabIndex="0">
+                                {/* Champ Nouveau Mot de Passe */}
                                 <div className="mb-20">
                                     <label htmlFor="your-password" className="form-label fw-semibold text-primary-light text-sm mb-8">
                                         New Password <span className="text-danger-600">*</span>
@@ -457,6 +484,8 @@ const ViewProfileLayer = () => {
                                             className="form-control radius-8"
                                             id="your-password"
                                             placeholder="Enter New Password*"
+                                            value={newPassword}
+                                            onChange={(e) => setNewPassword(e.target.value)}
                                         />
                                         <span
                                             className={`toggle-password ${passwordVisible ? "ri-eye-off-line" : "ri-eye-line"} cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light`}
@@ -464,7 +493,7 @@ const ViewProfileLayer = () => {
                                         ></span>
                                     </div>
                                 </div>
-
+                                {/* Champ Confirmation Mot de Passe */}
                                 <div className="mb-20">
                                     <label htmlFor="confirm-password" className="form-label fw-semibold text-primary-light text-sm mb-8">
                                         Confirm Password <span className="text-danger-600">*</span>
@@ -475,12 +504,20 @@ const ViewProfileLayer = () => {
                                             className="form-control radius-8"
                                             id="confirm-password"
                                             placeholder="Confirm Password*"
+                                            value={confirmPassword}
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
                                         />
                                         <span
                                             className={`toggle-password ${confirmPasswordVisible ? "ri-eye-off-line" : "ri-eye-line"} cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light`}
                                             onClick={toggleConfirmPasswordVisibility}
                                         ></span>
                                     </div>
+                                </div>
+                                {/* Bouton de soumission */}
+                                <div className="d-flex justify-content-end">
+                                    <button className="btn btn-primary" onClick={handlePasswordUpdate}>
+                                        Update Password
+                                    </button>
                                 </div>
                             </div>
                             <div
