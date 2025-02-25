@@ -26,9 +26,16 @@ mongoose.connect(process.env.MONGO_URI)
         console.log("✅ Connexion à MongoDB réussie");
 
         // Charger les modèles après la connexion
-        require('./models/userModel');
-        require('./models/Company');
-        require('./models/Invoice');
+        require('./models/userModel');          // User should be loaded first (referenced by many models)
+        require('./models/Company');            // Company depends on User
+        require('./models/Invoice');            // Invoice depends on Company and User
+        require('./models/Transaction');        // Transactions depend on Invoice & Company
+        require('./models/Payroll');            // Expense depends on Company
+        require('./models/Tax Compliance');     // Tax depends on Company & User (filedBy)
+        require('./models/AI Predictions');       // AI Prediction depends on Company
+        require('./models/AI Dataset');          // AI Dataset depends on Company
+        require('./models/Audit Logs');           // Audit Log depends on User
+        require('./models/Notification');       // Notification depends on User
 
         // Vérifier les modèles enregistrés
         console.log("📌 Modèles enregistrés :", mongoose.modelNames());
@@ -47,7 +54,15 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/companies', require('./routes/companyRoutes'));
 app.use('/api/invoices', require('./routes/invoiceRoutes'));
+app.use('/api/transactions', require('./routes/transactionRoutes'));
+app.use('/api/payrolls', require('./routes/payrollRoutes'));
+app.use('/api/taxes', require('./routes/taxRoutes'));
+app.use('/api/aipredictons', require('./routes/aiPredictionRoutes'));
+app.use('/api/aidatasets', require('./routes/aiDatasetRoutes'));
+app.use('/api/auditlogs', require('./routes/auditLogRoutes'));
+app.use('/api/notifications', require('./routes/notificationRoutes'));
 
 // Route principale
 app.get('/', (req, res) => {
