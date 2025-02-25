@@ -48,9 +48,14 @@ const SignIn = () => {
                             required
                         />
                     </div>
-                    
+
                     <div className="d-flex justify-content-between align-items-center mb-3">
-                            <Link to="/forgot-password" className="text-decoration-none text-primary">Forgot Password?</Link>
+                        <div className="d-flex align-items-center gap-2">
+                            <input type="checkbox" name="Rememberme" id="rememberme" />
+                            <label htmlFor="rememberme" className="form-check-label">Remember Me?</label>
+                        </div>
+                        
+                        <Link to="/forgot-password" className="text-decoration-none text-primary">Forgot Password?</Link>
                     </div>
                     
                     <button className="btn btn-primary w-100 mb-3" type="submit" disabled={isLoading}>
@@ -70,12 +75,12 @@ const SignIn = () => {
                 <div className="d-flex justify-content-center gap-3">
                     <button className="btn btn-light d-flex align-items-center px-4 border border-secondary">
                         <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" 
+                            src="https://cdn-icons-png.flaticon.com/512/270/270798.png" 
                             alt="Facebook Icon" 
                             style={{ width: '20px', height: '20px' }} 
                             className="me-2" 
                         /> 
-                        Facebook
+                        GitHub
                     </button>
                     <button className="btn btn-light d-flex align-items-center px-4 border border-secondary">
                         <img 
