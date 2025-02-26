@@ -51,8 +51,8 @@ const SignIn = () => {
 
                     <div className="d-flex justify-content-between align-items-center mb-3">
                         <div className="d-flex align-items-center gap-2">
-                            <input type="checkbox" name="Rememberme" id="rememberme" />
-                            <label htmlFor="rememberme" className="form-check-label">Remember Me?</label>
+                            <input type="checkbox" name="Rememberme" id="rememberme" required style={{ marginTop: "2px" }}/>
+                            <label htmlFor="rememberme" className="form-check-label" required style={{ marginTop: "6px" }}>Remember Me?</label>
                         </div>
                         
                         <Link to="/forgot-password" className="text-decoration-none text-primary">Forgot Password?</Link>
