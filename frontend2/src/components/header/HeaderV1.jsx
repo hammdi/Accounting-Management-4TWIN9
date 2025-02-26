@@ -24,25 +24,41 @@ const HeaderV1 = () => {
                                 <img src={logo} className="logo" alt="Logo" />
                             </Link>
                         </div>
+
                         <div className={`collapse navbar-collapse ${isOpen ? "show collapse-mobile" : "collapse-mobile"}`} id="navbar-menu">
                             <img src={logo} alt="Logo" />
                             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu" onClick={closeMenu}>
                                 <i className="fa fa-times" />
                             </button>
+
+                            {/* Main Navigation */}
                             <MainMenu navbarPlacement="navbar-center" toggleSubMenu={toggleSubMenu} />
+
+                            {/* Buttons for mobile (hidden on desktop) */}
+                            <ul className="navbar-nav d-lg-none mt-3">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/sign-in">Sign In</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/contact-us">Company Demo</Link>
+                                </li>
+                            </ul>
                         </div>
-                        <div className="attr-right">
+
+                        {/* Buttons for desktop (hidden on mobile) */}
+                        <div className="attr-right d-none d-lg-flex">
                             <div className="attr-nav">
-                                <ul>
-                                <li className="button" style={{ marginRight: '15px' }}>
-                                        <Link to="/sign-in">Sign In</Link>
-                                </li>
-                                <li className="button">
-                                        <Link to="/contact-us">Company Demo</Link>
-                                </li>
+                                <ul className="d-flex">
+                                    <li className="button" style={{ marginRight: '15px' }}>
+                                        <Link to="/sign-in" style={{ textDecoration: "none" }}>Sign In</Link>
+                                    </li>
+                                    <li className="button">
+                                        <Link to="/contact-us" style={{ textDecoration: "none" }}>Company Demo</Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
+
                     </div>
                     <div className={`overlay-screen ${isOpen ? "opened" : ""}`} onClick={closeMenu} />
                 </nav>
