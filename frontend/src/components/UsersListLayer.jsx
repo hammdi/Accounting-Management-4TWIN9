@@ -38,12 +38,9 @@ const arrayBufferToBase64 = (uint8Array) => {
 };
 ///////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
 const UsersListLayer = () => {
     const [users, setUsers] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(""); // 🔍 Ajout du state pour la recherche
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -92,7 +89,6 @@ const UsersListLayer = () => {
                 console.error("Erreur lors de la récupération des utilisateurs :", error);
             }
         };
-
         fetchUsers().then(r => (console.log("")));
     }, []);
     const [selectedUser, setSelectedUser] = useState(null);
@@ -103,16 +99,12 @@ const UsersListLayer = () => {
             [name]: value, // Met à jour dynamiquement n'importe quel champ
         }));
     };
-
     const handleEditClick = (user) => {
         setSelectedUser(user);
     }
-
     const handleSubmit = async (/*e,*/ userId) => {
         //e.preventDefault(); // Prevent default form submission
-
         const token = localStorage.getItem("token"); // Retrieve token from local storage
-
         try {
             await axios.put(
                 `http://localhost:5000/api/users/user/${userId}`,
@@ -128,6 +120,11 @@ const UsersListLayer = () => {
             console.error("Error updating user:", error);
         }
     };
+    const filteredUsers = users.filter((user) =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
             <div className="card h-100 p-0 radius-12">
@@ -157,6 +154,8 @@ const UsersListLayer = () => {
                                 className="bg-base h-40-px w-auto"
                                 name="search"
                                 placeholder="Search"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
                             />
                             <Icon icon="ion:search-outline" className="icon"/>
                         </form>
