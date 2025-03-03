@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import '../../assets/css/signIn.css';
 
 const SignIn = () => {
@@ -7,6 +8,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,33 +22,46 @@ const SignIn = () => {
 
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-            <div className="card p-5 shadow-lg" style={{ width: '500px', borderRadius: '12px' }}>
+            <div className="card p-5 shadow-lg" style={{ width: '550px', borderRadius: '12px' }}>
                 <h3 className="text-center fw-bold">Sign In to your Account</h3>
                 <p className="text-center text-muted">Welcome back! Please enter your details</p>
                 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label className="form-label">Email</label>
-                        <input 
-                            type="email" 
-                            className="form-control"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
+                        <div className="input-group">
+                            <span className="input-group-text bg-white border-end-0">
+                                <FaEnvelope className="text-secondary" />
+                            </span>
+                            <input 
+                                type="email" 
+                                className="form-control border-start-0"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
                     </div>
                     
                     <div className="mb-3">
                         <label className="form-label">Password</label>
-                        <input 
-                            type="password" 
-                            className="form-control"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                        <div className="input-group">
+                            <span className="input-group-text bg-white border-end-0">
+                                <FaLock className="text-secondary" />
+                            </span>
+                            <input 
+                                type={showPassword ? "text" : "password"} 
+                                className="form-control border-start-0"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <span className="input-group-text bg-white border-start-0" style={{ cursor: "pointer" }} onClick={() => setShowPassword(!showPassword)}>
+                                {showPassword ? <FaEyeSlash className="text-secondary" /> : <FaEye className="text-secondary" />}
+                            </span>
+                        </div>
                     </div>
 
                     <div className="d-flex justify-content-between align-items-center mb-3">
@@ -102,6 +117,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 
 

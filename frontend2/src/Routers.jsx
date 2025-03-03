@@ -8,6 +8,7 @@ import Home5 from './pages/homePages/Home5';
 
 import SignIn from './components/login/SignIn';
 import SignUp from './components/login/SignUp';
+import ForgotPassword from './components/login/ForgotPassword';
 
 import AboutUsPage from './pages/innerPages/AboutUsPage';
 import AboutUs2Page from './pages/innerPages/AboutUs2Page';
@@ -48,6 +49,7 @@ const Routers = () => {
 
                 <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
 
                 <Route path='/about-us' element={<AboutUsPage />}></Route>
                 <Route path='/about-us-2' element={<AboutUs2Page />}></Route>
