@@ -1,0 +1,47 @@
+name: Full Project CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: backend
+
+      - name: Run backend tests
+        run: npm test
+        working-directory: backend
+
+      - name: Install frontend dependencies
+        run: npm install
+        working-directory: frontend
+
+      - name: Run frontend tests
+        run: npm test
+        working-directory: frontend
+
+      - name: Build backend Docker image
+        run: |
+         docker build -t hammdi/accounting-backend:latest backend
+         docker push hammdi/accounting-backend:latest
+
+      - name: Build frontend Docker image
+        run: |
+         docker build -t hammdi/accounting-frontend:latest frontend
+         docker push hammdi/accounting-frontend:latest
+
