@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
     name: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    role: {type: String,}, phone: {type: String, required: true, unique: true,},
+    role: {type: String,},
+    phone: {type: String, required: true, unique: true,},
     status: {type: String, enum: ['Inactive','Active'],},
     verificationToken: { type: String, required: false }, // Token for email verification
     is_2fa_enabled: {type: Boolean, default: false},
