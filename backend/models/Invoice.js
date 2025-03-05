@@ -1,15 +1,30 @@
 const mongoose = require('mongoose');
-const Company = require('./Company');
-const userModel = require('./userModel');
 
 const InvoiceSchema = new mongoose.Schema({
-    company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
+    company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
+    //issuedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    issuedBy: { type: String },
     clientName: { type: String, required: true },
     clientEmail: { type: String, required: true },
-    amount: { type: Number, required: true },
-    status: { type: String, enum: ['Pending', 'Paid', 'Overdue'], default: 'Pending' },
+    clientPhone: { type: String, required: true },
     dueDate: { type: Date, required: true },
-    issuedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+
+    status: { type: String, enum: ['Pending', 'Paid', 'Overdue'], default: 'Pending' },
+
+    items: [{
+        name: { type: String,  },
+        quantity: { type: Number,  },
+        unit: { type: String,  },
+        unitPrice: { type: Number,  },
+        taxRate: { type: Number, enum: [0, 7, 13, 19] }, // Flexible tax rate
+        total: { type: Number,  }
+    }],
+
+    subtotal: { type: Number,  },
+    discount: { type: Number, default: 0 },
+    taxAmount: { type: Number,  },
+    totalAmount: { type: Number,  }
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('Invoice', InvoiceSchema);

@@ -167,9 +167,9 @@ function App() {
         <Route exact path='/image-generator' element={<ImageGeneratorPage />} />
         <Route exact path='/image-upload' element={<ImageUploadPage />} />
         <Route exact path='/invoice-add' element={<InvoiceAddPage />} />
-        <Route exact path='/invoice-edit' element={<InvoiceEditPage />} />
+        <Route exact path='/invoice-edit/:id' element={<InvoiceEditPage />} />
         <Route exact path='/invoice-list' element={<InvoiceListPage />} />
-        <Route exact path='/invoice-preview' element={<InvoicePreviewPage />} />
+        <Route exact path='/invoice-preview/:id' element={<InvoicePreviewPage />} />
         <Route exact path='/kanban' element={<KanbanPage />} />
         <Route exact path='/language' element={<LanguagePage />} />
         <Route exact path='/line-chart' element={<LineChartPage />} />
