@@ -17,6 +17,12 @@ jobs:
           node-version: 18
           cache: 'npm'
 
+      - name: Install dependencies and build
+        working-directory: backend
+        run: npm install
+
+      - name: Run tests and coverage report
+       
       - working-directory: backend
         run: npm run ci
 
