@@ -2,12 +2,54 @@ import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import ThemeToggleButton from "../helper/ThemeToggleButton";
+import {getCurrentUser} from "../services/authService";
+const getUserAvatar = (avatar) => {
+  if (avatar) {
+    // Vérifie si l'avatar est déjà une chaîne Base64
+    if (typeof avatar === 'string' && avatar.startsWith('data:image/png;base64,')) {
+      return avatar; // L'avatar est déjà au format Base64
+    }
+    // Si l'avatar est un objet Buffer avec un tableau de données
+    if (avatar && avatar.data && Array.isArray(avatar.data)) {
+      // Convertir les données du tableau en chaîne Base64
+      const base64Avatar = arrayBufferToBase64(new Uint8Array(avatar.data));
+      //console.log("Avatar converti en Base64:", base64Avatar); // Affiche l'avatar converti
+      return `data:image/png;base64,${base64Avatar}`;
+    }
+
+    console.log("L'avatar n'est pas un format valide.");
+  }
+
+  return "default-avatar.png"; // Image par défaut si l'avatar est vide ou invalide
+};
+
+// Fonction utilitaire pour convertir un tableau Uint8Array en chaîne Base64
+const arrayBufferToBase64 = (uint8Array) => {
+  let binary = '';
+  const len = uint8Array.length;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(uint8Array[i]);
+  }
+  return window.btoa(binary); // Convertir en Base64
+};//////////////////////
 
 const MasterLayout = ({ children }) => {
   let [sidebarActive, seSidebarActive] = useState(false);
   let [mobileMenu, setMobileMenu] = useState(false);
   const location = useLocation(); // Hook to get the current route
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const userData = await getCurrentUser();
+      console.log(userData)
+      if (userData) {
+        setUser(userData);
+
+      }
+    };
+    fetchUser().then(r => console.log(""));
+  }, []);
   useEffect(() => {
     const handleDropdownClick = (event) => {
       event.preventDefault();
@@ -107,17 +149,17 @@ const MasterLayout = ({ children }) => {
         <div>
           <Link to='/' className='sidebar-logo'>
             <img
-              src='assets/images/logo.png'
+              src='/assets/images/logo.png'
               alt='site logo'
               className='light-logo'
             />
             <img
-              src='assets/images/logo-light.png'
+              src='/assets/images/logo-light.png'
               alt='site logo'
               className='dark-logo'
             />
             <img
-              src='assets/images/logo-icon.png'
+              src='/assets/images/logo-icon.png'
               alt='site logo'
               className='logo-icon'
             />
@@ -1330,7 +1372,7 @@ const MasterLayout = ({ children }) => {
                     data-bs-toggle='dropdown'
                   >
                     <img
-                      src='assets/images/lang-flag.png'
+                      src='/assets/images/lang-flag.png'
                       alt='Wowdash'
                       className='w-24 h-24 object-fit-cover rounded-circle'
                     />
@@ -1351,7 +1393,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag1.png'
+                              src='/assets/images/flags/flag1.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1374,7 +1416,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag2.png'
+                              src='/assets/images/flags/flag2.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1397,7 +1439,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag3.png'
+                              src='/assets/images/flags/flag3.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1420,7 +1462,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag4.png'
+                              src='/assets/images/flags/flag4.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1443,7 +1485,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag5.png'
+                              src='/assets/images/flags/flag5.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1466,7 +1508,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag6.png'
+                              src='/assets/images/flags/flag6.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1489,7 +1531,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag7.png'
+                              src='/assets/images/flags/flag7.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1512,7 +1554,7 @@ const MasterLayout = ({ children }) => {
                         >
                           <span className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                             <img
-                              src='assets/images/flags/flag8.png'
+                              src='/assets/images/flags/flag8.png'
                               alt=''
                               className='w-36-px h-36-px bg-success-subtle text-success-main rounded-circle flex-shrink-0'
                             />
@@ -1562,7 +1604,7 @@ const MasterLayout = ({ children }) => {
                         <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                           <span className='w-40-px h-40-px rounded-circle flex-shrink-0 position-relative'>
                             <img
-                              src='assets/images/notification/profile-3.png'
+                              src='/assets/images/notification/profile-3.png'
                               alt=''
                             />
                             <span className='w-8-px h-8-px bg-success-main rounded-circle position-absolute end-0 bottom-0' />
@@ -1874,8 +1916,9 @@ const MasterLayout = ({ children }) => {
                     data-bs-toggle='dropdown'
                   >
                     <img
-                      src='assets/images/user.png'
-                      alt='image_user'
+                        src={getUserAvatar(user? user.avatar:"")}
+
+                        alt='image_user'
                       className='w-40-px h-40-px object-fit-cover rounded-circle'
                     />
                   </button>

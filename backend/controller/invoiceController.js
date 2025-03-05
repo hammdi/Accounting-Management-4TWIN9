@@ -4,6 +4,7 @@ const Invoice = require('../models/Invoice');
 exports.createInvoice = async (req, res) => {
     try {
         const invoice = new Invoice(req.body);
+        //.issuedBy=req.user.userId;
         await invoice.save();
         res.status(201).json({ message: 'Invoice created successfully', invoice });
     } catch (error) {
