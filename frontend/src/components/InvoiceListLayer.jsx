@@ -15,6 +15,7 @@ const InvoiceListLayer = () => {
     const [totalInvoices, setTotalInvoices] = useState(0);
     const [selectedInvoices, setSelectedInvoices] = useState([]);
     const [selectAll, setSelectAll] = useState(false);
+    const [editingStatus, setEditingStatus] = useState(null);
 
     // Fetch invoices from API
     useEffect(() => {
@@ -122,6 +123,49 @@ const InvoiceListLayer = () => {
         }
     };
 
+    const handleStatusChange = async (invoiceId, newStatus) => {
+        try {
+            // Get the current invoice data
+            const currentInvoice = invoices.find(inv => inv._id === invoiceId);
+            if (!currentInvoice) return;
+
+            await axios.put(`http://localhost:5000/api/invoices/updateinvoice/${invoiceId}`, {
+                clientName: currentInvoice.clientName,
+                clientEmail: currentInvoice.clientEmail,
+                clientPhone: currentInvoice.clientPhone,
+                dueDate: currentInvoice.dueDate,
+                status: newStatus,
+                items: currentInvoice.items || [],
+                subtotal: currentInvoice.subtotal || 0,
+                discount: currentInvoice.discount || 0,
+                taxAmount: currentInvoice.taxAmount || 0,
+                totalAmount: currentInvoice.totalAmount || 0
+            });
+
+            // Update the local state
+            setInvoices(invoices.map(invoice => 
+                invoice._id === invoiceId ? { ...invoice, status: newStatus } : invoice
+            ));
+            setEditingStatus(null);
+        } catch (err) {
+            console.error("Error updating invoice status:", err);
+            alert("Failed to update invoice status. Please try again.");
+        }
+    };
+
+    const getStatusColor = (status) => {
+        switch (status) {
+            case 'Paid':
+                return 'success';
+            case 'Pending':
+                return 'warning';
+            case 'Overdue':
+                return 'danger';
+            default:
+                return 'secondary';
+        }
+    };
+
     // Format currency
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('en-US', {
@@ -200,7 +244,7 @@ const InvoiceListLayer = () => {
                 ) : error ? (
                     <div className="alert alert-danger">{error}</div>
                 ) : (
-                    <>
+                    <div className="table-responsive">
                         <table className="table bordered-table mb-0">
                             <thead>
                             <tr>
@@ -272,9 +316,26 @@ const InvoiceListLayer = () => {
                                         <td>{formatDate(invoice.createdAt)}</td>
                                         <td>{formatCurrency(invoice.totalAmount)}</td>
                                         <td>
-                                                <span className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm`}>
+                                            {editingStatus === invoice._id ? (
+                                                <select
+                                                    className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm`}
+                                                    value={invoice.status}
+                                                    onChange={(e) => handleStatusChange(invoice._id, e.target.value)}
+                                                    onBlur={() => setEditingStatus(null)}
+                                                    autoFocus
+                                                >
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Paid">Paid</option>
+                                                    <option value="Overdue">Overdue</option>
+                                                </select>
+                                            ) : (
+                                                <span 
+                                                    className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm cursor-pointer`}
+                                                    onClick={() => setEditingStatus(invoice._id)}
+                                                >
                                                     {invoice.status}
                                                 </span>
+                                            )}
                                         </td>
                                         <td>
                                             <button
@@ -334,7 +395,7 @@ const InvoiceListLayer = () => {
                                 </li>
                             </ul>
                         </div>
-                    </>
+                    </div>
                 )}
             </div>
         </div>
