@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { format } from 'date-fns';
 import html2canvas from 'html2canvas';
@@ -223,7 +223,7 @@ const InvoicePreviewLayer = () => {
                                 <div>
                                     {/* Use imported logo or fallback to a data URI if needed */}
                                     <img
-                                        src="/assets/images/logo.png"
+                                        src="/assets/images/logo.png" alt='company logo'
                                     />
                                     <p className="mb-1 text-sm">
                                         4517 Washington Ave. Manchester, Kentucky 39495
@@ -243,7 +243,7 @@ const InvoicePreviewLayer = () => {
                                             </tr>
                                             <tr>
                                                 <td>Address</td>
-                                                <td className="ps-8">:{invoiceData.clientAddress}</td>
+                                                <td className="ps-8">:{invoiceData.clientEmail}</td>
                                             </tr>
                                             <tr>
                                                 <td>Phone number</td>
@@ -385,5 +385,6 @@ const InvoicePreviewLayer = () => {
         </div>
     );
 };
+
 
 export default InvoicePreviewLayer;

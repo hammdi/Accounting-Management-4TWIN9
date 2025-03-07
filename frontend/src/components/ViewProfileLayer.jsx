@@ -103,7 +103,7 @@ const ViewProfileLayer = () => {
 
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.put(
+           await axios.put(
                 "http://localhost:5000/api/users/update-password",
                 { password: newPassword },
                 {

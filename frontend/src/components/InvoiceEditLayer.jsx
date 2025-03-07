@@ -21,7 +21,6 @@ const InvoiceEditLayer = () => {
     const [issueDate, setIssueDate] = useState("")
     const [dueDate, setDueDate] = useState("")
     const [clientName, setClientName] = useState("")
-    const [clientAddress, setClientAddress] = useState("")
     const [clientPhone, setClientPhone] = useState("")
     const [clientEmail, setClientEmail] = useState("")
     const [issuedBy, setIssuedBy] = useState("")
@@ -37,7 +36,7 @@ const InvoiceEditLayer = () => {
         issueDate: false,
         dueDate: false,
         clientName: false,
-        clientAddress: false,
+        clientEmail: false,
         clientPhone: false,
     })
 
@@ -54,7 +53,6 @@ const InvoiceEditLayer = () => {
                 setIssueDate(format(new Date(invoice.createdAt), "dd/MM/yyyy"))
                 setDueDate(format(new Date(invoice.dueDate), "dd/MM/yyyy"))
                 setClientName(invoice.clientName)
-                setClientAddress("4517 Washington Ave.USA") // Assuming this is stored somewhere in your model
                 setClientPhone(invoice.clientPhone)
                 setClientEmail(invoice.clientEmail)
                 setIssuedBy(invoice.issuedBy?.name || "Jammal") // Assuming issuedBy has a name property
@@ -348,12 +346,12 @@ const InvoiceEditLayer = () => {
                                                 <td>Address</td>
                                                 <td className="ps-8">
                                                     :{" "}
-                                                    {editableFields.clientAddress ? (
+                                                    {editableFields.clientEmail ? (
                                                         <input
                                                             type="text"
-                                                            value={clientAddress}
-                                                            onChange={(e) => setClientAddress(e.target.value)}
-                                                            onBlur={() => toggleEditMode("clientAddress")}
+                                                            value={clientEmail}
+                                                            onChange={(e) => setClientEmail(e.target.value)}
+                                                            onBlur={() => toggleEditMode("clientEmail")}
                                                             className="form-control form-control-sm"
                                                             autoFocus
                                                         />
@@ -361,9 +359,9 @@ const InvoiceEditLayer = () => {
                                                         <>
                                 <span
                                     className="editable text-decoration-underline"
-                                    onClick={() => toggleEditMode("clientAddress")}
+                                    onClick={() => toggleEditMode("clientEmail")}
                                 >
-                                  {clientAddress}
+                                  {clientEmail}
                                 </span>{" "}
                                                             <span className="text-success-main" onClick={() => toggleEditMode("clientAddress")}>
                                   <Icon icon="mage:edit" />

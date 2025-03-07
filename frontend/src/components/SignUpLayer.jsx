@@ -12,11 +12,48 @@ const SignUpLayer = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false)
   const [phone, setPhone] = useState("");
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: ""
+  });
 
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = {
+      name: "",
+      email: "",
+      phone: ""
+    };
+
+    // Name validation
+    if (name.length < 3) {
+      newErrors.name = "Le nom doit contenir au moins 3 caractères";
+      isValid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      newErrors.email = "Veuillez entrer une adresse email valide";
+      isValid = false;
+    }
+
+    // Phone validation
+    const phoneRegex = /^\d{8}$/;
+    if (!phoneRegex.test(phone)) {
+      newErrors.phone = "Le numéro de téléphone doit contenir 8 chiffres";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
+    if (validateForm()) {
+      axios
         .post("http://localhost:5000/api/users/register", {
           name: name,
           email: email,
@@ -31,6 +68,7 @@ const SignUpLayer = () => {
         .catch((error) => {
           console.log(error);
         });
+    }
   };
   return (
     <section className='auth bg-base d-flex flex-wrap'>
@@ -61,6 +99,7 @@ const SignUpLayer = () => {
                   placeholder='Username'
                   onChange={(e) => setName(e.target.value)}
               />
+              {errors.name && <div className="text-danger mt-1">{errors.name}</div>}
             </div>
             <div className='icon-field mb-16'>
               <span className='icon top-50 translate-middle-y'>
@@ -72,6 +111,7 @@ const SignUpLayer = () => {
                   placeholder='Email'
                   onChange={(e) => setEmail(e.target.value)}
               />
+              {errors.email && <div className="text-danger mt-1">{errors.email}</div>}
             </div>
             <div className='icon-field mb-16'>
               <span className='icon top-50 translate-middle-y'>
@@ -84,6 +124,7 @@ const SignUpLayer = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
               />
+              {errors.phone && <div className="text-danger mt-1">{errors.phone}</div>}
             </div>
             <div className='mb-20'>
               <div className='position-relative '>
