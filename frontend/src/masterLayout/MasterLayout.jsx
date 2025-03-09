@@ -395,6 +395,60 @@ const MasterLayout = ({ children }) => {
               </ul>
             </li>
 
+            {/* Transaction Dropdown */}
+            <li className='dropdown'>
+              <Link to='#'>
+                <Icon icon='mdi:finance' className='menu-icon' />
+                <span>Transaction</span>
+              </Link>
+              <ul className='sidebar-submenu'>
+                <li>
+                  <NavLink
+                    to='/transaction-list'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    List
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/transaction-preview'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />
+                    Preview
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/transaction-add'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                    Add new
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/transaction-edit'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-danger-main w-auto' />{" "}
+                    Edit
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+
             {/* Ai Application Dropdown */}
             <li className='dropdown'>
               <Link to='#'>
