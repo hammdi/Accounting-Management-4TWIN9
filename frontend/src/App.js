@@ -96,6 +96,10 @@ import ComingSoonPage from "./pages/ComingSoonPage";
 import AccessDeniedPage from "./pages/AccessDeniedPage";
 import MaintenancePage from "./pages/MaintenancePage";
 import BlankPagePage from "./pages/BlankPagePage";
+import TransactionAddPage from "./pages/TransactionAddPage";
+import TransactionEditPage from "./pages/TransactionEditPage";
+import TransactionListPage from "./pages/TransactionListPage";
+import TransactionPreviewPage from "./pages/TransactionPreviewPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
@@ -170,6 +174,10 @@ function App() {
         <Route exact path='/invoice-edit/:id' element={<InvoiceEditPage />} />
         <Route exact path='/invoice-list' element={<InvoiceListPage />} />
         <Route exact path='/invoice-preview/:id' element={<InvoicePreviewPage />} />
+        <Route exact path='/transaction-add' element={<TransactionAddPage/>} />
+        <Route exact path='/transaction-edit' element={<TransactionEditPage/>} />
+        <Route exact path='/transaction-list' element={<TransactionListPage/>} />
+        <Route exact path='/transaction-preview' element={<TransactionPreviewPage />} />
         <Route exact path='/kanban' element={<KanbanPage />} />
         <Route exact path='/language' element={<LanguagePage />} />
         <Route exact path='/line-chart' element={<LineChartPage />} />

@@ -13,6 +13,9 @@ const InvoicePreviewLayer = () => {
     const [error, setError] = useState(null);
     const [sending, setSending] = useState(false);
     const [emailSent, setEmailSent] = useState(false);
+    const [smsSent, setSMSSent] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [smsError, setSMSError] = useState('');
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -108,6 +111,47 @@ const InvoicePreviewLayer = () => {
         }
     };
 
+    const handleSendSMS = async () => {
+        if (!invoice || !phoneNumber) {
+            alert("Please enter a phone number!");
+            return;
+        }
+
+        try {
+            setSending(true);
+            setSMSError('');
+
+            // Format phone number to Tunisian format if needed
+            let formattedNumber = phoneNumber;
+            if (!phoneNumber.startsWith('+216')) {
+                formattedNumber = '+216' + phoneNumber.replace(/^0/, '');
+            }
+
+            // Send SMS with invoice details
+            const response = await axios.post('http://localhost:5000/api/sms/send', {
+                invoiceId: invoice._id,
+                phoneNumber: formattedNumber
+            });
+
+            if (response.data.success) {
+                setSMSSent(true);
+                setSMSError('');
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    setSMSSent(false);
+                }, 3000);
+            } else {
+                setSMSError(response.data.error || 'Failed to send SMS');
+            }
+
+        } catch (error) {
+            console.error("Error sending SMS:", error);
+            setSMSError(error.response?.data?.error || "Failed to send SMS. Please check the phone number and try again.");
+        } finally {
+            setSending(false);
+        }
+    };
+
     const handleEdit = () => {
         if (id) {
             navigate(`/invoice-edit/${id}`);
@@ -176,6 +220,16 @@ const InvoicePreviewLayer = () => {
                             Email sent successfully to {invoiceData.clientEmail}!
                         </div>
                     )}
+                    {smsSent && (
+                        <div className="alert alert-success mb-0">
+                            SMS sent successfully to {phoneNumber}!
+                        </div>
+                    )}
+                    {smsError && (
+                        <div className="alert alert-danger mb-0">
+                            {smsError}
+                        </div>
+                    )}
                     <div className="d-flex flex-wrap align-items-center justify-content-end gap-2 ms-auto">
                         <button
                             onClick={handleSendEmail}
@@ -207,6 +261,26 @@ const InvoicePreviewLayer = () => {
                             <Icon icon="basil:printer-outline" className="text-xl" />
                             Print
                         </button>
+                        <div className="sms-input-container">
+                            <input
+                                type="tel"
+                                placeholder="Numéro de téléphone (ex: +21652903314)"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                className="sms-input"
+                            />
+                            <button onClick={handleSendSMS} className="btn btn-sm btn-info radius-8 d-inline-flex align-items-center gap-1" disabled={sending}>
+                                {sending ? (
+                                    <>
+                                        <Icon icon="mdi:loading" className="animate-spin" /> Envoi en cours...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Icon icon="mdi:message-text" /> Send SMS
+                                    </>
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

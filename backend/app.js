@@ -52,10 +52,13 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 // Routes
+const invoiceRoutes = require('./routes/invoiceRoutes');
+const smsRoutes = require('./routes/smsRoutes');
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/companies', require('./routes/companyRoutes'));
-app.use('/api/invoices', require('./routes/invoiceRoutes'));
+app.use('/api/invoices', invoiceRoutes);
+app.use('/api/sms', smsRoutes);
 app.use('/api/transactions', require('./routes/transactionRoutes'));
 app.use('/api/payrolls', require('./routes/payrollRoutes'));
 app.use('/api/taxes', require('./routes/taxRoutes'));
