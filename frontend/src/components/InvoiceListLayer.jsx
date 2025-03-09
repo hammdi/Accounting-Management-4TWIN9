@@ -16,6 +16,7 @@ const InvoiceListLayer = () => {
     const [selectedInvoices, setSelectedInvoices] = useState([]);
     const [selectAll, setSelectAll] = useState(false);
     const [editingStatus, setEditingStatus] = useState(null);
+    const [expandedInvoice, setExpandedInvoice] = useState(null);
 
     // Fetch invoices from API
     useEffect(() => {
@@ -101,7 +102,7 @@ const InvoiceListLayer = () => {
 
     // Handle view invoice
     const handleViewInvoice = (id) => {
-        navigate(`/invoice-preview/${id}`);
+        setExpandedInvoice(id === expandedInvoice ? null : id);
     };
 
     // Handle edit invoice
@@ -278,86 +279,123 @@ const InvoiceListLayer = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                filteredInvoices.map((invoice, index) => (
-                                    <tr key={invoice._id}>
-                                        <td>
-                                            <div className="form-check style-check d-flex align-items-center">
-                                                <input
-                                                    className="form-check-input"
-                                                    type="checkbox"
-                                                    id={`check${index}`}
-                                                    checked={selectedInvoices.includes(invoice._id)}
-                                                    onChange={() => handleSelectInvoice(invoice._id)}
-                                                />
-                                                <label className="form-check-label" htmlFor={`check${index}`}>
-                                                    {String(index + 1).padStart(2, '0')}
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <Link to={`/invoice-preview/${invoice._id}`} className="text-primary-600">
-                                                #{invoice._id.substring(0, 6)}
-                                            </Link>
-                                        </td>
-                                        <td>
-                                            <div className="d-flex align-items-center">
-                                                <img
-                                                    src={`https://ui-avatars.com/api/?name=${invoice.clientName}&background=random`}
-                                                    alt=""
-                                                    className="flex-shrink-0 me-12 radius-8"
-                                                    width="40"
-                                                    height="40"
-                                                />
-                                                <h6 className="text-md mb-0 fw-medium flex-grow-1">
-                                                    {invoice.clientName}
-                                                </h6>
-                                            </div>
-                                        </td>
-                                        <td>{formatDate(invoice.createdAt)}</td>
-                                        <td>{formatCurrency(invoice.totalAmount)}</td>
-                                        <td>
-                                            {editingStatus === invoice._id ? (
-                                                <select
-                                                    className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm`}
-                                                    value={invoice.status}
-                                                    onChange={(e) => handleStatusChange(invoice._id, e.target.value)}
-                                                    onBlur={() => setEditingStatus(null)}
-                                                    autoFocus
+                                filteredInvoices.map((invoice) => (
+                                    <React.Fragment key={invoice._id}>
+                                        <tr>
+                                            <td>
+                                                <div className="form-check style-check d-flex align-items-center">
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id={`check${invoice._id}`}
+                                                        checked={selectedInvoices.includes(invoice._id)}
+                                                        onChange={() => handleSelectInvoice(invoice._id)}
+                                                    />
+                                                    <label className="form-check-label" htmlFor={`check${invoice._id}`}>
+                                                        {String(filteredInvoices.indexOf(invoice) + 1).padStart(2, '0')}
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <Link to={`/invoice-preview/${invoice._id}`} className="text-primary-600">
+                                                    #{invoice._id.substring(0, 6)}
+                                                </Link>
+                                            </td>
+                                            <td>
+                                                <div className="d-flex align-items-center">
+                                                    <img
+                                                        src={`https://ui-avatars.com/api/?name=${invoice.clientName}&background=random`}
+                                                        alt=""
+                                                        className="flex-shrink-0 me-12 radius-8"
+                                                        width="40"
+                                                        height="40"
+                                                    />
+                                                    <h6 className="text-md mb-0 fw-medium flex-grow-1">
+                                                        {invoice.clientName}
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td>{formatDate(invoice.createdAt)}</td>
+                                            <td>{formatCurrency(invoice.totalAmount)}</td>
+                                            <td>
+                                                {editingStatus === invoice._id ? (
+                                                    <select
+                                                        className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm`}
+                                                        value={invoice.status}
+                                                        onChange={(e) => handleStatusChange(invoice._id, e.target.value)}
+                                                        onBlur={() => setEditingStatus(null)}
+                                                        autoFocus
+                                                    >
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Paid">Paid</option>
+                                                        <option value="Overdue">Overdue</option>
+                                                    </select>
+                                                ) : (
+                                                    <span 
+                                                        className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm cursor-pointer`}
+                                                        onClick={() => setEditingStatus(invoice._id)}
+                                                    >
+                                                        {invoice.status}
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    onClick={() => handleViewInvoice(invoice._id)}
+                                                    className="w-32-px h-32-px me-8 bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center"
                                                 >
-                                                    <option value="Pending">Pending</option>
-                                                    <option value="Paid">Paid</option>
-                                                    <option value="Overdue">Overdue</option>
-                                                </select>
-                                            ) : (
-                                                <span 
-                                                    className={`bg-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-focus text-${invoice.status === 'Paid' ? 'success' : invoice.status === 'Overdue' ? 'danger' : 'warning'}-main px-24 py-4 rounded-pill fw-medium text-sm cursor-pointer`}
-                                                    onClick={() => setEditingStatus(invoice._id)}
+                                                    <Icon icon="iconamoon:eye-light" />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleEditInvoice(invoice._id)}
+                                                    className="w-32-px h-32-px me-8 bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
                                                 >
-                                                    {invoice.status}
-                                                </span>
-                                            )}
-                                        </td>
-                                        <td>
-                                            <button
-                                                onClick={() => handleViewInvoice(invoice._id)}
-                                                className="w-32-px h-32-px me-8 bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center"
-                                            >
-                                                <Icon icon="iconamoon:eye-light" />
-                                            </button>
-                                            <button
-                                                onClick={() => handleEditInvoice(invoice._id)}
-                                                className="w-32-px h-32-px me-8 bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
-                                            >
-                                                <Icon icon="lucide:edit" />
-                                            </button>
-                                            <button
-                                                onClick={() => handleDeleteInvoice(invoice._id)}
-                                                className="w-32-px h-32-px me-8 bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
-                                            >
-                                                <Icon icon="mingcute:delete-2-line" />
-                                            </button>
-                                        </td>
-                                    </tr>
+                                                    <Icon icon="lucide:edit" />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDeleteInvoice(invoice._id)}
+                                                    className="w-32-px h-32-px me-8 bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                >
+                                                    <Icon icon="mingcute:delete-2-line" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {expandedInvoice === invoice._id && (
+                                            <tr>
+                                                <td colSpan="9" className="p-4">
+                                                    <div className="card border-0">
+                                                        <div className="card-body">
+                                                            <h5 className="card-title">Invoice Details</h5>
+                                                            <div className="row">
+                                                                <div className="col-md-6">
+                                                                    <p><strong>Client Name:</strong> {invoice.clientName}</p>
+                                                                    <p><strong>Email:</strong> {invoice.clientEmail}</p>
+                                                                    <p><strong>Phone:</strong> {invoice.clientPhone}</p>
+                                                                    <p><strong>Due Date:</strong> {formatDate(invoice.dueDate)}</p>
+                                                                </div>
+                                                                <div className="col-md-6">
+                                                                    <p><strong>Subtotal:</strong> {formatCurrency(invoice.subtotal)}</p>
+                                                                    <p><strong>Discount:</strong> {formatCurrency(invoice.discount)}</p>
+                                                                    <p><strong>Tax:</strong> {formatCurrency(invoice.taxAmount)}</p>
+                                                                    <p><strong>Total:</strong> {formatCurrency(invoice.totalAmount)}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="mt-3">
+                                                                <h6>Items:</h6>
+                                                                <ul className="list-group">
+                                                                    {invoice.items?.map((item, index) => (
+                                                                        <li key={index} className="list-group-item">
+                                                                            {item.name} - {formatCurrency(item.price)} x {item.quantity}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </React.Fragment>
                                 ))
                             )}
                             </tbody>
