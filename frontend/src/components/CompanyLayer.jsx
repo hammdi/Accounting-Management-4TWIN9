@@ -1,10 +1,85 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { getCurrentUser } from "../services/authService";
 
 const CompanyLayer = () => {
+    const [user, setUser] = useState(null);
+    const [formData, setFormData] = useState({
+        name: '',
+        taxNumber: '',
+        address: '',
+        phone: '',
+        status: 'Active'
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!user) {
+            setError('Please wait for user data to load');
+            return;
+        }
+        
+        setLoading(true);
+        setError('');
+
+        try {
+            // Format phone number to Tunisian international format
+            const formattedPhone = `+216${formData.phone.replace(/\D/g, '')}`;
+            
+            // Create the request payload with formatted phone number and owner
+            const payload = {
+                ...formData,
+                phone: formattedPhone,
+                owner: user._id
+            };
+
+            await axios.post('http://localhost:5000/api/companies/addcompany', payload);
+            toast.success('Company created successfully!');
+            setFormData({
+                name: '',
+                taxNumber: '',
+                address: '',
+                phone: '',
+                status: 'Active'
+            });
+        } catch (err) {
+            console.log(err);
+            setError(err.response?.data?.message || 'An error occurred');
+            toast.error('Failed to create company');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const userData = await getCurrentUser();
+                if (userData) {
+                    setUser(userData);
+                }
+            } catch (error) {
+                console.error('Error fetching user:', error);
+                toast.error('Failed to fetch user data');
+            }
+        };
+        fetchUser();
+    }, []);
+
     return (
         <div className="card h-100 p-0 radius-12 overflow-hidden">
             <div className="card-body p-40">
-                <form action="#">
+                <form onSubmit={handleSubmit}>
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="mb-20">
@@ -12,188 +87,118 @@ const CompanyLayer = () => {
                                     htmlFor="name"
                                     className="form-label fw-semibold text-primary-light text-sm mb-8"
                                 >
-                                    Full Name <span className="text-danger-600">*</span>
+                                    Company Name <span className="text-danger-600">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     className="form-control radius-8"
                                     id="name"
-                                    placeholder="Enter Full Name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    placeholder="Enter company name"
+                                    required
                                 />
                             </div>
                         </div>
                         <div className="col-sm-6">
                             <div className="mb-20">
                                 <label
-                                    htmlFor="email"
+                                    htmlFor="taxNumber"
                                     className="form-label fw-semibold text-primary-light text-sm mb-8"
                                 >
-                                    Email <span className="text-danger-600">*</span>
-                                </label>
-                                <input
-                                    type="email"
-                                    className="form-control radius-8"
-                                    id="email"
-                                    placeholder="Enter email address"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="mb-20">
-                                <label
-                                    htmlFor="number"
-                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                >
-                                    Phone Number
-                                </label>
-                                <input
-                                    type="email"
-                                    className="form-control radius-8"
-                                    id="number"
-                                    placeholder="Enter phone number"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="mb-20">
-                                <label
-                                    htmlFor="Website"
-                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                >
-                                    {" "}
-                                    Website
-                                </label>
-                                <input
-                                    type="url"
-                                    className="form-control radius-8"
-                                    id="Website"
-                                    placeholder="Website URL"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="mb-20">
-                                <label
-                                    htmlFor="country"
-                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                >
-                                    Country <span className="text-danger-600">*</span>{" "}
-                                </label>
-                                <select
-                                    className="form-control radius-8 form-select"
-                                    id="country"
-                                    defaultValue="Select Country"
-                                >
-                                    <option value="Select Country" disabled>
-                                        Select Country
-                                    </option>
-                                    <option value="USA">USA</option>
-                                    <option value="Bangladesh">Bangladesh</option>
-                                    <option value="Pakistan">Pakistan</option>
-                                    <option value="India">India</option>
-                                    <option value="Canada">Canada</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="mb-20">
-                                <label
-                                    htmlFor="city"
-                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                >
-                                    City <span className="text-danger-600">*</span>{" "}
-                                </label>
-                                <select
-                                    className="form-control radius-8 form-select"
-                                    id="city"
-                                    defaultValue="Select City"
-                                >
-                                    <option value="Select City" disabled>
-                                        Select City
-                                    </option>
-                                    <option value="Washington">Washington</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Lahore">Lahore</option>
-                                    <option value="Panjab">Panjab</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="mb-20">
-                                <label
-                                    htmlFor="state"
-                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                >
-                                    State <span className="text-danger-600">*</span>{" "}
-                                </label>
-                                <select
-                                    className="form-control radius-8 form-select"
-                                    id="state"
-                                    defaultValue="Select State"
-                                >
-                                    <option value="Select State" disabled>
-                                        Select State
-                                    </option>
-                                    <option value="Washington">Washington</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Lahore">Lahore</option>
-                                    <option value="Panjab">Panjab</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <div className="mb-20">
-                                <label
-                                    htmlFor="zip"
-                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                >
-                                    {" "}
-                                    Zip Code <span className="text-danger-600">*</span>
+                                    Tax Number <span className="text-danger-600">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     className="form-control radius-8"
-                                    id="zip"
-                                    placeholder="Zip Code"
+                                    id="taxNumber"
+                                    name="taxNumber"
+                                    value={formData.taxNumber}
+                                    onChange={handleChange}
+                                    placeholder="Enter tax number"
+                                    required
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-12">
+                        <div className="col-sm-6">
                             <div className="mb-20">
                                 <label
                                     htmlFor="address"
                                     className="form-label fw-semibold text-primary-light text-sm mb-8"
                                 >
-                                    {" "}
-                                    Address* <span className="text-danger-600">*</span>
+                                    Address <span className="text-danger-600">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     className="form-control radius-8"
                                     id="address"
-                                    placeholder="Enter Your Address"
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    placeholder="Enter company address"
+                                    required
                                 />
                             </div>
                         </div>
-                        <div className="d-flex align-items-center justify-content-center gap-3 mt-24">
-                            <button
-                                type="reset"
-                                className="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"
-                            >
-                                Reset
-                            </button>
-                            <button
-                                type="submit"
-                                className="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"
-                            >
-                                Save Change
-                            </button>
+                        <div className="col-sm-6">
+                            <div className="mb-20">
+                                <label
+                                    htmlFor="phone"
+                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
+                                >
+                                    Phone Number <span className="text-danger-600">*</span>
+                                </label>
+                                <input
+                                    type="tel"
+                                    className="form-control radius-8"
+                                    id="phone"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="Enter phone number"
+                                    required
+                                />
+                            </div>
                         </div>
+                        <div className="col-sm-6">
+                            <div className="mb-20">
+                                <label
+                                    htmlFor="status"
+                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
+                                >
+                                    Status
+                                </label>
+                                <select
+                                    className="form-control radius-8 form-select"
+                                    id="status"
+                                    name="status"
+                                    value={formData.status}
+                                    onChange={handleChange}
+                                >
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    {error && (
+                        <div className="alert alert-danger mt-3">
+                            {error}
+                        </div>
+                    )}
+                    <div className="mt-3">
+                        <button
+                            type="submit"
+                            className="btn btn-primary radius-8"
+                            disabled={loading || !user}
+                        >
+                            {loading ? 'Creating...' : 'Create Company'}
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
-
     );
 };
 

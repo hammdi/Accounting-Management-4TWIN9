@@ -449,6 +449,38 @@ const MasterLayout = ({ children }) => {
               </ul>
             </li>
 
+            {/* Company Dropdown */}
+            <li className='dropdown'>
+              <Link to='#'>
+                <Icon icon='mdi:briefcase' className='menu-icon' />
+                <span>Companies</span>
+              </Link>
+              <ul className='sidebar-submenu'>
+                <li>
+                  <NavLink
+                    to='/my-companies'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    All Companies
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/company'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
+                    Add Company
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+
             {/* Ai Application Dropdown */}
             <li className='dropdown'>
               <Link to='#'>
@@ -2055,7 +2087,7 @@ const MasterLayout = ({ children }) => {
         <footer className='d-footer'>
           <div className='row align-items-center justify-content-between'>
             <div className='col-auto'>
-              <p className='mb-0'>© 2024 WowDash. All Rights Reserved.</p>
+              <p className='mb-0'> 2024 WowDash. All Rights Reserved.</p>
             </div>
             <div className='col-auto'>
               <p className='mb-0'>
