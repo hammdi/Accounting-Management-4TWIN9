@@ -102,6 +102,10 @@ import TransactionListPage from "./pages/TransactionListPage";
 import TransactionPreviewPage from "./pages/TransactionPreviewPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CompanyListPage from "./pages/CompanyListPage";
+import CompanyFormPage from "./pages/CompanyFormPage";
+import CompanyDetailsPage from "./pages/CompanyDetailsPage";
+
 function App() {
   return (<>
         <ToastContainer />
@@ -182,6 +186,10 @@ function App() {
         <Route exact path='/language' element={<LanguagePage />} />
         <Route exact path='/line-chart' element={<LineChartPage />} />
         <Route exact path='/list' element={<ListPage />} />
+        <Route exact path='/my-companies' element={<CompanyListPage />} />
+        <Route exact path='/company' element={<CompanyFormPage />} />
+        <Route exact path='/company/:id' element={<CompanyDetailsPage />} />
+        <Route exact path='/company/:id/edit' element={<CompanyFormPage />} />
         <Route
           exact
           path='/marketplace-details'
