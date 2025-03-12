@@ -5,7 +5,7 @@ const MainMenu = ({ toggleSubMenu, navbarPlacement }) => {
         <>
             <ul className={`nav navbar-nav ${navbarPlacement}`} data-in="fadeInDown" data-out="fadeOutUp">
                 <li className="dropdown">
-                    <Link to="#" className="dropdown-toggle active" data-toggle="dropdown" onClick={toggleSubMenu}>Home</Link>
+                    <Link to="#" className="dropdown-toggle active" data-toggle="dropdown" onClick={toggleSubMenu} style={{ textDecoration: 'none' }}>Home</Link>
                     <ul className="dropdown-menu">
                         <li><Link to="/">Business Consultant</Link></li>
                         <li><Link to="/home-2">It Solutions</Link></li>
@@ -15,7 +15,7 @@ const MainMenu = ({ toggleSubMenu, navbarPlacement }) => {
                     </ul>
                 </li>
                 <li className="dropdown">
-                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu}>Pages</Link>
+                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu} style={{ textDecoration: 'none' }}>Pages</Link>
                     <ul className="dropdown-menu">
                         <li><Link to="/about-us">About Us</Link></li>
                         <li><Link to="/about-us-2">About Us Two</Link></li>
@@ -29,7 +29,7 @@ const MainMenu = ({ toggleSubMenu, navbarPlacement }) => {
                     </ul>
                 </li>
                 <li className="dropdown">
-                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu}>Projects</Link>
+                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu} style={{ textDecoration: 'none' }}>Projects</Link>
                     <ul className="dropdown-menu">
                         <li><Link to="/project">Project style one</Link></li>
                         <li><Link to="/project-2">Project style two</Link></li>
@@ -38,7 +38,7 @@ const MainMenu = ({ toggleSubMenu, navbarPlacement }) => {
                     </ul>
                 </li>
                 <li className="dropdown">
-                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu}>Services</Link>
+                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu} style={{ textDecoration: 'none' }}>Services</Link>
                     <ul className="dropdown-menu">
                         <li><Link to="/services">Services Version One</Link></li>
                         <li><Link to="/services-2">Services Version Two</Link></li>
@@ -47,7 +47,7 @@ const MainMenu = ({ toggleSubMenu, navbarPlacement }) => {
                     </ul>
                 </li>
                 <li className="dropdown">
-                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu}>Blog</Link>
+                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown" onClick={toggleSubMenu} style={{ textDecoration: 'none' }}>Blog</Link>
                     <ul className="dropdown-menu">
                         <li><Link to="/blog-standard">Blog Standard</Link></li>
                         <li><Link to="/blog-with-sidebar">Blog With Sidebar</Link></li>
@@ -57,7 +57,7 @@ const MainMenu = ({ toggleSubMenu, navbarPlacement }) => {
                         <li><Link to="/blog-single-with-sidebar/1">Blog Single With Sidebar</Link></li>
                     </ul>
                 </li>
-                <li><Link to="/contact-us">contact</Link></li>
+                <li><Link to="/contact-us" style={{ textDecoration: 'none' }}>contact</Link></li>
             </ul>
         </>
     );
