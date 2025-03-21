@@ -15,7 +15,7 @@ const CompanyDetailsLayer = () => {
   const fetchCompany = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/companies/getcompany/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getcompany/${id}`);
       setCompany(response.data);
       setError('');
     } catch (err) {

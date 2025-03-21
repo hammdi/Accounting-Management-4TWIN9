@@ -45,7 +45,7 @@ const InvoiceEditLayer = () => {
         const fetchInvoice = async () => {
             try {
                 setLoading(true)
-                const response = await axios.get(`http://localhost:5000/api/invoices/getinvoice/${id}`)
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/getinvoice/${id}`)
                 const invoice = response.data
 
                 // Set invoice data
@@ -182,7 +182,7 @@ const InvoiceEditLayer = () => {
             }
 
             // Send to API
-            await axios.put(`http://localhost:5000/api/invoices/updateinvoice/${id}`, invoiceData)
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/invoices/updateinvoice/${id}`, invoiceData)
 
             setSuccess(true)
             setTimeout(() => {

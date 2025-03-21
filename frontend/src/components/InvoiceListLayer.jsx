@@ -114,7 +114,7 @@ const InvoiceListLayer = () => {
     const handleDeleteInvoice = async (id) => {
         if (window.confirm('Are you sure you want to delete this invoice?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/invoices/deleteinvoice/${id}`);
+                await axios.delete(`${process.env.REACT_APP_API_URL}/api/invoices/deleteinvoice/${id}`);
                 // Refresh the invoice list
                 fetchInvoices();
             } catch (err) {
@@ -130,7 +130,7 @@ const InvoiceListLayer = () => {
             const currentInvoice = invoices.find(inv => inv._id === invoiceId);
             if (!currentInvoice) return;
 
-            await axios.put(`http://localhost:5000/api/invoices/updateinvoice/${invoiceId}`, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/invoices/updateinvoice/${invoiceId}`, {
                 clientName: currentInvoice.clientName,
                 clientEmail: currentInvoice.clientEmail,
                 clientPhone: currentInvoice.clientPhone,

@@ -134,7 +134,7 @@ const InvoiceAddLayer = () => {
             }
 
             // Send to API
-            const response = await axios.post("http://localhost:5000/api/invoices/addinvoice", invoiceData)
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/invoices/addinvoice`, invoiceData)
 
             if (response.data) {
                 setSuccess(true)

@@ -24,7 +24,7 @@ const InvoicePreviewLayer = () => {
         const fetchInvoice = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:5000/api/invoices/getinvoice/${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/getinvoice/${id}`);
                 setInvoice(response.data);
                 setLoading(false);
             } catch (err) {
@@ -88,7 +88,7 @@ const InvoicePreviewLayer = () => {
             const pdfBase64 = pdf.output('datauristring');
 
             // Send email with PDF attachment
-            await axios.post('http://localhost:5000/api/invoices/sendemail', {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/invoices/sendemail`, {
                 invoiceId: invoice._id,
                 email: invoice.clientEmail,
                 subject: `Invoice #${invoice.invoiceNumber || '3492'}`,
@@ -128,7 +128,7 @@ const InvoicePreviewLayer = () => {
             }
 
             // Send SMS with invoice details
-            const response = await axios.post('http://localhost:5000/api/sms/send', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/sms/send`, {
                 invoiceId: invoice._id,
                 phoneNumber: formattedNumber
             });

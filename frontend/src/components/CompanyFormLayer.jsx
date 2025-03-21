@@ -19,7 +19,7 @@ const CompanyFormLayer = () => {
   // Fetch company data if editing
   const fetchCompany = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/companies/getcompany/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getcompany/${id}`);
       setFormData(response.data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to fetch company');
@@ -56,11 +56,11 @@ const CompanyFormLayer = () => {
 
       if (id) {
         // Update company
-        await axios.put(`http://localhost:5000/api/companies/updatecompany/${id}`, payload);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/companies/updatecompany/${id}`, payload);
         toast.success('Company updated successfully');
       } else {
         // Create new company
-        await axios.post('http://localhost:5000/api/companies/addcompany', payload);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/companies/addcompany`, payload);
         toast.success('Company created successfully');
       }
 

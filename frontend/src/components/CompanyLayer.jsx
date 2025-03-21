@@ -43,7 +43,7 @@ const CompanyLayer = () => {
                 owner: user._id
             };
 
-            await axios.post('http://localhost:5000/api/companies/addcompany', payload);
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/companies/addcompany`, payload);
             toast.success('Company created successfully!');
             setFormData({
                 name: '',
