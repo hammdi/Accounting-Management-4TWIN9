@@ -20,7 +20,7 @@ const TransactionListLayer = () => {
 
     const fetchTransactions = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/transactions/getalltransactions');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/getalltransactions`);
             console.log('API Response:', response.data); // Debug
             if (response.data.success) {
                 setTransactions(response.data.data || []);
@@ -53,7 +53,7 @@ const TransactionListLayer = () => {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this transaction?')) {
-            axios.delete(`http://localhost:5000/api/transactions/deletetransaction/${id}`)
+            axios.delete(`${process.env.REACT_APP_API_URL}/api/transactions/deletetransaction/${id}`)
                 .then((response) => {
                     if (response.data.success) {
                         fetchTransactions();
@@ -75,7 +75,7 @@ const TransactionListLayer = () => {
 
     const handleSave = async (transactionId, updatedTransaction) => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/transactions/updatetransaction/${transactionId}`, updatedTransaction);
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/transactions/updatetransaction/${transactionId}`, updatedTransaction);
             if (response.data.success) {
                 fetchTransactions();
                 setEditingTransaction(null);

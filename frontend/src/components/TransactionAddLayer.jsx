@@ -34,7 +34,7 @@ const TransactionAddLayer = () => {
 
     const fetchCompanies = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/companies/getallcompanies');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getallcompanies`);
             setCompanies(response.data);
         } catch (error) {
             console.error('Error fetching companies:', error);

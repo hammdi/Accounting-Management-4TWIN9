@@ -20,7 +20,7 @@ const CompanyListLayer = () => {
   const fetchCompanies = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/companies/getallcompanies');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getallcompanies`);
       setCompanies(response.data);
       setError('');
     } catch (err) {
@@ -36,7 +36,7 @@ const CompanyListLayer = () => {
     if (!window.confirm('Are you sure you want to delete this company?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/companies/deletecompany/${companyId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/companies/deletecompany/${companyId}`);
       toast.success('Company deleted successfully');
       fetchCompanies(); // Refresh list
     } catch (err) {

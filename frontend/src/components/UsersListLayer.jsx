@@ -63,7 +63,7 @@ const UsersListLayer = () => {
     const handleDelete = async (userId) => {
         const token = localStorage.getItem("token"); // Retrieve token from local storage
         try {
-            const response = await axios.delete(`http://localhost:5000/api/users/user/${userId}`, {
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/user/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`, // Send token in request headers
                 },
@@ -87,7 +87,7 @@ const UsersListLayer = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 };
-                const response = await axios.get("http://localhost:5000/api/users/users", config);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/users`, config);
                 setUsers(response.data); // Mettre à jour l'état avec les utilisateurs récupérés
             } catch (error) {
                 console.error("Erreur lors de la récupération des utilisateurs :", error);
@@ -111,7 +111,7 @@ const UsersListLayer = () => {
         const token = localStorage.getItem("token"); // Retrieve token from local storage
         try {
             await axios.put(
-                `http://localhost:5000/api/users/user/${userId}`,
+                `${process.env.REACT_APP_API_URL}/api/users/user/${userId}`,
                 selectedUser, // Send updated user data
                 {
                     headers: {
