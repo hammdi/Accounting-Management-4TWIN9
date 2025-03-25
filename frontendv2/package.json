@@ -10,6 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@syncfusion/ej2": "^28.2.9",
+    "@syncfusion/ej2-react-calendars": "^28.2.9",
+    "@syncfusion/ej2-react-charts": "^28.2.9",
+    "@syncfusion/ej2-react-dropdowns": "^28.2.9",
+    "@syncfusion/ej2-react-grids": "^28.2.9",
+    "@syncfusion/ej2-react-inputs": "^28.2.9",
+    "@syncfusion/ej2-react-kanban": "^28.2.3",
+    "@syncfusion/ej2-react-popups": "^28.2.9",
+    "@syncfusion/ej2-react-richtexteditor": "^28.2.9",
+    "@syncfusion/ej2-react-schedule": "^28.2.7",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
     "circletype": "^2.3.0",
@@ -30,14 +40,18 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
+    "@tailwindcss/postcss": "^4.0.15",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.20.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.14.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.15",
     "vite": "^6.1.0"
   }
 }

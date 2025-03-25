@@ -10,6 +10,8 @@ import SignIn from './components/login/SignIn';
 import SignUp from './components/login/SignUp';
 import ForgotPassword from './components/login/ForgotPassword';
 
+import Dashbored1 from './pages/dashboredPages/Dashbored1';
+
 import AboutUsPage from './pages/innerPages/AboutUsPage';
 import AboutUs2Page from './pages/innerPages/AboutUs2Page';
 import TeamPage from './pages/innerPages/TeamPage';
@@ -50,6 +52,8 @@ const Routers = () => {
                 <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
+
+                <Route path="/dashbored1" element={<Dashbored1 />} />
 
                 <Route path='/about-us' element={<AboutUsPage />}></Route>
                 <Route path='/about-us-2' element={<AboutUs2Page />}></Route>
