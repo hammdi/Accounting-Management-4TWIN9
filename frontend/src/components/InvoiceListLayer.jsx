@@ -186,8 +186,81 @@ const InvoiceListLayer = () => {
         });
     };
 
+
+
+
+
+        // Twilio SMS sending function
+        const [phoneNumber, setPhoneNumber] = useState('');
+        const [message, setMessage] = useState('');
+        const [status, setStatus] = useState('');
+      
+        const sendMessage = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/api/sms/send', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ to: phoneNumber, message }),
+            });
+      
+            const data = await response.json();
+      
+            if (response.ok) {
+              setStatus(`✅ Message sent! SID: ${data.sid}`);
+            } else {
+              throw new Error(data.message);
+            }
+          } catch (err) {
+            setStatus(`❌ Error: ${err.message}`);
+          }
+        };
+
+
+
+
+
+
+
+
     return (
+
+
+        
         <div className="card">
+
+
+{/* 
+sms part */}
+
+<div style={{ padding: 20 }}>
+      <h2>Send SMS</h2>
+      <input
+        type="text"
+        placeholder="Phone number"
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
+        style={{ display: 'block', marginBottom: 10 }}
+      />
+      <textarea
+        placeholder="Message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        style={{ display: 'block', marginBottom: 10 }}
+      />
+      <button onClick={sendMessage}>Send Message</button>
+      <p>{status}</p>
+    </div>
+
+
+{/* 
+sms part end */}
+
+
+
+
+
+
+            
             <div className="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div className="d-flex flex-wrap align-items-center gap-3">
                     <div className="d-flex align-items-center gap-2">
