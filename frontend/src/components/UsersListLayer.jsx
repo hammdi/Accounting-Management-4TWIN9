@@ -3,11 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 
-
-
-
-
-///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 const getUserAvatar = (avatar) => {
     if (avatar) {
         console.log("Avatar:", avatar);
@@ -40,25 +36,16 @@ const arrayBufferToBase64 = (uint8Array) => {
     }
     return window.btoa(binary); // Convertir en Base64
 };
-////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////
 
 const UsersListLayer = () => {
     const [users, setUsers] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+    const [sortBy, setSortBy] = useState('name');
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [sortOrder, setSortOrder] = useState('asc');
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -73,11 +60,10 @@ const UsersListLayer = () => {
             reader.readAsDataURL(file);
         }
     };
-    
     const handleDelete = async (userId) => {
         const token = localStorage.getItem("token"); // Retrieve token from local storage
         try {
-            const response = await axios.delete(`http://localhost:5000/api/users/user/${userId}`, {
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/user/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`, // Send token in request headers
                 },
@@ -101,14 +87,13 @@ const UsersListLayer = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 };
-                const response = await axios.get("http://localhost:5000/api/users/users", config);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/users`, config);
                 setUsers(response.data); // Mettre à jour l'état avec les utilisateurs récupérés
             } catch (error) {
                 console.error("Erreur lors de la récupération des utilisateurs :", error);
             }
         };
-
-        fetchUsers().then(r => (console.log("omk")));
+        fetchUsers().then(r => (console.log("")));
     }, []);
     const [selectedUser, setSelectedUser] = useState(null);
     const handleChange = (e) => {
@@ -118,19 +103,15 @@ const UsersListLayer = () => {
             [name]: value, // Met à jour dynamiquement n'importe quel champ
         }));
     };
-
     const handleEditClick = (user) => {
         setSelectedUser(user);
     }
-
     const handleSubmit = async (/*e,*/ userId) => {
         //e.preventDefault(); // Prevent default form submission
-
         const token = localStorage.getItem("token"); // Retrieve token from local storage
-
         try {
             await axios.put(
-                `http://localhost:5000/api/users/user/${userId}`,
+                `${process.env.REACT_APP_API_URL}/api/users/user/${userId}`,
                 selectedUser, // Send updated user data
                 {
                     headers: {
@@ -143,46 +124,96 @@ const UsersListLayer = () => {
             console.error("Error updating user:", error);
         }
     };
+
+    const sortUsers = (users, sortBy, sortOrder) => {
+        return [...users].sort((a, b) => {
+            let compareA, compareB;
+            
+            switch (sortBy) {
+                case 'name':
+                    compareA = a.name?.toLowerCase() || '';
+                    compareB = b.name?.toLowerCase() || '';
+                    break;
+                case 'email':
+                    compareA = a.email?.toLowerCase() || '';
+                    compareB = b.email?.toLowerCase() || '';
+                    break;
+                case 'date':
+                    compareA = new Date(a.createdAt || 0);
+                    compareB = new Date(b.createdAt || 0);
+                    break;
+                default:
+                    return 0;
+            }
+            
+            if (sortOrder === 'asc') {
+                return compareA < compareB ? -1 : compareA > compareB ? 1 : 0;
+            } else {
+                return compareA > compareB ? -1 : compareA < compareB ? 1 : 0;
+            }
+        });
+    };
+
+    const filteredUsers = users.filter((user) =>
+        (user.name?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
+        (user.email?.toLowerCase() || '').includes(searchTerm.toLowerCase())
+    );
+
+    const sortedUsers = sortUsers(filteredUsers, sortBy, sortOrder);
+    const pageCount = Math.ceil(sortedUsers.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const displayedUsers = sortedUsers.slice(startIndex, startIndex + itemsPerPage);
+
+    const handlePageChange = (newPage) => {
+        if (newPage >= 1 && newPage <= pageCount) {
+            setCurrentPage(newPage);
+        }
+    };
+
     return (
         <>
             <div className="card h-100 p-0 radius-12">
-                <div
-                    className="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+                <div className="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
                     <div className="d-flex align-items-center flex-wrap gap-3">
                         <span className="text-md fw-medium text-secondary-light mb-0">Show</span>
-                        <select className="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
-                                defaultValue="Select Number">
-                            <option value="Select Number" disabled>
-                                Select Number
-                            </option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                        <select 
+                            className="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
+                            value={itemsPerPage}
+                            onChange={(e) => setItemsPerPage(Number(e.target.value))}
+                        >
+                            {[5, 10, 15, 20, 25].map(num => (
+                                <option key={num} value={num}>{num}</option>
+                            ))}
                         </select>
                         <form className="navbar-search">
                             <input
                                 type="text"
                                 className="bg-base h-40-px w-auto"
                                 name="search"
-                                placeholder="Search"
+                                placeholder="Search by name or email"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
                             />
                             <Icon icon="ion:search-outline" className="icon"/>
                         </form>
-                        <select className="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
-                                defaultValue="Select Status">
-                            <option value="Select Status" disabled>
-                                Select Status
-                            </option>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                        <select 
+                            className="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value)}
+                        >
+                            <option value="name">Sort by Name</option>
+                            <option value="email">Sort by Email</option>
+                            <option value="date">Sort by Date</option>
                         </select>
+                        <button 
+                            className="btn btn-outline-secondary btn-sm"
+                            onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                        >
+                            <Icon 
+                                icon={sortOrder === 'asc' ? "mdi:sort-ascending" : "mdi:sort-descending"} 
+                                className="icon"
+                            />
+                        </button>
                     </div>
                     <Link
                         to="/add-user"
@@ -226,8 +257,8 @@ const UsersListLayer = () => {
                             </tr>
                             </thead>
                             <tbody>{
-                                users.map((user, index) => (
-                                    <tr key={user.id || user._id || index}>
+                                displayedUsers.map((user) => (
+                                    <tr key={user._id}>
                                         <td>
                                             <div className="d-flex align-items-center gap-10">
                                                 <div className="form-check style-check d-flex align-items-center">
@@ -311,69 +342,51 @@ const UsersListLayer = () => {
 
                             </tbody>
                         </table>
+                        {filteredUsers.length === 0 && (
+                            <div className="text-center py-4">
+                                <p>No users found matching your search criteria.</p>
+                            </div>
+                        )}
                     </div>
-                    {<div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
-                    <span>Showing 1 to 10 of 12 entries</span>
-                    <ul className="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                        <li className="page-item">
-                            <Link
-                                className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px  text-md"
-                                to="#"
-                            >
-                                <Icon icon="ep:d-arrow-left" className=""/>
-                            </Link>
-                        </li>
-                        <li className="page-item">
-                            <Link
-                                className="page-link text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md bg-primary-600 text-white"
-                                to="#"
-                            >
-                                1
-                            </Link>
-                        </li>
-                        <li className="page-item">
-                            <Link
-                                className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                                to="#"
-                            >
-                                2
-                            </Link>
-                        </li>
-                        <li className="page-item">
-                            <Link
-                                className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
-                                to="#"
-                            >
-                                3
-                            </Link>
-                        </li>
-                        <li className="page-item">
-                            <Link
-                                className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
-                                to="#"
-                            >
-                                4
-                            </Link>
-                        </li>
-                        <li className="page-item">
-                            <Link
-                                className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
-                                to="#"
-                            >
-                                5
-                            </Link>
-                        </li>
-                        <li className="page-item">
-                            <Link
-                                className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px  text-md"
-                                to="#"
-                            >
-                                {" "}
-                                <Icon icon="ep:d-arrow-right" className=""/>{" "}
-                            </Link>
-                        </li>
-                    </ul>
-                </div>}
+                    {filteredUsers.length > 0 && (
+                        <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+                            <span>
+                                Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, filteredUsers.length)} of {filteredUsers.length} entries
+                            </span>
+                            <ul className="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
+                                <li className="page-item">
+                                    <button
+                                        className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px text-md"
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                    >
+                                        <Icon icon="ep:d-arrow-left" />
+                                    </button>
+                                </li>
+                                {[...Array(pageCount)].map((_, index) => (
+                                    <li key={index} className="page-item">
+                                        <button
+                                            className={`page-link text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md ${
+                                                index + 1 === currentPage ? 'bg-primary-600 text-white' : 'bg-neutral-200'
+                                            }`}
+                                            onClick={() => handlePageChange(index + 1)}
+                                        >
+                                            {index + 1}
+                                        </button>
+                                    </li>
+                                ))}
+                                <li className="page-item">
+                                    <button
+                                        className="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px text-md"
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                        disabled={currentPage === pageCount}
+                                    >
+                                        <Icon icon="ep:d-arrow-right" />
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -515,7 +528,7 @@ const UsersListLayer = () => {
                                         value={selectedUser?.role || "user"}
                                         onChange={handleChange}>
                                         <option value='Accountant'>Accountant</option>
-                                        <option value='Product Owner'>Product Owner</option>
+                                        <option value='Business Owner'>Business Owner</option>
                                         <option value='user'>user</option>
                                     </select>
                                 </div>

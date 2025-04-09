@@ -14,7 +14,7 @@ const ForgotPasswordLayer = () => {
         console.log("Submitting forgot password request...");
 
         try {
-            await axios.post("http://localhost:5000/api/users/forgot-password", { email });
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/users/forgot-password`, { email });
 
             navigate("/", { state: { message: "Go check your email and get the new password" } });
         } catch (error) {

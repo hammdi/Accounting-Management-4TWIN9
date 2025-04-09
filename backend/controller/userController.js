@@ -110,9 +110,7 @@ exports.updateUser = async (req, res) => {
 
         // If password is provided, hash it
         let updatedPassword = user.password;
-        if (password) {
-            updatedPassword = await bcrypt.hash(password, 10);
-        }
+        if (password) {updatedPassword = await bcrypt.hash(password, 10);}
 
         // Update user fields
         user.name = name || user.name;
@@ -122,17 +120,12 @@ exports.updateUser = async (req, res) => {
         user.phone = phone || user.phone;
         user.status = status || user.status;
 
-
+      
   // Mise à jour de l'avatar si fourni (conversion base64 -> Buffer)
   if (avatar) {
     const buffer = Buffer.from(avatar, 'base64');
     user.avatar = buffer;
 }
-
-
-
-
-
         await user.save();
         res.status(200).json({ message: 'Utilisateur mis à jour avec succès' });
     } catch (error) {
@@ -212,3 +205,27 @@ exports.forgotPassword = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+exports.updatePassword = async (req, res) => {
+    try {console.log(req.body);
+        console.log(req.user.userId)
+        const userId = req.user.userId; // Récupérer l'ID de l'utilisateur connecté
+        const { password } = req.body; // Récupérer le nouveau mot de passe
+
+        // Vérifier si un mot de passe est fourni
+        if (!password) {
+            return res.status(400).json({ message: "Le mot de passe est requis." });
+        }
+
+        // Hacher le nouveau mot de passe avant de le sauvegarder
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Mettre à jour le mot de passe dans la base de données
+        await User.findByIdAndUpdate(userId, { password: hashedPassword });
+
+        res.status(200).json({ message: "Mot de passe mis à jour avec succès." });
+    } catch (error) {
+        console.error("Erreur lors de la mise à jour du mot de passe :", error);
+        res.status(500).json({ message: "Erreur serveur." });
+    }
+}

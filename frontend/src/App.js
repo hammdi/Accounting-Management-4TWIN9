@@ -96,8 +96,16 @@ import ComingSoonPage from "./pages/ComingSoonPage";
 import AccessDeniedPage from "./pages/AccessDeniedPage";
 import MaintenancePage from "./pages/MaintenancePage";
 import BlankPagePage from "./pages/BlankPagePage";
+import TransactionAddPage from "./pages/TransactionAddPage";
+import TransactionEditPage from "./pages/TransactionEditPage";
+import TransactionListPage from "./pages/TransactionListPage";
+import TransactionPreviewPage from "./pages/TransactionPreviewPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CompanyListPage from "./pages/CompanyListPage";
+import CompanyFormPage from "./pages/CompanyFormPage";
+import CompanyDetailsPage from "./pages/CompanyDetailsPage";
+
 function App() {
   return (<>
         <ToastContainer />
@@ -167,13 +175,21 @@ function App() {
         <Route exact path='/image-generator' element={<ImageGeneratorPage />} />
         <Route exact path='/image-upload' element={<ImageUploadPage />} />
         <Route exact path='/invoice-add' element={<InvoiceAddPage />} />
-        <Route exact path='/invoice-edit' element={<InvoiceEditPage />} />
+        <Route exact path='/invoice-edit/:id' element={<InvoiceEditPage />} />
         <Route exact path='/invoice-list' element={<InvoiceListPage />} />
-        <Route exact path='/invoice-preview' element={<InvoicePreviewPage />} />
+        <Route exact path='/invoice-preview/:id' element={<InvoicePreviewPage />} />
+        <Route exact path='/transaction-add' element={<TransactionAddPage/>} />
+        <Route exact path='/transaction-edit' element={<TransactionEditPage/>} />
+        <Route exact path='/transaction-list' element={<TransactionListPage/>} />
+        <Route exact path='/transaction-preview' element={<TransactionPreviewPage />} />
         <Route exact path='/kanban' element={<KanbanPage />} />
         <Route exact path='/language' element={<LanguagePage />} />
         <Route exact path='/line-chart' element={<LineChartPage />} />
         <Route exact path='/list' element={<ListPage />} />
+        <Route exact path='/my-companies' element={<CompanyListPage />} />
+        <Route exact path='/company' element={<CompanyFormPage />} />
+        <Route exact path='/company/:id' element={<CompanyDetailsPage />} />
+        <Route exact path='/company/:id/edit' element={<CompanyFormPage />} />
         <Route
           exact
           path='/marketplace-details'
