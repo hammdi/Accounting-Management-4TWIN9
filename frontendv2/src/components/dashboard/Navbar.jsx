@@ -12,7 +12,7 @@ const Navbar = ({ activeMenu, setActiveMenu, toggleTheme, darkMode }) => {
             onClick={() => setActiveMenu(!activeMenu)}
             aria-label={activeMenu ? "Close sidebar" : "Open sidebar"}
           >
-            <i className={`fa ${activeMenu ? "fa-times d-lg-none" : "fa-bars"}`}></i>
+            <i className="fa fa-bars"></i>
           </button>
           <div className="dash-page-title-container">
             <h1 className="dash-page-title">Dashboard</h1>
@@ -58,6 +58,8 @@ const Navbar = ({ activeMenu, setActiveMenu, toggleTheme, darkMode }) => {
 }
 
 export default Navbar
+
+
 
 
 
