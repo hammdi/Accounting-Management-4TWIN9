@@ -29,33 +29,33 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
         <div className="dash-sidebar-menu">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="dash-nav-link active" href="#">
+              <a className="dash-nav-link active" href="#" style={{ textDecoration: "none" }}>
                 <FiBarChart2 className="dash-nav-icon" />
                 <span>Dashboard</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="dash-nav-link" href="#">
+              <a className="dash-nav-link" href="#" style={{ textDecoration: "none" }}> 
                 <FiUsers className="dash-nav-icon" />
                 <span>Customers</span>
                 <span className="badge badge-primary ml-auto">New</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="dash-nav-link" href="#">
+              <a className="dash-nav-link" href="#" style={{ textDecoration: "none" }}>
                 <FiShoppingCart className="dash-nav-icon" />
                 <span>Orders</span>
                 <span className="badge badge-warning ml-auto">5</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="dash-nav-link" href="#">
+              <a className="dash-nav-link" href="#" style={{ textDecoration: "none" }}>
                 <FiDollarSign className="dash-nav-icon" />
                 <span>Revenue</span>
               </a>
             </li>
             <li className="nav-item">
-              <a className="dash-nav-link" href="#">
+              <a className="dash-nav-link" href="#" style={{ textDecoration: "none" }}>
                 <FiActivity className="dash-nav-icon" />
                 <span>Analytics</span>
               </a>
@@ -66,7 +66,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
         <div className="dash-sidebar-footer-menu">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="dash-nav-link" href="#">
+              <a className="dash-nav-link" href="#" style={{ textDecoration: "none" }}>
                 <FiSettings className="dash-nav-icon" />
                 <span>Settings</span>
               </a>
@@ -79,6 +79,8 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
 }
 
 export default Sidebar
+
+
 
 
 
