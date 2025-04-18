@@ -8,6 +8,9 @@ const { MongoClient, ObjectId } = require('mongodb');
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://admin:password123@mongo:27017/accounting?authSource=admin';
 const client = new MongoClient(MONGO_URI);
 
+// Connect once at startup for reuse
+client.connect().then(() => console.log('MongoDB connected')).catch(console.error);
+
 // Ollama LLM config
 //const llm = new Ollama({ baseUrl: 'http://localhost:11434', model: 'llama3' });
 const llm = new Ollama({ baseUrl: 'http://host.docker.internal:11434', model: 'llama3' });
@@ -28,10 +31,13 @@ const getUserInvoices = async (userId) => {
   if (!invoices.length) return 'No invoices found.';
   const pending = invoices.filter(i => i.status === 'Pending');
   if (!pending.length) return 'You have no pending invoices.';
-  // Format up to 5 pending invoices
+  // Format up to 5 pending invoices with computed total
   const summary = pending.slice(0, 5).map(inv => {
     const due = inv.dueDate ? new Date(inv.dueDate).toLocaleDateString() : 'N/A';
-    return `- Client: ${inv.clientName}, Amount: $${inv.totalAmount || inv.subtotal || 'N/A'}, Due: ${due}, Status: ${inv.status}`;
+    const totalAmt = inv.totalAmount != null
+      ? inv.totalAmount
+      : ((inv.subtotal || (inv.items || []).reduce((s, it) => s + (it.total || 0), 0)) + (inv.taxAmount || 0) - (inv.discount || 0));
+    return `- Client: ${inv.clientName}, Amount: $${totalAmt}, Due: ${due}, Status: ${inv.status}`;
   }).join('\n');
   return `You have ${pending.length} pending invoice(s):\n${summary}`;
 };
@@ -41,7 +47,7 @@ const getUserCompany = async (userId) => {
   const db = client.db();
   const company = await db.collection('companies').findOne({ owner: new ObjectId(userId) });
   if (!company) return 'No company info found.';
-  return `Company: ${company.name}\nTax ID: ${company.taxId || 'N/A'}\nBalance: $${company.balance || 0}`;
+  return `Company: ${company.name}\nTax Number: ${company.taxNumber}\nAddress: ${company.address}\nPhone: ${company.phone}\nStatus: ${company.status}`;
 };
 
 // Define agent tools
@@ -83,7 +89,7 @@ function detectIntents(userMessage) {
 
 // Main AI assistant function
 async function runAgent(userMessage, userId) {
-  await client.connect();
+  // DB connection is established at startup, do not reconnect here
   const intents = detectIntents(userMessage);
   let txSummary = '', invoiceSummary = '', companySummary = '';
 
