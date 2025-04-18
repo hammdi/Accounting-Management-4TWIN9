@@ -3,8 +3,8 @@ const Invoice = require('../models/Invoice');
 // @desc Create a new invoice
 exports.createInvoice = async (req, res) => {
     try {
-        const invoice = new Invoice(req.body);
-        //.issuedBy=req.user.userId;
+        const invoiceData = { ...req.body, issuedBy: req.user._id };
+        const invoice = new Invoice(invoiceData);
         await invoice.save();
         res.status(201).json({ message: 'Invoice created successfully', invoice });
     } catch (error) {
@@ -15,7 +15,7 @@ exports.createInvoice = async (req, res) => {
 // @desc Get all invoices
 exports.getInvoices = async (req, res) => {
     try {
-        const invoices = await Invoice.find().populate('company issuedBy');
+        const invoices = await Invoice.find({ issuedBy: req.user._id }).populate('company issuedBy');
         res.status(200).json(invoices);
     } catch (error) {
         res.status(500).json({ error: error.message });

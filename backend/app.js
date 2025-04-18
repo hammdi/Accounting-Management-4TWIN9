@@ -38,6 +38,10 @@ app.use('/api/aidatasets', require('./routes/aiDatasetRoutes'));
 app.use('/api/auditlogs', require('./routes/auditLogRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 
+// AI Agent route (secured)
+const auth = require('./middleware/auth');
+app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
+
 // Connexion à MongoDB avec authentification
 mongoose.set('strictQuery', false);
 
