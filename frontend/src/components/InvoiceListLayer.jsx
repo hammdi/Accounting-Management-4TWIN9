@@ -189,6 +189,7 @@ const InvoiceListLayer = () => {
 
 
 
+
         // Twilio SMS sending function
         const [phoneNumber, setPhoneNumber] = useState('');
         const [message, setMessage] = useState('');
@@ -213,9 +214,6 @@ const InvoiceListLayer = () => {
             setStatus(`❌ Error: ${err.message}`);
           }
         };
-
-
-
 
 
 

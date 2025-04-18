@@ -2,8 +2,8 @@ const { body, validationResult } = require('express-validator');
 
 exports.validateAuditLog = [
     body('action').notEmpty().withMessage('Action is required'),
-    // body('user').notEmpty().withMessage('User ID is required'),
-  //  body('timestamp').optional().isISO8601().withMessage('Invalid timestamp format'),
+    body('user').notEmpty().withMessage('User ID is required'),
+    body('timestamp').optional().isISO8601().withMessage('Invalid timestamp format'),
 
     (req, res, next) => {
         const errors = validationResult(req);

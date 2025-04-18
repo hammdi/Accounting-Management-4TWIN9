@@ -20,5 +20,4 @@ router.post('/send', async (req, res) => {
     res.status(500).json({ status: 'error', message: error.message });
   }
 });
-
 module.exports = router;

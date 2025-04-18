@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const InvoiceSchema = new mongoose.Schema({
     company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
-    //issuedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    issuedBy: { type: String },
+    issuedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     clientName: { type: String, required: true },
     clientEmail: { type: String, required: true },
     clientPhone: { type: String, required: true },
