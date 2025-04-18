@@ -15,8 +15,8 @@ exports.createTransaction = async (req, res) => {
             });
         }
 
-        // Validate user exists
-        const user = await User.findById(req.body.createdBy);
+        // Use authenticated user for createdBy
+        const user = await User.findById(req.user._id);
         if (!user) {
             return res.status(404).json({
                 success: false,
@@ -24,7 +24,8 @@ exports.createTransaction = async (req, res) => {
             });
         }
 
-        const transaction = new Transaction(req.body);
+        const transactionData = { ...req.body, createdBy: req.user._id };
+        const transaction = new Transaction(transactionData);
         await transaction.save();
 
         // Update company's transaction balance
@@ -54,7 +55,7 @@ exports.getTransactions = async (req, res) => {
     try {
         const { company, type, startDate, endDate, page = 1, limit = 10 } = req.query;
         
-        const query = {};
+        const query = { createdBy: req.user._id };
         if (company) query.company = company;
         if (type) query.type = type;
         if (startDate) query.date = { $gte: new Date(startDate) };

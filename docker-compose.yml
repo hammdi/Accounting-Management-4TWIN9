@@ -13,7 +13,6 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password123
     command: mongod --quiet --logpath /dev/null
-    user: "1000:1000"  # Run as non-root user
 
   backend:
     build: ./backend
