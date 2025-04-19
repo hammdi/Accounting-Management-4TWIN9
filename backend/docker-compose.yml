@@ -8,6 +8,8 @@ services:
       - mongo
     environment:
       - MONGO_URI=mongodb://mongo:27017/accounting-db
+    command: bash -c "node ImportCSV.js && node app.js"
+
   mongo:
     image: mongo
     container_name: mongo

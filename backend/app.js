@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
+const compteComptableRoutes = require('./routes/compteComptableRoutes');
 // Charger les variables d'environnement
 dotenv.config();
 
@@ -38,6 +38,11 @@ app.use('/api/aidatasets', require('./routes/aiDatasetRoutes'));
 app.use('/api/auditlogs', require('./routes/auditLogRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 
+//
+app.use('/api/comptes', compteComptableRoutes);
+app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/accounting-entries', require('./routes/accountingEntryRoutes'));
+
 // AI Agent route (secured)
 const auth = require('./middleware/auth');
 app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
@@ -61,6 +66,9 @@ mongoose.connect(process.env.MONGO_URI)
         require('./models/AI Dataset');          // AI Dataset depends on Company
         require('./models/Audit Logs');           // Audit Log depends on User
         require('./models/Notification');       // Notification depends on User
+        require ('./models/CompteComptable'); // CompteComptable
+        require('./models/Product');            // Product depends on Company
+        require('./models/AccountingEntry');    // AccountingEntry depends on Invoice & Company
 
         console.log("📌 Modèles enregistrés :", mongoose.modelNames());
 
