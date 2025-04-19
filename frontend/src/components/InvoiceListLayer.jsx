@@ -220,6 +220,49 @@ const InvoiceListLayer = () => {
 
 
 
+        
+
+        const handleSendMessage = async (invoice) => {
+            const { clientPhone, clientName, invoiceNumber, totalAmount, dueDate } = invoice;
+        
+            if (!clientPhone) {
+                alert("Le numéro de téléphone du client est manquant !");
+                return;
+            }
+        
+            // Ajouter +216 si le numéro ne commence pas déjà par +216
+            const formattedPhone = clientPhone.startsWith('+216') ? clientPhone : `+216${clientPhone}`;
+        
+            const message = `Bonjour ${clientName},\n\nVotre facture est disponible.\nMontant total : ${totalAmount} DT\nDate d'échéance : ${new Date(dueDate).toLocaleDateString()}\n\nMerci pour votre confiance.`;
+        
+            try {
+                const response = await fetch('http://localhost:5000/api/sms/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ to: formattedPhone, message }),
+                });
+        
+                const data = await response.json();
+        
+                if (response.ok) {
+                    alert(`✅ Message envoyé avec succès ! SID : ${data.sid}`);
+                    console.log(`✅ SMS envoyé :`, {
+                        to: formattedPhone,
+                        message: message,
+                        sid: data.sid,
+                    });
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (err) {
+                alert(`❌ Erreur : ${err.message}`);
+                console.error(`❌ Erreur lors de l'envoi du SMS :`, err.message);
+            }
+        };
+
+
+
+
 
 
     return (
@@ -229,31 +272,6 @@ const InvoiceListLayer = () => {
         <div className="card">
 
 
-{/* 
-sms part */}
-
-<div style={{ padding: 20 }}>
-      <h2>Send SMS</h2>
-      <input
-        type="text"
-        placeholder="Phone number"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-        style={{ display: 'block', marginBottom: 10 }}
-      />
-      <textarea
-        placeholder="Message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        style={{ display: 'block', marginBottom: 10 }}
-      />
-      <button onClick={sendMessage}>Send Message</button>
-      <p>{status}</p>
-    </div>
-
-
-{/* 
-sms part end */}
 
 
 
@@ -353,10 +371,14 @@ sms part end */}
                                 </tr>
                             ) : (
                                 filteredInvoices.map((invoice) => (
+
+
+                                    
                                     <React.Fragment key={invoice._id}>
                                         <tr>
                                             <td>
                                                 <div className="form-check style-check d-flex align-items-center">
+
                                                     <input
                                                         className="form-check-input"
                                                         type="checkbox"
@@ -461,6 +483,25 @@ sms part end */}
                                                                             {item.name} - {formatCurrency(item.price)} x {item.quantity}
                                                                         </li>
                                                                     ))}
+
+
+
+
+
+<button
+  className="btn btn-primary"
+  onClick={() => handleSendMessage(invoice)}
+>
+  Send Message
+</button>
+
+
+
+
+
+
+
+
                                                                 </ul>
                                                             </div>
                                                         </div>
