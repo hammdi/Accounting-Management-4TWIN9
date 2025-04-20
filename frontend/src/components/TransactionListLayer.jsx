@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState, useEffect } from 'react';
 import { Link, /*useNavigate*/ } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const TransactionListLayer = () => {
     const [transactions, setTransactions] = useState([]);
@@ -20,7 +21,12 @@ const TransactionListLayer = () => {
 
     const fetchTransactions = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/getalltransactions`);
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/mytransactions`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             console.log('API Response:', response.data); // Debug
             if (response.data.success) {
                 setTransactions(response.data.data || []);
@@ -53,18 +59,24 @@ const TransactionListLayer = () => {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this transaction?')) {
-            axios.delete(`${process.env.REACT_APP_API_URL}/api/transactions/deletetransaction/${id}`)
+            const token = localStorage.getItem('token');
+            axios.delete(`${process.env.REACT_APP_API_URL}/api/transactions/deletetransaction/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
                 .then((response) => {
                     if (response.data.success) {
                         fetchTransactions();
+                        toast.success('Transaction deleted successfully');
                     } else {
                         console.error('Error deleting transaction:', response.data.message);
-                        alert('Failed to delete transaction');
+                        toast.error('Failed to delete transaction');
                     }
                 })
                 .catch((error) => {
                     console.error('Error deleting transaction:', error);
-                    alert('Failed to delete transaction');
+                    toast.error('Failed to delete transaction');
                 });
         }
     };
@@ -73,21 +85,75 @@ const TransactionListLayer = () => {
         setEditingTransaction(transactionId);
     };
 
+    const handleEditChange = (e, transactionId) => {
+        const { name, value } = e.target;
+        setTransactions(prev => prev.map(txn =>
+            txn._id === transactionId ? { ...txn, [name]: value } : txn
+        ));
+    };
+
+
     const handleSave = async (transactionId, updatedTransaction) => {
         try {
-            const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/transactions/updatetransaction/${transactionId}`, updatedTransaction);
+            const token = localStorage.getItem('token');
+            // Only send fields expected by the backend
+            // Validate fields
+            if (!updatedTransaction.type || !updatedTransaction.category || !updatedTransaction.amount || !updatedTransaction.date) {
+                toast.error('Type, category, amount, and date are required.');
+                return;
+            }
+            // Ensure date is yyyy-mm-dd
+            const formattedDate = updatedTransaction.date ? updatedTransaction.date.slice(0, 10) : '';
+            const payload = {
+                type: updatedTransaction.type,
+                category: updatedTransaction.category,
+                amount: parseFloat(updatedTransaction.amount),
+                date: formattedDate,
+                description: updatedTransaction.description,
+                notes: updatedTransaction.notes,
+                company: updatedTransaction.company, // preserve the company field
+                createdBy: updatedTransaction.createdBy // preserve the createdBy field
+            };
+            const response = await axios.put(
+                `${process.env.REACT_APP_API_URL}/api/transactions/updatetransaction/${transactionId}`,
+                payload,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                }
+            );
+            // Debug: log response for troubleshooting
+            console.log('Update transaction response:', response.data);
             if (response.data.success) {
                 fetchTransactions();
                 setEditingTransaction(null);
+                toast.success('Transaction updated successfully');
             } else {
+                // Show all backend errors if present
+                if (response.data.errors && Array.isArray(response.data.errors)) {
+                    response.data.errors.forEach(err => toast.error(err.message));
+                } else {
+                    toast.error(response.data.message || 'Failed to update transaction');
+                }
                 console.error('Error updating transaction:', response.data.message);
-                alert('Failed to update transaction');
             }
         } catch (error) {
-            console.error('Error updating transaction:', error);
-            alert('Failed to update transaction');
+            if (error.response) {
+                console.error('Error updating transaction:', error.response.data);
+                if (error.response.data.errors && Array.isArray(error.response.data.errors)) {
+                    error.response.data.errors.forEach(err => toast.error(err.message));
+                } else {
+                    toast.error(error.response.data.message || 'Failed to update transaction.');
+                }
+            } else {
+                console.error('Error updating transaction:', error);
+                toast.error('Failed to update transaction.');
+            }
         }
     };
+
 
     const handleCancelEdit = () => {
         setEditingTransaction(null);
@@ -142,17 +208,18 @@ const TransactionListLayer = () => {
                     </Link>
                 </div>
             </div>
-            <div className="card-body">
-                <table className="table bordered-table mb-0">
+            <div className="card-body" style={{overflowX: 'auto'}}>
+                <table className="table bordered-table mb-0" style={{minWidth: '900px'}}>
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Action</th>
+<th scope="col">Company</th>
+<th scope="col">Type</th>
+<th scope="col">Category</th>
+<th scope="col">Amount</th>
+<th scope="col">Date</th>
+<th scope="col">Description</th>
+<th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -167,54 +234,126 @@ const TransactionListLayer = () => {
                                 <React.Fragment key={transaction._id}>
                                     <tr>
                                         <td>{(page - 1) * pageSize + index + 1}</td>
-                                        <td>
-                                            <span className={`badge ${transaction.type === 'Income' ? 'bg-success' : 'bg-danger'}`}>
-                                                {transaction.type}
-                                            </span>
-                                        </td>
-                                        <td>{transaction.category}</td>
-                                        <td>{transaction.amount} DT</td>
-                                        <td>{new Date(transaction.date).toLocaleDateString()}</td>
-                                        <td>{transaction.description || '-'}</td>
-                                        <td>
-                                            <div className="d-flex gap-2">
-                                                <button 
-                                                    onClick={() => handleExpand(transaction._id)}
-                                                    className="w-32-px h-32-px me-8 bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center"
-                                                >
-                                                    <Icon icon="iconamoon:eye-light" />
-                                                </button>
-                                                {editingTransaction === transaction._id ? (
-                                                    <>
+                                        {/* Editable row fields */}
+                                        {editingTransaction === transaction._id ? (
+                                            <>
+                                                <td>
+                                                    {transaction.company && typeof transaction.company === 'object' && transaction.company.name ? (
+                                                        <span>{transaction.company.name} <span className="text-muted" style={{fontSize:'0.8em'}}>({transaction.company._id || transaction.company.id || transaction.company})</span></span>
+                                                    ) : (
+                                                        <span className="text-warning">Unknown ({transaction.company && (transaction.company._id || transaction.company.id || transaction.company)})</span>
+                                                    )}
+                                                </td>
+                                                <td>
+                                                    <select
+                                                        name="type"
+                                                        className="form-select form-select-sm"
+                                                        value={transaction.type}
+                                                        onChange={e => handleEditChange(e, transaction._id)}
+                                                    >
+                                                        <option value="Income">Income</option>
+                                                        <option value="Expense">Expense</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        name="category"
+                                                        className="form-control form-control-sm"
+                                                        value={transaction.category}
+                                                        onChange={e => handleEditChange(e, transaction._id)}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="number"
+                                                        name="amount"
+                                                        className="form-control form-control-sm"
+                                                        value={transaction.amount}
+                                                        onChange={e => handleEditChange(e, transaction._id)}
+                                                        min="0.01"
+                                                        step="0.01"
+                                                    /> DT
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="date"
+                                                        name="date"
+                                                        className="form-control form-control-sm"
+                                                        value={transaction.date ? transaction.date.slice(0, 10) : ''}
+                                                        onChange={e => handleEditChange(e, transaction._id)}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        name="description"
+                                                        className="form-control form-control-sm"
+                                                        value={transaction.description || ''}
+                                                        onChange={e => handleEditChange(e, transaction._id)}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <div className="d-flex gap-2 flex-nowrap">
                                                         <button 
+                                                            type="button"
                                                             onClick={() => handleSave(transaction._id, transaction)}
                                                             className="w-32-px h-32-px me-8 bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
                                                         >
                                                             <Icon icon="lucide:check" />
                                                         </button>
                                                         <button 
+                                                            type="button"
                                                             onClick={handleCancelEdit}
                                                             className="w-32-px h-32-px me-8 bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
                                                         >
                                                             <Icon icon="mingcute:close-line" />
                                                         </button>
-                                                    </>
-                                                ) : (
-                                                    <button 
-                                                        onClick={() => handleEdit(transaction._id)}
-                                                        className="w-32-px h-32-px me-8 bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
-                                                    >
-                                                        <Icon icon="lucide:edit" />
-                                                    </button>
-                                                )}
-                                                <button 
-                                                    onClick={() => handleDelete(transaction._id)}
-                                                    className="w-32-px h-32-px me-8 bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
-                                                >
-                                                    <Icon icon="mingcute:delete-2-line" />
-                                                </button>
-                                            </div>
-                                        </td>
+                                                    </div>
+                                                </td>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <td>
+                                                    {transaction.company && typeof transaction.company === 'object' && transaction.company.name ? (
+                                                        <span>{transaction.company.name} <span className="text-muted" style={{fontSize:'0.8em'}}>({transaction.company._id || transaction.company.id || transaction.company})</span></span>
+                                                    ) : (
+                                                        <span className="text-warning">Unknown ({transaction.company && (transaction.company._id || transaction.company.id || transaction.company)})</span>
+                                                    )}
+                                                </td>
+                                                <td>
+                                                    <span className={`badge ${transaction.type === 'Income' ? 'bg-success' : 'bg-danger'}`}>
+                                                        {transaction.type}
+                                                    </span>
+                                                </td>
+                                                <td>{transaction.category}</td>
+                                                <td>{transaction.amount} DT</td>
+                                                <td>{new Date(transaction.date).toLocaleDateString()}</td>
+                                                <td>{transaction.description || '-'}</td>
+                                                <td>
+                                                    <div className="d-flex gap-2">
+                                                        <button 
+                                                            onClick={() => handleExpand(transaction._id)}
+                                                            className="w-32-px h-32-px me-8 bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                        >
+                                                            <Icon icon="iconamoon:eye-light" />
+                                                        </button>
+                                                        <button 
+                                                            onClick={() => handleEdit(transaction._id)}
+                                                            className="w-32-px h-32-px me-8 bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                        >
+                                                            <Icon icon="lucide:edit" />
+                                                        </button>
+                                                        <button 
+                                                            onClick={() => handleDelete(transaction._id)}
+                                                            className="w-32-px h-32-px me-8 bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                        >
+                                                            <Icon icon="mingcute:delete-2-line" />
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </>
+                                        )}
                                     </tr>
                                     {expandedTransaction === transaction._id && (
                                         <tr>

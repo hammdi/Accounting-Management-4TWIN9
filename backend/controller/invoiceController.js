@@ -43,6 +43,16 @@ exports.createInvoice = async (req, res) => {
 // @desc Get all invoices
 exports.getInvoices = async (req, res) => {
     try {
+        const invoices = await Invoice.find().populate('company issuedBy');
+        res.status(200).json(invoices);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// @desc Get invoices issued by the connected user
+exports.getUserInvoices = async (req, res) => {
+    try {
         const invoices = await Invoice.find({ issuedBy: req.user._id }).populate('company issuedBy');
         res.status(200).json(invoices);
     } catch (error) {
@@ -55,7 +65,10 @@ exports.getInvoiceById = async (req, res) => {
     try {
         const invoice = await Invoice.findById(req.params.id).populate('company issuedBy');
         if (!invoice) return res.status(404).json({ message: 'Invoice not found' });
-
+        // Check ownership
+        if (invoice.issuedBy._id.toString() !== req.user._id.toString()) {
+            return res.status(403).json({ message: 'Access denied' });
+        }
         res.status(200).json(invoice);
     } catch (error) {
         res.status(500).json({ error: error.message });

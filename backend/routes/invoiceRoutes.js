@@ -1,5 +1,5 @@
 const express = require('express');
-const { createInvoice, getInvoices, getInvoiceById, updateInvoice, deleteInvoice } = require('../controller/invoiceController');
+const { createInvoice, getInvoices, getInvoiceById, updateInvoice, deleteInvoice, getUserInvoices } = require('../controller/invoiceController');
 const { validateInvoice } = require('../middleware/invoiceValidator');
 const auth = require('../middleware/auth');
 
@@ -10,5 +10,6 @@ router.get('/getallinvoice', auth, getInvoices);
 router.get('/getinvoice/:id', auth, getInvoiceById);
 router.put('/updateinvoice/:id', auth, validateInvoice, updateInvoice);
 router.delete('/deleteinvoice/:id', auth, deleteInvoice);
+router.get('/myinvoices', auth, getUserInvoices);
 
 module.exports = router;
