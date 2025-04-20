@@ -26,8 +26,12 @@ const InvoiceListLayer = () => {
     const fetchInvoices = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:5000/api/invoices/getallinvoice');
-
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/myinvoices`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            });
             // Apply filters
             let filteredData = response.data;
 

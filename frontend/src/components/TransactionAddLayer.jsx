@@ -34,7 +34,12 @@ const TransactionAddLayer = () => {
 
     const fetchCompanies = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getallcompanies`);
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getallcompanies`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             setCompanies(response.data);
         } catch (error) {
             console.error('Error fetching companies:', error);
@@ -95,11 +100,25 @@ const TransactionAddLayer = () => {
                 throw new Error('User not authenticated');
             }
 
-            const response = await axios.post('http://localhost:5000/api/transactions/addtransaction', {
+            const token = localStorage.getItem('token');
+            // Ensure amount is a number and all required fields are present
+            const payload = {
                 ...formData,
+                amount: parseFloat(formData.amount),
                 createdBy: currentUser._id
-            });
-
+            };
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/transactions/addtransaction`,
+                payload,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                }
+            );
+            // Debug: log response for troubleshooting
+            console.log('Add transaction response:', response.data);
             if (response.data.success) {
                 alert('Transaction added successfully!');
                 navigate('/transaction-list');

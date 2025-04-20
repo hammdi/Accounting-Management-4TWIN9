@@ -1,13 +1,23 @@
-# Multi-stage build for React
-FROM node:16 AS builder
+# Use an official Node.js runtime as a parent image
+FROM node:16
+
+# Set the working directory inside the container
 WORKDIR /app
+
+# Copy package.json and package-lock.json to install dependencies
 COPY package*.json ./
+
+# Install the dependencies
 RUN npm install
+
+# Copy the rest of the application files to the container
 COPY . .
+
+# Build the React app for production
 RUN npm run build
 
-# Serve static files using nginx
-FROM nginx:alpine
-COPY --from=builder /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Expose the port the app will run on
+EXPOSE 3000
+
+# Start the React app
+CMD ["npm", "start"]

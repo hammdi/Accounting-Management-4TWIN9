@@ -28,7 +28,12 @@ const TextGeneratorLayer = () => {
     // Fetch previous chat history
     const fetchChatHistory = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/chat/history`);
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/chat/history`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             if (response.data.success) {
                 setChatHistory(response.data.history);
             }
@@ -54,9 +59,16 @@ const TextGeneratorLayer = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/chat/message`, {
-                message: inputMessage
-            });
+            const token = localStorage.getItem('token');
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/chat/message`,
+                { message: inputMessage },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
 
             if (response.data.success) {
                 setMessages(prev => [...prev, {

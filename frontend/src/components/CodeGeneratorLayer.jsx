@@ -33,6 +33,19 @@ const arrayBufferToBase64 = (uint8Array) => {
   return window.btoa(binary); // Convertir en Base64
 };//////////////////////
 const CodeGeneratorLayer = () => {
+  // ...
+  // Delete chat from history
+  const handleDeleteChat = (index) => {
+    const updated = chatHistory.filter((_, i) => i !== index);
+    setChatHistory(updated);
+    localStorage.setItem("codeChatHistory", JSON.stringify(updated));
+    // If current messages are from deleted chat, clear them
+    if (messages === (chatHistory[index]?.messages || [])) {
+      setMessages([]);
+      localStorage.removeItem("codeChatMessages");
+    }
+  };
+
   // Load persisted messages and track mount status for background responses
   const [messages, setMessages] = useState(() => {
     const stored = localStorage.getItem("codeChatMessages");
@@ -166,12 +179,19 @@ useEffect(() => {
                 <span className='text-primary-600 text-sm fw-semibold'>Recent Chats</span>
               </li>
               {chatHistory.map((chat, idx) => (
-                <li key={chat.id} className='mb-16'>
+                <li key={chat.id} className='mb-16 d-flex align-items-center justify-content-between'>
                   <button
                     onClick={() => handleSelectChat(idx)}
                     className='text-line-1 text-secondary-light text-hover-primary-600 border-0 bg-transparent w-100 text-start'
                   >
                     {chat.title}
+                  </button>
+                  <button
+                    onClick={() => handleDeleteChat(idx)}
+                    className='btn btn-link btn-sm text-danger p-0 ms-2'
+                    title='Delete chat'
+                  >
+                    <Icon icon='ri:delete-bin-6-line' />
                   </button>
                 </li>
               ))}

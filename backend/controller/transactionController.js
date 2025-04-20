@@ -88,6 +88,23 @@ exports.getTransactions = async (req, res) => {
     }
 };
 
+// Get all transactions created by the connected user (no pagination/filter)
+exports.getUserTransactions = async (req, res) => {
+    try {
+        const transactions = await Transaction.find({ createdBy: req.user._id }).populate('company createdBy').sort({ date: -1 });
+        res.json({
+            success: true,
+            data: transactions
+        });
+    } catch (error) {
+        console.error('Error fetching user transactions:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
 // Get a single transaction
 exports.getTransaction = async (req, res) => {
     try {

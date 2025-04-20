@@ -4,7 +4,10 @@ const Company = require('../models/Company');
 // Create a new company
 exports.createCompany = async (req, res) => {
     try {
-        const company = new Company(req.body);
+        const company = new Company({
+            ...req.body,
+            owner: req.user._id // Always associate with creator
+        });
         await company.save();
         res.status(201).json(company);
     } catch (error) {
@@ -16,6 +19,17 @@ exports.createCompany = async (req, res) => {
 exports.getCompanies = async (req, res) => {
     try {
         const companies = await Company.find().populate('owner accountants');
+        res.json(companies);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Get companies owned by the connected user
+exports.getUserCompanies = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const companies = await Company.find({ owner: userId }).populate('owner accountants');
         res.json(companies);
     } catch (error) {
         res.status(500).json({ error: error.message });

@@ -45,7 +45,11 @@ const InvoiceEditLayer = () => {
         const fetchInvoice = async () => {
             try {
                 setLoading(true)
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/getinvoice/${id}`)
+                const token = localStorage.getItem('token')
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/api/invoices/getinvoice/${id}`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                )
                 const invoice = response.data
 
                 // Set invoice data
@@ -182,7 +186,12 @@ const InvoiceEditLayer = () => {
             }
 
             // Send to API
-            await axios.put(`${process.env.REACT_APP_API_URL}/api/invoices/updateinvoice/${id}`, invoiceData)
+            const token = localStorage.getItem('token')
+            await axios.put(
+                `${process.env.REACT_APP_API_URL}/api/invoices/updateinvoice/${id}`,
+                invoiceData,
+                { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+            )
 
             setSuccess(true)
             setTimeout(() => {
@@ -471,7 +480,7 @@ const InvoiceEditLayer = () => {
                                                     className="form-control form-control-sm"
                                                 />
                                             </td>
-                                            <td className="text-muted">${item.total.toFixed(2)}</td>
+                                            <td className="text-muted">${(item.total ?? 0).toFixed(2)}</td>
                                             <td className="text-end">
                                                 <button className="btn btn-danger btn-sm" onClick={() => removeItem(item.id)}>
                                                     <Icon icon="ic:round-minus" />
@@ -489,7 +498,7 @@ const InvoiceEditLayer = () => {
                                             <tbody>
                                             <tr>
                                                 <th scope="row">Sub Total:</th>
-                                                <td>${subtotal.toFixed(2)}</td>
+                                                <td>${(subtotal ?? 0).toFixed(2)}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Discount:</th>
@@ -504,13 +513,13 @@ const InvoiceEditLayer = () => {
                                             </tr>
                                             <tr>
                                                 <th scope="row">Tax Amount:</th>
-                                                <td>${taxAmount.toFixed(2)}</td>
+                                                <td>${(taxAmount ?? 0).toFixed(2)}</td>
                                             </tr>
                                             </tbody>
                                             <tfoot>
                                             <tr className="text-info">
                                                 <th scope="row">Total:</th>
-                                                <td>${totalAmount.toFixed(2)}</td>
+                                                <td>${(totalAmount ?? 0).toFixed(2)}</td>
                                             </tr>
                                             </tfoot>
                                         </table>
@@ -526,4 +535,3 @@ const InvoiceEditLayer = () => {
 }
 
 export default InvoiceEditLayer
-
