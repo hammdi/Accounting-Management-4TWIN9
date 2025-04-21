@@ -2,6 +2,8 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {getCurrentUser} from "../services/authService";
 
 const TransactionAddLayer = () => {
@@ -43,7 +45,7 @@ const TransactionAddLayer = () => {
             setCompanies(response.data);
         } catch (error) {
             console.error('Error fetching companies:', error);
-            alert('Failed to fetch companies. Please try again.');
+            toast.error('Failed to fetch companies. Please try again.');
         }
     };
 
@@ -120,21 +122,23 @@ const TransactionAddLayer = () => {
             // Debug: log response for troubleshooting
             console.log('Add transaction response:', response.data);
             if (response.data.success) {
-                alert('Transaction added successfully!');
+                toast.success('Transaction added successfully!');
                 navigate('/transaction-list');
             } else {
                 throw new Error(response.data.message);
             }
         } catch (error) {
             console.error('Error adding transaction:', error);
-            alert(error.message || 'Failed to add transaction. Please try again.');
+            toast.error(error.message || 'Failed to add transaction. Please try again.');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="card">
+        <>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
+            <div className="card">
             <div className="card-header">
                 <div className="d-flex flex-wrap align-items-center justify-content-end gap-2">
                     <button
@@ -279,6 +283,7 @@ const TransactionAddLayer = () => {
                 </div>
             </div>
         </div>
+    </>
     );
 };
 

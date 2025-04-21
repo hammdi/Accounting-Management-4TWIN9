@@ -2,6 +2,9 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 
 const InvoiceListLayer = () => {
     const navigate = useNavigate();
@@ -17,6 +20,8 @@ const InvoiceListLayer = () => {
     const [selectAll, setSelectAll] = useState(false);
     const [editingStatus, setEditingStatus] = useState(null);
     const [expandedInvoice, setExpandedInvoice] = useState(null);
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+    const [invoiceToDelete, setInvoiceToDelete] = useState(null);
 
     // Fetch invoices from API
     useEffect(() => {
@@ -114,17 +119,29 @@ const InvoiceListLayer = () => {
         navigate(`/invoice-edit/${id}`);
     };
 
-    // Handle delete invoice
-    const handleDeleteInvoice = async (id) => {
-        if (window.confirm('Are you sure you want to delete this invoice?')) {
-            try {
-                await axios.delete(`${process.env.REACT_APP_API_URL}/api/invoices/deleteinvoice/${id}`);
-                // Refresh the invoice list
-                fetchInvoices();
-            } catch (err) {
-                console.error("Error deleting invoice:", err);
-                alert("Failed to delete invoice. Please try again.");
-            }
+    // Show confirm dialog for delete
+    const handleDeleteInvoice = (id) => {
+        setInvoiceToDelete(id);
+        setShowDeleteDialog(true);
+    };
+
+    // Actually perform delete after confirmation
+    const confirmDeleteInvoice = async () => {
+        if (!invoiceToDelete) return;
+        try {
+            const token = localStorage.getItem('token');
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/invoices/deleteinvoice/${invoiceToDelete}`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setShowDeleteDialog(false);
+            setInvoiceToDelete(null);
+            toast.success('Invoice deleted successfully');
+            fetchInvoices();
+        } catch (err) {
+            setShowDeleteDialog(false);
+            setInvoiceToDelete(null);
+            console.error("Error deleting invoice:", err);
+            toast.error("Failed to delete invoice. Please try again.");
         }
     };
 
@@ -154,7 +171,7 @@ const InvoiceListLayer = () => {
             setEditingStatus(null);
         } catch (err) {
             console.error("Error updating invoice status:", err);
-            alert("Failed to update invoice status. Please try again.");
+            toast.error("Failed to update invoice status. Please try again.");
         }
     };
 
@@ -265,20 +282,17 @@ const InvoiceListLayer = () => {
         };
 
 
-
-
-
-
-    return (
-
-
-        
-        <div className="card">
-
-
-
-
-
+        return (
+        <>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
+            <ConfirmDeleteDialog
+                show={showDeleteDialog}
+                onClose={() => { setShowDeleteDialog(false); setInvoiceToDelete(null); }}
+                onConfirm={confirmDeleteInvoice}
+                invoiceName={invoiceToDelete}
+            />
+            <div className="card">
+                {/* ... (rest of the JSX remains the same) */}
 
 
 
@@ -555,6 +569,7 @@ const InvoiceListLayer = () => {
                 )}
             </div>
         </div>
+        </>
     );
 };
 

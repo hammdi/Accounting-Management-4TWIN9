@@ -14,8 +14,8 @@ if (!process.env.MONGO_URI) {
     process.exit(1);
 }
 
-// Middleware
-app.use(express.json());
+// Middleware   app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(cors());
 
 // Import routes
