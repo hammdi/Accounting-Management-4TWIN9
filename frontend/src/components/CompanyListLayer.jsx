@@ -24,9 +24,11 @@ const CompanyListLayer = () => {
   const [modalLoading, setModalLoading] = useState(false);
   const [modalError, setModalError] = useState('');
 
+
   // Delete confirmation dialog state
   const [companyToDelete, setCompanyToDelete] = useState(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
 
   // Fetch companies from API
   const fetchCompanies = async () => {
@@ -209,10 +211,10 @@ const CompanyListLayer = () => {
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
-          <Link to="/company" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={() => toast.info('Implement add company modal or navigation here!')}>
             <Icon icon="mdi:plus" className="me-2" />
             Add Company
-          </Link>
+          </button>
         </div>
       </div>
       <div className="card-body">

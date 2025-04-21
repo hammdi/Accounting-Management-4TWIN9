@@ -5,12 +5,14 @@ exports.createInvoice = async (req, res) => {
     try {
         const invoice = new Invoice(req.body);
         await invoice.save();
+
         res.status(201).json({
             message: 'Invoice created successfully',
             invoice,
         });
     } catch (error) {
         console.error("Error during invoice creation:", error);
+
         res.status(400).json({ error: error.message });
     }
 };

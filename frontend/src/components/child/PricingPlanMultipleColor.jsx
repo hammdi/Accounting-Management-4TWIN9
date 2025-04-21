@@ -27,7 +27,6 @@ const PricingPlanMultipleColor = () => {
                                     id="pills-monthly-tab"
                                     data-bs-toggle="pill"
                                     data-bs-target="#pills-monthly"
-
                                     role="tab"
                                     aria-controls="pills-monthly"
                                     aria-selected="true"
@@ -41,7 +40,6 @@ const PricingPlanMultipleColor = () => {
                                     id="pills-yearly-tab"
                                     data-bs-toggle="pill"
                                     data-bs-target="#pills-yearly"
-
                                     role="tab"
                                     aria-controls="pills-yearly"
                                     aria-selected="false"
@@ -77,14 +75,13 @@ const PricingPlanMultipleColor = () => {
                                                 </div>
                                             </div>
                                             <p className="mt-16 mb-0 text-secondary-light mb-28">
-                                                Lorem ipsum dolor sit amet doloroli sitiol conse ctetur
-                                                adipiscing elit.{" "}
+                                                Perfect for small businesses and freelancers.
                                             </p>
                                             <h3 className="mb-24">
                                                 $99{" "}
                                                 <span className="fw-medium text-md text-secondary-light">
                                                     /monthly
-                                                </span>{" "}
+                                                </span>
                                             </h3>
                                             <span className="mb-20 fw-medium">What’s included</span>
                                             <ul>
@@ -96,7 +93,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        All analytics features
+                                                        Invoice management
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16 mb-16">
@@ -107,7 +104,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        Up to 250,000 tracked visits
+                                                        Basic transaction tracking
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16 mb-16">
@@ -118,7 +115,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        Normal support
+                                                        Fraud detection alerts
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16">
@@ -129,19 +126,18 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        Up to 3 team members
+                                                        Single user access
                                                     </span>
                                                 </li>
                                             </ul>
                                             <button
-
                                                 className="bg-lilac-600 bg-hover-lilac-700 text-white text-center border border-lilac-600 text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28"
-
                                             >
                                                 Get started
                                             </button>
                                         </div>
                                     </div>
+
                                     <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
                                         <div className="pricing-plan scale-item position-relative radius-24 overflow-hidden border bg-primary-600 text-white">
                                             <span className="bg-white bg-opacity-25 text-white radius-24 py-8 px-24 text-sm position-absolute end-0 top-0 z-1 rounded-start-top-0 rounded-end-bottom-0">
@@ -162,8 +158,7 @@ const PricingPlanMultipleColor = () => {
                                                 </div>
                                             </div>
                                             <p className="mt-16 mb-0 text-white mb-28">
-                                                Lorem ipsum dolor sit amet doloroli sitiol conse ctetur
-                                                adipiscing elit.{" "}
+                                                Advanced tools for growing businesses.
                                             </p>
                                             <h3 className="mb-24 text-white">
                                                 $199{" "}
@@ -181,7 +176,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-white text-lg">
-                                                        All analytics features
+                                                        Invoice and transaction management
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16 mb-16">
@@ -192,7 +187,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-white text-lg">
-                                                        Up to 250,000 tracked visits
+                                                        AI fraud detection
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16 mb-16">
@@ -203,7 +198,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-white text-lg">
-                                                        Normal support
+                                                        Multi-user access (up to 5 users)
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16">
@@ -214,14 +209,12 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-white text-lg">
-                                                        Up to 3 team members
+                                                        Priority support
                                                     </span>
                                                 </li>
                                             </ul>
                                             <button
-
                                                 className="bg-white text-primary-600 text-white text-center border border-white text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28"
-
                                             >
                                                 Get started
                                             </button>
@@ -238,14 +231,13 @@ const PricingPlanMultipleColor = () => {
                                                 </span>
                                                 <div className="">
                                                     <span className="fw-medium text-md text-secondary-light">
-                                                        For big companies
+                                                        For enterprises
                                                     </span>
                                                     <h6 className="mb-0">Enterprise</h6>
                                                 </div>
                                             </div>
                                             <p className="mt-16 mb-0 text-secondary-light mb-28">
-                                                Lorem ipsum dolor sit amet doloroli sitiol conse ctetur
-                                                adipiscing elit.{" "}
+                                                Comprehensive tools for large organizations.
                                             </p>
                                             <h3 className="mb-24">
                                                 $399{" "}
@@ -263,7 +255,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        All analytics features
+                                                        Advanced invoice and transaction analytics
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16 mb-16">
@@ -274,7 +266,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        Up to 250,000 tracked visits
+                                                        AI fraud detection and prevention
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16 mb-16">
@@ -285,7 +277,7 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        Normal support
+                                                        Unlimited users
                                                     </span>
                                                 </li>
                                                 <li className="d-flex align-items-center gap-16">
@@ -296,14 +288,12 @@ const PricingPlanMultipleColor = () => {
                                                         />
                                                     </span>
                                                     <span className="text-secondary-light text-lg">
-                                                        Up to 3 team members
+                                                        Dedicated account manager
                                                     </span>
                                                 </li>
                                             </ul>
                                             <button
-
                                                 className="bg-success-600 bg-hover-success-700 text-white text-center border border-success-600 text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28"
-
                                             >
                                                 Get started
                                             </button>
@@ -311,6 +301,186 @@ const PricingPlanMultipleColor = () => {
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
+
+
+                            <div className="tab-pane fade" id="pills-yearly" role="tabpanel" aria-labelledby="pills-yearly-tab" tabIndex={0}>
+    <div className="row gy-4">
+        <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
+            <div className="pricing-plan position-relative radius-24 overflow-hidden border bg-lilac-100">
+                <div className="d-flex align-items-center gap-16">
+                    <span className="w-72-px h-72-px d-flex justify-content-center align-items-center radius-16 bg-base">
+                        <img src="assets/images/pricing/price-icon1.png" alt="" />
+                    </span>
+                    <div className="">
+                        <span className="fw-medium text-md text-secondary-light">For individuals</span>
+                        <h6 className="mb-0">Basic</h6>
+                    </div>
+                </div>
+                <p className="mt-16 mb-0 text-secondary-light mb-28">
+                    Perfect for small businesses and freelancers.
+                </p>
+                <h3 className="mb-24">
+                    $1,069{" "}
+                    <span className="fw-medium text-md text-secondary-light">/yearly</span>
+                </h3>
+                <span className="mb-20 fw-medium">What’s included</span>
+                <ul>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Invoice management</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Basic transaction tracking</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Fraud detection alerts</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Single user access</span>
+                    </li>
+                </ul>
+                <button className="bg-lilac-600 bg-hover-lilac-700 text-white text-center border border-lilac-600 text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28">
+                    Get started
+                </button>
+            </div>
+        </div>
+        <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
+            <div className="pricing-plan scale-item position-relative radius-24 overflow-hidden border bg-primary-600 text-white">
+                <span className="bg-white bg-opacity-25 text-white radius-24 py-8 px-24 text-sm position-absolute end-0 top-0 z-1 rounded-start-top-0 rounded-end-bottom-0">
+                    Popular
+                </span>
+                <div className="d-flex align-items-center gap-16">
+                    <span className="w-72-px h-72-px d-flex justify-content-center align-items-center radius-16 bg-base">
+                        <img src="assets/images/pricing/price-icon2.png" alt="" />
+                    </span>
+                    <div className="">
+                        <span className="fw-medium text-md text-white">For startups</span>
+                        <h6 className="mb-0 text-white">Pro</h6>
+                    </div>
+                </div>
+                <p className="mt-16 mb-0 text-white mb-28">
+                    Advanced tools for growing businesses.
+                </p>
+                <h3 className="mb-24 text-white">
+                    $2,149{" "}
+                    <span className="fw-medium text-md text-white">/yearly</span>
+                </h3>
+                <span className="mb-20 fw-medium">What’s included</span>
+                <ul>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
+                            <Icon icon="iconamoon:check-light" className="text-lg   " />
+                        </span>
+                        <span className="text-white text-lg">Invoice and transaction management</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
+                            <Icon icon="iconamoon:check-light" className="text-lg   " />
+                        </span>
+                        <span className="text-white text-lg">AI fraud detection</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
+                            <Icon icon="iconamoon:check-light" className="text-lg   " />
+                        </span>
+                        <span className="text-white text-lg">Multi-user access (up to 5 users)</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
+                            <Icon icon="iconamoon:check-light" className="text-lg   " />
+                        </span>
+                        <span className="text-white text-lg">Priority support</span>
+                    </li>
+                </ul>
+                <button className="bg-white text-primary-600 text-white text-center border border-white text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28">
+                    Get started
+                </button>
+            </div>
+        </div>
+        <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
+            <div className="pricing-plan position-relative radius-24 overflow-hidden border bg-success-100">
+                <div className="d-flex align-items-center gap-16">
+                    <span className="w-72-px h-72-px d-flex justify-content-center align-items-center radius-16 bg-base">
+                        <img src="assets/images/pricing/price-icon3.png" alt="" />
+                    </span>
+                    <div className="">
+                        <span className="fw-medium text-md text-secondary-light">For enterprises</span>
+                        <h6 className="mb-0">Enterprise</h6>
+                    </div>
+                </div>
+                <p className="mt-16 mb-0 text-secondary-light mb-28">
+                    Comprehensive tools for large organizations.
+                </p>
+                <h3 className="mb-24">
+                    $4,299{" "}
+                    <span className="fw-medium text-md text-secondary-light">/yearly</span>
+                </h3>
+                <span className="mb-20 fw-medium">What’s included</span>
+                <ul>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg   " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Advanced invoice and transaction analytics</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg   " />
+                        </span>
+                        <span className="text-secondary-light text-lg">AI fraud detection and prevention</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16 mb-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg   " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Unlimited users</span>
+                    </li>
+                    <li className="d-flex align-items-center gap-16">
+                        <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
+                            <Icon icon="iconamoon:check-light" className="text-white text-lg   " />
+                        </span>
+                        <span className="text-secondary-light text-lg">Dedicated account manager</span>
+                    </li>
+                </ul>
+                <button className="bg-success-600 bg-hover-success-700 text-white text-center border border-success-600 text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28">
+                    Get started
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <div
                                 className="tab-pane fade"
                                 id="pills-yearly"
@@ -318,256 +488,7 @@ const PricingPlanMultipleColor = () => {
                                 aria-labelledby="pills-yearly-tab"
                                 tabIndex={0}
                             >
-                                <div className="row gy-4">
-                                    <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
-                                        <div className="pricing-plan position-relative radius-24 overflow-hidden border bg-lilac-100">
-                                            <div className="d-flex align-items-center gap-16">
-                                                <span className="w-72-px h-72-px d-flex justify-content-center align-items-center radius-16 bg-base">
-                                                    <img
-                                                        src="assets/images/pricing/price-icon1.png"
-                                                        alt=""
-                                                    />
-                                                </span>
-                                                <div className="">
-                                                    <span className="fw-medium text-md text-secondary-light">
-                                                        For individuals
-                                                    </span>
-                                                    <h6 className="mb-0">Basic</h6>
-                                                </div>
-                                            </div>
-                                            <p className="mt-16 mb-0 text-secondary-light mb-28">
-                                                Lorem ipsum dolor sit amet doloroli sitiol conse ctetur
-                                                adipiscing elit.{" "}
-                                            </p>
-                                            <h3 className="mb-24">
-                                                $399{" "}
-                                                <span className="fw-medium text-md text-secondary-light">
-                                                    /monthly
-                                                </span>
-                                            </h3>
-                                            <span className="mb-20 fw-medium">What’s included</span>
-                                            <ul>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        All analytics features
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        Up to 250,000 tracked visits
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        Normal support
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-lilac-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        Up to 3 team members
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <button
-
-                                                className="bg-lilac-600 bg-hover-lilac-700 text-white text-center border border-lilac-600 text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28"
-
-                                            >
-                                                Get started
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
-                                        <div className="pricing-plan scale-item position-relative radius-24 px-40 py-50 overflow-hidden border bg-primary-600 text-white">
-                                            <span className="bg-white bg-opacity-25 text-white radius-24 py-8 px-24 text-sm position-absolute end-0 top-0 z-1 rounded-start-top-0 rounded-end-bottom-0">
-                                                Popular
-                                            </span>
-                                            <div className="d-flex align-items-center gap-16">
-                                                <span className="w-72-px h-72-px d-flex justify-content-center align-items-center radius-16 bg-base">
-                                                    <img
-                                                        src="assets/images/pricing/price-icon2.png"
-                                                        alt=""
-                                                    />
-                                                </span>
-                                                <div className="">
-                                                    <span className="fw-medium text-md text-white">
-                                                        For startups
-                                                    </span>
-                                                    <h6 className="mb-0 text-white">Pro</h6>
-                                                </div>
-                                            </div>
-                                            <p className="mt-16 mb-0 text-white mb-28">
-                                                Lorem ipsum dolor sit amet doloroli sitiol conse ctetur
-                                                adipiscing elit.{" "}
-                                            </p>
-                                            <h3 className="mb-24 text-white">
-                                                $699{" "}
-                                                <span className="fw-medium text-md text-white">
-                                                    /monthly
-                                                </span>
-                                            </h3>
-                                            <span className="mb-20 fw-medium">What’s included</span>
-                                            <ul>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-white text-lg">
-                                                        All analytics features
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-white text-lg">
-                                                        Up to 250,000 tracked visits
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-white text-lg">
-                                                        Normal support
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-white rounded-circle text-primary-600">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-white text-lg">
-                                                        Up to 3 team members
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <button
-
-                                                className="bg-white text-primary-600 text-white text-center border border-white text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28"
-
-                                            >
-                                                Get started
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="col-xxl-4 col-sm-6 pricing-plan-wrapper">
-                                        <div className="pricing-plan position-relative radius-24 overflow-hidden border bg-success-100">
-                                            <div className="d-flex align-items-center gap-16">
-                                                <span className="w-72-px h-72-px d-flex justify-content-center align-items-center radius-16 bg-base">
-                                                    <img
-                                                        src="assets/images/pricing/price-icon3.png"
-                                                        alt=""
-                                                    />
-                                                </span>
-                                                <div className="">
-                                                    <span className="fw-medium text-md text-secondary-light">
-                                                        For big companies
-                                                    </span>
-                                                    <h6 className="mb-0">Enterprise</h6>
-                                                </div>
-                                            </div>
-                                            <p className="mt-16 mb-0 text-secondary-light mb-28">
-                                                Lorem ipsum dolor sit amet doloroli sitiol conse ctetur
-                                                adipiscing elit.{" "}
-                                            </p>
-                                            <h3 className="mb-24">
-                                                $999{" "}
-                                                <span className="fw-medium text-md text-secondary-light">
-                                                    /monthly
-                                                </span>
-                                            </h3>
-                                            <span className="mb-20 fw-medium">What’s included</span>
-                                            <ul>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        All analytics features
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        Up to 250,000 tracked visits
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16 mb-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        Normal support
-                                                    </span>
-                                                </li>
-                                                <li className="d-flex align-items-center gap-16">
-                                                    <span className="w-24-px h-24-px d-flex justify-content-center align-items-center bg-success-600 rounded-circle">
-                                                        <Icon
-                                                            icon="iconamoon:check-light"
-                                                            className="text-white text-lg   "
-                                                        />
-                                                    </span>
-                                                    <span className="text-secondary-light text-lg">
-                                                        Up to 3 team members
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <button
-
-                                                className="bg-success-600 bg-hover-success-700 text-white text-center border border-success-600 text-sm btn-sm px-12 py-10 w-100 radius-8 mt-28"
-                                            >
-                                                Get started
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/* Yearly plans can be similarly updated */}
                             </div>
                         </div>
                     </div>

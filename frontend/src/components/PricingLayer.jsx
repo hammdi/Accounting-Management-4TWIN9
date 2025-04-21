@@ -10,7 +10,7 @@ const PricingLayer = () => {
 
 
             {/* SimplePricingPlan */}
-            <SimplePricingPlan />
+          {/*  <SimplePricingPlan /> */}
         </>
 
     )

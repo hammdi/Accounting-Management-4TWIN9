@@ -233,6 +233,7 @@ function App() {
         <Route exact path='/users-grid' element={<UsersGridPage />} />
         <Route exact path='/users-list' element={<UsersListPage />} />
         <Route exact path='/view-details' element={<ViewDetailsPage />} />
+        <Route exact path="/view-details/:emailId" element={<ViewDetailsPage />} />
         <Route exact path='/video-generator' element={<VideoGeneratorPage />} />
         <Route exact path='/videos' element={<VideosPage />} />
         <Route exact path='/view-profile' element={<ViewProfilePage />} />

@@ -2,8 +2,10 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState, useEffect } from 'react';
 import { Link, /*useNavigate*/ } from 'react-router-dom';
 import axios from 'axios';
+
 import { toast, ToastContainer } from 'react-toastify';
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
+
 
 const TransactionListLayer = () => {
     const [transactions, setTransactions] = useState([]);
@@ -64,6 +66,7 @@ const TransactionListLayer = () => {
 
     // Show popup for confirmation
     const handleDelete = (id) => {
+
         setTransactionToDelete(id);
         setShowDeleteDialog(true);
     };
@@ -89,6 +92,7 @@ const TransactionListLayer = () => {
         } finally {
             setShowDeleteDialog(false);
             setTransactionToDelete(null);
+
         }
     };
 
@@ -221,9 +225,11 @@ const TransactionListLayer = () => {
                         </Link>
                     </div>
                 </div>
+
                 <div className="card-body" style={{overflowX: 'auto'}}>
                     <table className="table bordered-table mb-0" style={{minWidth: '900px'}}>
                         <thead>
+
                             <tr>
                                 <th scope="col">#</th>
 <th scope="col">Company</th>

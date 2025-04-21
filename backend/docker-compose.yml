@@ -17,3 +17,19 @@ services:
       - "27017:27017"
     volumes:
       - ./data/db:/data/db
+
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    tty: true
+    entrypoint: /bin/bash
+    command: -c "ollama serve & sleep 5 && ollama pull llama3 && wait"
+
+volumes:
+  ollama_data:

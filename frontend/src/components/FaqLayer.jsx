@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const FaqLayer = () => {
     return (
@@ -7,15 +7,13 @@ const FaqLayer = () => {
                 <div className="responsive-padding-40-150 bg-light-pink">
                     <div className="row gy-4 align-items-center">
                         <div className="col-xl-7">
-                            <h4 className="mb-20">Frequently asked questions.</h4>
+                            <h4 className="mb-20">Frequently Asked Questions</h4>
                             <p className="mb-0 text-secondary-light max-w-634-px text-xl">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard du text ever
-                                since the 1500s, when an unkn
+                                Find answers to the most common questions about our accounting management system.
                             </p>
                         </div>
                         <div className="col-xl-5 d-xl-block d-none">
-                            <img src="assets/images/faq-img.png" alt="" />
+                            <img src="assets/images/faq-img.png" alt="FAQ Illustration" />
                         </div>
                     </div>
                 </div>
@@ -31,98 +29,85 @@ const FaqLayer = () => {
                         >
                             <button
                                 className="nav-link text-secondary-light fw-semibold text-xl px-0 py-16 border-bottom active"
-                                id="v-pills-about-us-tab"
+                                id="v-pills-general-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#v-pills-about-us"
+                                data-bs-target="#v-pills-general"
                                 type="button"
                                 role="tab"
-                                aria-controls="v-pills-about-us"
+                                aria-controls="v-pills-general"
                                 aria-selected="true"
                             >
-                                About Us
+                                General
                             </button>
                             <button
                                 className="nav-link text-secondary-light fw-semibold text-xl px-0 py-16 border-bottom"
-                                id="v-pills-ux-ui-tab"
+                                id="v-pills-invoices-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#v-pills-ux-ui"
+                                data-bs-target="#v-pills-invoices"
                                 type="button"
                                 role="tab"
-                                aria-controls="v-pills-ux-ui"
+                                aria-controls="v-pills-invoices"
                                 aria-selected="false"
                             >
-                                UX UI Design
+                                Invoices
                             </button>
                             <button
                                 className="nav-link text-secondary-light fw-semibold text-xl px-0 py-16 border-bottom"
-                                id="v-pills-development-tab"
+                                id="v-pills-reports-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#v-pills-development"
+                                data-bs-target="#v-pills-reports"
                                 type="button"
                                 role="tab"
-                                aria-controls="v-pills-development"
+                                aria-controls="v-pills-reports"
                                 aria-selected="false"
                             >
-                                Development
-                            </button>
-                            <button
-                                className="nav-link text-secondary-light fw-semibold text-xl px-0 py-16 border-bottom"
-                                id="v-pills-use-case-tab"
-                                data-bs-toggle="pill"
-                                data-bs-target="#v-pills-use-case"
-                                type="button"
-                                role="tab"
-                                aria-controls="v-pills-use-case"
-                                aria-selected="false"
-                            >
-                                How to can i use WowDash?{" "}
+                                Reports
                             </button>
                             <button
                                 className="nav-link text-secondary-light fw-semibold text-xl px-0 py-16"
-                                id="v-pills-use-agency-tab"
+                                id="v-pills-security-tab"
                                 data-bs-toggle="pill"
-                                data-bs-target="#v-pills-use-agency"
+                                data-bs-target="#v-pills-security"
                                 type="button"
                                 role="tab"
-                                aria-controls="v-pills-use-agency"
+                                aria-controls="v-pills-security"
                                 aria-selected="false"
                             >
-                                Can I use my agency?
+                                Security
                             </button>
                         </div>
                     </div>
                     <div className="col-lg-8">
                         <div className="tab-content" id="v-pills-tabContent">
+                            {/* General Tab */}
                             <div
                                 className="tab-pane fade show active"
-                                id="v-pills-about-us"
+                                id="v-pills-general"
                                 role="tabpanel"
-                                aria-labelledby="v-pills-about-us-tab"
+                                aria-labelledby="v-pills-general-tab"
                                 tabIndex={0}
                             >
-                                <div className="accordion" id="accordionExample">
+                                <div className="accordion" id="accordionGeneral">
                                     <div className="accordion-item">
                                         <h2 className="accordion-header">
                                             <button
                                                 className="accordion-button text-primary-light text-xl"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#collapseOne"
+                                                data-bs-target="#general-collapseOne"
                                                 aria-expanded="true"
-                                                aria-controls="collapseOne"
+                                                aria-controls="general-collapseOne"
                                             >
-                                                Is there a free trial available?
+                                                What is an accounting management system?
                                             </button>
                                         </h2>
                                         <div
-                                            id="collapseOne"
+                                            id="general-collapseOne"
                                             className="accordion-collapse collapse show"
-                                            data-bs-parent="#accordionExample"
+                                            data-bs-parent="#accordionGeneral"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                An accounting management system is a software solution designed to help businesses manage their financial transactions, generate reports, and ensure compliance with accounting standards.
                                             </div>
                                         </div>
                                     </div>
@@ -132,157 +117,55 @@ const FaqLayer = () => {
                                                 className="accordion-button text-primary-light text-xl collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#collapseTwo"
+                                                data-bs-target="#general-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="collapseTwo"
+                                                aria-controls="general-collapseTwo"
                                             >
-                                                Can I change my plan later?
+                                                Can I customize the system for my business needs?
                                             </button>
                                         </h2>
                                         <div
-                                            id="collapseTwo"
+                                            id="general-collapseTwo"
                                             className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExample"
+                                            data-bs-parent="#accordionGeneral"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseThree"
-                                                aria-expanded="false"
-                                                aria-controls="collapseThree"
-                                            >
-                                                What is your cancellation policy?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="collapseThree"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExample"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseFour"
-                                                aria-expanded="false"
-                                                aria-controls="collapseFour"
-                                            >
-                                                Can other info be added to an invoice?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="collapseFour"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExample"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseFive"
-                                                aria-expanded="false"
-                                                aria-controls="collapseFive"
-                                            >
-                                                How does billing work?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="collapseFive"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExample"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseSix"
-                                                aria-expanded="false"
-                                                aria-controls="collapseSix"
-                                            >
-                                                How do I change my account email?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="collapseSix"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExample"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                Yes, our system is highly customizable to fit the unique requirements of your business, including custom reports, workflows, and integrations.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Invoices Tab */}
                             <div
                                 className="tab-pane fade"
-                                id="v-pills-ux-ui"
+                                id="v-pills-invoices"
                                 role="tabpanel"
-                                aria-labelledby="v-pills-ux-ui-tab"
+                                aria-labelledby="v-pills-invoices-tab"
                                 tabIndex={0}
                             >
-                                <div className="accordion" id="accordionExampleTwo">
+                                <div className="accordion" id="accordionInvoices">
                                     <div className="accordion-item">
                                         <h2 className="accordion-header">
                                             <button
                                                 className="accordion-button text-primary-light text-xl"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#c-1"
+                                                data-bs-target="#invoices-collapseOne"
                                                 aria-expanded="true"
-                                                aria-controls="c-1"
+                                                aria-controls="invoices-collapseOne"
                                             >
-                                                Is there a free trial available?
+                                                How do I create an invoice?
                                             </button>
                                         </h2>
                                         <div
-                                            id="c-1"
+                                            id="invoices-collapseOne"
                                             className="accordion-collapse collapse show"
-                                            data-bs-parent="#accordionExampleTwo"
+                                            data-bs-parent="#accordionInvoices"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                You can create an invoice by navigating to the "Invoices" section, clicking "Create New Invoice," and filling in the required details such as client information, items, and amounts.
                                             </div>
                                         </div>
                                     </div>
@@ -292,157 +175,55 @@ const FaqLayer = () => {
                                                 className="accordion-button text-primary-light text-xl collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#c-2"
+                                                data-bs-target="#invoices-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="c-2"
+                                                aria-controls="invoices-collapseTwo"
                                             >
-                                                Can I change my plan later?
+                                                Can I track unpaid invoices?
                                             </button>
                                         </h2>
                                         <div
-                                            id="c-2"
+                                            id="invoices-collapseTwo"
                                             className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleTwo"
+                                            data-bs-parent="#accordionInvoices"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-3"
-                                                aria-expanded="false"
-                                                aria-controls="c-3"
-                                            >
-                                                What is your cancellation policy?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-3"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleTwo"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-4"
-                                                aria-expanded="false"
-                                                aria-controls="c-4"
-                                            >
-                                                Can other info be added to an invoice?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-4"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleTwo"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-5"
-                                                aria-expanded="false"
-                                                aria-controls="c-5"
-                                            >
-                                                How does billing work?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-5"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleTwo"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-6"
-                                                aria-expanded="false"
-                                                aria-controls="c-6"
-                                            >
-                                                How do I change my account email?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-6"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleTwo"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                Yes, the system provides a dashboard to track unpaid invoices, their due dates, and send reminders to clients.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Reports Tab */}
                             <div
                                 className="tab-pane fade"
-                                id="v-pills-development"
+                                id="v-pills-reports"
                                 role="tabpanel"
-                                aria-labelledby="v-pills-development-tab"
+                                aria-labelledby="v-pills-reports-tab"
                                 tabIndex={0}
                             >
-                                <div className="accordion" id="accordionExampleThree">
+                                <div className="accordion" id="accordionReports">
                                     <div className="accordion-item">
                                         <h2 className="accordion-header">
                                             <button
                                                 className="accordion-button text-primary-light text-xl"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#c-7"
+                                                data-bs-target="#reports-collapseOne"
                                                 aria-expanded="true"
-                                                aria-controls="c-7"
+                                                aria-controls="reports-collapseOne"
                                             >
-                                                Is there a free trial available?
+                                                What types of reports can I generate?
                                             </button>
                                         </h2>
                                         <div
-                                            id="c-7"
+                                            id="reports-collapseOne"
                                             className="accordion-collapse collapse show"
-                                            data-bs-parent="#accordionExampleThree"
+                                            data-bs-parent="#accordionReports"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                You can generate various reports, including profit and loss statements, balance sheets, cash flow statements, and tax reports.
                                             </div>
                                         </div>
                                     </div>
@@ -452,157 +233,55 @@ const FaqLayer = () => {
                                                 className="accordion-button text-primary-light text-xl collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#c-8"
+                                                data-bs-target="#reports-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="c-8"
+                                                aria-controls="reports-collapseTwo"
                                             >
-                                                Can I change my plan later?
+                                                Can I export reports to Excel or PDF?
                                             </button>
                                         </h2>
                                         <div
-                                            id="c-8"
+                                            id="reports-collapseTwo"
                                             className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleThree"
+                                            data-bs-parent="#accordionReports"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-9"
-                                                aria-expanded="false"
-                                                aria-controls="c-9"
-                                            >
-                                                What is your cancellation policy?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-9"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleThree"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-10"
-                                                aria-expanded="false"
-                                                aria-controls="c-10"
-                                            >
-                                                Can other info be added to an invoice?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-10"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleThree"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-11"
-                                                aria-expanded="false"
-                                                aria-controls="c-11"
-                                            >
-                                                How does billing work?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-11"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleThree"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-12"
-                                                aria-expanded="false"
-                                                aria-controls="c-12"
-                                            >
-                                                How do I change my account email?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-12"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleThree"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                Yes, all reports can be exported to Excel or PDF formats for easy sharing and analysis.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Security Tab */}
                             <div
                                 className="tab-pane fade"
-                                id="v-pills-use-case"
+                                id="v-pills-security"
                                 role="tabpanel"
-                                aria-labelledby="v-pills-use-case-tab"
+                                aria-labelledby="v-pills-security-tab"
                                 tabIndex={0}
                             >
-                                <div className="accordion" id="accordionExampleFour">
+                                <div className="accordion" id="accordionSecurity">
                                     <div className="accordion-item">
                                         <h2 className="accordion-header">
                                             <button
                                                 className="accordion-button text-primary-light text-xl"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#c-13"
+                                                data-bs-target="#security-collapseOne"
                                                 aria-expanded="true"
-                                                aria-controls="c-13"
+                                                aria-controls="security-collapseOne"
                                             >
-                                                Is there a free trial available?
+                                                How secure is my financial data?
                                             </button>
                                         </h2>
                                         <div
-                                            id="c-13"
+                                            id="security-collapseOne"
                                             className="accordion-collapse collapse show"
-                                            data-bs-parent="#accordionExampleFour"
+                                            data-bs-parent="#accordionSecurity"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                Your financial data is encrypted and stored securely on our servers, ensuring compliance with industry standards.
                                             </div>
                                         </div>
                                     </div>
@@ -612,282 +291,20 @@ const FaqLayer = () => {
                                                 className="accordion-button text-primary-light text-xl collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#c-14"
+                                                data-bs-target="#security-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="c-14"
+                                                aria-controls="security-collapseTwo"
                                             >
-                                                Can I change my plan later?
+                                                Can I control user access to sensitive data?
                                             </button>
                                         </h2>
                                         <div
-                                            id="c-14"
+                                            id="security-collapseTwo"
                                             className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFour"
+                                            data-bs-parent="#accordionSecurity"
                                         >
                                             <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-15"
-                                                aria-expanded="false"
-                                                aria-controls="c-15"
-                                            >
-                                                What is your cancellation policy?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-15"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFour"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-16"
-                                                aria-expanded="false"
-                                                aria-controls="c-16"
-                                            >
-                                                Can other info be added to an invoice?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-16"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFour"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-17"
-                                                aria-expanded="false"
-                                                aria-controls="c-17"
-                                            >
-                                                How does billing work?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-17"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFour"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-18"
-                                                aria-expanded="false"
-                                                aria-controls="c-18"
-                                            >
-                                                How do I change my account email?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-18"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFour"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                className="tab-pane fade"
-                                id="v-pills-use-agency"
-                                role="tabpanel"
-                                aria-labelledby="v-pills-use-agency-tab"
-                                tabIndex={0}
-                            >
-                                <div className="accordion" id="accordionExampleFIve">
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-19"
-                                                aria-expanded="true"
-                                                aria-controls="c-19"
-                                            >
-                                                Is there a free trial available?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-19"
-                                            className="accordion-collapse collapse show"
-                                            data-bs-parent="#accordionExampleFIve"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-20"
-                                                aria-expanded="false"
-                                                aria-controls="c-20"
-                                            >
-                                                Can I change my plan later?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-20"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFIve"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-21"
-                                                aria-expanded="false"
-                                                aria-controls="c-21"
-                                            >
-                                                What is your cancellation policy?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-21"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFIve"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-22"
-                                                aria-expanded="false"
-                                                aria-controls="c-22"
-                                            >
-                                                Can other info be added to an invoice?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-22"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFIve"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-23"
-                                                aria-expanded="false"
-                                                aria-controls="c-23"
-                                            >
-                                                How does billing work?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-23"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFIve"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="accordion-item">
-                                        <h2 className="accordion-header">
-                                            <button
-                                                className="accordion-button text-primary-light text-xl collapsed"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#c-24"
-                                                aria-expanded="false"
-                                                aria-controls="c-24"
-                                            >
-                                                How do I change my account email?
-                                            </button>
-                                        </h2>
-                                        <div
-                                            id="c-24"
-                                            className="accordion-collapse collapse"
-                                            data-bs-parent="#accordionExampleFIve"
-                                        >
-                                            <div className="accordion-body">
-                                                Yes, you can try us for free for 30 days. If you want, we’ll
-                                                provide you with a free, personalized 30-minute onboarding
-                                                call to get you up and running as soon as possible.
+                                                Yes, you can set user roles and permissions to control access to sensitive financial data.
                                             </div>
                                         </div>
                                     </div>
@@ -898,8 +315,7 @@ const FaqLayer = () => {
                 </div>
             </div>
         </div>
+    );
+};
 
-    )
-}
-
-export default FaqLayer
+export default FaqLayer;

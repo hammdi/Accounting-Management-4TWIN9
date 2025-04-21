@@ -27,6 +27,7 @@
     "datatables.net-dt": "^2.1.8",
     "date-fns": "^4.1.0",
     "flatpickr": "^4.6.13",
+    "gapi-script": "^1.2.0",
     "highlight.js": "^11.10.0",
     "html2canvas": "^1.4.1",
     "isotope-layout": "^3.0.6",
