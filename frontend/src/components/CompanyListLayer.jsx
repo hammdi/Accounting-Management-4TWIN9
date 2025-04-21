@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -16,11 +15,23 @@ const CompanyListLayer = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState(new Set());
 
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalCompany, setModalCompany] = useState(null);
+  const [modalMode, setModalMode] = useState('view'); // 'view' or 'edit'
+  const [modalLoading, setModalLoading] = useState(false);
+  const [modalError, setModalError] = useState('');
+
   // Fetch companies from API
   const fetchCompanies = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/getallcompanies`);
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/mycompanies`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setCompanies(response.data);
       setError('');
     } catch (err) {
@@ -36,7 +47,14 @@ const CompanyListLayer = () => {
     if (!window.confirm('Are you sure you want to delete this company?')) return;
 
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/companies/deletecompany/${companyId}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/companies/deletecompany/${companyId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
       toast.success('Company deleted successfully');
       fetchCompanies(); // Refresh list
     } catch (err) {
@@ -176,10 +194,10 @@ const CompanyListLayer = () => {
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
-          <Link to="/company" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={() => toast.info('Implement add company modal or navigation here!')}>
             <Icon icon="mdi:plus" className="me-2" />
             Add Company
-          </Link>
+          </button>
         </div>
       </div>
       <div className="card-body">
@@ -244,16 +262,28 @@ const CompanyListLayer = () => {
                     </td>
                     <td>
                         <div className="d-flex gap-2">
-                          <Link to={`/company/${company._id}`}
+                          <button
+                            type="button"
                             className="w-32-px h-32-px me-8 bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center"
+                            onClick={() => {
+                              setModalCompany(company);
+                              setModalMode('view');
+                              setModalOpen(true);
+                            }}
                           >
                             <Icon icon="iconamoon:eye-light" />
-                          </Link>
-                          <Link to={`/company/${company._id}/edit`} 
+                          </button>
+                          <button
+                            type="button"
                             className="w-32-px h-32-px me-8 bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
+                            onClick={() => {
+                              setModalCompany(company);
+                              setModalMode('edit');
+                              setModalOpen(true);
+                            }}
                           >
                             <Icon icon="lucide:edit" />
-                          </Link>
+                          </button>
                           <button
                             onClick={() => handleDelete(company._id)}
                             className="w-32-px h-32-px me-8 bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
@@ -294,7 +324,145 @@ const CompanyListLayer = () => {
           </div>
         )}
       </div>
-    </div>
+    {/* Modal for view/edit company */}
+    {modalOpen && modalCompany && (
+      <div className="modal show fade d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}>
+        <div className="modal-dialog modal-lg modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">
+                {modalMode === 'edit' ? 'Edit Company' : 'Company Details'}
+              </h5>
+              <button type="button" className="btn-close" onClick={() => { setModalOpen(false); setModalError(''); }}></button>
+            </div>
+            <div className="modal-body">
+              {modalError && <div className="alert alert-danger">{modalError}</div>}
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
+                  {modalMode === 'edit' ? (
+                    <input
+                      className="form-control"
+                      name="name"
+                      value={modalCompany.name}
+                      onChange={e => setModalCompany(prev => ({ ...prev, name: e.target.value }))}
+                    />
+                  ) : (
+                    <div>{modalCompany.name}</div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Tax Number</label>
+                  {modalMode === 'edit' ? (
+                    <input
+                      className="form-control"
+                      name="taxNumber"
+                      value={modalCompany.taxNumber}
+                      onChange={e => setModalCompany(prev => ({ ...prev, taxNumber: e.target.value }))}
+                    />
+                  ) : (
+                    <div>{modalCompany.taxNumber}</div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Address</label>
+                  {modalMode === 'edit' ? (
+                    <input
+                      className="form-control"
+                      name="address"
+                      value={modalCompany.address}
+                      onChange={e => setModalCompany(prev => ({ ...prev, address: e.target.value }))}
+                    />
+                  ) : (
+                    <div>{modalCompany.address}</div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Phone</label>
+                  {modalMode === 'edit' ? (
+                    <input
+                      className="form-control"
+                      name="phone"
+                      value={modalCompany.phone}
+                      onChange={e => setModalCompany(prev => ({ ...prev, phone: e.target.value }))}
+                    />
+                  ) : (
+                    <div>{modalCompany.phone}</div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Status</label>
+                  {modalMode === 'edit' ? (
+                    <select
+                      className="form-select"
+                      name="status"
+                      value={modalCompany.status}
+                      onChange={e => setModalCompany(prev => ({ ...prev, status: e.target.value }))}
+                    >
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </select>
+                  ) : (
+                    <div>{modalCompany.status}</div>
+                  )}
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              {modalMode === 'edit' ? (
+                <>
+                  <button type="button" className="btn btn-success" onClick={async () => {
+                    setModalLoading(true);
+                    setModalError('');
+                    try {
+                      const token = localStorage.getItem('token');
+                      const response = await axios.put(
+                        `${process.env.REACT_APP_API_URL}/api/companies/updatecompany/${modalCompany._id}`,
+                        modalCompany,
+                        {
+                          headers: {
+                            Authorization: `Bearer ${token}`
+                          }
+                        }
+                      );
+                      // Accept either { success: true } or direct company object as a valid update
+                      if ((response.data && response.data.success) || (response.status === 200 && response.data)) {
+                        toast.success('Company updated successfully');
+                        setModalOpen(false);
+                        // Optimistically update the local list to avoid confusion
+                        setCompanies(prev => prev.map(c => c._id === modalCompany._id ? { ...c, ...modalCompany } : c));
+                        fetchCompanies();
+                      } else {
+                        setModalError(response.data.message || 'Failed to update company');
+                      }
+                    } catch (err) {
+                      setModalError(err.response?.data?.message || 'Failed to update company');
+                    } finally {
+                      setModalLoading(false);
+                    }
+                  }} disabled={modalLoading}>
+                    {modalLoading ? 'Saving...' : 'Save'}
+                  </button>
+                  <button type="button" className="btn btn-secondary" onClick={() => setModalOpen(false)} disabled={modalLoading}>
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button type="button" className="btn btn-primary" onClick={() => setModalMode('edit')}>
+                    Edit
+                  </button>
+                  <button type="button" className="btn btn-secondary" onClick={() => setModalOpen(false)}>
+                    Close
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
   );
 };
 

@@ -134,7 +134,16 @@ const InvoiceAddLayer = () => {
             }
 
             // Send to API
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/invoices/addinvoice`, invoiceData)
+            const token = localStorage.getItem('token');
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/invoices/addinvoice`,
+                invoiceData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
 
             if (response.data) {
                 setSuccess(true)

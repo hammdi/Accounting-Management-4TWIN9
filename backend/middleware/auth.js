@@ -8,22 +8,7 @@ const auth = async (req, res, next) => {
         const token = req.header('Authorization')?.replace('Bearer ', '');
         
         if (!token) {
-            // For development, create a test user if none exists
-            let testUser = await User.findOne({ email: 'test@example.com' });
-            
-            if (!testUser) {
-                testUser = await User.create({
-                    name: 'Test User',
-                    email: 'test@example.com',
-                    password: 'password123',
-                    role: 'user',
-                    phone: '+1234567890',
-                    status: 'Active'
-                });
-            }
-            
-            req.user = testUser;
-            return next();
+            return res.status(401).json({ success: false, message: 'Authentication token missing' });
         }
 
         // Verify token

@@ -3,17 +3,55 @@ const Invoice = require('../models/Invoice');
 // @desc Create a new invoice
 exports.createInvoice = async (req, res) => {
     try {
-        const invoiceData = { ...req.body, issuedBy: req.user._id };
-        const invoice = new Invoice(invoiceData);
+        const invoice = new Invoice(req.body);
         await invoice.save();
-        res.status(201).json({ message: 'Invoice created successfully', invoice });
+
+        const entries = [];
+
+        for (const item of invoice.items) {
+            const product = await Product.findOne({ name: item.name });
+            if (!product) {
+                return res.status(400).json({ error: `Produit introuvable: ${item.name}` });
+            }
+
+            const subtotal = item.quantity * item.unitPrice;
+            const vatAmount = subtotal * (item.taxRate / 100); // ✅ now correctly defined
+
+            entries.push(
+                { account: '355', amount: subtotal, type: 'credit' },        // Produits finis
+                { account: '43651', amount: vatAmount, type: 'credit' },     // TVA à payer
+                { account: '411', amount: subtotal + vatAmount, type: 'debit' } // Client
+            );
+        }
+
+        await AccountingEntry.create({
+            invoice: invoice._id,
+            entries,
+        });
+
+        res.status(201).json({
+            message: '✅ Invoice and accounting entries created (strict plan comptable)',
+            invoice,
+        });
+
     } catch (error) {
+        console.error("❌ Error during invoice creation:", error);
         res.status(400).json({ error: error.message });
     }
 };
 
 // @desc Get all invoices
 exports.getInvoices = async (req, res) => {
+    try {
+        const invoices = await Invoice.find().populate('company issuedBy');
+        res.status(200).json(invoices);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// @desc Get invoices issued by the connected user
+exports.getUserInvoices = async (req, res) => {
     try {
         const invoices = await Invoice.find({ issuedBy: req.user._id }).populate('company issuedBy');
         res.status(200).json(invoices);
@@ -27,7 +65,10 @@ exports.getInvoiceById = async (req, res) => {
     try {
         const invoice = await Invoice.findById(req.params.id).populate('company issuedBy');
         if (!invoice) return res.status(404).json({ message: 'Invoice not found' });
-
+        // Check ownership
+        if (invoice.issuedBy._id.toString() !== req.user._id.toString()) {
+            return res.status(403).json({ message: 'Access denied' });
+        }
         res.status(200).json(invoice);
     } catch (error) {
         res.status(500).json({ error: error.message });

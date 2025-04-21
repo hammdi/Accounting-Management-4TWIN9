@@ -24,7 +24,11 @@ const InvoicePreviewLayer = () => {
         const fetchInvoice = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/getinvoice/${id}`);
+                const token = localStorage.getItem('token')
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/getinvoice/${id}`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+
+                );
                 setInvoice(response.data);
                 setLoading(false);
             } catch (err) {
@@ -390,7 +394,7 @@ const InvoicePreviewLayer = () => {
                                                 <span className="text-primary-light fw-semibold">
                                                     Sales By:
                                                 </span>{" "}
-                                                {invoiceData.issuedBy}
+                                                {invoiceData.issuedBy?.name ?? invoiceData.issuedBy}
                                             </p>
                                             <p className="text-sm mb-0">Thanks for your business</p>
                                         </div>

@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import ThemeToggleButton from "../helper/ThemeToggleButton";
 import {getCurrentUser} from "../services/authService";
+
 const getUserAvatar = (avatar) => {
   if (avatar) {
     // Vérifie si l'avatar est déjà une chaîne Base64
@@ -127,8 +128,55 @@ const MasterLayout = ({ children }) => {
     setMobileMenu(!mobileMenu);
   };
 
+
+
+  const [language, setLanguage] = useState("en"); // Langue par défaut
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang); // Met à jour la langue sélectionnée
+    }
+
+
+
+  
+
   return (
+
+
+
+
+
+
+
+
+    
     <section className={mobileMenu ? "overlay active" : "overlay "}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* sidebar */}
       <aside
         className={
@@ -147,7 +195,7 @@ const MasterLayout = ({ children }) => {
           <Icon icon='radix-icons:cross-2' />
         </button>
         <div>
-          <Link to='/' className='sidebar-logo'>
+          <Link to='/home' className='sidebar-logo'>
             <img
               src='/assets/images/logo.png'
               alt='site logo'
@@ -176,17 +224,17 @@ const MasterLayout = ({ children }) => {
                 <span>Dashboard</span>
               </Link>
               <ul className='sidebar-submenu'>
-                <li>
+                  <li>
                   <NavLink
-                    to='/'
+                    to='/home'
                     className={(navData) =>
                       navData.isActive ? "active-page" : ""
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />
-                    AI
+                   Invoices
                   </NavLink>
-                </li>
+                </li> 
                 <li>
                   <NavLink
                     to='/index-2'
@@ -195,7 +243,7 @@ const MasterLayout = ({ children }) => {
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
-                    CRM
+                    transactions
                   </NavLink>
                 </li>
                 <li>
@@ -209,7 +257,7 @@ const MasterLayout = ({ children }) => {
                     eCommerce
                   </NavLink>
                 </li>
-                <li>
+             {/*    <li>
                   <NavLink
                     to='/index-4'
                     className={(navData) =>
@@ -296,7 +344,7 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
                     Finance & Banking
                   </NavLink>
-                </li>
+                </li>*/}
               </ul>
             </li>
 
@@ -307,7 +355,7 @@ const MasterLayout = ({ children }) => {
                 className={(navData) => (navData.isActive ? "active-page" : "")}
               >
                 <Icon icon='mage:email' className='menu-icon' />
-                <span>Email</span>
+                <span>Emails</span>
               </NavLink>
             </li>
             <li>
@@ -325,10 +373,10 @@ const MasterLayout = ({ children }) => {
                 className={(navData) => (navData.isActive ? "active-page" : "")}
               >
                 <Icon icon='solar:calendar-outline' className='menu-icon' />
-                <span>Calendar</span>
+                <span>Invoice Calendar</span>
               </NavLink>
             </li>
-            <li>
+          {/*    <li>
               <NavLink
                 to='/kanban'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -339,7 +387,7 @@ const MasterLayout = ({ children }) => {
                 />
                 <span>Kanban</span>
               </NavLink>
-            </li>
+            </li>   */}     
 
             {/* Invoice Dropdown */}
             <li className='dropdown'>
@@ -511,7 +559,7 @@ const MasterLayout = ({ children }) => {
                     Code Generator
                   </NavLink>
                 </li>
-                <li>
+             {/*      <li>
                   <NavLink
                     to='/image-generator'
                     className={(navData) =>
@@ -543,12 +591,12 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-success-main w-auto' />{" "}
                     Video Generator
                   </NavLink>
-                </li>
+                </li>   */}     
               </ul>
             </li>
 
-            {/* Crypto Currency Dropdown */}
-            <li className='dropdown'>
+        {/* Crypto Currency Dropdown */}
+          {/*       <li className='dropdown'>
               <Link to='#'>
                 <i className='ri-btc-line mr-10' />
                 <span>Crypto Currency</span>
@@ -600,11 +648,11 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
-
+  
             <li className='sidebar-menu-group-title'>UI Elements</li>
 
             {/* Components Dropdown */}
-            <li className='dropdown'>
+          {/*   <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='solar:document-text-outline'
@@ -848,7 +896,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Forms Dropdown */}
-            <li className='dropdown'>
+       {/*      <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='heroicons:document' className='menu-icon' />
                 <span>Forms</span>
@@ -902,7 +950,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Table Dropdown */}
-            <li className='dropdown'>
+       {/*      <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='mingcute:storage-line' className='menu-icon' />
                 <span>Table</span>
@@ -934,7 +982,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Chart Dropdown */}
-            <li className='dropdown'>
+      {/*       <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='solar:pie-chart-outline' className='menu-icon' />
                 <span>Chart</span>
@@ -984,7 +1032,7 @@ const MasterLayout = ({ children }) => {
                 <Icon icon='fe:vector' className='menu-icon' />
                 <span>Widgets</span>
               </NavLink>
-            </li>
+            </li>  */}   
 
             {/* Users Dropdown */}
             <li className='dropdown'>
@@ -1007,7 +1055,7 @@ const MasterLayout = ({ children }) => {
                     Users List
                   </NavLink>
                 </li>
-                <li>
+          {/*        <li>
                   <NavLink
                     to='/users-grid'
                     className={(navData) =>
@@ -1017,7 +1065,7 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
                     Users Grid
                   </NavLink>
-                </li>
+                </li>    */}     
                 <li>
                   <NavLink
                     to='/add-user'
@@ -1044,7 +1092,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Role & Access Dropdown */}
-            <li className='dropdown'>
+       {/*       <li className='dropdown'>
               <Link to='#'>
                 <i className='ri-user-settings-line' />
                 <span>Role &amp; Access</span>
@@ -1073,12 +1121,12 @@ const MasterLayout = ({ children }) => {
                   </NavLink>
                 </li>
               </ul>
-            </li>
+            </li>   */}     
 
             <li className='sidebar-menu-group-title'>Application</li>
 
             {/* Authentication Dropdown */}
-            <li className='dropdown'>
+        {/*         <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='simple-line-icons:vector' className='menu-icon' />
                 <span>Authentication</span>
@@ -1122,7 +1170,7 @@ const MasterLayout = ({ children }) => {
 
             {/* gallery */}
 
-            <li className='dropdown'>
+         {/*     <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='flowbite:users-group-outline'
@@ -1177,7 +1225,7 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
-
+     */} 
             <li>
               <NavLink
                 to='/pricing'
@@ -1193,7 +1241,7 @@ const MasterLayout = ({ children }) => {
 
             {/* Blog */}
 
-            <li className='dropdown'>
+       {/*       <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='flowbite:users-group-outline'
@@ -1237,7 +1285,7 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
-
+ */}  
             <li>
               <NavLink
                 to='/testimonials'
@@ -1247,7 +1295,8 @@ const MasterLayout = ({ children }) => {
                   icon='mage:message-question-mark-round'
                   className='menu-icon'
                 />
-                <span>Testimonials</span>
+              
+                  <span>Testimonials</span>
               </NavLink>
             </li>
             <li>
@@ -1262,7 +1311,7 @@ const MasterLayout = ({ children }) => {
                 <span>FAQs.</span>
               </NavLink>
             </li>
-            <li>
+      {/*       <li>
               <NavLink
                 to='/error'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -1270,7 +1319,7 @@ const MasterLayout = ({ children }) => {
                 <Icon icon='streamline:straight-face' className='menu-icon' />
                 <span>404</span>
               </NavLink>
-            </li>
+            </li>   */}     
             <li>
               <NavLink
                 to='/terms-condition'
@@ -1280,7 +1329,7 @@ const MasterLayout = ({ children }) => {
                 <span>Terms &amp; Conditions</span>
               </NavLink>
             </li>
-            <li>
+ {/*              <li>
               <NavLink
                 to='/coming-soon'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -1306,7 +1355,7 @@ const MasterLayout = ({ children }) => {
                 <i className='ri-hammer-line menu-icon'></i>
                 <span>Maintenance</span>
               </NavLink>
-            </li>
+            </li>  */}     
             <li>
               <NavLink
                 to='/blank-page'
@@ -1318,7 +1367,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Settings Dropdown */}
-            <li className='dropdown'>
+       {/*        <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='icon-park-outline:setting-two'
@@ -1403,9 +1452,9 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-danger-main w-auto' />{" "}
                     Payment Gateway
                   </NavLink>
-                </li>
-              </ul>
-            </li>
+                </li>     
+              </ul> 
+            </li>*/} 
           </ul>
         </div>
       </aside>

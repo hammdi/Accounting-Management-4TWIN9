@@ -105,7 +105,8 @@ import "react-toastify/dist/ReactToastify.css";
 import CompanyListPage from "./pages/CompanyListPage";
 import CompanyFormPage from "./pages/CompanyFormPage";
 import CompanyDetailsPage from "./pages/CompanyDetailsPage";
-
+import ComptesListPage from "./pages/ComptesListPage";
+import PlanComptablePage from "./pages/PlanComptablePage";
 function App() {
   return (<>
         <ToastContainer />
@@ -232,6 +233,7 @@ function App() {
         <Route exact path='/users-grid' element={<UsersGridPage />} />
         <Route exact path='/users-list' element={<UsersListPage />} />
         <Route exact path='/view-details' element={<ViewDetailsPage />} />
+        <Route exact path="/view-details/:emailId" element={<ViewDetailsPage />} />
         <Route exact path='/video-generator' element={<VideoGeneratorPage />} />
         <Route exact path='/videos' element={<VideosPage />} />
         <Route exact path='/view-profile' element={<ViewProfilePage />} />
@@ -239,6 +241,8 @@ function App() {
         <Route exact path='/wallet' element={<WalletPage />} />
         <Route exact path='/widgets' element={<WidgetsPage />} />
         <Route exact path='/wizard' element={<WizardPage />} />
+        <Route exact path='/plan-comptable' element={<PlanComptablePage />} />
+        <Route exact path='/comptes' element={<ComptesListPage />} />
 
         <Route exact path='*' element={<ErrorPage />} />
       </Routes>
