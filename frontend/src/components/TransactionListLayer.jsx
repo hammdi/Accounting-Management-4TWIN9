@@ -2,7 +2,10 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React, { useState, useEffect } from 'react';
 import { Link, /*useNavigate*/ } from 'react-router-dom';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+
+import { toast, ToastContainer } from 'react-toastify';
+import ConfirmDeleteDialog from './ConfirmDeleteDialog';
+
 
 const TransactionListLayer = () => {
     const [transactions, setTransactions] = useState([]);
@@ -57,29 +60,42 @@ const TransactionListLayer = () => {
         setPage(1);
     };
 
+    // State for delete confirmation dialog
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+    const [transactionToDelete, setTransactionToDelete] = useState(null);
+
+    // Show popup for confirmation
     const handleDelete = (id) => {
-        if (window.confirm('Are you sure you want to delete this transaction?')) {
+
+        setTransactionToDelete(id);
+        setShowDeleteDialog(true);
+    };
+
+    // Confirm deletion logic
+    const confirmDeleteTransaction = async () => {
+        if (!transactionToDelete) return;
+        try {
             const token = localStorage.getItem('token');
-            axios.delete(`${process.env.REACT_APP_API_URL}/api/transactions/deletetransaction/${id}`, {
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/transactions/deletetransaction/${transactionToDelete}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            })
-                .then((response) => {
-                    if (response.data.success) {
-                        fetchTransactions();
-                        toast.success('Transaction deleted successfully');
-                    } else {
-                        console.error('Error deleting transaction:', response.data.message);
-                        toast.error('Failed to delete transaction');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error deleting transaction:', error);
-                    toast.error('Failed to delete transaction');
-                });
+            });
+            if (response.data.success) {
+                fetchTransactions();
+                toast.success('Transaction deleted successfully');
+            } else {
+                toast.error(response.data.message || 'Failed to delete transaction');
+            }
+        } catch (error) {
+            toast.error('Failed to delete transaction');
+        } finally {
+            setShowDeleteDialog(false);
+            setTransactionToDelete(null);
+
         }
     };
+
 
     const handleEdit = (transactionId) => {
         setEditingTransaction(transactionId);
@@ -164,55 +180,58 @@ const TransactionListLayer = () => {
     };
 
     return (
-        <div className="card">
-            <div className="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
-                <div className="d-flex flex-wrap align-items-center gap-3">
-                    <div className="d-flex align-items-center gap-2">
-                        <span>Show</span>
+        <React.Fragment>
+            <div className="card">
+                <div className="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div className="d-flex flex-wrap align-items-center gap-3">
+                        <div className="d-flex align-items-center gap-2">
+                            <span>Show</span>
+                            <select 
+                                className="form-select form-select-sm w-auto" 
+                                value={pageSize}
+                                onChange={handlePageSizeChange}
+                            >
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                        <div className="icon-field">
+                            <input
+                                type="text"
+                                name="search"
+                                className="form-control form-control-sm w-auto"
+                                placeholder="Search"
+                                value={searchTerm}
+                                onChange={handleSearch}
+                            />
+                            <span className="icon">
+                                <Icon icon="ion:search-outline" />
+                            </span>
+                        </div>
+                    </div>
+                    <div className="d-flex flex-wrap align-items-center gap-3">
                         <select 
                             className="form-select form-select-sm w-auto" 
-                            value={pageSize}
-                            onChange={handlePageSizeChange}
+                            value={statusFilter}
+                            onChange={handleStatusChange}
                         >
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
+                            <option value="">All</option>
+                            <option value="Income">Income</option>
+                            <option value="Expense">Expense</option>
                         </select>
-                    </div>
-                    <div className="icon-field">
-                        <input
-                            type="text"
-                            name="search"
-                            className="form-control form-control-sm w-auto"
-                            placeholder="Search"
-                            value={searchTerm}
-                            onChange={handleSearch}
-                        />
-                        <span className="icon">
-                            <Icon icon="ion:search-outline" />
-                        </span>
+                        <Link to="/transaction-add" className="btn btn-sm btn-primary-600">
+                            <i className="ri-add-line" /> Add Transaction
+                        </Link>
                     </div>
                 </div>
-                <div className="d-flex flex-wrap align-items-center gap-3">
-                    <select 
-                        className="form-select form-select-sm w-auto" 
-                        value={statusFilter}
-                        onChange={handleStatusChange}
-                    >
-                        <option value="">All</option>
-                        <option value="Income">Income</option>
-                        <option value="Expense">Expense</option>
-                    </select>
-                    <Link to="/transaction-add" className="btn btn-sm btn-primary-600">
-                        <i className="ri-add-line" /> Add Transaction
-                    </Link>
-                </div>
-            </div>
-            <div className="card-body" style={{overflowX: 'auto'}}>
-                <table className="table bordered-table mb-0" style={{minWidth: '900px'}}>
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
+
+                <div className="card-body" style={{overflowX: 'auto'}}>
+                    <table className="table bordered-table mb-0" style={{minWidth: '900px'}}>
+                        <thead>
+
+                            <tr>
+                                <th scope="col">#</th>
 <th scope="col">Company</th>
 <th scope="col">Type</th>
 <th scope="col">Category</th>
@@ -220,18 +239,19 @@ const TransactionListLayer = () => {
 <th scope="col">Date</th>
 <th scope="col">Description</th>
 <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {loading ? (
-                            <tr>
-                                <td colSpan="7" className="text-center">
-                                    Loading...
-                                </td>
                             </tr>
-                        ) : Array.isArray(transactions) ? (
-                            transactions.map((transaction, index) => (
-                                <React.Fragment key={transaction._id}>
+                        </thead>
+                        <tbody>
+                            {loading ? (
+                                <tr>
+                                    <td colSpan="7" className="text-center">
+                                        Loading...
+                                    </td>
+                                </tr>
+                            ) : Array.isArray(transactions) ? (
+                                transactions.map((transaction, index) => (
+                                    <React.Fragment key={transaction._id}>
+
                                     <tr>
                                         <td>{(page - 1) * pageSize + index + 1}</td>
                                         {/* Editable row fields */}
@@ -393,6 +413,14 @@ const TransactionListLayer = () => {
                 </table>
             </div>
         </div>
+            <ToastContainer position="top-right" autoClose={3000} />
+            <ConfirmDeleteDialog
+                show={showDeleteDialog}
+                onClose={() => { setShowDeleteDialog(false); setTransactionToDelete(null); }}
+                onConfirm={confirmDeleteTransaction}
+                invoiceName="this transaction"
+            />
+        </React.Fragment>
     );
 };
 

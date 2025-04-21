@@ -12,7 +12,8 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password123
-    command: mongod --quiet --logpath /dev/null
+      - MONGO_URI=mongodb://mongo:27017/accounting-db
+    #command: mongod --quiet --logpath /dev/null
 
   backend:
     build: ./backend
@@ -21,7 +22,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://admin:password123@mongo:27017/accounting?authSource=admin
+      - MONGO_URI=mongodb://admin:password123@mongo:27017/accounting-db?authSource=admin
       - PORT=5000
       - NODE_ENV=development
     depends_on:

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Link } from 'react-router-dom';
 
 const CompanyListLayer = () => {
   const [companies, setCompanies] = useState([]);
@@ -21,6 +23,12 @@ const CompanyListLayer = () => {
   const [modalMode, setModalMode] = useState('view'); // 'view' or 'edit'
   const [modalLoading, setModalLoading] = useState(false);
   const [modalError, setModalError] = useState('');
+
+
+  // Delete confirmation dialog state
+  const [companyToDelete, setCompanyToDelete] = useState(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
 
   // Fetch companies from API
   const fetchCompanies = async () => {
@@ -42,13 +50,18 @@ const CompanyListLayer = () => {
     }
   };
 
-  // Delete company
-  const handleDelete = async (companyId) => {
-    if (!window.confirm('Are you sure you want to delete this company?')) return;
+  // Delete company (show popup)
+  const handleDelete = (companyId) => {
+    setCompanyToDelete(companyId);
+    setShowDeleteDialog(true);
+  };
 
+  // Confirm delete (after popup)
+  const confirmDeleteCompany = async () => {
+    if (!companyToDelete) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/companies/deletecompany/${companyId}`,
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/companies/deletecompany/${companyToDelete}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -59,8 +72,12 @@ const CompanyListLayer = () => {
       fetchCompanies(); // Refresh list
     } catch (err) {
       toast.error('Failed to delete company');
+    } finally {
+      setShowDeleteDialog(false);
+      setCompanyToDelete(null);
     }
   };
+
 
   useEffect(() => {
     fetchCompanies();
@@ -462,6 +479,16 @@ const CompanyListLayer = () => {
         </div>
       </div>
     )}
+    <ToastContainer position="top-right" autoClose={3000} />
+    <ConfirmDeleteDialog
+      show={showDeleteDialog}
+      onClose={() => { setShowDeleteDialog(false); setCompanyToDelete(null); }}
+      onConfirm={confirmDeleteCompany}
+      invoiceName={(() => {
+        const company = companies.find(c => c._id === companyToDelete);
+        return company ? company.name : '';
+      })()}
+    />
   </div>
   );
 };
