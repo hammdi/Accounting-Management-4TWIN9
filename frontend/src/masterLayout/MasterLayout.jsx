@@ -1090,6 +1090,72 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
+            <li className='dropdown'>
+              <Link to='#'>
+                <Icon
+                  icon='simple-line-icons:vector'
+                  className='menu-icon'
+                />
+                <span>Payroll</span>
+              </Link>
+              <ul className='sidebar-submenu'>
+                <li>
+                  <NavLink
+                    to='/payroll-list'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    Payroll List
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/add-payroll'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                    Add Payroll
+                  </NavLink>
+                </li>   
+              </ul>
+            </li>
+            <li className='dropdown'>
+              <Link to='#'>
+                <Icon
+                  icon='hugeicons:money-send-square'
+                  className='menu-icon'
+                />
+                <span>Tax Compliance</span>
+              </Link>
+              <ul className='sidebar-submenu'>
+                <li>
+                  <NavLink
+                    to='/taxcompliance-list'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    Tax Compliance List
+                  </NavLink>
+                </li> 
+                <li>
+                  <NavLink
+                    to='/add-taxcompliance'
+                    className={(navData) =>
+                      navData.isActive ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                    Add Tax Compliance
+                  </NavLink>
+                </li>  
+              </ul>
+            </li>
 
             {/* Role & Access Dropdown */}
        {/*       <li className='dropdown'>
