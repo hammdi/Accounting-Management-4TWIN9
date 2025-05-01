@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const logger = require('./utils/logger');
 const compteComptableRoutes = require('./routes/compteComptableRoutes');
 // Charger les variables d'environnement
 dotenv.config();
@@ -17,6 +18,12 @@ if (!process.env.MONGO_URI) {
 // Middleware   app.use(express.json());
 app.use(express.json({ limit: '10mb' }));
 app.use(cors());
+
+// 🔥 Logger global des requêtes
+app.use((req, res, next) => {
+    logger.info(`${req.method} ${req.originalUrl}`);
+    next();
+});
 
 // Import routes
 const chatRoutes = require('./routes/chat');
