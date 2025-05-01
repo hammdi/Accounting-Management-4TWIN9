@@ -184,7 +184,7 @@ const InvoicePreviewLayer = () => {
                     </div>
                     <button
                         className="btn btn-primary mt-3"
-                        onClick={() => navigate('/invoices')}
+                        onClick={() => navigate('/invoice-list')}
                     >
                         Back to Invoices
                     </button>
