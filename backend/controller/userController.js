@@ -3,34 +3,41 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const logger = require('../utils/logger'); // <== Ajout de Winston
 
-// Inscription de l'utilisateur (Register User)
 exports.registerUser = async (req, res) => {
-    const { name, email, password, phone, status } = req.body;
-    try {// Vérifier si l'email ou le téléphone existe déjà
+    const { name, email, password, phone } = req.body;
+    try {
         const userExist = await User.findOne({ $or: [{ email }, { phone }] });
-        if (userExist) {return res.status(400).json({ message: 'Email ou téléphone déjà utilisé' });}
-        // Hacher le mot de passe
+        if (userExist) {
+            logger.warn(`Tentative d'inscription avec email ou téléphone existant : ${email}, ${phone}`);
+            return res.status(400).json({ message: 'Email ou téléphone déjà utilisé' });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
-        // Generate verification token
         const verificationToken = crypto.randomBytes(32).toString("hex");
-        // Créer un nouvel utilisateur
+
         const user = new User({
-            name, email, password: hashedPassword, phone, status: 'Inactive', role: 'user',verificationToken,});
+            name, email, password: hashedPassword, phone,
+            status: 'Inactive', role: 'user', verificationToken,
+        });
+
         await user.save();
         await sendVerificationEmail(user.email, verificationToken);
+        logger.info(`Nouvel utilisateur enregistré : ${email}`);
         res.status(201).json({ message: 'Utilisateur créé avec succès' });
     } catch (error) {
+        logger.error(`Erreur lors de l'inscription : ${error.message}`);
         res.status(500).json({ message: error.message });
     }
 };
-// Function to send verification email
+
 const sendVerificationEmail = async (email, token) => {
     const transporter = nodemailer.createTransport({
-        service: "gmail", // You can use another email provider (e.g., Outlook, Yahoo)
+        service: "gmail",
         auth: {
-            user: "hamdikbaier8@gmail.com", // Change to your email
-            pass: "stti hxpu emue ouph", // Change to your email password (Use App Passwords for security)
+            user: "hamdikbaier8@gmail.com",
+            pass: "stti hxpu emue ouph",
         },
     });
 
@@ -45,74 +52,72 @@ const sendVerificationEmail = async (email, token) => {
 
     try {
         await transporter.sendMail(mailOptions);
-        console.log("Verification email sent!");
+        logger.info(`Email de vérification envoyé à : ${email}`);
     } catch (error) {
-        console.error("Error sending email:", error);
+        logger.error(`Erreur lors de l'envoi de l'email : ${error.message}`);
     }
 };
 
-// Connexion de l'utilisateur (Login User)
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
-        // Trouver l'utilisateur
         const user = await User.findOne({ email });
         if (!user) {
+            logger.warn(`Connexion échouée : utilisateur non trouvé (${email})`);
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
-        if(user.status=="Inactive") return res.status(400).json({ message: 'activation required'})
-        // Comparer le mot de passe
+
+        if (user.status === "Inactive") {
+            logger.warn(`Connexion échouée : compte inactif (${email})`);
+            return res.status(400).json({ message: 'activation required' });
+        }
+
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
+            logger.warn(`Connexion échouée : mot de passe incorrect (${email})`);
             return res.status(400).json({ message: 'Mot de passe incorrect' });
         }
-        // Créer un token JWT
+
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.status(200).json({
-            message: 'Connexion réussie',
-            token,user
-            /*user: {
-                name: user.name,
-                email: user.email,
-                role: user.role,
-                phone: user.phone,
-                status: user.status
-            }*/
-        });
+        logger.info(`Connexion réussie pour l'utilisateur : ${email}`);
+        res.status(200).json({ message: 'Connexion réussie', token, user });
     } catch (error) {
+        logger.error(`Erreur lors de la connexion : ${error.message}`);
         res.status(500).json({ message: error.message });
     }
 };
 
-// Récupérer un utilisateur par ID (Get a user by ID)
 exports.getUser = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select('-password'); // Exclude password for security
+        const user = await User.findById(req.params.id).select('-password');
         if (!user) {
+            logger.warn(`Utilisateur introuvable avec ID : ${req.params.id}`);
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
 
+        logger.info(`Utilisateur récupéré avec succès : ${req.params.id}`);
         res.status(200).json(user);
     } catch (error) {
+        logger.error(`Erreur serveur lors de la récupération de l'utilisateur : ${error.message}`);
         res.status(500).json({ message: 'Erreur serveur' });
     }
 };
 
-// Mettre à jour un utilisateur (Update user details)
 exports.updateUser = async (req, res) => {
     const { name, email, password, role, phone, status, avatar } = req.body;
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
+            logger.warn(`Mise à jour échouée : utilisateur non trouvé (${req.params.id})`);
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
 
-        // If password is provided, hash it
         let updatedPassword = user.password;
-        if (password) {updatedPassword = await bcrypt.hash(password, 10);}
+        if (password) {
+            updatedPassword = await bcrypt.hash(password, 10);
+        }
 
-        // Update user fields
         user.name = name || user.name;
         user.email = email || user.email;
         user.password = updatedPassword;
@@ -120,74 +125,66 @@ exports.updateUser = async (req, res) => {
         user.phone = phone || user.phone;
         user.status = status || user.status;
 
-      
-  // Mise à jour de l'avatar si fourni (conversion base64 -> Buffer)
-  if (avatar) {
-    const buffer = Buffer.from(avatar, 'base64');
-    user.avatar = buffer;
-}
+        if (avatar) {
+            const buffer = Buffer.from(avatar, 'base64');
+            user.avatar = buffer;
+        }
+
         await user.save();
+        logger.info(`Utilisateur mis à jour avec succès : ${user._id}`);
         res.status(200).json({ message: 'Utilisateur mis à jour avec succès' });
     } catch (error) {
+        logger.error(`Erreur serveur lors de la mise à jour : ${error.message}`);
         res.status(500).json({ message: 'Erreur serveur' });
     }
 };
 
-// Supprimer un utilisateur (Delete a user)
 exports.deleteUser = async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
         if (!user) {
+            logger.warn(`Suppression échouée : utilisateur non trouvé (${req.params.id})`);
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
         }
 
+        logger.info(`Utilisateur supprimé : ${req.params.id}`);
         res.status(200).json({ message: 'Utilisateur supprimé avec succès' });
     } catch (error) {
+        logger.error(`Erreur lors de la suppression de l'utilisateur : ${error.message}`);
         res.status(500).json({ message: error.message });
     }
 };
 
-// Récupérer tous les utilisateurs (Get all users)
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await User.find().select('-password'); // Exclude passwords for security
+        const users = await User.find().select('-password');
+        logger.info(`Liste de tous les utilisateurs récupérée (${users.length} utilisateurs)`);
         res.status(200).json(users);
     } catch (error) {
+        logger.error(`Erreur serveur lors de la récupération des utilisateurs : ${error.message}`);
         res.status(500).json({ message: 'Erreur serveur' });
     }
-};
-const generateRandomPassword = (length = 10) => {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$!";
-    let password = "";
-    for (let i = 0; i < length; i++) {
-        password += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return password;
 };
 
 exports.forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
 
-        // Check if user exists
         const user = await User.findOne({ email });
         if (!user) {
+            logger.warn(`Réinitialisation du mot de passe échouée : utilisateur non trouvé (${email})`);
             return res.status(404).json({ message: "User not found" });
         }
 
-        // Generate new random password
         const newPassword = generateRandomPassword();
-
-        // Hash the new password before saving
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
         await user.save();
 
-        // Send email with the new password
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.EMAIL_USER, // Use environment variables for security
+                user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS,
             },
         });
@@ -198,34 +195,44 @@ exports.forgotPassword = async (req, res) => {
             subject: "Your New Password",
             text: `Your new password is: ${newPassword}\nPlease log in and change it immediately.`,
         };
+
         await transporter.sendMail(mailOptions);
+        logger.info(`Mot de passe réinitialisé et envoyé à : ${email}`);
         res.status(200).json({ message: "A new password has been sent to your email." });
     } catch (error) {
-        console.error("Forgot Password Error:", error);
+        logger.error(`Erreur lors de la réinitialisation du mot de passe : ${error.message}`);
         res.status(500).json({ message: error.message });
     }
 };
-exports.updatePassword = async (req, res) => {
-    try {console.log(req.body);
-        console.log(req.user.userId)
-        const userId = req.user.userId; // Récupérer l'ID de l'utilisateur connecté
-        const { password } = req.body; // Récupérer le nouveau mot de passe
 
-        // Vérifier si un mot de passe est fourni
+exports.updatePassword = async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const { password } = req.body;
+
         if (!password) {
+            logger.warn("Mise à jour du mot de passe échouée : mot de passe manquant");
             return res.status(400).json({ message: "Le mot de passe est requis." });
         }
 
-        // Hacher le nouveau mot de passe avant de le sauvegarder
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Mettre à jour le mot de passe dans la base de données
         await User.findByIdAndUpdate(userId, { password: hashedPassword });
-
+        logger.info(`Mot de passe mis à jour avec succès pour l'utilisateur : ${userId}`);
         res.status(200).json({ message: "Mot de passe mis à jour avec succès." });
     } catch (error) {
-        console.error("Erreur lors de la mise à jour du mot de passe :", error);
+        logger.error(`Erreur lors de la mise à jour du mot de passe : ${error.message}`);
         res.status(500).json({ message: "Erreur serveur." });
     }
-}
+};
+
+const generateRandomPassword = (length = 10) => {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$!";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return password;
+};
+

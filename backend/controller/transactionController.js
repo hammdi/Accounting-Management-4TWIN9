@@ -2,22 +2,23 @@
 const Transaction = require('../models/Transaction');
 const Company = require('../models/Company');
 const User = require('../models/userModel');
+const logger = require('../utils/logger'); // Winston logger
 
 // Create a new transaction
 exports.createTransaction = async (req, res) => {
     try {
-        // Validate company exists
         const company = await Company.findById(req.body.company);
         if (!company) {
+            logger.warn(`Company not found: ${req.body.company}`);
             return res.status(404).json({
                 success: false,
                 message: 'Company not found'
             });
         }
 
-        // Use authenticated user for createdBy
         const user = await User.findById(req.user._id);
         if (!user) {
+            logger.warn(`User not found: ${req.user._id}`);
             return res.status(404).json({
                 success: false,
                 message: 'User not found'
@@ -28,7 +29,6 @@ exports.createTransaction = async (req, res) => {
         const transaction = new Transaction(transactionData);
         await transaction.save();
 
-        // Update company's transaction balance
         if (transaction.type === 'Income') {
             company.balance += transaction.amount;
         } else {
@@ -36,13 +36,15 @@ exports.createTransaction = async (req, res) => {
         }
         await company.save();
 
+        logger.info(`Transaction created: ${transaction._id} by user ${req.user._id}`);
+
         res.status(201).json({
             success: true,
             message: 'Transaction created successfully',
             data: transaction
         });
     } catch (error) {
-        console.error('Error creating transaction:', error);
+        logger.error(`Error creating transaction: ${error.message}`);
         res.status(400).json({
             success: false,
             message: error.message
@@ -54,7 +56,7 @@ exports.createTransaction = async (req, res) => {
 exports.getTransactions = async (req, res) => {
     try {
         const { company, type, startDate, endDate, page = 1, limit = 10 } = req.query;
-        
+
         const query = { createdBy: req.user._id };
         if (company) query.company = company;
         if (type) query.type = type;
@@ -69,6 +71,8 @@ exports.getTransactions = async (req, res) => {
 
         const total = await Transaction.countDocuments(query);
 
+        logger.info(`Fetched ${transactions.length} transactions for user ${req.user._id}`);
+
         res.json({
             success: true,
             data: transactions,
@@ -80,7 +84,7 @@ exports.getTransactions = async (req, res) => {
             }
         });
     } catch (error) {
-        console.error('Error fetching transactions:', error);
+        logger.error(`Error fetching transactions: ${error.message}`);
         res.status(500).json({
             success: false,
             message: error.message
@@ -92,12 +96,13 @@ exports.getTransactions = async (req, res) => {
 exports.getUserTransactions = async (req, res) => {
     try {
         const transactions = await Transaction.find({ createdBy: req.user._id }).populate('company createdBy').sort({ date: -1 });
+        logger.info(`Fetched all user transactions for user ${req.user._id}`);
         res.json({
             success: true,
             data: transactions
         });
     } catch (error) {
-        console.error('Error fetching user transactions:', error);
+        logger.error(`Error fetching user transactions: ${error.message}`);
         res.status(500).json({
             success: false,
             message: error.message
@@ -108,22 +113,23 @@ exports.getUserTransactions = async (req, res) => {
 // Get a single transaction
 exports.getTransaction = async (req, res) => {
     try {
-        const transaction = await Transaction.findById(req.params.id)
-            .populate('company createdBy');
-        
+        const transaction = await Transaction.findById(req.params.id).populate('company createdBy');
+
         if (!transaction) {
+            logger.warn(`Transaction not found: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
                 message: 'Transaction not found'
             });
         }
 
+        logger.info(`Fetched transaction ${transaction._id}`);
         res.json({
             success: true,
             data: transaction
         });
     } catch (error) {
-        console.error('Error fetching transaction:', error);
+        logger.error(`Error fetching transaction: ${error.message}`);
         res.status(500).json({
             success: false,
             message: error.message
@@ -136,13 +142,13 @@ exports.updateTransaction = async (req, res) => {
     try {
         const transaction = await Transaction.findById(req.params.id);
         if (!transaction) {
+            logger.warn(`Transaction not found for update: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
                 message: 'Transaction not found'
             });
         }
 
-        // Update company balance if transaction type changes
         const oldCompany = await Company.findById(transaction.company);
         if (transaction.type === 'Income') {
             oldCompany.balance -= transaction.amount;
@@ -150,14 +156,12 @@ exports.updateTransaction = async (req, res) => {
             oldCompany.balance += transaction.amount;
         }
 
-        // Update with new values
         const updatedTransaction = await Transaction.findByIdAndUpdate(
             req.params.id,
             { ...req.body },
             { new: true }
         ).populate('company createdBy');
 
-        // Update new company balance
         const newCompany = await Company.findById(updatedTransaction.company);
         if (updatedTransaction.type === 'Income') {
             newCompany.balance += updatedTransaction.amount;
@@ -167,13 +171,15 @@ exports.updateTransaction = async (req, res) => {
 
         await Promise.all([oldCompany.save(), newCompany.save()]);
 
+        logger.info(`Updated transaction ${updatedTransaction._id}`);
+
         res.json({
             success: true,
             message: 'Transaction updated successfully',
             data: updatedTransaction
         });
     } catch (error) {
-        console.error('Error updating transaction:', error);
+        logger.error(`Error updating transaction: ${error.message}`);
         res.status(400).json({
             success: false,
             message: error.message
@@ -186,13 +192,13 @@ exports.deleteTransaction = async (req, res) => {
     try {
         const transaction = await Transaction.findById(req.params.id);
         if (!transaction) {
+            logger.warn(`Transaction not found for deletion: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
                 message: 'Transaction not found'
             });
         }
 
-        // Update company balance
         const company = await Company.findById(transaction.company);
         if (transaction.type === 'Income') {
             company.balance -= transaction.amount;
@@ -203,12 +209,14 @@ exports.deleteTransaction = async (req, res) => {
 
         await Transaction.findByIdAndDelete(req.params.id);
 
+        logger.info(`Deleted transaction ${transaction._id}`);
+
         res.json({
             success: true,
             message: 'Transaction deleted successfully'
         });
     } catch (error) {
-        console.error('Error deleting transaction:', error);
+        logger.error(`Error deleting transaction: ${error.message}`);
         res.status(500).json({
             success: false,
             message: error.message
@@ -220,15 +228,17 @@ exports.deleteTransaction = async (req, res) => {
 exports.deleteAllTransactions = async (req, res) => {
     try {
         await Transaction.collection.drop();
+        logger.warn('All transactions deleted (collection dropped)');
         res.json({
             success: true,
             message: 'Transaction collection dropped successfully'
         });
     } catch (error) {
-        console.error('Error dropping transaction collection:', error);
+        logger.error(`Error dropping transaction collection: ${error.message}`);
         res.status(500).json({
             success: false,
             message: error.message
         });
     }
 };
+

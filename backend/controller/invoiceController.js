@@ -1,105 +1,86 @@
+// controllers/invoiceController.js
 const Invoice = require('../models/Invoice');
+const logger = require('../utils/logger');
 
-// @desc Create a new invoice
 exports.createInvoice = async (req, res) => {
     try {
         const invoice = new Invoice(req.body);
         await invoice.save();
 
+        logger.info(`Invoice created: ${invoice._id}`);
         res.status(201).json({
             message: 'Invoice created successfully',
             invoice,
         });
     } catch (error) {
-        console.error("Error during invoice creation:", error);
-
+        logger.error(`Error during invoice creation: ${error.message}`);
         res.status(400).json({ error: error.message });
     }
 };
-/*exports.createInvoice = async (req, res) => {
-    try {
-        const invoice = new Invoice(req.body);
-        await invoice.save();
-        const entries = [];
-        for (const item of invoice.items) {
-            const product = await Product.findOne({ name: item.name });
-            if (!product) {
-                return res.status(400).json({ error: `Produit introuvable: ${item.name}` });
-            }
-            const subtotal = item.quantity * item.unitPrice;
-            const vatAmount = subtotal * (item.taxRate / 100); // ✅ now correctly defined
-            entries.push(
-                { account: '355', amount: subtotal, type: 'credit' },        // Produits finis
-                { account: '43651', amount: vatAmount, type: 'credit' },     // TVA à payer
-                { account: '411', amount: subtotal + vatAmount, type: 'debit' } // Client
-            );
-        }
-        await AccountingEntry.create({invoice: invoice._id,entries,});
-        res.status(201).json({
-            message: '✅ Invoice and accounting entries created (strict plan comptable)',
-            invoice,
-        });
-    } catch (error) {
-        console.error("❌ Error during invoice creation:", error);
-        res.status(400).json({ error: error.message });
-    }
-};*/
 
-// @desc Get all invoices
 exports.getInvoices = async (req, res) => {
     try {
         const invoices = await Invoice.find().populate('company issuedBy');
+        logger.info(`Fetched ${invoices.length} invoices`);
         res.status(200).json(invoices);
     } catch (error) {
+        logger.error(`Error fetching invoices: ${error.message}`);
         res.status(500).json({ error: error.message });
     }
 };
 
-// @desc Get invoices issued by the connected user
 exports.getUserInvoices = async (req, res) => {
     try {
         const invoices = await Invoice.find({ issuedBy: req.user._id }).populate('company issuedBy');
+        logger.info(`Fetched ${invoices.length} invoices for user ${req.user._id}`);
         res.status(200).json(invoices);
     } catch (error) {
+        logger.error(`Error fetching user invoices: ${error.message}`);
         res.status(500).json({ error: error.message });
     }
 };
 
-// @desc Get invoice by ID
 exports.getInvoiceById = async (req, res) => {
     try {
         const invoice = await Invoice.findById(req.params.id).populate('company issuedBy');
-        if (!invoice) return res.status(404).json({ message: 'Invoice not found' });
-        // Check ownership
+        if (!invoice) {
+            return res.status(404).json({ message: 'Invoice not found' });
+        }
         if (invoice.issuedBy._id.toString() !== req.user._id.toString()) {
             return res.status(403).json({ message: 'Access denied' });
         }
         res.status(200).json(invoice);
     } catch (error) {
+        logger.error(`Error fetching invoice by ID: ${error.message}`);
         res.status(500).json({ error: error.message });
     }
 };
 
-// @desc Update invoice
 exports.updateInvoice = async (req, res) => {
     try {
         const updatedInvoice = await Invoice.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updatedInvoice) return res.status(404).json({ message: 'Invoice not found' });
-
+        if (!updatedInvoice) {
+            return res.status(404).json({ message: 'Invoice not found' });
+        }
+        logger.info(`Invoice updated: ${updatedInvoice._id}`);
         res.status(200).json({ message: 'Invoice updated successfully', updatedInvoice });
     } catch (error) {
+        logger.error(`Error updating invoice: ${error.message}`);
         res.status(400).json({ error: error.message });
     }
 };
 
-// @desc Delete invoice
 exports.deleteInvoice = async (req, res) => {
     try {
         const deletedInvoice = await Invoice.findByIdAndDelete(req.params.id);
-        if (!deletedInvoice) return res.status(404).json({ message: 'Invoice not found' });
-
+        if (!deletedInvoice) {
+            return res.status(404).json({ message: 'Invoice not found' });
+        }
+        logger.info(`Invoice deleted: ${deletedInvoice._id}`);
         res.status(200).json({ message: 'Invoice deleted successfully' });
     } catch (error) {
+        logger.error(`Error deleting invoice: ${error.message}`);
         res.status(500).json({ error: error.message });
     }
 };
+

@@ -8,6 +8,10 @@ import HomePageSix from "./pages/HomePageSix";
 import HomePageSeven from "./pages/HomePageSeven";
 import EmailPage from "./pages/EmailPage";
 import AddUserPage from "./pages/AddUserPage";
+import EditPayrollPage from "./pages/EditPayrollPage";
+import EditTaxCompliancePage from "./pages/EditTaxCompliancePage";
+import AddPayrollPage from "./pages/AddPayrollPage";
+import AddTaxCompliancePage from "./pages/AddTaxCompliancePage";
 import AlertPage from "./pages/AlertPage";
 import AssignRolePage from "./pages/AssignRolePage";
 import AvatarPage from "./pages/AvatarPage";
@@ -71,6 +75,10 @@ import TooltipPage from "./pages/TooltipPage";
 import TypographyPage from "./pages/TypographyPage";
 import UsersGridPage from "./pages/UsersGridPage";
 import UsersListPage from "./pages/UsersListPage";
+import PayrollGridPage from "./pages/PayrollGridPage";
+import PayrollListPage from "./pages/PayrollListPage";
+import TaxComplianceGridPage from "./pages/TaxComplianceGridPage";
+import TaxComplianceListPage from "./pages/TaxComplianceListPage";
 import ViewDetailsPage from "./pages/ViewDetailsPage";
 import VideoGeneratorPage from "./pages/VideoGeneratorPage";
 import VideosPage from "./pages/VideosPage";
@@ -128,6 +136,10 @@ function App() {
 
         {/* SL */}
         <Route exact path='/add-user' element={<AddUserPage />} />
+        <Route exact path='/edit-payroll/:id' element={<EditPayrollPage />} />
+        <Route exact path='/edit-taxcompliance/:id' element={<EditTaxCompliancePage />} />
+        <Route exact path='/add-payroll' element={<AddPayrollPage />} />
+        <Route exact path='/add-taxcompliance' element={<AddTaxCompliancePage />} />
         <Route exact path='/alert' element={<AlertPage />} />
         <Route exact path='/assign-role' element={<AssignRolePage />} />
         <Route exact path='/avatar' element={<AvatarPage />} />
@@ -232,6 +244,10 @@ function App() {
         <Route exact path='/typography' element={<TypographyPage />} />
         <Route exact path='/users-grid' element={<UsersGridPage />} />
         <Route exact path='/users-list' element={<UsersListPage />} />
+        <Route exact path='/payroll-grid' element={<PayrollGridPage />} />
+        <Route exact path='/payroll-list' element={<PayrollListPage />} />
+        <Route exact path='/taxcompliance-grid' element={<TaxComplianceGridPage />} />
+        <Route exact path='/taxcompliance-list' element={<TaxComplianceListPage />} />
         <Route exact path='/view-details' element={<ViewDetailsPage />} />
         <Route exact path="/view-details/:emailId" element={<ViewDetailsPage />} />
         <Route exact path='/video-generator' element={<VideoGeneratorPage />} />
