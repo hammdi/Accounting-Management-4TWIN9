@@ -1,0 +1,124 @@
+2025-04-30T09:05:50.597Z [INFO]: POST /api/users/register
+2025-04-30T09:05:51.987Z [INFO]: Email de vérification envoyé à : ala@gmail.com
+2025-04-30T09:05:51.987Z [INFO]: Nouvel utilisateur enregistré : ala@gmail.com
+2025-04-30T09:07:02.365Z [INFO]: GET /api/users/verify/d04db5b558105f973dba6025f7fab20a51866f14710268ea34f2906747fb84a2
+2025-04-30T09:07:10.805Z [INFO]: POST /api/users/login
+2025-04-30T09:07:10.876Z [INFO]: Connexion réussie pour l'utilisateur : ala@gmail.com
+2025-04-30T09:07:11.114Z [INFO]: GET /api/auth/me
+2025-04-30T09:07:19.328Z [INFO]: GET /api/auth/me
+2025-04-30T09:07:19.334Z [INFO]: GET /api/auth/me
+2025-04-30T09:07:25.252Z [INFO]: GET /api/auth/me
+2025-04-30T09:07:25.255Z [INFO]: GET /api/companies/getallcompanies
+2025-04-30T09:07:25.265Z [INFO]: GET /api/auth/me
+2025-04-30T09:07:49.200Z [INFO]: POST /api/transactions/addtransaction
+2025-04-30T09:07:49.226Z [INFO]: Transaction created: 6811e86584e28cfadb080877 by user 6811e7ee84e28cfadb080867
+2025-04-30T09:07:49.260Z [INFO]: GET /api/transactions/mytransactions
+2025-04-30T09:07:49.263Z [INFO]: GET /api/auth/me
+2025-04-30T09:07:49.280Z [INFO]: Fetched all user transactions for user 6811e7ee84e28cfadb080867
+2025-04-30T09:11:53.478Z [INFO]: DELETE /api/transactions/deletetransaction/6811e86584e28cfadb080877
+2025-04-30T09:11:53.489Z [INFO]: Deleted transaction 6811e86584e28cfadb080877
+2025-04-30T09:11:53.498Z [INFO]: GET /api/transactions/mytransactions
+2025-04-30T09:11:53.503Z [INFO]: Fetched all user transactions for user 6811e7ee84e28cfadb080867
+2025-04-30T09:12:28.116Z [INFO]: GET /api/companies/getallcompanies
+2025-04-30T09:12:28.120Z [INFO]: GET /api/auth/me
+2025-04-30T09:12:28.137Z [INFO]: GET /api/auth/me
+2025-04-30T09:12:48.741Z [INFO]: POST /api/transactions/addtransaction
+2025-04-30T09:12:48.754Z [INFO]: Transaction created: 6811e99084e28cfadb08088e by user 6811e7ee84e28cfadb080867
+2025-04-30T09:12:48.780Z [INFO]: GET /api/transactions/mytransactions
+2025-04-30T09:12:48.782Z [INFO]: GET /api/auth/me
+2025-04-30T09:12:48.793Z [INFO]: Fetched all user transactions for user 6811e7ee84e28cfadb080867
+2025-04-30T09:15:19.365Z [INFO]: GET /api/auth/me
+2025-04-30T09:15:19.368Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-04-30T09:15:25.064Z [INFO]: GET /api/taxes/getalltaxes
+2025-04-30T09:15:25.067Z [INFO]: GET /api/auth/me
+2025-05-01T10:25:58.625Z [INFO]: POST /api/users/login
+2025-05-01T10:25:58.755Z [INFO]: Connexion réussie pour l'utilisateur : hmaidiala3210@gmail.com
+2025-05-01T10:25:59.153Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:06.930Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-01T10:26:06.935Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:07.096Z [INFO]: Fetched 1 payrolls
+2025-05-01T10:26:10.022Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:10.026Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-01T10:26:10.092Z [INFO]: Fetched 1 tax records
+2025-05-01T10:26:13.349Z [INFO]: GET /api/transactions/mytransactions
+2025-05-01T10:26:13.354Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:13.429Z [INFO]: Fetched all user transactions for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:26:15.655Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:15.658Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T10:26:15.753Z [INFO]: Fetched 1 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:26:19.026Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:19.087Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:40.918Z [INFO]: GET /api/transactions/mytransactions
+2025-05-01T10:26:40.923Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:41.000Z [INFO]: Fetched all user transactions for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:26:43.328Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:43.332Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T10:26:43.429Z [INFO]: Fetched 1 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:26:44.889Z [INFO]: GET /api/auth/me
+2025-05-01T10:26:44.952Z [INFO]: GET /api/auth/me
+2025-05-01T10:27:02.648Z [INFO]: POST /api/invoices/addinvoice
+2025-05-01T10:27:02.681Z [INFO]: Invoice created: 68134c769a1c2dff25d40c81
+2025-05-01T10:27:04.809Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T10:27:04.813Z [INFO]: GET /api/auth/me
+2025-05-01T10:27:04.930Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:27:10.785Z [INFO]: GET /api/transactions/mytransactions
+2025-05-01T10:27:10.789Z [INFO]: GET /api/auth/me
+2025-05-01T10:27:10.853Z [INFO]: Fetched all user transactions for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:27:12.143Z [INFO]: GET /api/auth/me
+2025-05-01T10:27:12.208Z [INFO]: GET /api/companies/getallcompanies
+2025-05-01T10:27:12.211Z [INFO]: GET /api/auth/me
+2025-05-01T10:27:22.271Z [INFO]: POST /api/transactions/addtransaction
+2025-05-01T10:27:26.668Z [INFO]: POST /api/transactions/addtransaction
+2025-05-01T10:28:13.107Z [INFO]: POST /api/transactions/addtransaction
+2025-05-01T10:28:13.126Z [INFO]: Transaction created: 68134cbd9a1c2dff25d40c99 by user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:28:13.165Z [INFO]: GET /api/transactions/mytransactions
+2025-05-01T10:28:13.168Z [INFO]: GET /api/auth/me
+2025-05-01T10:28:13.255Z [INFO]: Fetched all user transactions for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:28:31.476Z [INFO]: GET /api/companies/mycompanies
+2025-05-01T10:28:31.482Z [INFO]: GET /api/auth/me
+2025-05-01T10:28:32.466Z [INFO]: GET /api/auth/me
+2025-05-01T10:28:32.523Z [INFO]: GET /api/auth/me
+2025-05-01T10:28:42.494Z [INFO]: POST /api/companies/addcompany
+2025-05-01T10:28:42.509Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "52626516" }
+2025-05-01T10:29:00.528Z [INFO]: POST /api/companies/addcompany
+2025-05-01T10:29:00.536Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "52626516" }
+2025-05-01T10:29:05.475Z [INFO]: POST /api/companies/addcompany
+2025-05-01T10:29:05.483Z [INFO]: Company created: 68134cf19a1c2dff25d40cae
+2025-05-01T10:29:13.027Z [INFO]: GET /api/companies/mycompanies
+2025-05-01T10:29:13.030Z [INFO]: GET /api/auth/me
+2025-05-01T10:29:38.032Z [INFO]: GET /api/transactions/mytransactions
+2025-05-01T10:29:38.036Z [INFO]: GET /api/auth/me
+2025-05-01T10:29:38.126Z [INFO]: Fetched all user transactions for user 6807c7cb3c1141648e8a7d3f
+2025-05-01T10:29:44.562Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-01T10:29:44.565Z [INFO]: GET /api/auth/me
+2025-05-01T10:29:44.630Z [INFO]: Fetched 1 tax records
+2025-05-01T10:30:08.080Z [INFO]: GET /api/companies/getallcompanies
+2025-05-01T10:30:08.083Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:19.198Z [INFO]: POST /api/taxes/addtax
+2025-05-01T10:30:19.208Z [INFO]: Tax record created: 68134d3b9a1c2dff25d40cc0
+2025-05-01T10:30:19.240Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-01T10:30:19.243Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:19.311Z [INFO]: Fetched 2 tax records
+2025-05-01T10:30:21.774Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:21.829Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-01T10:30:21.836Z [INFO]: Fetched 1 payrolls
+2025-05-01T10:30:23.375Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:23.378Z [INFO]: GET /api/users/users
+2025-05-01T10:30:23.380Z [INFO]: GET /api/companies/getallcompanies
+2025-05-01T10:30:23.435Z [INFO]: Liste de tous les utilisateurs récupérée (2 utilisateurs)
+2025-05-01T10:30:34.476Z [INFO]: POST /api/payrolls/addpayroll
+2025-05-01T10:30:34.491Z [INFO]: Payroll created: 68134d4a9a1c2dff25d40cce
+2025-05-01T10:30:34.520Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-01T10:30:34.522Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:34.587Z [INFO]: Fetched 2 payrolls
+2025-05-01T10:30:36.001Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:36.064Z [INFO]: GET /api/users/users
+2025-05-01T10:30:36.067Z [INFO]: GET /api/companies/getallcompanies
+2025-05-01T10:30:36.069Z [INFO]: GET /api/payrolls/getpayroll/68134d4a9a1c2dff25d40cce
+2025-05-01T10:30:36.073Z [INFO]: Liste de tous les utilisateurs récupérée (2 utilisateurs)
+2025-05-01T10:30:36.138Z [INFO]: Fetched payroll: 68134d4a9a1c2dff25d40cce
+2025-05-01T10:30:37.819Z [INFO]: PUT /api/payrolls/updatepayroll/68134d4a9a1c2dff25d40cce
+2025-05-01T10:30:37.825Z [INFO]: Updated payroll: 68134d4a9a1c2dff25d40cce
+2025-05-01T10:30:37.848Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-01T10:30:37.850Z [INFO]: GET /api/auth/me
+2025-05-01T10:30:37.906Z [INFO]: Fetched 2 payrolls
