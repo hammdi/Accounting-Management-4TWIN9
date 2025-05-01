@@ -254,10 +254,10 @@ const MasterLayout = ({ children }) => {
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
-                    eCommerce
+                    Payroll
                   </NavLink>
                 </li>
-             {/*    <li>
+             <li>
                   <NavLink
                     to='/index-4'
                     className={(navData) =>
@@ -265,9 +265,10 @@ const MasterLayout = ({ children }) => {
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-danger-main w-auto' />
-                    Cryptocurrency
+                    Tax Compliance
                   </NavLink>
                 </li>
+              {/*
                 <li>
                   <NavLink
                     to='/index-5'
@@ -409,17 +410,6 @@ const MasterLayout = ({ children }) => {
                 </li>
                 <li>
                   <NavLink
-                    to='/invoice-preview'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />
-                    Preview
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to='/invoice-add'
                     className={(navData) =>
                       navData.isActive ? "active-page" : ""
@@ -427,17 +417,6 @@ const MasterLayout = ({ children }) => {
                   >
                     <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
                     Add new
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/invoice-edit'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-danger-main w-auto' />{" "}
-                    Edit
                   </NavLink>
                 </li>
               </ul>
@@ -463,17 +442,6 @@ const MasterLayout = ({ children }) => {
                 </li>
                 <li>
                   <NavLink
-                    to='/transaction-preview'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />
-                    Preview
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to='/transaction-add'
                     className={(navData) =>
                       navData.isActive ? "active-page" : ""
@@ -481,17 +449,6 @@ const MasterLayout = ({ children }) => {
                   >
                     <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
                     Add new
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/transaction-edit'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-danger-main w-auto' />{" "}
-                    Edit
                   </NavLink>
                 </li>
               </ul>
