@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+
 const logger = require('./utils/logger');
 const compteComptableRoutes = require('./routes/compteComptableRoutes');
+
 // Charger les variables d'environnement
 dotenv.config();
 

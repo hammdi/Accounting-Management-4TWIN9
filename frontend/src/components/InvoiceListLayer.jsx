@@ -146,23 +146,33 @@ const InvoiceListLayer = () => {
     };
 
     const handleStatusChange = async (invoiceId, newStatus) => {
+        const token = localStorage.getItem("token");
+
         try {
             // Get the current invoice data
             const currentInvoice = invoices.find(inv => inv._id === invoiceId);
             if (!currentInvoice) return;
 
-            await axios.put(`${process.env.REACT_APP_API_URL}/api/invoices/updateinvoice/${invoiceId}`, {
-                clientName: currentInvoice.clientName,
-                clientEmail: currentInvoice.clientEmail,
-                clientPhone: currentInvoice.clientPhone,
-                dueDate: currentInvoice.dueDate,
-                status: newStatus,
-                items: currentInvoice.items || [],
-                subtotal: currentInvoice.subtotal || 0,
-                discount: currentInvoice.discount || 0,
-                taxAmount: currentInvoice.taxAmount || 0,
-                totalAmount: currentInvoice.totalAmount || 0
-            });
+      await axios.put(
+  `${process.env.REACT_APP_API_URL}/api/invoices/updateinvoice/${invoiceId}`,
+  {
+    clientName: currentInvoice.clientName,
+    clientEmail: currentInvoice.clientEmail,
+    clientPhone: currentInvoice.clientPhone,
+    dueDate: currentInvoice.dueDate,
+    status: newStatus,
+    items: currentInvoice.items || [],
+    subtotal: currentInvoice.subtotal || 0,
+    discount: currentInvoice.discount || 0,
+    taxAmount: currentInvoice.taxAmount || 0,
+    totalAmount: currentInvoice.totalAmount || 0
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);
 
             // Update the local state
             setInvoices(invoices.map(invoice => 
@@ -374,7 +384,8 @@ const InvoiceListLayer = () => {
                                 </th>
                                 <th scope="col">Invoice</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Issued Date</th>
+                                <th scope="col">Due Date</th>
+                                <th scope="col">creation Date</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -428,6 +439,7 @@ const InvoiceListLayer = () => {
                                                     </h6>
                                                 </div>
                                             </td>
+                                            <td>{formatDate(invoice.dueDate)}</td>
                                             <td>{formatDate(invoice.createdAt)}</td>
                                             <td>{formatCurrency(invoice.totalAmount)}</td>
                                             <td>

@@ -28,8 +28,11 @@ export default function Calendar({ events }) {
 
 // Fonction pour personnaliser l'affichage des événements
 function renderEventContent(eventInfo) {
+    const bgColor = eventInfo.event.backgroundColor;
+    const style = bgColor ? { backgroundColor: bgColor, color: eventInfo.event.textColor || 'white', padding: '2px 4px', borderRadius: '4px' } : {};
+
     return (
-        <div>
+        <div style={style}>
             <b>{eventInfo.timeText}</b>
             <i>{eventInfo.event.title}</i>
         </div>

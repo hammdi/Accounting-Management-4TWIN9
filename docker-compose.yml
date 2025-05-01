@@ -12,7 +12,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password123
-      - MONGO_URI=mongodb://mongo:27017/accounting-db
+    #  - MONGO_URI=mongodb://mongo:27017/accounting-db
     #command: mongod --quiet --logpath /dev/null
 
   backend:
