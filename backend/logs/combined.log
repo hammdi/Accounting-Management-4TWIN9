@@ -2451,3 +2451,55 @@
 2025-05-03T16:45:43.880Z [INFO]: POST /api/ai-agent
 2025-05-03T16:59:38.439Z [INFO]: POST /api/ai-agent
 2025-05-03T17:03:37.436Z [INFO]: POST /api/ai-agent
+2025-05-03T18:34:41.712Z [INFO]: POST /api/users/login
+2025-05-03T18:34:41.810Z [INFO]: Connexion réussie pour l'utilisateur : arbi@gmail.com
+2025-05-03T18:34:41.956Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:41.982Z [INFO]: GET /api/auth/me
+2025-05-03T18:34:41.992Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:42.012Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:42.028Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:42.044Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:42.060Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:42.076Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:42.090Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:42.098Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:42.115Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:42.130Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:42.143Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:42.157Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T18:34:42.170Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-03T18:34:46.374Z [INFO]: GET /api/auth/me
+2025-05-03T18:34:46.396Z [INFO]: GET /api/auth/me
+2025-05-03T18:34:46.415Z [INFO]: GET /api/auth/me
+2025-05-03T18:35:06.190Z [INFO]: POST /api/ai-agent
+2025-05-03T18:37:46.344Z [INFO]: GET /api/auth/me
+2025-05-03T18:37:46.363Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T18:37:55.434Z [INFO]: GET /api/auth/me
+2025-05-03T18:37:55.457Z [INFO]: GET /api/users/users
+2025-05-03T18:37:55.464Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T18:37:55.511Z [INFO]: Liste de tous les utilisateurs récupérée (2 utilisateurs)
+2025-05-03T18:38:12.113Z [INFO]: POST /api/payrolls/addpayroll
+2025-05-03T18:38:12.135Z [INFO]: Payroll created: 68166294fc01de63cee772e7
+2025-05-03T18:38:12.233Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T18:38:12.262Z [INFO]: GET /api/auth/me
+2025-05-03T18:38:18.474Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T18:38:18.488Z [INFO]: GET /api/auth/me
+2025-05-03T18:38:31.323Z [INFO]: GET /api/auth/me
+2025-05-03T18:38:31.354Z [INFO]: GET /api/auth/me
+2025-05-03T18:38:31.404Z [INFO]: GET /api/auth/me
+2025-05-03T18:38:53.111Z [INFO]: POST /api/ai-agent
+2025-05-03T18:42:02.877Z [INFO]: GET /api/auth/me
+2025-05-03T18:42:02.888Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T18:42:04.857Z [INFO]: GET /api/auth/me
+2025-05-03T18:42:04.934Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T18:42:27.472Z [INFO]: POST /api/taxes/addtax
+2025-05-03T18:42:27.481Z [INFO]: Tax record created: 68166393fc01de63cee77302
+2025-05-03T18:42:27.593Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T18:42:27.609Z [INFO]: GET /api/auth/me
+2025-05-03T18:42:35.087Z [INFO]: GET /api/auth/me
+2025-05-03T18:42:35.130Z [INFO]: GET /api/auth/me
+2025-05-03T18:42:35.191Z [INFO]: GET /api/auth/me
+2025-05-03T18:42:58.220Z [INFO]: POST /api/ai-agent
+2025-05-03T18:45:25.085Z [INFO]: POST /api/ai-agent
+2025-05-03T18:46:23.312Z [INFO]: POST /api/ai-agent
+2025-05-03T18:48:09.946Z [INFO]: POST /api/ai-agent
