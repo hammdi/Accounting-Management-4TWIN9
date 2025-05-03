@@ -23,20 +23,20 @@ const DashBoardLayerThree = () => {
       <RecentOrdersOne />
 
       {/* TransactionsOne */}
-      <TransactionsOne />
+      {/* <TransactionsOne /> */}
 
       {/* RecentOrdersTwo */}
       <RecentOrdersTwo />
 
       {/* DistributionMapsOne */}
-      <DistributionMapsOne />
+      {/* <DistributionMapsOne /> */}
 
       {/* TopCustomersOne */}
       <TopCustomersOne />
 
 
       {/* TopSellingProductOne */}
-      <TopSellingProductOne />
+      {/* <TopSellingProductOne /> */}
 
 
       {/* StockReportOne */}

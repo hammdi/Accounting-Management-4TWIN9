@@ -29,7 +29,7 @@ const DashBoardLayerTwo = () => {
       <ClientPaymentOne />
 
       {/* CountryStatusOne */}
-      <CountryStatusOne />
+      {/* <CountryStatusOne /> */}
 
       {/* TopPerformanceOne */}
       <TopPerformanceOne />

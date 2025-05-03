@@ -1,15 +1,16 @@
-// routes/taxRoutes.js
 const express = require('express');
-const { createTax, getTaxes, getTax, updateTax, deleteTax } = require('../controller/taxController');
-const { validateTax } = require('../middleware/taxValidator');
-
 const router = express.Router();
+const auth = require('../middleware/auth');
+const taxController = require('../controller/taxController');
 
+// All routes require authentication
+router.use(auth);
 
-router.post('/addtax', validateTax, createTax);
-router.get('/getalltaxes', getTaxes);
-router.get('/gettax/:id', getTax);
-router.put('/updatetax/:id', validateTax, updateTax);
-router.delete('/deletetax/:id', deleteTax);
+// Routes
+router.post('/addtax', taxController.createTax);
+router.get('/getalltaxes', taxController.getMyTaxCompliance);
+router.get('/gettax/:id', taxController.getTax);
+router.put('/updatetax/:id', taxController.updateTax);
+router.delete('/deletetax/:id', taxController.deleteTax);
 
 module.exports = router;

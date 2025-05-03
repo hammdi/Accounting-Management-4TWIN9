@@ -15,6 +15,7 @@ services:
     #  - MONGO_URI=mongodb://mongo:27017/accounting-db
     #command: mongod --quiet --logpath /dev/null
 
+
   backend:
     build: ./backend
     container_name: accounting-backend
@@ -31,6 +32,7 @@ services:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
 
+
   frontend:
     build: ./frontend
     container_name: accounting-frontend
@@ -45,6 +47,17 @@ services:
       - ./frontend:/usr/src/app
     stdin_open: true
     tty: true
+
+  
+
+
+  ai_module:
+    build: ./ai
+    ports:
+      - "5001:5001"
+    restart: always
+
+
 
   ollama:
     image: ollama/ollama
@@ -61,4 +74,5 @@ services:
 volumes:
   mongodb_data:
     driver: local
+
   ollama_data:

@@ -5,7 +5,8 @@ const PayrollSchema = new mongoose.Schema({
     employee: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     salary: { type: Number, required: true },
     paymentDate: { type: Date, required: true },
-    status: { type: String, enum: ['Pending', 'Paid'], default: 'Pending' }
+    status: { type: String, enum: ['Pending', 'Paid'], default: 'Pending' },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Payroll', PayrollSchema);

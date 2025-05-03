@@ -1,13 +1,13 @@
-// controllers/taxController.js
 const Tax = require('../models/Tax Compliance');
-const logger = require('../utils/logger'); // Winston logger
+const logger = require('../utils/logger');
 
-// Create a new tax record
 exports.createTax = async (req, res) => {
     try {
-        const tax = new Tax(req.body);
+        const tax = new Tax({
+            ...req.body,
+            createdBy: req.user._id
+        });
         await tax.save();
-
         logger.info(`Tax record created: ${tax._id}`);
         res.status(201).json(tax);
     } catch (error) {
@@ -16,29 +16,31 @@ exports.createTax = async (req, res) => {
     }
 };
 
-// Get all tax records
-exports.getTaxes = async (req, res) => {
+exports.getMyTaxCompliance = async (req, res) => {
     try {
-        const taxes = await Tax.find().populate('company filedBy');
-
-        logger.info(`Fetched ${taxes.length} tax records`);
+        const taxes = await Tax.find({ createdBy: req.user._id })
+            .populate('company')
+            .sort({ dueDate: -1 });
+        
         res.json(taxes);
     } catch (error) {
-        logger.error(`Error fetching tax records: ${error.message}`);
-        res.status(500).json({ error: error.message });
+        console.error('Error fetching user tax records:', error);
+        res.status(500).json({
+            error: error.message
+        });
     }
 };
-
-// Get a single tax record
 exports.getTax = async (req, res) => {
     try {
-        const tax = await Tax.findById(req.params.id).populate('company filedBy');
-
+        const tax = await Tax.findById(req.params.id)
+            .populate('company')
+            .where('createdBy', req.user._id);
+        
         if (!tax) {
-            logger.warn(`Tax record not found: ${req.params.id}`);
+            logger.warn(`Tax record not found or unauthorized access: ${req.params.id}`);
             return res.status(404).json({ error: "Tax record not found" });
         }
-
+        
         logger.info(`Fetched tax record: ${tax._id}`);
         res.json(tax);
     } catch (error) {
@@ -47,16 +49,20 @@ exports.getTax = async (req, res) => {
     }
 };
 
-// Update a tax record
 exports.updateTax = async (req, res) => {
     try {
-        const tax = await Tax.findByIdAndUpdate(req.params.id, req.body, { new: true });
-
+        const tax = await Tax.findByIdAndUpdate(
+            req.params.id,
+            { ...req.body, updatedAt: new Date() },
+            { new: true }
+        )
+        .where('createdBy', req.user._id);
+        
         if (!tax) {
-            logger.warn(`Tax record not found for update: ${req.params.id}`);
+            logger.warn(`Tax record not found or unauthorized access for update: ${req.params.id}`);
             return res.status(404).json({ error: "Tax record not found" });
         }
-
+        
         logger.info(`Updated tax record: ${tax._id}`);
         res.json(tax);
     } catch (error) {
@@ -65,16 +71,16 @@ exports.updateTax = async (req, res) => {
     }
 };
 
-// Delete a tax record
 exports.deleteTax = async (req, res) => {
     try {
-        const tax = await Tax.findByIdAndDelete(req.params.id);
-
+        const tax = await Tax.findByIdAndDelete(req.params.id)
+            .where('createdBy', req.user._id);
+        
         if (!tax) {
-            logger.warn(`Tax record not found for deletion: ${req.params.id}`);
+            logger.warn(`Tax record not found or unauthorized access for deletion: ${req.params.id}`);
             return res.status(404).json({ error: "Tax record not found" });
         }
-
+        
         logger.info(`Deleted tax record: ${tax._id}`);
         res.json({ message: "Tax record deleted" });
     } catch (error) {
@@ -82,4 +88,3 @@ exports.deleteTax = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-

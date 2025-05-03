@@ -1,15 +1,16 @@
-// routes/payrollRoutes.js
 const express = require('express');
-const { createPayroll, getPayrolls, getPayroll, updatePayroll, deletePayroll } = require('../controller/payrollController');
-const { validatePayroll } = require('../middleware/payrollValidator');
-
 const router = express.Router();
+const auth = require('../middleware/auth');
+const payrollController = require('../controller/payrollController');
 
+// All routes require authentication
+router.use(auth);
 
-router.post('/addpayroll',validatePayroll, createPayroll);
-router.get('/getallpayrolls', getPayrolls);
-router.get('/getpayroll/:id', getPayroll);
-router.put('/updatepayroll/:id',validatePayroll, updatePayroll);
-router.delete('/deletepayroll/:id', deletePayroll);
+// Routes
+router.post('/addpayroll', payrollController.createPayroll);
+router.get('/getallpayrolls', payrollController.getMyPayrolls);
+router.get('/getpayroll/:id', payrollController.getPayroll);
+router.put('/updatepayroll/:id', payrollController.updatePayroll);
+router.delete('/deletepayroll/:id', payrollController.deletePayroll);
 
 module.exports = router;

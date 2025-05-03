@@ -12,24 +12,40 @@ const TransactionSchema = new mongoose.Schema({
         enum: ['Income', 'Expense'],
         required: true
     },
-    amount: {
-        type: Number,
-        required: true,
-        min: 0.01
-    },
     category: {
         type: String,
         required: true,
         trim: true
+    },
+    amount: {
+        type: Number,
+        required: true,
+        min: 0.01
     },
     date: {
         type: Date,
         default: Date.now,
         required: true
     },
+    timestamp: {
+        type: Date,
+        default: Date.now
+    },
     description: {
         type: String,
         trim: true
+    },
+    merchantCategory: {
+        type: String,
+        default: 'unknown'
+    },
+    merchantCountry: {
+        type: String,
+        default: 'unknown'
+    },
+    paymentMethod: {
+        type: String,
+        default: 'unknown'
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

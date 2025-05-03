@@ -2,33 +2,78 @@
 const Transaction = require('../models/Transaction');
 const Company = require('../models/Company');
 const User = require('../models/userModel');
-const logger = require('../utils/logger'); // Winston logger
 
 // Create a new transaction
 exports.createTransaction = async (req, res) => {
     try {
+        // Validate company exists
         const company = await Company.findById(req.body.company);
         if (!company) {
-            logger.warn(`Company not found: ${req.body.company}`);
             return res.status(404).json({
                 success: false,
                 message: 'Company not found'
             });
         }
 
-        const user = await User.findById(req.user._id);
-        if (!user) {
-            logger.warn(`User not found: ${req.user._id}`);
-            return res.status(404).json({
+        const { company: companyId, type, category, amount, date, description, merchantCategory, merchantCountry, paymentMethod } = req.body;
+        
+        // Validate required fields
+        if (!companyId || !type || !category || !amount || !date) {
+            return res.status(400).json({
                 success: false,
-                message: 'User not found'
+                message: 'Company, type, category, amount, and date are required'
             });
         }
 
-        const transactionData = { ...req.body, createdBy: req.user._id };
+        // Parse date
+        let parsedDate;
+        try {
+            if (typeof date === 'string') {
+                if (date.includes('T')) { // If it's already an ISO string
+                    parsedDate = new Date(date);
+                } else { // If it's just a date string (YYYY-MM-DD)
+                    parsedDate = new Date(date + 'T00:00:00.000Z');
+                }
+            } else if (date instanceof Date) {
+                parsedDate = date;
+            } else {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Invalid date format'
+                });
+            }
+        } catch (error) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid date format'
+            });
+        }
+
+        if (isNaN(parsedDate.getTime())) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid date format'
+            });
+        }
+
+        const transactionData = {
+            company: companyId,
+            type,
+            category,
+            amount,
+            date: parsedDate,
+            description,
+            merchantCategory: merchantCategory || 'unknown',
+            merchantCountry: merchantCountry || 'unknown',
+            paymentMethod: paymentMethod || 'unknown',
+            timestamp: parsedDate,
+            createdBy: req.user._id
+        };
+
         const transaction = new Transaction(transactionData);
         await transaction.save();
 
+        // Update company's transaction balance
         if (transaction.type === 'Income') {
             company.balance += transaction.amount;
         } else {
@@ -36,15 +81,13 @@ exports.createTransaction = async (req, res) => {
         }
         await company.save();
 
-        logger.info(`Transaction created: ${transaction._id} by user ${req.user._id}`);
-
         res.status(201).json({
             success: true,
             message: 'Transaction created successfully',
             data: transaction
         });
     } catch (error) {
-        logger.error(`Error creating transaction: ${error.message}`);
+        console.error('Error creating transaction:', error);
         res.status(400).json({
             success: false,
             message: error.message
@@ -56,7 +99,7 @@ exports.createTransaction = async (req, res) => {
 exports.getTransactions = async (req, res) => {
     try {
         const { company, type, startDate, endDate, page = 1, limit = 10 } = req.query;
-
+        
         const query = { createdBy: req.user._id };
         if (company) query.company = company;
         if (type) query.type = type;
@@ -71,8 +114,6 @@ exports.getTransactions = async (req, res) => {
 
         const total = await Transaction.countDocuments(query);
 
-        logger.info(`Fetched ${transactions.length} transactions for user ${req.user._id}`);
-
         res.json({
             success: true,
             data: transactions,
@@ -84,7 +125,7 @@ exports.getTransactions = async (req, res) => {
             }
         });
     } catch (error) {
-        logger.error(`Error fetching transactions: ${error.message}`);
+        console.error('Error fetching transactions:', error);
         res.status(500).json({
             success: false,
             message: error.message
@@ -96,13 +137,12 @@ exports.getTransactions = async (req, res) => {
 exports.getUserTransactions = async (req, res) => {
     try {
         const transactions = await Transaction.find({ createdBy: req.user._id }).populate('company createdBy').sort({ date: -1 });
-        logger.info(`Fetched all user transactions for user ${req.user._id}`);
         res.json({
             success: true,
             data: transactions
         });
     } catch (error) {
-        logger.error(`Error fetching user transactions: ${error.message}`);
+        console.error('Error fetching user transactions:', error);
         res.status(500).json({
             success: false,
             message: error.message
@@ -113,23 +153,22 @@ exports.getUserTransactions = async (req, res) => {
 // Get a single transaction
 exports.getTransaction = async (req, res) => {
     try {
-        const transaction = await Transaction.findById(req.params.id).populate('company createdBy');
-
+        const transaction = await Transaction.findById(req.params.id)
+            .populate('company createdBy');
+        
         if (!transaction) {
-            logger.warn(`Transaction not found: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
                 message: 'Transaction not found'
             });
         }
 
-        logger.info(`Fetched transaction ${transaction._id}`);
         res.json({
             success: true,
             data: transaction
         });
     } catch (error) {
-        logger.error(`Error fetching transaction: ${error.message}`);
+        console.error('Error fetching transaction:', error);
         res.status(500).json({
             success: false,
             message: error.message
@@ -140,47 +179,87 @@ exports.getTransaction = async (req, res) => {
 // Update a transaction
 exports.updateTransaction = async (req, res) => {
     try {
+        const { company: companyId, type, category, amount, date, description, merchantCategory, merchantCountry, paymentMethod } = req.body;
+        
+        // Validate required fields
+        if (!companyId || !type || !category || !amount || !date) {
+            return res.status(400).json({
+                success: false,
+                message: 'Company, type, category, amount, and date are required'
+            });
+        }
+
+        // Parse date
+        let parsedDate;
+        try {
+            if (typeof date === 'string') {
+                if (date.includes('T')) { // If it's already an ISO string
+                    parsedDate = new Date(date);
+                } else { // If it's just a date string (YYYY-MM-DD)
+                    parsedDate = new Date(date + 'T00:00:00.000Z');
+                }
+            } else if (date instanceof Date) {
+                parsedDate = date;
+            } else {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Invalid date format'
+                });
+            }
+        } catch (error) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid date format'
+            });
+        }
+
+        if (isNaN(parsedDate.getTime())) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid date format'
+            });
+        }
+
         const transaction = await Transaction.findById(req.params.id);
+        
         if (!transaction) {
-            logger.warn(`Transaction not found for update: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
                 message: 'Transaction not found'
             });
         }
 
+        // Update transaction fields
+        transaction.company = companyId;
+        transaction.type = type;
+        transaction.category = category;
+        transaction.amount = amount;
+        transaction.date = parsedDate;
+        transaction.description = description;
+        transaction.merchantCategory = merchantCategory || 'unknown';
+        transaction.merchantCountry = merchantCountry || 'unknown';
+        transaction.paymentMethod = paymentMethod || 'unknown';
+        transaction.timestamp = parsedDate;
+        transaction.createdBy = req.user._id;
+
+        await transaction.save();
+        
+        // Update company's transaction balance
         const oldCompany = await Company.findById(transaction.company);
         if (transaction.type === 'Income') {
-            oldCompany.balance -= transaction.amount;
-        } else {
             oldCompany.balance += transaction.amount;
-        }
-
-        const updatedTransaction = await Transaction.findByIdAndUpdate(
-            req.params.id,
-            { ...req.body },
-            { new: true }
-        ).populate('company createdBy');
-
-        const newCompany = await Company.findById(updatedTransaction.company);
-        if (updatedTransaction.type === 'Income') {
-            newCompany.balance += updatedTransaction.amount;
         } else {
-            newCompany.balance -= updatedTransaction.amount;
+            oldCompany.balance -= transaction.amount;
         }
-
-        await Promise.all([oldCompany.save(), newCompany.save()]);
-
-        logger.info(`Updated transaction ${updatedTransaction._id}`);
+        await oldCompany.save();
 
         res.json({
             success: true,
-            message: 'Transaction updated successfully',
-            data: updatedTransaction
+            data: transaction
         });
     } catch (error) {
-        logger.error(`Error updating transaction: ${error.message}`);
-        res.status(400).json({
+        console.error('Error updating transaction:', error);
+        res.status(500).json({
             success: false,
             message: error.message
         });
@@ -192,13 +271,13 @@ exports.deleteTransaction = async (req, res) => {
     try {
         const transaction = await Transaction.findById(req.params.id);
         if (!transaction) {
-            logger.warn(`Transaction not found for deletion: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
                 message: 'Transaction not found'
             });
         }
 
+        // Update company balance
         const company = await Company.findById(transaction.company);
         if (transaction.type === 'Income') {
             company.balance -= transaction.amount;
@@ -209,14 +288,12 @@ exports.deleteTransaction = async (req, res) => {
 
         await Transaction.findByIdAndDelete(req.params.id);
 
-        logger.info(`Deleted transaction ${transaction._id}`);
-
         res.json({
             success: true,
             message: 'Transaction deleted successfully'
         });
     } catch (error) {
-        logger.error(`Error deleting transaction: ${error.message}`);
+        console.error('Error deleting transaction:', error);
         res.status(500).json({
             success: false,
             message: error.message
@@ -228,17 +305,15 @@ exports.deleteTransaction = async (req, res) => {
 exports.deleteAllTransactions = async (req, res) => {
     try {
         await Transaction.collection.drop();
-        logger.warn('All transactions deleted (collection dropped)');
         res.json({
             success: true,
             message: 'Transaction collection dropped successfully'
         });
     } catch (error) {
-        logger.error(`Error dropping transaction collection: ${error.message}`);
+        console.error('Error dropping transaction collection:', error);
         res.status(500).json({
             success: false,
             message: error.message
         });
     }
 };
-
