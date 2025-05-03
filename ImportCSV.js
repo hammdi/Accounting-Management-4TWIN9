@@ -4,9 +4,7 @@ const csvParser = require("csv-parser");
 const mongoose = require("mongoose");
 const Element = require('./models/CompteComptable');
 
-//const MONGO_URI = "mongodb://mongo:27017/accounting-db";
-const MONGO_URI = "mongodb://admin:password123@mongo:27017/accounting-db?authSource=admin";
-
+const MONGO_URI = "mongodb://mongo:27017/accounting-db";
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,

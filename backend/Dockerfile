@@ -9,11 +9,6 @@ COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install
-#RUN apt update && apt install -y mongodb-clients
-#RUN apt update && apt install -y wget && wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
- #   echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
-  #  apt update && apt install -y mongodb-org-tools
-
 
 # Copier le reste des fichiers du projet
 COPY . .
@@ -21,5 +16,5 @@ COPY . .
 # Exposer le port sur lequel l'application va écouter
 EXPOSE 5000
 
-# Démarrer l'application
-CMD ["node", "app.js"]
+# Lancer le script d'importation CSV avant le serveur principal
+CMD ["bash", "-c", "node ImportCSV.js && node app.js"]
