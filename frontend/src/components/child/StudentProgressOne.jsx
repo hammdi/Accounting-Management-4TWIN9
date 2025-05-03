@@ -1,277 +1,106 @@
-import { Icon } from '@iconify/react/dist/iconify.js'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Icon } from '@iconify/react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const StudentProgressOne = () => {
+const CompanyStatusWidget = () => {
+  const [stats, setStats] = useState({
+    active: 0,
+    inactive: 0,
+    total: 0
+  });
+  const [loading, setLoading] = useState(true);
+
+  const fetchCompanyStats = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companies/mycompanies`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      const active = response.data.filter(c => c.status === 'Active').length;
+      const inactive = response.data.length - active;
+
+      setStats({
+        active,
+        inactive,
+        total: response.data.length
+      });
+    } catch (error) {
+      toast.error('Failed to load company data');
+      console.error('Fetch error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCompanyStats();
+  }, []);
+
+  const StatusItem = ({ count, label, colorClass }) => (
+    <div className="d-flex align-items-center mb-12">
+      <div className={`w-12-px h-12-px rounded-circle ${colorClass} me-8`}></div>
+      <div className="flex-grow-1">
+        <span className="text-sm text-secondary-light">{label}</span>
+      </div>
+      <span className="fw-semibold">{count}</span>
+    </div>
+  );
+
+  if (loading) {
     return (
-        <div className="col-xxl-4 col-md-6">
-            <div className="card">
-                <div className="card-header">
-                    <div className="d-flex align-items-center flex-wrap gap-2 justify-content-between">
-                        <h6 className="mb-2 fw-bold text-lg mb-0">Student's Progress</h6>
-                        <Link
-                            to="#"
-                            className="text-primary-600 hover-text-primary d-flex align-items-center gap-1"
-                        >
-                            View All
-                            <Icon
-                                icon="solar:alt-arrow-right-linear"
-                                className="icon"
-                            />
-                        </Link>
-                    </div>
-                </div>
-                <div className="card-body">
-                    <div className="d-flex align-items-center justify-content-between gap-3 mb-24">
-                        <div className="d-flex align-items-center">
-                            <img
-                                src="assets/images/home-six/student-img1.png"
-                                alt=""
-                                className="w-40-px h-40-px radius-8 flex-shrink-0 me-12 overflow-hidden"
-                            />
-                            <div className="flex-grow-1">
-                                <h6 className="text-md mb-0 fw-medium">Theresa Webb</h6>
-                                <span className="text-sm text-secondary-light fw-medium">
-                                    UI/UX Design Course
-                                </span>
-                            </div>
-                        </div>
-                        <div className="">
-                            <span className="text-primary-light text-sm d-block text-end">
-                                <svg
-                                    className="radial-progress"
-                                    data-percentage={33}
-                                    viewBox="0 0 80 80"
-                                >
-                                    <circle className="incomplete" cx={40} cy={40} r={35} />
-                                    <circle
-                                        className="complete"
-                                        cx={40}
-                                        cy={40}
-                                        r={35}
-                                        style={{ strokeDashoffset: "39.58406743523136" }}
-                                    ></circle>
-                                    <text
-                                        className="percentage"
-                                        x="50%"
-                                        y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)"
-                                    >
-                                        33
-                                    </text>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-between gap-3 mb-24">
-                        <div className="d-flex align-items-center">
-                            <img
-                                src="assets/images/home-six/student-img2.png"
-                                alt=""
-                                className="w-40-px h-40-px radius-8 flex-shrink-0 me-12 overflow-hidden"
-                            />
-                            <div className="flex-grow-1">
-                                <h6 className="text-md mb-0 fw-medium">Robert Fox</h6>
-                                <span className="text-sm text-secondary-light fw-medium">
-                                    Graphic Design Course
-                                </span>
-                            </div>
-                        </div>
-                        <div className="">
-                            <span className="text-primary-light text-sm d-block text-end">
-                                <svg
-                                    className="radial-progress"
-                                    data-percentage={70}
-                                    viewBox="0 0 80 80"
-                                >
-                                    <circle className="incomplete" cx={40} cy={40} r={35} />
-                                    <circle
-                                        className="complete"
-                                        cx={40}
-                                        cy={40}
-                                        r={35}
-                                        style={{ strokeDashoffset: "39.58406743523136" }}
-                                    ></circle>
-                                    <text
-                                        className="percentage"
-                                        x="50%"
-                                        y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)"
-                                    >
-                                        70
-                                    </text>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-between gap-3 mb-24">
-                        <div className="d-flex align-items-center">
-                            <img
-                                src="assets/images/home-six/student-img3.png"
-                                alt=""
-                                className="w-40-px h-40-px radius-8 flex-shrink-0 me-12 overflow-hidden"
-                            />
-                            <div className="flex-grow-1">
-                                <h6 className="text-md mb-0 fw-medium">Guy Hawkins</h6>
-                                <span className="text-sm text-secondary-light fw-medium">
-                                    Web developer Course
-                                </span>
-                            </div>
-                        </div>
-                        <div className="">
-                            <span className="text-primary-light text-sm d-block text-end">
-                                <svg
-                                    className="radial-progress"
-                                    data-percentage={80}
-                                    viewBox="0 0 80 80"
-                                >
-                                    <circle className="incomplete" cx={40} cy={40} r={35} />
-                                    <circle
-                                        className="complete"
-                                        cx={40}
-                                        cy={40}
-                                        r={35}
-                                        style={{ strokeDashoffset: "39.58406743523136" }}
-                                    ></circle>
-                                    <text
-                                        className="percentage"
-                                        x="50%"
-                                        y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)"
-                                    >
-                                        80
-                                    </text>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-between gap-3 mb-24">
-                        <div className="d-flex align-items-center">
-                            <img
-                                src="assets/images/home-six/student-img4.png"
-                                alt=""
-                                className="w-40-px h-40-px radius-8 flex-shrink-0 me-12 overflow-hidden"
-                            />
-                            <div className="flex-grow-1">
-                                <h6 className="text-md mb-0 fw-medium">Cody Fisher</h6>
-                                <span className="text-sm text-secondary-light fw-medium">
-                                    UI/UX Design Course
-                                </span>
-                            </div>
-                        </div>
-                        <div className="">
-                            <span className="text-primary-light text-sm d-block text-end">
-                                <svg
-                                    className="radial-progress"
-                                    data-percentage={20}
-                                    viewBox="0 0 80 80"
-                                >
-                                    <circle className="incomplete" cx={40} cy={40} r={35} />
-                                    <circle
-                                        className="complete"
-                                        cx={40}
-                                        cy={40}
-                                        r={35}
-                                        style={{ strokeDashoffset: "39.58406743523136" }}
-                                    ></circle>
-                                    <text
-                                        className="percentage"
-                                        x="50%"
-                                        y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)"
-                                    >
-                                        20
-                                    </text>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-between gap-3 mb-24">
-                        <div className="d-flex align-items-center">
-                            <img
-                                src="assets/images/home-six/student-img5.png"
-                                alt=""
-                                className="w-40-px h-40-px radius-8 flex-shrink-0 me-12 overflow-hidden"
-                            />
-                            <div className="flex-grow-1">
-                                <h6 className="text-md mb-0 fw-medium">Jacob Jones</h6>
-                                <span className="text-sm text-secondary-light fw-medium">
-                                    UI/UX Design Course
-                                </span>
-                            </div>
-                        </div>
-                        <div className="">
-                            <span className="text-primary-light text-sm d-block text-end">
-                                <svg
-                                    className="radial-progress"
-                                    data-percentage={40}
-                                    viewBox="0 0 80 80"
-                                >
-                                    <circle className="incomplete" cx={40} cy={40} r={35} />
-                                    <circle
-                                        className="complete"
-                                        cx={40}
-                                        cy={40}
-                                        r={35}
-                                        style={{ strokeDashoffset: "39.58406743523136" }}
-                                    ></circle>
-                                    <text
-                                        className="percentage"
-                                        x="50%"
-                                        y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)"
-                                    >
-                                        40
-                                    </text>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-between gap-3 mb-0">
-                        <div className="d-flex align-items-center">
-                            <img
-                                src="assets/images/home-six/student-img6.png"
-                                alt=""
-                                className="w-40-px h-40-px radius-8 flex-shrink-0 me-12 overflow-hidden"
-                            />
-                            <div className="flex-grow-1">
-                                <h6 className="text-md mb-0 fw-medium">Darlene Robertson</h6>
-                                <span className="text-sm text-secondary-light fw-medium">
-                                    UI/UX Design Course
-                                </span>
-                            </div>
-                        </div>
-                        <div className="">
-                            <span className="text-primary-light text-sm d-block text-end">
-                                <svg
-                                    className="radial-progress"
-                                    data-percentage={24}
-                                    viewBox="0 0 80 80"
-                                >
-                                    <circle className="incomplete" cx={40} cy={40} r={35} />
-                                    <circle
-                                        className="complete"
-                                        cx={40}
-                                        cy={40}
-                                        r={35}
-                                        style={{ strokeDashoffset: "39.58406743523136" }}
-                                    ></circle>
-                                    <text
-                                        className="percentage"
-                                        x="50%"
-                                        y="57%"
-                                        transform="matrix(0, 1, -1, 0, 80, 0)"
-                                    >
-                                        24
-                                    </text>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+      <div className="col-xxl-4 col-md-6">
+        <div className="card h-100">
+          <div className="card-body d-flex justify-content-center align-items-center">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    );
+  }
 
-export default StudentProgressOne
+  return (
+    <div className="col-xxl-4 col-md-6">
+      <div className="card h-100">
+        <div className="card-header">
+          <div className="d-flex justify-content-between align-items-center">
+            <h6 className="mb-0 fw-bold">Company Status</h6>
+            <Link to="/companies" className="text-primary-600 hover-text-primary">
+              <Icon icon="solar:alt-arrow-right-linear" />
+            </Link>
+          </div>
+        </div>
+        <div className="card-body">
+          <div className="d-flex justify-content-between align-items-center mb-24">
+            <h3 className="mb-0">{stats.total}</h3>
+            <span className="badge bg-primary-50 text-primary-600">Total</span>
+          </div>
+
+          <StatusItem 
+            count={stats.active} 
+            label="Active Companies" 
+            colorClass="bg-success" 
+          />
+          <StatusItem 
+            count={stats.inactive} 
+            label="Inactive Companies" 
+            colorClass="bg-danger" 
+          />
+
+          <div className="mt-20 pt-20 border-top">
+            <div className="d-flex justify-content-between">
+              <span className="text-sm text-secondary-light">Last updated</span>
+              <span className="text-sm fw-medium">{new Date().toLocaleTimeString()}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CompanyStatusWidget;

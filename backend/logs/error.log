@@ -1,2 +1,4 @@
 2025-05-01T10:28:42.509Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "52626516" }
 2025-05-01T10:29:00.536Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "52626516" }
+2025-05-03T17:22:18.088Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "125689" }
+2025-05-03T17:22:31.386Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "125689" }
