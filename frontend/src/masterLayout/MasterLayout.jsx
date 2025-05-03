@@ -268,7 +268,7 @@ const MasterLayout = ({ children }) => {
                     Tax Compliance
                   </NavLink>
                 </li>
-              {/*
+             
                 <li>
                   <NavLink
                     to='/index-5'
@@ -277,7 +277,7 @@ const MasterLayout = ({ children }) => {
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-success-main w-auto' />{" "}
-                    Investment
+                    User
                   </NavLink>
                 </li>
                 <li>
@@ -288,10 +288,10 @@ const MasterLayout = ({ children }) => {
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-purple w-auto' />{" "}
-                    LMS
+                    Company
                   </NavLink>
                 </li>
-                <li>
+             {/*    <li>
                   <NavLink
                     to='/index-7'
                     className={(navData) =>
