@@ -1,0 +1,8 @@
+----------------------
+-----Starting up------
+----------------------
+
+docker-compose up --build backend mongo
+
+cd frontend 
+npm install

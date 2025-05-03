@@ -552,3 +552,477 @@
 2025-05-01T14:54:53.448Z [INFO]: GET /api/auth/me
 2025-05-01T14:54:53.537Z [INFO]: GET /api/auth/me
 2025-05-01T14:55:00.359Z [INFO]: POST /api/ai-agent
+2025-05-01T15:40:28.168Z [INFO]: POST /api/users/login
+2025-05-01T15:40:28.176Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:40:31.307Z [INFO]: POST /api/users/login
+2025-05-01T15:40:31.311Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:40:38.196Z [INFO]: POST /api/users/login
+2025-05-01T15:40:38.199Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:41:59.615Z [INFO]: POST /api/users/login
+2025-05-01T15:41:59.622Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:42:00.594Z [INFO]: POST /api/users/login
+2025-05-01T15:42:00.596Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:42:00.814Z [INFO]: POST /api/users/login
+2025-05-01T15:42:00.816Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:42:01.014Z [INFO]: POST /api/users/login
+2025-05-01T15:42:01.015Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:42:01.234Z [INFO]: POST /api/users/login
+2025-05-01T15:42:01.236Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-01T15:42:21.732Z [INFO]: POST /api/users/register
+2025-05-01T15:42:22.718Z [INFO]: POST /api/users/register
+2025-05-01T15:42:22.721Z [WARN]: Tentative d'inscription avec email ou téléphone existant : saidahmedboudali.s@gmail.com, 29424745
+2025-05-01T15:42:23.270Z [INFO]: Email de vérification envoyé à : saidahmedboudali.s@gmail.com
+2025-05-01T15:42:23.271Z [INFO]: Nouvel utilisateur enregistré : saidahmedboudali.s@gmail.com
+2025-05-01T15:42:29.288Z [INFO]: GET /api/users/verify/0a46e5de2c66e65a4afdc68af99208fe42459e6e4bbfe8441b2d18b9bf1eac1f
+2025-05-01T15:42:32.063Z [INFO]: POST /api/users/login
+2025-05-01T15:42:32.127Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-01T15:42:32.179Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.189Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.190Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.194Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.196Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.199Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.201Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.206Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.208Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.212Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.215Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.220Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.222Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:42:32.226Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:32.265Z [INFO]: GET /api/auth/me
+2025-05-01T15:42:35.708Z [INFO]: GET /api/auth/me
+2025-05-01T15:42:35.712Z [INFO]: GET /api/auth/me
+2025-05-01T15:42:54.452Z [INFO]: PUT /api/users/user/6813965d59d0f3ab3095b25d
+2025-05-01T15:42:54.459Z [INFO]: Utilisateur mis à jour avec succès : 6813965d59d0f3ab3095b25d
+2025-05-01T15:42:54.866Z [INFO]: GET /api/auth/me
+2025-05-01T15:42:54.907Z [INFO]: GET /api/auth/me
+2025-05-01T15:43:20.665Z [INFO]: PUT /api/users/user/6813965d59d0f3ab3095b25d
+2025-05-01T15:43:20.672Z [INFO]: Utilisateur mis à jour avec succès : 6813965d59d0f3ab3095b25d
+2025-05-01T15:43:20.798Z [INFO]: GET /api/auth/me
+2025-05-01T15:43:20.837Z [INFO]: GET /api/auth/me
+2025-05-01T15:43:47.493Z [INFO]: GET /api/users/users
+2025-05-01T15:43:47.497Z [INFO]: GET /api/auth/me
+2025-05-01T15:43:47.500Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-01T15:43:51.009Z [INFO]: GET /api/auth/me
+2025-05-01T15:43:51.691Z [INFO]: GET /api/users/users
+2025-05-01T15:43:51.693Z [INFO]: GET /api/auth/me
+2025-05-01T15:43:51.696Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-01T15:44:00.833Z [INFO]: GET /api/auth/me
+2025-05-01T15:44:02.636Z [INFO]: GET /api/auth/me
+2025-05-01T15:44:04.863Z [INFO]: GET /api/auth/me
+2025-05-01T15:44:06.634Z [INFO]: GET /api/auth/me
+2025-05-01T15:44:08.414Z [INFO]: GET /api/auth/me
+2025-05-01T15:44:10.493Z [INFO]: GET /api/auth/me
+2025-05-01T15:44:12.114Z [INFO]: GET /api/auth/me
+2025-05-01T15:50:30.934Z [INFO]: POST /api/users/login
+2025-05-01T15:50:30.999Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-01T15:50:31.109Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.112Z [INFO]: GET /api/auth/me
+2025-05-01T15:50:31.150Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:31.153Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.157Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:31.159Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.166Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:31.168Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.172Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:31.174Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.182Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:31.184Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.188Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:31.190Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:31.195Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:33.863Z [INFO]: GET /api/auth/me
+2025-05-01T15:50:34.796Z [INFO]: GET /api/auth/me
+2025-05-01T15:50:35.637Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.640Z [INFO]: GET /api/auth/me
+2025-05-01T15:50:35.671Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:35.673Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.677Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:35.679Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.682Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:35.683Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.688Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:35.691Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.697Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:35.698Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.702Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:35.704Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T15:50:35.710Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T15:50:39.146Z [INFO]: GET /api/auth/me
+2025-05-01T15:50:39.175Z [INFO]: GET /api/auth/me
+2025-05-01T16:18:50.048Z [INFO]: GET /api/auth/me
+2025-05-01T16:18:54.561Z [INFO]: GET /api/auth/me
+2025-05-01T16:19:00.081Z [INFO]: GET /api/auth/me
+2025-05-01T16:32:13.249Z [INFO]: GET /api/auth/me
+2025-05-01T16:39:15.763Z [INFO]: GET /api/auth/me
+2025-05-01T16:39:37.432Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.434Z [INFO]: GET /api/auth/me
+2025-05-01T16:39:37.475Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:39:37.477Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.480Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:39:37.481Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.485Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:39:37.487Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.491Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:39:37.493Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.497Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:39:37.499Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.505Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:39:37.508Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T16:39:37.513Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T16:43:03.810Z [INFO]: GET /api/auth/me
+2025-05-01T16:43:06.056Z [INFO]: GET /api/auth/me
+2025-05-01T16:43:08.266Z [INFO]: GET /api/auth/me
+2025-05-01T16:43:11.010Z [INFO]: GET /api/auth/me
+2025-05-01T21:01:27.776Z [INFO]: POST /api/users/login
+2025-05-01T21:01:27.856Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-01T21:01:27.933Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:27.943Z [INFO]: GET /api/auth/me
+2025-05-01T21:01:27.945Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:27.975Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:27.980Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:27.986Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:27.992Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:27.998Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:28.006Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:28.008Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:28.014Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:28.016Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:28.021Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:28.023Z [INFO]: GET /api/invoices/myinvoices
+2025-05-01T21:01:28.029Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-01T21:01:30.947Z [INFO]: GET /api/auth/me
+2025-05-01T21:01:30.983Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:04.923Z [INFO]: POST /api/users/login
+2025-05-02T21:16:05.005Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-02T21:16:05.103Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.113Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:05.115Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:05.160Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.166Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:05.213Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.218Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:05.220Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.225Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:05.227Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.232Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:05.234Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.239Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:05.242Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:05.248Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:13.598Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:14.973Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:16.128Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:20.400Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:20.402Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:20.435Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:25.494Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:29.679Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:30.999Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:31.738Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.740Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:31.769Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:31.771Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.776Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:31.782Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.786Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:31.788Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.793Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:31.795Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.800Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:31.801Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.806Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:31.808Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:31.813Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:35.206Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:35.209Z [INFO]: GET /api/users/users
+2025-05-02T21:16:35.241Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-02T21:16:38.273Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.277Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:38.279Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:38.315Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.320Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:38.321Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.326Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:38.328Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.332Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:38.334Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.340Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:38.347Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.354Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:38.356Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:38.361Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:40.334Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:40.367Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:51.819Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.822Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:51.855Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:51.858Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.864Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:51.866Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.870Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:51.872Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.876Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:51.878Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.884Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:51.886Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.893Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:51.895Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:16:51.901Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:16:53.771Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:58.080Z [INFO]: GET /api/auth/me
+2025-05-02T21:16:59.590Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:07.219Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:07.221Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:07.252Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.824Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.826Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:16.862Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.864Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.868Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.870Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.874Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.875Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.879Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.881Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.886Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.887Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.893Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:16.895Z [INFO]: GET /api/invoices/myinvoices
+2025-05-02T21:17:16.901Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-02T21:17:17.893Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:25.007Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:26.448Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:54.502Z [INFO]: GET /api/auth/me
+2025-05-02T21:17:54.544Z [INFO]: GET /api/auth/me
+2025-05-03T11:41:39.130Z [INFO]: POST /api/users/login
+2025-05-03T11:41:39.212Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-03T11:41:39.307Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.311Z [INFO]: GET /api/auth/me
+2025-05-03T11:41:39.357Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:39.370Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.376Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:39.379Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.386Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:39.388Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.394Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:39.397Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.403Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:39.405Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.410Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:39.413Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T11:41:39.419Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T11:41:43.123Z [INFO]: GET /api/auth/me
+2025-05-03T11:41:44.482Z [INFO]: GET /api/auth/me
+2025-05-03T11:41:46.211Z [INFO]: GET /api/auth/me
+2025-05-03T11:41:49.383Z [INFO]: GET /api/auth/me
+2025-05-03T11:43:07.274Z [INFO]: GET /api/auth/me
+2025-05-03T11:43:07.316Z [INFO]: GET /api/auth/me
+2025-05-03T12:26:50.719Z [INFO]: POST /api/users/login
+2025-05-03T12:26:50.732Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.p@gmail.com)
+2025-05-03T12:28:53.659Z [INFO]: POST /api/users/login
+2025-05-03T12:28:53.769Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-03T12:28:53.896Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:53.904Z [INFO]: GET /api/auth/me
+2025-05-03T12:28:53.915Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:53.979Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:53.992Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:53.996Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:54.004Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:54.008Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:54.017Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:54.019Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:54.027Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:54.030Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:54.041Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:54.047Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:28:54.061Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:28:58.888Z [INFO]: GET /api/auth/me
+2025-05-03T12:28:59.489Z [INFO]: GET /api/auth/me
+2025-05-03T12:29:00.318Z [INFO]: GET /api/auth/me
+2025-05-03T12:29:27.677Z [INFO]: GET /api/auth/me
+2025-05-03T12:29:27.747Z [INFO]: GET /api/auth/me
+2025-05-03T12:29:41.189Z [INFO]: PUT /api/users/user/6813965d59d0f3ab3095b25d
+2025-05-03T12:29:41.217Z [INFO]: Utilisateur mis à jour avec succès : 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:25.692Z [INFO]: POST /api/users/login
+2025-05-03T12:36:25.827Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-03T12:36:25.992Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.003Z [INFO]: GET /api/auth/me
+2025-05-03T12:36:26.056Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:26.063Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.078Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:26.088Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.102Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:26.107Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.117Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:26.123Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.136Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:26.141Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.153Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:26.157Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:36:26.166Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:36:29.159Z [INFO]: GET /api/auth/me
+2025-05-03T12:36:29.996Z [INFO]: GET /api/auth/me
+2025-05-03T12:36:30.995Z [INFO]: GET /api/auth/me
+2025-05-03T12:51:55.759Z [INFO]: POST /api/users/login
+2025-05-03T12:51:55.862Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-03T12:51:55.982Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:55.986Z [INFO]: GET /api/auth/me
+2025-05-03T12:51:56.044Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:51:56.048Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:56.059Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:51:56.062Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:56.074Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:51:56.077Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:56.083Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:51:56.085Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:56.091Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:51:56.095Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:56.101Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:51:56.103Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:51:56.110Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:52:00.635Z [INFO]: GET /api/auth/me
+2025-05-03T12:52:02.470Z [INFO]: GET /api/auth/me
+2025-05-03T12:52:04.015Z [INFO]: GET /api/auth/me
+2025-05-03T12:52:08.680Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:08.808Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:10.862Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:20.670Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:27.681Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:35.084Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-03T12:53:35.089Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:35.100Z [INFO]: Fetched 0 invoices
+2025-05-03T12:53:41.410Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:53:41.414Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:41.458Z [INFO]: Fetched 0 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:53:46.434Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:47.364Z [INFO]: GET /api/auth/me
+2025-05-03T12:53:47.412Z [INFO]: GET /api/auth/me
+2025-05-03T12:54:53.580Z [INFO]: POST /api/invoices/addinvoice
+2025-05-03T12:54:53.619Z [INFO]: Invoice created: 6816121da13a8ac2066abe73
+2025-05-03T12:54:59.694Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:00.973Z [INFO]: GET /api/invoices/myinvoices
+2025-05-03T12:55:00.977Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:01.052Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-03T12:55:06.704Z [INFO]: GET /api/invoices/getinvoice/6816121da13a8ac2066abe73
+2025-05-03T12:55:06.710Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:14.878Z [INFO]: PUT /api/invoices/updateinvoice/6816121da13a8ac2066abe73
+2025-05-03T12:55:14.926Z [INFO]: Invoice updated: 6816121da13a8ac2066abe73
+2025-05-03T12:55:16.984Z [INFO]: GET /api/invoices/getinvoice/6816121da13a8ac2066abe73
+2025-05-03T12:55:16.988Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:35.657Z [INFO]: GET /api/companies/mycompanies
+2025-05-03T12:55:35.662Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:36.785Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:36.832Z [INFO]: GET /api/auth/me
+2025-05-03T12:55:58.437Z [INFO]: POST /api/companies/addcompany
+2025-05-03T12:55:58.452Z [INFO]: Company created: 6816125ea13a8ac2066abe99
+2025-05-03T12:56:00.037Z [INFO]: GET /api/companies/mycompanies
+2025-05-03T12:56:00.044Z [INFO]: GET /api/auth/me
+2025-05-03T12:56:06.284Z [INFO]: PUT /api/companies/updatecompany/6816125ea13a8ac2066abe99
+2025-05-03T12:56:07.175Z [INFO]: Company updated: 6816125ea13a8ac2066abe99
+2025-05-03T12:56:07.185Z [INFO]: GET /api/companies/mycompanies
+2025-05-03T12:56:31.989Z [INFO]: GET /api/chat/history
+2025-05-03T12:56:31.993Z [INFO]: GET /api/auth/me
+2025-05-03T12:56:47.803Z [INFO]: POST /api/chat/message
+2025-05-03T12:56:59.623Z [INFO]: POST /api/chat/message
+2025-05-03T12:57:02.512Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:02.562Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:02.606Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:09.522Z [INFO]: POST /api/ai-agent
+2025-05-03T12:57:14.320Z [INFO]: POST /api/ai-agent
+2025-05-03T12:57:16.663Z [INFO]: POST /api/ai-agent
+2025-05-03T12:57:19.625Z [INFO]: GET /api/users/users
+2025-05-03T12:57:19.633Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-03T12:57:19.686Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:27.297Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:32.032Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:32.091Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:34.684Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T12:57:34.688Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:34.692Z [INFO]: Fetched 0 payrolls
+2025-05-03T12:57:40.536Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:57:40.539Z [INFO]: GET /api/users/users
+2025-05-03T12:57:40.545Z [INFO]: GET /api/auth/me
+2025-05-03T12:57:40.556Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-03T12:58:00.939Z [INFO]: POST /api/payrolls/addpayroll
+2025-05-03T12:58:00.954Z [INFO]: Payroll created: 681612d8a13a8ac2066abec3
+2025-05-03T12:58:01.038Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:01.042Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T12:58:01.084Z [INFO]: Fetched 1 payrolls
+2025-05-03T12:58:03.095Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:03.101Z [INFO]: GET /api/users/users
+2025-05-03T12:58:03.142Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:58:03.147Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-03T12:58:03.183Z [INFO]: GET /api/payrolls/getpayroll/681612d8a13a8ac2066abec3
+2025-05-03T12:58:03.200Z [INFO]: Fetched payroll: 681612d8a13a8ac2066abec3
+2025-05-03T12:58:04.459Z [INFO]: PUT /api/payrolls/updatepayroll/681612d8a13a8ac2066abec3
+2025-05-03T12:58:04.473Z [INFO]: Updated payroll: 681612d8a13a8ac2066abec3
+2025-05-03T12:58:04.526Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T12:58:04.529Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:04.591Z [INFO]: Fetched 1 payrolls
+2025-05-03T12:58:07.296Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T12:58:07.299Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:07.346Z [INFO]: Fetched 0 tax records
+2025-05-03T12:58:08.941Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:08.944Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:58:27.909Z [INFO]: POST /api/taxes/addtax
+2025-05-03T12:58:27.938Z [INFO]: Tax record created: 681612f3a13a8ac2066abedc
+2025-05-03T12:58:27.986Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T12:58:27.995Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:28.004Z [INFO]: Fetched 1 tax records
+2025-05-03T12:58:31.777Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:31.780Z [INFO]: GET /api/taxes/gettax/681612f3a13a8ac2066abedc
+2025-05-03T12:58:31.783Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:58:31.844Z [INFO]: Fetched tax record: 681612f3a13a8ac2066abedc
+2025-05-03T12:58:33.519Z [INFO]: PUT /api/taxes/updatetax/681612f3a13a8ac2066abedc
+2025-05-03T12:58:33.527Z [INFO]: Updated tax record: 681612f3a13a8ac2066abedc
+2025-05-03T12:58:33.570Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T12:58:33.585Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:33.593Z [INFO]: Fetched 1 tax records
+2025-05-03T12:58:47.313Z [INFO]: GET /api/auth/me
+2025-05-03T12:58:47.364Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:21.281Z [INFO]: PUT /api/users/user/6813965d59d0f3ab3095b25d
+2025-05-03T12:59:21.310Z [INFO]: Utilisateur mis à jour avec succès : 6813965d59d0f3ab3095b25d
+2025-05-03T12:59:22.000Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:22.045Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:24.853Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:24.857Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T12:59:24.904Z [INFO]: Fetched 1 payrolls
+2025-05-03T12:59:26.776Z [INFO]: GET /api/users/users
+2025-05-03T12:59:26.779Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:26.782Z [INFO]: GET /api/payrolls/getpayroll/681612d8a13a8ac2066abec3
+2025-05-03T12:59:26.832Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:59:26.835Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-03T12:59:26.870Z [INFO]: Fetched payroll: 681612d8a13a8ac2066abec3
+2025-05-03T12:59:28.046Z [INFO]: PUT /api/payrolls/updatepayroll/681612d8a13a8ac2066abec3
+2025-05-03T12:59:28.051Z [INFO]: Updated payroll: 681612d8a13a8ac2066abec3
+2025-05-03T12:59:28.096Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-03T12:59:28.098Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:28.135Z [INFO]: Fetched 1 payrolls
+2025-05-03T12:59:30.665Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:59:30.668Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:47.035Z [INFO]: POST /api/taxes/addtax
+2025-05-03T12:59:47.040Z [INFO]: Tax record created: 68161343a13a8ac2066abf06
+2025-05-03T12:59:47.084Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T12:59:47.087Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:47.147Z [INFO]: Fetched 2 tax records
+2025-05-03T12:59:49.380Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:49.383Z [INFO]: GET /api/taxes/gettax/68161343a13a8ac2066abf06
+2025-05-03T12:59:49.437Z [INFO]: GET /api/companies/getallcompanies
+2025-05-03T12:59:49.442Z [INFO]: Fetched tax record: 68161343a13a8ac2066abf06
+2025-05-03T12:59:50.575Z [INFO]: PUT /api/taxes/updatetax/68161343a13a8ac2066abf06
+2025-05-03T12:59:50.582Z [INFO]: Updated tax record: 68161343a13a8ac2066abf06
+2025-05-03T12:59:50.624Z [INFO]: GET /api/auth/me
+2025-05-03T12:59:50.629Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-03T12:59:50.671Z [INFO]: Fetched 2 tax records
+2025-05-03T12:59:54.193Z [INFO]: GET /api/auth/me
+2025-05-03T13:00:03.312Z [INFO]: GET /api/auth/me
+2025-05-03T13:00:07.654Z [INFO]: GET /api/auth/me
+2025-05-03T13:00:10.798Z [INFO]: GET /api/auth/me
+2025-05-03T13:00:56.732Z [INFO]: POST /api/users/login
+2025-05-03T13:00:56.836Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-03T13:00:57.099Z [INFO]: GET /api/auth/me
+2025-05-03T13:01:03.144Z [INFO]: GET /api/auth/me
+2025-05-03T13:01:05.850Z [INFO]: GET /api/auth/me
+2025-05-03T13:01:09.443Z [INFO]: GET /api/auth/me

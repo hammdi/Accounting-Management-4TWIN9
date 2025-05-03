@@ -1,0 +1,22 @@
+/* src/index.css */
+
+/* Existing CSS */
+
+/* Keyframes for floating animation */
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-10px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Fade-out class for smooth disappearance */
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease-in-out;
+}
