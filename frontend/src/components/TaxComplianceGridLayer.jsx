@@ -6,8 +6,10 @@ import axios from "axios";
 const TaxComplianceGridLayer = () => {
     const [taxes, setTaxes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [sortBy, setSortBy] = useState('company');
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortOrder, setSortOrder] = useState('asc');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -22,7 +24,8 @@ const TaxComplianceGridLayer = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setTaxes(response.data);
+                // Set taxes directly from response data
+                setTaxes(response.data || []);
             } catch (error) {
                 setError(error.response?.data?.message || "Error fetching taxes");
                 console.error("Error fetching taxes:", error);
@@ -30,9 +33,16 @@ const TaxComplianceGridLayer = () => {
                 setLoading(false);
             }
         };
+
         fetchTaxes();
     }, []);
 
+    /*const filteredTaxes = taxes.filter((tax) =>
+        tax.company?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        tax.taxType?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        tax.taxAmount.toString().includes(searchTerm) ||
+        tax.dueDate?.toString().includes(searchTerm)
+    );*/
     const handleDelete = async (taxId) => {
         if (!window.confirm("Are you sure you want to delete this tax compliance?")) return;
         

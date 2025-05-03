@@ -43,10 +43,10 @@ const DashBoardLayerFour = () => {
             <div className="row gy-4">
 
               {/* MyCardsOne */}
-              <MyCardsOne />
+              {/* <MyCardsOne /> */}
 
               {/* TotalBalanceOne */}
-              <TotalBalanceOne />
+              {/* <TotalBalanceOne /> */}
 
               {/* UserActivatesOne */}
               <UserActivatesOne />

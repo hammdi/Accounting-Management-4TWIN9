@@ -48,6 +48,17 @@ services:
     stdin_open: true
     tty: true
 
+  
+
+
+  ai_module:
+    build: ./ai
+    ports:
+      - "5001:5001"
+    restart: always
+
+
+
   ollama:
     image: ollama/ollama
     container_name: ollama
@@ -63,4 +74,5 @@ services:
 volumes:
   mongodb_data:
     driver: local
+
   ollama_data:
