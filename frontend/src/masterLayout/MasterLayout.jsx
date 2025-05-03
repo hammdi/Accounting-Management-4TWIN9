@@ -453,7 +453,37 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
-
+            {/* accounting Dropdown */}
+            <li className='dropdown'>
+              <Link to='#'>
+                <Icon icon='mdi:dollar' className='menu-icon' />
+                <span>Accounting</span>
+              </Link>
+              <ul className='sidebar-submenu'>
+                <li>
+                  <NavLink
+                      to='/comptes'
+                      className={(navData) =>
+                          navData.isActive ? "active-page" : ""
+                      }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    accounting plan
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                      to='/plan-comptable'
+                      className={(navData) =>
+                          navData.isActive ? "active-page" : ""
+                      }
+                  >
+                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
+                    financial statements
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
             {/* Company Dropdown */}
             <li className='dropdown'>
               <Link to='#'>
@@ -989,7 +1019,8 @@ const MasterLayout = ({ children }) => {
                 <Icon icon='fe:vector' className='menu-icon' />
                 <span>Widgets</span>
               </NavLink>
-            </li>  */}   
+            </li>  */}
+
 
             {/* Users Dropdown */}
             <li className='dropdown'>

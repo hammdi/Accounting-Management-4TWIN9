@@ -115,13 +115,18 @@ import CompanyFormPage from "./pages/CompanyFormPage";
 import CompanyDetailsPage from "./pages/CompanyDetailsPage";
 import ComptesListPage from "./pages/ComptesListPage";
 import PlanComptablePage from "./pages/PlanComptablePage";
+import HomePageA from "./pages/HomePageA"; // Import HomePageA
+
+
+
 function App() {
   return (<>
         <ToastContainer />
         <BrowserRouter>
       <RouteScrollToTop />
       <Routes>
-        <Route exact path='/' element={<SignInPage />} />
+        <Route exact path="/" element={<HomePageA />} /> 
+        <Route exact path='/sign-in' element={<SignInPage />} />
         <Route exact path='/home' element={<HomePageOne />} />
         <Route exact path='/index-2' element={<HomePageTwo />} />
         <Route exact path='/index-3' element={<HomePageThree />} />
