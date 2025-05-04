@@ -479,7 +479,7 @@ const HomeLayer = () => {
   </div>
 </section>
 
-      {/* 6. 📊 Comparison Table */}
+      {/* 6. 📊 Comparison Table 
       <section  id="comparison-table"
         className="py-5"
         style={{ background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)' }}
@@ -569,12 +569,12 @@ const HomeLayer = () => {
           </div>
         </div>
       </section>
-
+      */}
       {/* 7. 🤖 AI & Forecasting */}
       <section   id="ai-forecasting"
 
         className="py-5"
-        style={{ background: 'linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)' }}
       >
         <div className="container">
           <div className="row mb-4">
