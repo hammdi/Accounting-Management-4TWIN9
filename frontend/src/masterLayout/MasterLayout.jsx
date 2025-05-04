@@ -359,7 +359,7 @@ const MasterLayout = ({ children }) => {
                 <span>Emails</span>
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to='/chat-message'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -367,7 +367,7 @@ const MasterLayout = ({ children }) => {
                 <Icon icon='bi:chat-dots' className='menu-icon' />
                 <span>Chat</span>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 to='/calendar-main'
@@ -1053,7 +1053,7 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
                     Users Grid
                   </NavLink>
-                </li>    */}     
+                </li>     
                 <li>
                   <NavLink
                     to='/add-user'
@@ -1075,7 +1075,7 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-danger-main w-auto' />{" "}
                     View Profile
                   </NavLink>
-                </li>
+                </li>*/}    
               </ul>
             </li>
             <li className='dropdown'>

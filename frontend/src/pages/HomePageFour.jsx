@@ -11,7 +11,7 @@ const HomePageFour = () => {
       <MasterLayout>
 
         {/* Breadcrumb */}
-        <Breadcrumb title="Cryptocracy" />
+        <Breadcrumb title="tax compliance" />
 
 
         {/* DashBoardLayerFour */}

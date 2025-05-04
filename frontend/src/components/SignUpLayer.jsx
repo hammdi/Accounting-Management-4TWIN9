@@ -63,7 +63,7 @@ const SignUpLayer = () => {
         })
         .then((response) => {
          // console.log(response);
-          navigate("/", { state: { message: "Go check your email!" }  });
+          navigate("/sign-in", { state: { message: "Go check your email!" }  });
         })
         .catch((error) => {
           console.log(error);
