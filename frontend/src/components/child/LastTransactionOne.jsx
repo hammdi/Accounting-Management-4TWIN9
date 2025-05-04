@@ -69,7 +69,7 @@ const RecentTransactions = () => {
                 <div className="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center justify-content-between">
                     <h6 className="text-lg fw-semibold mb-0">Recent Transactions</h6>
                     <Link
-                        to="/transactions"
+                        to="/transaction-list"
                         className="text-primary-600 hover-text-primary d-flex align-items-center gap-1"
                     >
                         View All

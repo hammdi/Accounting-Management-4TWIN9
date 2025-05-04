@@ -211,10 +211,9 @@ const CompanyListLayer = () => {
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
-          <button type="button" className="btn btn-primary" onClick={() => toast.info('Implement add company modal or navigation here!')}>
-            <Icon icon="mdi:plus" className="me-2" />
-            Add Company
-          </button>
+   <Link to="/company" className="btn btn-sm btn-primary-600">
+                        <i className="ri-add-line" /> Create company
+                    </Link>
         </div>
       </div>
       <div className="card-body">

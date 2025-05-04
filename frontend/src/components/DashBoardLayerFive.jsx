@@ -37,13 +37,13 @@ const DashBoardLayerFive = () => {
                 <LatestInvestmentsOne />
 
                 {/* NoticeBoardOne */}
-                <NoticeBoardOne />
+                {/* <NoticeBoardOne /> */}
 
                 {/* TotalTransactionsOne */}
-                <TotalTransactionsOne />
+                {/* <TotalTransactionsOne /> */}
 
                 {/* ProjectStatusOne */}
-                <ProjectStatusOne />
+                {/* <ProjectStatusOne /> */}
             </div>
 
         </>

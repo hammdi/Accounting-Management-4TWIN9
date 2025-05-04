@@ -106,7 +106,7 @@ const TransactionOverview = () => {
                         </li>
                     </ul>
                     <Link
-                        to="/transactions"
+                        to="/transaction-list"
                         className="text-primary-600 hover-text-primary d-flex align-items-center gap-1"
                     >
                         View All

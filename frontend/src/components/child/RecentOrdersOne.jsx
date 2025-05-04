@@ -63,7 +63,7 @@ const RecentPayrolls = () => {
                     <div className="d-flex align-items-center flex-wrap gap-2 justify-content-between mb-20">
                         <h6 className="mb-2 fw-bold text-lg mb-0">Recent Payrolls</h6>
                         <Link
-                            to="/payrolls"
+                            to="/payroll-list"
                             className="text-primary-600 hover-text-primary d-flex align-items-center gap-1"
                         >
                             View All
