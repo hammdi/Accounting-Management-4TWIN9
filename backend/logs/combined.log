@@ -1,0 +1,109 @@
+2025-05-04T14:58:22.566Z [INFO]: POST /api/users/login
+2025-05-04T14:58:22.687Z [INFO]: Connexion réussie pour l'utilisateur : arbi@gmail.com
+2025-05-04T14:58:23.023Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.081Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:58:23.126Z [INFO]: GET /api/auth/me
+2025-05-04T14:58:23.141Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.183Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:58:23.212Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.234Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:58:23.265Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.301Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:58:23.329Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.365Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:58:23.396Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.421Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:58:23.453Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T14:58:23.486Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T14:59:58.515Z [INFO]: GET /api/auth/me
+2025-05-04T15:00:18.495Z [INFO]: GET /api/auth/me
+2025-05-04T15:00:28.273Z [INFO]: GET /api/auth/me
+2025-05-04T15:00:32.965Z [INFO]: GET /api/auth/me
+2025-05-04T15:00:32.983Z [INFO]: GET /api/auth/me
+2025-05-04T15:28:15.308Z [INFO]: GET /api/auth/me
+2025-05-04T15:48:16.515Z [INFO]: GET /api/auth/me
+2025-05-04T15:49:06.433Z [INFO]: GET /api/auth/me
+2025-05-04T15:55:39.207Z [INFO]: GET /api/auth/me
+2025-05-04T15:56:11.359Z [INFO]: PUT /api/users/user/680533fd15a3407a8f562033
+2025-05-04T15:56:11.490Z [INFO]: Utilisateur mis à jour avec succès : 680533fd15a3407a8f562033
+2025-05-04T15:56:25.570Z [INFO]: GET /api/auth/me
+2025-05-04T15:56:25.595Z [INFO]: GET /api/auth/me
+2025-05-04T15:59:06.777Z [INFO]: GET /api/auth/me
+2025-05-04T15:59:06.783Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T15:59:16.192Z [INFO]: POST /api/users/login
+2025-05-04T15:59:16.299Z [INFO]: Connexion réussie pour l'utilisateur : arbi@gmail.com
+2025-05-04T15:59:16.499Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:16.589Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:16.612Z [INFO]: GET /api/auth/me
+2025-05-04T15:59:16.627Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:16.681Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:16.722Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:16.745Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:16.781Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:16.805Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:16.835Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:16.856Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:16.881Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:16.919Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:16.971Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T15:59:17.000Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T15:59:20.459Z [INFO]: GET /api/auth/me
+2025-05-04T15:59:20.501Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T15:59:33.660Z [INFO]: DELETE /api/transactions/deletetransaction/6813af2104abd9036eb02b8c
+2025-05-04T15:59:33.700Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:01:29.647Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T16:01:29.657Z [INFO]: GET /api/auth/me
+2025-05-04T16:01:29.682Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T16:01:35.977Z [INFO]: GET /api/auth/me
+2025-05-04T16:01:35.998Z [INFO]: GET /api/auth/me
+2025-05-04T16:01:45.977Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T16:01:45.982Z [INFO]: GET /api/auth/me
+2025-05-04T16:01:46.032Z [INFO]: Fetched 2 invoices for user 680533fd15a3407a8f562033
+2025-05-04T16:01:50.730Z [INFO]: GET /api/auth/me
+2025-05-04T16:01:50.751Z [INFO]: GET /api/invoices/getinvoice/680665b7f60f91f8db8c319c
+2025-05-04T16:02:13.841Z [INFO]: GET /api/invoices/getinvoice/680665b7f60f91f8db8c319c
+2025-05-04T16:02:13.871Z [INFO]: GET /api/auth/me
+2025-05-04T16:02:37.097Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:02:37.118Z [INFO]: GET /api/auth/me
+2025-05-04T16:02:58.442Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:03:52.221Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:03:52.250Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:04:05.898Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:04:05.919Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:04:22.777Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:04:22.806Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:04:42.174Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:04:42.194Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:05:07.285Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:05:07.309Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:05:18.187Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:05:18.220Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:05:32.164Z [INFO]: PUT /api/transactions/updatetransaction/6813ab5804abd9036eb02b02
+2025-05-04T16:05:32.185Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:07:13.242Z [INFO]: GET /api/auth/me
+2025-05-04T16:07:13.260Z [INFO]: GET /api/auth/me
+2025-05-04T16:13:33.449Z [INFO]: GET /api/auth/me
+2025-05-04T16:15:43.684Z [INFO]: POST /api/invoices/addinvoice
+2025-05-04T16:15:43.727Z [INFO]: Invoice created: 681792af1290bd8c4154e93f
+2025-05-04T16:15:46.454Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T16:15:46.466Z [INFO]: GET /api/auth/me
+2025-05-04T16:15:46.480Z [INFO]: Fetched 3 invoices for user 680533fd15a3407a8f562033
+2025-05-04T16:15:54.482Z [INFO]: GET /api/invoices/getinvoice/680679d4f60f91f8db8c331d
+2025-05-04T16:15:54.486Z [INFO]: GET /api/auth/me
+2025-05-04T16:15:59.869Z [INFO]: GET /api/invoices/getinvoice/680679d4f60f91f8db8c331d
+2025-05-04T16:15:59.873Z [INFO]: GET /api/auth/me
+2025-05-04T16:17:08.391Z [INFO]: PUT /api/invoices/updateinvoice/680679d4f60f91f8db8c331d
+2025-05-04T16:17:08.411Z [INFO]: Invoice updated: 680679d4f60f91f8db8c331d
+2025-05-04T16:17:10.529Z [INFO]: GET /api/invoices/getinvoice/680679d4f60f91f8db8c331d
+2025-05-04T16:17:10.545Z [INFO]: GET /api/auth/me
+2025-05-04T16:17:21.963Z [INFO]: GET /api/invoices/myinvoices
+2025-05-04T16:17:21.979Z [INFO]: GET /api/auth/me
+2025-05-04T16:17:21.985Z [INFO]: Fetched 3 invoices for user 680533fd15a3407a8f562033
+2025-05-04T16:17:32.008Z [INFO]: PUT /api/invoices/updateinvoice/680679d4f60f91f8db8c331d
+2025-05-04T16:17:32.015Z [INFO]: Invoice updated: 680679d4f60f91f8db8c331d
+2025-05-04T16:17:35.748Z [INFO]: PUT /api/invoices/updateinvoice/681792af1290bd8c4154e93f
+2025-05-04T16:17:35.754Z [INFO]: Invoice updated: 681792af1290bd8c4154e93f
+2025-05-04T16:18:05.929Z [INFO]: GET /api/transactions/mytransactions
+2025-05-04T16:18:05.936Z [INFO]: GET /api/auth/me
+2025-05-04T16:18:31.782Z [INFO]: GET /api/auth/me
+2025-05-04T16:18:31.795Z [INFO]: GET /api/auth/me

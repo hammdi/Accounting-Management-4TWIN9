@@ -266,18 +266,12 @@ const useReactApexChart = () => {
   let paymentStatusChartSeries = [
     {
       name: "Net Profit",
-      data: [
-        20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000,
-        18000, 22000,
-      ],
+      data: [20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000, 18000, 22000],
     },
 
     {
       name: "Revenue",
-      data: [
-        15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000,
-        14000, 16000,
-      ],
+      data: [15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000, 14000, 16000],
     },
   ];
 
@@ -471,15 +465,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        height={42}
-        width={80}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" height={42} width={80} />;
   };
 
   let createChartTwo = (chartColor, height) => {
@@ -609,14 +595,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        height={height}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" height={height} />;
   };
 
   let createChartThree = (chartColor) => {
@@ -741,15 +720,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        width={130}
-        height={50}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" width={130} height={50} />;
   };
 
   let createChartFour = (chartColor, height, width) => {
@@ -877,13 +848,7 @@ const useReactApexChart = () => {
     };
 
     return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        width={width}
-        height={height}
-      />
+      <ReactApexChart options={options} series={series} type="area" width={width} height={height} />
     );
   };
 
@@ -1012,15 +977,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        width={164}
-        height={72}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" width={164} height={72} />;
   };
   let createChartSix = (color1, color2) => {
     let series = [
@@ -1156,24 +1113,14 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        height={270}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" height={270} />;
   };
 
   let createChartSeven = (color1, color2) => {
     let series = [
       {
         name: "series2",
-        data: [
-          20000, 45000, 30000, 50000, 32000, 40000, 30000, 42000, 28000, 34000,
-          38000, 26000,
-        ],
+        data: [20000, 45000, 30000, 50000, 32000, 40000, 30000, 42000, 28000, 34000, 38000, 26000],
       },
     ];
     var options = {
@@ -1299,14 +1246,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        height={240}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" height={240} />;
   };
 
   let createChartEight = (color) => {
@@ -1434,15 +1374,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        height={72}
-        width={164}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" height={72} width={164} />;
   };
 
   let createChartNine = (color) => {
@@ -1554,15 +1486,7 @@ const useReactApexChart = () => {
       },
     };
 
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        width={76}
-        height={40}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" width={76} height={40} />;
   };
 
   let createChartTen = (color) => {
@@ -1687,15 +1611,7 @@ const useReactApexChart = () => {
         },
       },
     };
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        width={100}
-        height={42}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" width={100} height={42} />;
   };
 
   let createChatEleven = (color) => {
@@ -1835,14 +1751,7 @@ const useReactApexChart = () => {
         },
       },
     };
-    return (
-      <ReactApexChart
-        options={options}
-        series={series}
-        type='area'
-        height={70}
-      />
-    );
+    return <ReactApexChart options={options} series={series} type="area" height={70} />;
   };
 
   let barChartSeriesTwo = [
@@ -2103,15 +2012,7 @@ const useReactApexChart = () => {
       categories: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
     },
     yaxis: {
-      categories: [
-        "0",
-        "10,000",
-        "20,000",
-        "30,000",
-        "50,000",
-        "1,00,000",
-        "1,00,000",
-      ],
+      categories: ["0", "10,000", "20,000", "30,000", "50,000", "1,00,000", "1,00,000"],
     },
     fill: {
       opacity: 1,
@@ -2122,17 +2023,11 @@ const useReactApexChart = () => {
   let paymentStatusChartSeriesThree = [
     {
       name: "Net Profit",
-      data: [
-        20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000,
-        18000, 22000,
-      ],
+      data: [20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000, 18000, 22000],
     },
     {
       name: "Revenue",
-      data: [
-        15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000,
-        14000, 16000,
-      ],
+      data: [15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000, 14000, 16000],
     },
   ];
 
@@ -2586,9 +2481,7 @@ const useReactApexChart = () => {
     },
     {
       name: "Expenses",
-      data: [
-        -34, -22, -37, -56, -21, -35, -60, -34, -22, -37, -56, -21, -35, -60,
-      ],
+      data: [-34, -22, -37, -56, -21, -35, -60, -34, -22, -37, -56, -21, -35, -60],
     },
   ];
   let upDownBarChartOptions = {
@@ -3163,17 +3056,11 @@ const useReactApexChart = () => {
   let columnChartSeriesOne = [
     {
       name: "Net Profit",
-      data: [
-        20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000,
-        18000, 22000,
-      ],
+      data: [20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000, 18000, 22000],
     },
     {
       name: "Revenue",
-      data: [
-        15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000,
-        14000, 16000,
-      ],
+      data: [15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000, 14000, 16000],
     },
   ];
   let columnChartOptionsOne = {
@@ -3443,20 +3330,7 @@ const useReactApexChart = () => {
     },
     xaxis: {
       type: "category",
-      categories: [
-        "01",
-        "03",
-        "05",
-        "07",
-        "10",
-        "13",
-        "16",
-        "19",
-        "21",
-        "23",
-        "25",
-        "27",
-      ],
+      categories: ["01", "03", "05", "07", "10", "13", "16", "19", "21", "23", "25", "27"],
     },
     yaxis: {
       labels: {
@@ -3489,9 +3363,7 @@ const useReactApexChart = () => {
     },
     {
       name: "Expenses",
-      data: [
-        -34, -22, -37, -56, -21, -35, -60, -34, -22, -37, -56, -21, -35, -60,
-      ],
+      data: [-34, -22, -37, -56, -21, -35, -60, -34, -22, -37, -56, -21, -35, -60],
     },
   ];
 
@@ -5402,17 +5274,11 @@ const useReactApexChart = () => {
   let balanceStatisticsSeries = [
     {
       name: "Net Profit",
-      data: [
-        20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000,
-        18000, 22000,
-      ],
+      data: [20000, 16000, 14000, 25000, 45000, 18000, 28000, 11000, 26000, 48000, 18000, 22000],
     },
     {
       name: "Revenue",
-      data: [
-        15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000,
-        14000, 16000,
-      ],
+      data: [15000, 18000, 19000, 20000, 35000, 20000, 18000, 13000, 18000, 38000, 14000, 16000],
     },
   ];
 

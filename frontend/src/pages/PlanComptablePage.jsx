@@ -1,80 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import * as XLSX from 'xlsx';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import * as XLSX from "xlsx";
 
 const PlanComptablePage = () => {
-    const [groupedEntries, setGroupedEntries] = useState({});
-    const [fromDate, setFromDate] = useState('');
-    const [toDate, setToDate] = useState('');
+  const [groupedEntries, setGroupedEntries] = useState({});
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
     useEffect(() => {
         fetchFilteredEntries();
     }, []);
 
-    const fetchFilteredEntries = async () => {
-        try {
-            const res = await axios.get('http://localhost:5000/api/accounting-entries');
-            const entries = res.data;
+  const fetchFilteredEntries = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/accounting-entries");
+      const entries = res.data;
 
-            const from = fromDate ? new Date(fromDate) : null;
-            const to = toDate ? new Date(toDate) : null;
+      const from = fromDate ? new Date(fromDate) : null;
+      const to = toDate ? new Date(toDate) : null;
 
-            const grouped = {};
+      const grouped = {};
 
-            entries.forEach(entry => {
-                const invoice = entry.invoice;
-                if (!invoice || !invoice.createdAt) return;
+      entries.forEach((entry) => {
+        const invoice = entry.invoice;
+        if (!invoice || !invoice.createdAt) return;
 
-                const invoiceDate = new Date(invoice.createdAt);
-                if ((from && invoiceDate < from) || (to && invoiceDate > to)) return;
+        const invoiceDate = new Date(invoice.createdAt);
+        if ((from && invoiceDate < from) || (to && invoiceDate > to)) return;
 
-                const invoiceId = invoice._id;
-                const invoiceName = invoice.clientName;
+        const invoiceId = invoice._id;
+        const invoiceName = invoice.clientName;
 
-                entry.entries.forEach(line => {
-                    const key = line.account;
-                    if (!grouped[key]) {
-                        grouped[key] = { total: 0, lines: [] };
-                    }
+        entry.entries.forEach((line) => {
+          const key = line.account;
+          if (!grouped[key]) {
+            grouped[key] = { total: 0, lines: [] };
+          }
 
-                    grouped[key].total += line.type === 'credit' ? line.amount : -line.amount;
+          grouped[key].total += line.type === "credit" ? line.amount : -line.amount;
 
-                    grouped[key].lines.push({
-                        ...line,
-                        invoiceId,
-                        clientName: invoiceName
-                    });
-                });
-            });
-
-            setGroupedEntries(grouped);
-        } catch (err) {
-            console.error("Erreur chargement écritures :", err);
-        }
-    };
-
-    const handleExport = () => {
-        const data = [];
-
-        Object.entries(groupedEntries).forEach(([account, dataObj]) => {
-            dataObj.lines.forEach(line => {
-                data.push({
-                    Compte: account,
-                    Libelle: line.libelle,
-                    Type: line.type.toUpperCase(),
-                    Montant: line.amount,
-                    Client: line.clientName,
-                    Facture_ID: line.invoiceId
-                });
-            });
+          grouped[key].lines.push({
+            ...line,
+            invoiceId,
+            clientName: invoiceName,
+          });
         });
+      });
 
-        const worksheet = XLSX.utils.json_to_sheet(data);
-        const workbook = XLSX.utils.book_new();
+      setGroupedEntries(grouped);
+    } catch (err) {
+      console.error("Erreur chargement écritures :", err);
+    }
+  };
 
-        XLSX.utils.book_append_sheet(workbook, worksheet, 'Ecritures Comptables');
-        XLSX.writeFile(workbook, 'Plan_Comptable_Export.xlsx');
-    };
+  const handleExport = () => {
+    const data = [];
+
+    Object.entries(groupedEntries).forEach(([account, dataObj]) => {
+      dataObj.lines.forEach((line) => {
+        data.push({
+          Compte: account,
+          Libelle: line.libelle,
+          Type: line.type.toUpperCase(),
+          Montant: line.amount,
+          Client: line.clientName,
+          Facture_ID: line.invoiceId,
+        });
+      });
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Ecritures Comptables");
+    XLSX.writeFile(workbook, "Plan_Comptable_Export.xlsx");
+  };
 
     return (
         <div className="container mt-4">
