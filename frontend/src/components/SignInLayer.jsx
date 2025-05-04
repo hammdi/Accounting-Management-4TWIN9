@@ -96,8 +96,7 @@ const SignInLayer = () => {
         <div className='max-w-464-px mx-auto w-100'>
           <div>
             <Link to='/' className='mb-40 max-w-290-px'>
-              <img src='assets/images/logo.png' alt='' />
-            </Link>
+            <img src="assets/images/logo.png"  alt="MiLiM Logo" className="mb-3" style={{ width: '300px', height: '100px', objectFit: 'contain' }}/>            </Link>
             <h4 className='mb-12'>Sign In to your Account</h4>
             <p className='mb-32 text-secondary-light text-lg'>
               Welcome back! please enter your detail
