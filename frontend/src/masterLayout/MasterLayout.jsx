@@ -196,16 +196,8 @@ const MasterLayout = ({ children }) => {
         </button>
         <div>
           <Link to='/home' className='sidebar-logo'>
-            <img
-              src='/assets/images/logo.png'
-              alt='site logo'
-              className='light-logo'
-            />
-            <img
-              src='/assets/images/logo-light.png'
-              alt='site logo'
-              className='dark-logo'
-            />
+          <img src="assets/images/logo.png"  alt="MiLiM Logo" className="mb-3" />
+
             <img
               src='/assets/images/logo-icon.png'
               alt='site logo'
