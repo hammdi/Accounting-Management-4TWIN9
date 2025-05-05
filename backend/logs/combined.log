@@ -5628,3 +5628,148 @@
 2025-05-05T20:38:53.575Z [INFO]: GET /api/auth/me
 2025-05-05T20:39:02.486Z [INFO]: POST /api/projects/addproject
 2025-05-05T20:39:02.496Z [INFO]: Project created: 681921e6106c6b6085b3e9e2
+2025-05-05T21:24:26.310Z [INFO]: POST /api/users/login
+2025-05-05T21:24:26.392Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-05T21:24:26.482Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.486Z [INFO]: GET /api/auth/me
+2025-05-05T21:24:26.534Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:26.563Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.582Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:26.611Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.636Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:26.669Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.684Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:26.705Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.716Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:26.738Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.750Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:26.784Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:24:26.792Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:24:29.035Z [INFO]: GET /api/auth/me
+2025-05-05T21:24:29.063Z [INFO]: GET /api/projects/myprojects
+2025-05-05T21:24:29.066Z [INFO]: GET /api/auth/me
+2025-05-05T21:25:59.485Z [INFO]: GET /api/auth/me
+2025-05-05T21:26:00.863Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-05T21:26:00.865Z [INFO]: GET /api/auth/me
+2025-05-05T21:26:00.912Z [INFO]: Fetched 1 invoices
+2025-05-05T21:26:22.181Z [INFO]: GET /api/auth/me
+2025-05-05T21:26:22.213Z [INFO]: GET /api/auth/me
+2025-05-05T21:26:34.206Z [INFO]: POST /api/invoices/addinvoice
+2025-05-05T21:26:34.223Z [INFO]: Invoice created: 68192d0ae536b34f6fca3b1a
+2025-05-05T21:26:37.325Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:26:37.327Z [INFO]: GET /api/auth/me
+2025-05-05T21:26:37.372Z [INFO]: Fetched 2 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:26:45.069Z [INFO]: GET /api/auth/me
+2025-05-05T21:26:45.072Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-05T21:26:45.103Z [INFO]: Fetched 2 invoices
+2025-05-05T21:27:09.496Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:09.527Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:18.300Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:18.335Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:25.028Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:25.031Z [INFO]: GET /api/projects/myprojects
+2025-05-05T21:27:25.073Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:26.367Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:27.200Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:27.204Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-05T21:27:27.237Z [INFO]: Fetched 2 invoices
+2025-05-05T21:27:27.882Z [INFO]: GET /api/auth/me
+2025-05-05T21:27:27.884Z [INFO]: GET /api/projects/myprojects
+2025-05-05T21:27:27.914Z [INFO]: GET /api/auth/me
+2025-05-05T21:28:44.196Z [INFO]: GET /api/accounting-entries
+2025-05-05T21:28:44.202Z [INFO]: GET /api/auth/me
+2025-05-05T21:28:44.872Z [INFO]: GET /api/auth/me
+2025-05-05T21:28:44.876Z [INFO]: GET /api/comptes
+2025-05-05T21:28:51.907Z [INFO]: GET /api/accounting-entries
+2025-05-05T21:28:51.909Z [INFO]: GET /api/auth/me
+2025-05-05T21:28:52.801Z [INFO]: GET /api/auth/me
+2025-05-05T21:28:52.804Z [INFO]: GET /api/comptes
+2025-05-05T21:28:53.544Z [INFO]: GET /api/auth/me
+2025-05-05T21:28:53.547Z [INFO]: GET /api/accounting-entries
+2025-05-05T21:28:54.442Z [INFO]: GET /api/accounting-entries
+2025-05-05T21:29:01.421Z [INFO]: GET /api/auth/me
+2025-05-05T21:29:01.424Z [INFO]: GET /api/projects/myprojects
+2025-05-05T21:29:01.457Z [INFO]: GET /api/auth/me
+2025-05-05T21:29:29.109Z [INFO]: POST /api/projects/addproject
+2025-05-05T21:29:29.120Z [INFO]: Project created: 68192db90b96e1a3134dd4fc
+2025-05-05T21:29:39.661Z [INFO]: GET /api/projects/myprojects
+2025-05-05T21:29:39.664Z [INFO]: GET /api/auth/me
+2025-05-05T21:29:39.711Z [INFO]: GET /api/auth/me
+2025-05-05T21:29:46.409Z [INFO]: POST /api/projects/addproject
+2025-05-05T21:29:46.414Z [INFO]: Project created: 68192dca0b96e1a3134dd503
+2025-05-05T21:29:55.807Z [INFO]: POST /api/projects/addproject
+2025-05-05T21:29:55.813Z [INFO]: Project created: 68192dd30b96e1a3134dd506
+2025-05-05T21:30:36.801Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:36.834Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:37.860Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:37.863Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:30:37.906Z [INFO]: Fetched 2 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:30:38.923Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:38.955Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:43.206Z [INFO]: POST /api/invoices/addinvoice
+2025-05-05T21:30:43.226Z [INFO]: Invoice created: 68192e030b96e1a3134dd516
+2025-05-05T21:30:44.477Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T21:30:44.480Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:44.514Z [INFO]: Fetched 3 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T21:30:47.109Z [INFO]: GET /api/auth/me
+2025-05-05T21:30:47.113Z [INFO]: GET /api/companies/getallcompanies
+2025-05-05T21:30:47.135Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:00.314Z [INFO]: POST /api/transactions/addtransaction
+2025-05-05T21:31:00.354Z [INFO]: GET /api/transactions/mytransactions
+2025-05-05T21:31:00.357Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:03.719Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:03.722Z [INFO]: GET /api/companies/getallcompanies
+2025-05-05T21:31:03.752Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:04.337Z [INFO]: GET /api/transactions/mytransactions
+2025-05-05T21:31:04.340Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:07.064Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:07.067Z [INFO]: GET /api/accounting-entries
+2025-05-05T21:31:07.679Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:07.682Z [INFO]: GET /api/comptes
+2025-05-05T21:31:09.470Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T21:31:09.473Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:10.145Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:10.172Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:19.264Z [INFO]: POST /api/companies/addcompany
+2025-05-05T21:31:19.271Z [INFO]: Company created: 68192e270b96e1a3134dd548
+2025-05-05T21:31:21.811Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T21:31:21.819Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:25.882Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:25.885Z [INFO]: GET /api/users/users
+2025-05-05T21:31:25.912Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T21:31:31.163Z [INFO]: PUT /api/users/user/6813965d59d0f3ab3095b25d
+2025-05-05T21:31:31.186Z [INFO]: Utilisateur mis à jour avec succès : 6813965d59d0f3ab3095b25d
+2025-05-05T21:31:31.679Z [INFO]: GET /api/users/users
+2025-05-05T21:31:31.683Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T21:31:31.709Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:34.485Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:34.487Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T21:31:35.075Z [INFO]: GET /api/users/users
+2025-05-05T21:31:35.079Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T21:31:35.098Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:35.101Z [INFO]: GET /api/companies/getallcompanies
+2025-05-05T21:31:45.621Z [INFO]: POST /api/payrolls/addpayroll
+2025-05-05T21:31:45.628Z [INFO]: Payroll created: 68192e410b96e1a3134dd55d
+2025-05-05T21:31:45.655Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T21:31:45.658Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:46.897Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:46.900Z [INFO]: GET /api/users/users
+2025-05-05T21:31:46.904Z [INFO]: GET /api/companies/getallcompanies
+2025-05-05T21:31:46.910Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T21:31:46.937Z [INFO]: GET /api/payrolls/getpayroll/68192e410b96e1a3134dd55d
+2025-05-05T21:31:47.014Z [INFO]: Fetched payroll: 68192e410b96e1a3134dd55d
+2025-05-05T21:31:51.061Z [INFO]: PUT /api/payrolls/updatepayroll/68192e410b96e1a3134dd55d
+2025-05-05T21:31:51.069Z [INFO]: Updated payroll: 68192e410b96e1a3134dd55d
+2025-05-05T21:31:51.093Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T21:31:51.097Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:52.449Z [INFO]: GET /api/users/users
+2025-05-05T21:31:52.452Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:52.454Z [INFO]: GET /api/companies/getallcompanies
+2025-05-05T21:31:52.457Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T21:31:54.293Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-05T21:31:54.295Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:55.032Z [INFO]: GET /api/companies/getallcompanies
+2025-05-05T21:31:55.082Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:56.041Z [INFO]: GET /api/auth/me
+2025-05-05T21:31:56.064Z [INFO]: GET /api/projects/myprojects
+2025-05-05T21:31:56.066Z [INFO]: GET /api/auth/me
