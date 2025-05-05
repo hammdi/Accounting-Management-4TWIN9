@@ -1,6 +1,7 @@
 const Project = require('../models/Project');
 const logger = require('../utils/logger');
 
+// Create a new project
 exports.createProject = async (req, res) => {
     try {
         const project = new Project({ ...req.body, owner: req.user._id });
@@ -13,9 +14,11 @@ exports.createProject = async (req, res) => {
     }
 };
 
+// Get only the current user's projects
 exports.getMyProjects = async (req, res) => {
     try {
-        const projects = await Project.find({ owner: req.user._id }).populate('teamMembers tasks.assignedTo');
+        const projects = await Project.find({ owner: req.user._id })
+            .populate('teamMembers tasks.assignedTo');
         res.status(200).json(projects);
     } catch (error) {
         logger.error(`Error fetching projects: ${error.message}`);
@@ -23,6 +26,19 @@ exports.getMyProjects = async (req, res) => {
     }
 };
 
+// Get all projects in the system
+exports.getAllProjects = async (req, res) => {
+    try {
+        const projects = await Project.find()
+            .populate('owner teamMembers tasks.assignedTo');
+        res.status(200).json(projects);
+    } catch (error) {
+        logger.error(`Error fetching all projects: ${error.message}`);
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Update a project by ID
 exports.updateProject = async (req, res) => {
     try {
         const updated = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -34,6 +50,7 @@ exports.updateProject = async (req, res) => {
     }
 };
 
+// Delete a project by ID
 exports.deleteProject = async (req, res) => {
     try {
         const deleted = await Project.findByIdAndDelete(req.params.id);

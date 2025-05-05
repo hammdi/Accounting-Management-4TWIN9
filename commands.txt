@@ -13,3 +13,4 @@ git checkout BRANCH
 git add .
 git commit -m "Add HomeLayer component and update frontend for homepage functionality"
 git push origin BRANCH
+git fetch origin main
