@@ -3,6 +3,115 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import ThemeToggleButton from "../helper/ThemeToggleButton";
 import {getCurrentUser} from "../services/authService";
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
+
+const driverObj = driver({
+  showProgress: true,
+  steps: [
+    {
+      element: '#menu-dashboard',
+      popover: {
+        title: 'Dashboard',
+        description: 'Your central hub for company insights, charts, and activities.',
+        side: "top",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-emails',
+      popover: {
+        title: 'Emails',
+        description: 'Manage, send, and view all company emails here.',
+        side: "top-right",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-calendar',
+      popover: {
+        title: 'Invoice Calendar',
+        description: 'Check your invoice due dates and schedule with clarity.',
+        side: "bottom",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-invoices',
+      popover: {
+        title: 'Invoices',
+        description: 'Track and manage customer invoices, payments, and statuses.',
+        side: "top",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-transactions',
+      popover: {
+        title: 'Transactions',
+        description: 'View transaction history, payment methods, and transfers.',
+        side: "bottom-left",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-accounting',
+      popover: {
+        title: 'Accounting',
+        description: 'Core financial tools: general ledger, reports, and budgeting.',
+        side: "top-center",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-companies',
+      popover: {
+        title: 'Companies',
+        description: 'Manage company profiles, details, and registration data.',
+        side: "bottom-center",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-ai',
+      popover: {
+        title: 'AI Application',
+        description: 'Use our AI assistant to generate financial insights or reports.',
+        side: "right",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-users',
+      popover: {
+        title: 'Users',
+        description: 'Manage users, roles, and access permissions.',
+        side: "left",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-payroll',
+      popover: {
+        title: 'Payroll',
+        description: 'Setup salaries, bonuses, deductions, and process payrolls.',
+        side: "right-bottom",
+        align: 'start',
+      },
+    },
+    {
+      element: '#menu-tax',
+      popover: {
+        title: 'Tax Compliance',
+        description: 'Review tax obligations, filing statuses, and compliance checks.',
+        side: "left-top",
+        align: 'start',
+      },
+    },
+  ]
+});
+
+
 
 const getUserAvatar = (avatar) => {
   if (avatar) {
@@ -52,6 +161,11 @@ const MasterLayout = ({ children }) => {
     fetchUser().then(r => console.log(""));
   }, []);
   useEffect(() => {
+
+    if (location.pathname == "/home") {
+      driverObj.drive();    }
+
+
     const handleDropdownClick = (event) => {
       event.preventDefault();
       const clickedLink = event.currentTarget;
@@ -196,27 +310,14 @@ const MasterLayout = ({ children }) => {
         </button>
         <div>
           <Link to='/home' className='sidebar-logo'>
-            <img
-              src='/assets/images/logo.png'
-              alt='site logo'
-              className='light-logo'
-            />
-            <img
-              src='/assets/images/logo-light.png'
-              alt='site logo'
-              className='dark-logo'
-            />
-            <img
-              src='/assets/images/logo-icon.png'
-              alt='site logo'
-              className='logo-icon'
-            />
+          <img src="assets/images/logo.png"      alt="MiLiM Logo" className="mb-3" />
+
           </Link>
         </div>
         <div className='sidebar-menu-area'>
           <ul className='sidebar-menu' id='sidebar-menu'>
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-dashboard'>
                 <Icon
                   icon='solar:home-smile-angle-outline'
                   className='menu-icon'
@@ -225,8 +326,8 @@ const MasterLayout = ({ children }) => {
               </Link>
               <ul className='sidebar-submenu'>
                   <li>
-                  <NavLink
-                    to='/home'
+                  <NavLink 
+                    to='/home'  
                     className={(navData) =>
                       navData.isActive ? "active-page" : ""
                     }
@@ -237,7 +338,7 @@ const MasterLayout = ({ children }) => {
                 </li> 
                 <li>
                   <NavLink
-                    to='/index-2'
+                    to='/index-2' 
                     className={(navData) =>
                       navData.isActive ? "active-page" : ""
                     }
@@ -352,7 +453,7 @@ const MasterLayout = ({ children }) => {
             <li className='sidebar-menu-group-title'>Application</li>
             <li>
               <NavLink
-                to='/email'
+                to='/email' id='menu-emails'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
               >
                 <Icon icon='mage:email' className='menu-icon' />
@@ -370,7 +471,7 @@ const MasterLayout = ({ children }) => {
             </li> */}
             <li>
               <NavLink
-                to='/calendar-main'
+                to='/calendar-main'  id='menu-calendar' 
                 className={(navData) => (navData.isActive ? "active-page" : "")}
               >
                 <Icon icon='solar:calendar-outline' className='menu-icon' />
@@ -392,7 +493,7 @@ const MasterLayout = ({ children }) => {
 
             {/* Invoice Dropdown */}
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#'  id='menu-invoices'>
                 <Icon icon='hugeicons:invoice-03' className='menu-icon' />
                 <span>Invoice</span>
               </Link>
@@ -424,7 +525,7 @@ const MasterLayout = ({ children }) => {
 
             {/* Transaction Dropdown */}
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-transactions'>
                 <Icon icon='mdi:finance' className='menu-icon' />
                 <span>Transaction</span>
               </Link>
@@ -455,7 +556,7 @@ const MasterLayout = ({ children }) => {
             </li>
             {/* accounting Dropdown */}
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-accounting'>
                 <Icon icon='mdi:dollar' className='menu-icon' />
                 <span>Accounting</span>
               </Link>
@@ -486,7 +587,7 @@ const MasterLayout = ({ children }) => {
             </li>
             {/* Company Dropdown */}
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-companies'>
                 <Icon icon='mdi:briefcase' className='menu-icon' />
                 <span>Companies</span>
               </Link>
@@ -518,7 +619,7 @@ const MasterLayout = ({ children }) => {
 
             {/* Ai Application Dropdown */}
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#'  id='menu-ai'>
                 <i className='ri-robot-2-line mr-10' />
 
                 <span>Ai Application</span>
@@ -1024,7 +1125,7 @@ const MasterLayout = ({ children }) => {
 
             {/* Users Dropdown */}
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-users'>
                 <Icon
                   icon='flowbite:users-group-outline'
                   className='menu-icon'
@@ -1079,7 +1180,7 @@ const MasterLayout = ({ children }) => {
               </ul>
             </li>
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-payroll'>
                 <Icon
                   icon='simple-line-icons:vector'
                   className='menu-icon'
@@ -1112,7 +1213,7 @@ const MasterLayout = ({ children }) => {
               </ul>
             </li>
             <li className='dropdown'>
-              <Link to='#'>
+              <Link to='#' id='menu-tax'>
                 <Icon
                   icon='hugeicons:money-send-square'
                   className='menu-icon'
@@ -1552,9 +1653,47 @@ const MasterLayout = ({ children }) => {
             </div>
             <div className='col-auto'>
               <div className='d-flex flex-wrap align-items-center gap-3'>
+                
+ 
+                  {/* TUTO */}
+                  <div className='dropdown d-none d-sm-inline-block'>
+                    <button
+                      className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
+                      type='button'
+                      data-bs-toggle='dropdown'
+                    >
+                      <Icon className='text-black fs-5' icon="mdi:lightbulb-on" />
+                    </button>
+                    <div className='dropdown-menu to-top dropdown-menu-sm'>
+                      <div className='py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
+                        <div>
+                          <h6 className='text-lg text-primary-light fw-semibold mb-0'>
+                            Learn with Tutorials
+                          </h6>
+                        </div>
+                      </div>
+                      <div className='max-h-400-px overflow-y-auto scroll-sm pe-8'>
+                        <div className='d-flex align-items-center justify-content-between mb-16'>
+                          <a
+                            href="#"
+                            className='text-black text-md fw-semibold d-flex align-items-center gap-3 hover-text-primary'
+                            onClick={(e) => {
+                              e.preventDefault();
+                              driverObj.drive();
+                            }}
+                          >
+                            <Icon className='text-black' icon="mdi:lightbulb-on" />
+                            Getting Started
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
                 {/* ThemeToggleButton */}
                 <ThemeToggleButton />
-                <div className='dropdown d-none d-sm-inline-block'>
+               {/*  <div className='dropdown d-none d-sm-inline-block'>
                   <button
                     className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
                     type='button'
@@ -1566,7 +1705,7 @@ const MasterLayout = ({ children }) => {
                       className='w-24 h-24 object-fit-cover rounded-circle'
                     />
                   </button>
-                  <div className='dropdown-menu to-top dropdown-menu-sm'>
+                   <div className='dropdown-menu to-top dropdown-menu-sm'>
                     <div className='py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
                       <div>
                         <h6 className='text-lg text-primary-light fw-semibold mb-0'>
@@ -1760,15 +1899,18 @@ const MasterLayout = ({ children }) => {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> 
                 </div>
-                {/* Language dropdown end */}
+                */}
+
+
+                {/* Language dropdown end
                 <div className='dropdown'>
                   <button
                     className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
                     type='button'
                     data-bs-toggle='dropdown'
-                  >
+                  > 
                     <Icon
                       icon='mage:email'
                       className='text-primary-light text-xl'
@@ -1947,6 +2089,8 @@ const MasterLayout = ({ children }) => {
                     </div>
                   </div>
                 </div>
+                  
+                
                 {/* Message dropdown end */}
                 <div className='dropdown'>
                   <button
@@ -2097,6 +2241,7 @@ const MasterLayout = ({ children }) => {
                     </div>
                   </div>
                 </div>
+
                 {/* Notification dropdown end */}
                 <div className='dropdown'>
                   <button
@@ -2177,6 +2322,7 @@ const MasterLayout = ({ children }) => {
                     </ul>
                   </div>
                 </div>
+
                 {/* Profile dropdown end */}
               </div>
             </div>
