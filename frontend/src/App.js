@@ -116,6 +116,7 @@ import CompanyDetailsPage from "./pages/CompanyDetailsPage";
 import ComptesListPage from "./pages/ComptesListPage";
 import PlanComptablePage from "./pages/PlanComptablePage";
 import HomePageA from "./pages/HomePageA"; // Import HomePageA
+import ProjectsPage from "./pages/ProjectsPage"; // Import HomePageA
 
 
 
@@ -186,6 +187,7 @@ function App() {
           <Route exact path="/maintenance" element={<MaintenancePage />} />
           <Route exact path="/blank-page" element={<BlankPagePage />} />
 
+
           <Route exact path="/image-generator" element={<ImageGeneratorPage />} />
           <Route exact path="/image-upload" element={<ImageUploadPage />} />
           <Route exact path="/invoice-add" element={<InvoiceAddPage />} />
@@ -248,6 +250,83 @@ function App() {
           <Route exact path="/wizard" element={<WizardPage />} />
           <Route exact path="/plan-comptable" element={<PlanComptablePage />} />
           <Route exact path="/comptes" element={<ComptesListPage />} />
+
+        <Route exact path='/image-generator' element={<ImageGeneratorPage />} />
+        <Route exact path='/image-upload' element={<ImageUploadPage />} />
+        <Route exact path='/invoice-add' element={<InvoiceAddPage />} />
+        <Route exact path='/invoice-edit/:id' element={<InvoiceEditPage />} />
+        <Route exact path='/invoice-list' element={<InvoiceListPage />} />
+        <Route exact path='/invoice-preview/:id' element={<InvoicePreviewPage />} />
+        <Route exact path='/transaction-add' element={<TransactionAddPage/>} />
+        <Route exact path='/transaction-edit' element={<TransactionEditPage/>} />
+        <Route exact path='/transaction-list' element={<TransactionListPage/>} />
+        <Route exact path='/transaction-preview' element={<TransactionPreviewPage />} />
+        <Route exact path='/kanban' element={<KanbanPage />} />
+        <Route exact path='/language' element={<LanguagePage />} />
+        <Route exact path='/line-chart' element={<LineChartPage />} />
+        <Route exact path='/list' element={<ListPage />} />
+        <Route exact path='/my-companies' element={<CompanyListPage />} />
+        <Route exact path='/company' element={<CompanyFormPage />} />
+        <Route exact path='/company/:id' element={<CompanyDetailsPage />} />
+        <Route exact path='/company/:id/edit' element={<CompanyFormPage />} />
+        <Route
+          exact
+          path='/marketplace-details'
+          element={<MarketplaceDetailsPage />}
+        />
+        <Route exact path='/marketplace' element={<MarketplacePage />} />
+        <Route
+          exact
+          path='/notification-alert'
+          element={<NotificationAlertPage />}
+        />
+        <Route exact path='/notification' element={<NotificationPage />} />
+        <Route exact path='/pagination' element={<PaginationPage />} />
+        <Route exact path='/payment-gateway' element={<PaymentGatewayPage />} />
+        <Route exact path='/pie-chart' element={<PieChartPage />} />
+        <Route exact path='/portfolio' element={<PortfolioPage />} />
+        <Route exact path='/pricing' element={<PricingPage />} />
+        <Route exact path='/progress' element={<ProgressPage />} />
+        <Route exact path='/radio' element={<RadioPage />} />
+        <Route exact path='/role-access' element={<RoleAccessPage />} />
+        <Route exact path='/sign-in' element={<SignInPage />} />
+        <Route exact path='/sign-up' element={<SignUpPage />} />
+        <Route exact path='/star-rating' element={<StarRatingPage />} />
+        <Route exact path='/starred' element={<StarredPage />} />
+        <Route exact path='/switch' element={<SwitchPage />} />
+        <Route exact path='/table-basic' element={<TableBasicPage />} />
+        <Route exact path='/table-data' element={<TableDataPage />} />
+        <Route exact path='/tabs' element={<TabsPage />} />
+        <Route exact path='/tags' element={<TagsPage />} />
+        <Route exact path='/terms-condition' element={<TermsConditionPage />} />
+        <Route
+          exact
+          path='/text-generator-new'
+          element={<TextGeneratorNewPage />}
+        />
+        <Route exact path='/text-generator' element={<TextGeneratorPage />} />
+        <Route exact path='/theme' element={<ThemePage />} />
+        <Route exact path='/tooltip' element={<TooltipPage />} />
+        <Route exact path='/typography' element={<TypographyPage />} />
+        <Route exact path='/users-grid' element={<UsersGridPage />} />
+        <Route exact path='/users-list' element={<UsersListPage />} />
+        <Route exact path='/payroll-grid' element={<PayrollGridPage />} />
+        <Route exact path='/payroll-list' element={<PayrollListPage />} />
+        <Route exact path='/taxcompliance-grid' element={<TaxComplianceGridPage />} />
+        <Route exact path='/taxcompliance-list' element={<TaxComplianceListPage />} />
+        <Route exact path='/view-details' element={<ViewDetailsPage />} />
+        <Route exact path="/view-details/:emailId" element={<ViewDetailsPage />} />
+        <Route exact path='/video-generator' element={<VideoGeneratorPage />} />
+        <Route exact path='/videos' element={<VideosPage />} />
+        <Route exact path='/view-profile' element={<ViewProfilePage />} />
+        <Route exact path='/voice-generator' element={<VoiceGeneratorPage />} />
+        <Route exact path='/wallet' element={<WalletPage />} />
+        <Route exact path='/widgets' element={<WidgetsPage />} />
+        <Route exact path='/wizard' element={<WizardPage />} />
+        <Route exact path='/plan-comptable' element={<PlanComptablePage />} />
+        <Route exact path='/comptes' element={<ComptesListPage />} />
+        <Route exact path='/projects' element={<ProjectsPage />} />
+
 
           <Route exact path="*" element={<ErrorPage />} />
         </Routes>

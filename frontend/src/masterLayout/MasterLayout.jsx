@@ -325,6 +325,7 @@ const MasterLayout = ({ children }) => {
                 <span>Dashboard</span>
               </Link>
               <ul className='sidebar-submenu'>
+                
                   <li>
                   <NavLink 
                     to='/home'  
@@ -451,6 +452,18 @@ const MasterLayout = ({ children }) => {
             </li>
 
             <li className='sidebar-menu-group-title'>Application</li>
+
+
+            <li>
+              <NavLink
+                to='/projects' id='menu-projects'
+                className={(navData) => (navData.isActive ? "active-page" : "")}
+              >
+                <Icon icon='mdi:clipboard-check-outline' className='menu-icon' />
+                <span>Accounting Projects</span>
+              </NavLink>
+            </li>
+
             <li>
               <NavLink
                 to='/email' id='menu-emails'
