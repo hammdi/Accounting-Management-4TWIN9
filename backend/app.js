@@ -31,6 +31,7 @@ app.use((req, res, next) => {
 const chatRoutes = require('./routes/chat');
 const invoiceRoutes = require('./routes/invoiceRoutes');
 const smsRoutes = require('./routes/smsRoutes');
+const projectRoutes = require('./routes/projectRoutes'); // Project routes
 
 // Use routes
 app.use('/api/chat', chatRoutes);
@@ -46,6 +47,7 @@ app.use('/api/aipredictons', require('./routes/aiPredictionRoutes'));
 app.use('/api/aidatasets', require('./routes/aiDatasetRoutes'));
 app.use('/api/auditlogs', require('./routes/auditLogRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
+app.use('/api/projects', projectRoutes); // Project routes
 
 //
 app.use('/api/comptes', compteComptableRoutes);
@@ -78,6 +80,7 @@ mongoose.connect(process.env.MONGO_URI)
         require ('./models/CompteComptable'); // CompteComptable
         require('./models/Product');            // Product depends on Company
         require('./models/AccountingEntry');    // AccountingEntry depends on Invoice & Company
+        require('./routes/projectRoutes');     // Project depends on User
 
         console.log("📌 Modèles enregistrés :", mongoose.modelNames());
 
