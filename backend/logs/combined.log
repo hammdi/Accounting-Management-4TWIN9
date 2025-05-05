@@ -1035,3 +1035,150 @@
 2025-05-05T16:57:28.254Z [INFO]: GET /api/transactions/mytransactions
 2025-05-05T16:57:28.285Z [INFO]: GET /api/transactions/mytransactions
 2025-05-05T16:57:28.321Z [INFO]: GET /api/transactions/mytransactions
+2025-05-05T17:05:09.165Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T17:05:09.169Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:09.172Z [INFO]: GET /api/payrolls/getallpayrolls?sort=-paymentDate&limit=5
+2025-05-05T17:05:09.211Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T17:05:09.220Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T17:05:09.231Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T17:05:09.243Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-05T17:05:10.173Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-05T17:05:10.176Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:10.178Z [INFO]: GET /api/taxes/getalltaxes?sort=-createdAt&limit=5
+2025-05-05T17:05:10.211Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-05T17:05:10.219Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-05T17:05:10.225Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-05T17:05:10.233Z [INFO]: GET /api/taxes/getalltaxes
+2025-05-05T17:05:11.042Z [INFO]: GET /api/users/users
+2025-05-05T17:05:11.046Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T17:05:11.070Z [INFO]: GET /api/users/users
+2025-05-05T17:05:11.073Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T17:05:11.097Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:11.103Z [INFO]: GET /api/users/users?sort=-createdAt&limit=5
+2025-05-05T17:05:11.105Z [INFO]: GET /api/users/users
+2025-05-05T17:05:11.128Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T17:05:11.147Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T17:05:11.168Z [INFO]: GET /api/users/users
+2025-05-05T17:05:11.171Z [INFO]: Liste de tous les utilisateurs récupérée (1 utilisateurs)
+2025-05-05T17:05:11.888Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T17:05:11.890Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:11.892Z [INFO]: GET /api/companies/mycompanies?populate=owner
+2025-05-05T17:05:11.938Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T17:05:11.982Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T17:05:12.007Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T17:05:12.084Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T17:05:12.113Z [INFO]: GET /api/companies/mycompanies
+2025-05-05T17:05:19.987Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:19.989Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:20.015Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:20.045Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:20.051Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:20.075Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:20.081Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:20.108Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:20.115Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:20.135Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:20.141Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:20.162Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:20.169Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:20.189Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:05:20.194Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:05:34.909Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:34.940Z [INFO]: GET /api/auth/me
+2025-05-05T17:05:47.907Z [INFO]: GET /api/auth/me
+2025-05-05T17:06:08.358Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.360Z [INFO]: GET /api/auth/me
+2025-05-05T17:06:08.395Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:06:08.425Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.434Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:06:08.466Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.475Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:06:08.498Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.504Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:06:08.526Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.533Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:06:08.554Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.566Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:06:08.590Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:06:08.598Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:08:10.574Z [INFO]: GET /api/auth/me
+2025-05-05T17:08:18.506Z [INFO]: GET /api/auth/me
+2025-05-05T17:08:51.511Z [INFO]: GET /api/auth/me
+2025-05-05T17:08:56.510Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:06.505Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:14.520Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:17.503Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:21.509Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:24.502Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:26.511Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:40.716Z [INFO]: GET /api/auth/me
+2025-05-05T17:09:46.494Z [INFO]: GET /api/auth/me
+2025-05-05T17:10:17.499Z [INFO]: GET /api/auth/me
+2025-05-05T17:10:35.501Z [INFO]: GET /api/auth/me
+2025-05-05T17:10:37.506Z [INFO]: GET /api/auth/me
+2025-05-05T17:11:50.507Z [INFO]: GET /api/auth/me
+2025-05-05T17:11:55.505Z [INFO]: GET /api/auth/me
+2025-05-05T17:11:58.509Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:02.508Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:08.615Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:17.859Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:18.774Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-05T17:12:18.775Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:18.810Z [INFO]: Fetched 1 invoices
+2025-05-05T17:12:19.330Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:20.990Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:21.566Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-05T17:12:21.567Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:21.591Z [INFO]: Fetched 1 invoices
+2025-05-05T17:12:22.152Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:32.501Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:38.506Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:41.507Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:44.514Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:47.512Z [INFO]: GET /api/auth/me
+2025-05-05T17:12:56.519Z [INFO]: GET /api/auth/me
+2025-05-05T17:17:23.505Z [INFO]: GET /api/auth/me
+2025-05-05T17:17:25.489Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:16.038Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:16.041Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-05T17:31:17.415Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:17.424Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:19.147Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:27.703Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:29.635Z [INFO]: GET /api/auth/me
+2025-05-05T17:31:40.491Z [INFO]: GET /api/auth/me
+2025-05-05T17:33:40.491Z [INFO]: GET /api/comptes
+2025-05-05T17:33:40.493Z [INFO]: GET /api/auth/me
+2025-05-05T17:39:52.798Z [INFO]: POST /api/users/login
+2025-05-05T17:39:52.874Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-05T17:39:52.938Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:52.941Z [INFO]: GET /api/auth/me
+2025-05-05T17:39:52.980Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:53.046Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:53.064Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:53.117Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:53.134Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:53.183Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:53.201Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:53.242Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:53.265Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:53.300Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:53.310Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:53.349Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:39:53.361Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:39:54.634Z [INFO]: GET /api/auth/me
+2025-05-05T17:45:17.318Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.322Z [INFO]: GET /api/auth/me
+2025-05-05T17:45:17.355Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:45:17.379Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.386Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:45:17.414Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.421Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:45:17.447Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.455Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:45:17.478Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.485Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:45:17.506Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.514Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d
+2025-05-05T17:45:17.536Z [INFO]: GET /api/invoices/myinvoices
+2025-05-05T17:45:17.544Z [INFO]: Fetched 1 invoices for user 6813965d59d0f3ab3095b25d

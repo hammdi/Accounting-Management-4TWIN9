@@ -116,6 +116,7 @@ import CompanyDetailsPage from "./pages/CompanyDetailsPage";
 import ComptesListPage from "./pages/ComptesListPage";
 import PlanComptablePage from "./pages/PlanComptablePage";
 import HomePageA from "./pages/HomePageA"; // Import HomePageA
+import ProjectsPage from "./pages/ProjectsPage"; // Import HomePageA
 
 
 
@@ -264,6 +265,7 @@ function App() {
         <Route exact path='/wizard' element={<WizardPage />} />
         <Route exact path='/plan-comptable' element={<PlanComptablePage />} />
         <Route exact path='/comptes' element={<ComptesListPage />} />
+        <Route exact path='/projects' element={<ProjectsPage />} />
 
         <Route exact path='*' element={<ErrorPage />} />
       </Routes>
