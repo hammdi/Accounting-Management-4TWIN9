@@ -6,6 +6,7 @@ import { getCurrentUser } from '../services/authService';
 const ProjectLayer = () => {
     const [user, setUser] = useState(null);
     const [projects, setProjects] = useState([]);
+    const [selectedProjectId, setSelectedProjectId] = useState(null);
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -16,7 +17,8 @@ const ProjectLayer = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [showForm, setShowForm] = useState(false);
-    const [users, setUsers] = useState([]); // To fetch the list of users for assignment
+
+    const taskStatusOrder = ['To Do', 'In Progress', 'Done'];
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -35,6 +37,7 @@ const ProjectLayer = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setProjects(data);
+                if (data.length > 0) setSelectedProjectId(data[0]._id);
             } catch (err) {
                 toast.error('Failed to load projects');
             }
@@ -52,23 +55,23 @@ const ProjectLayer = () => {
         e.preventDefault();
         setLoading(true);
         setError('');
-    
+
         try {
             const token = localStorage.getItem('token');
             const formDataToSend = {
-                name: formData.title,  // Map title to name
+                name: formData.title,
                 description: formData.description,
                 status: formData.status,
                 dueDate: formData.dueDate,
                 priority: formData.priority
             };
-    
+
             const { data } = await axios.post(
                 `${process.env.REACT_APP_API_URL}/api/projects/addproject`,
-                formDataToSend,  // Send the correctly mapped data
+                formDataToSend,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-    
+
             toast.success('Project created!');
             setProjects([...projects, data.project]);
             setFormData({
@@ -79,6 +82,7 @@ const ProjectLayer = () => {
                 priority: 'Medium'
             });
             setShowForm(false);
+            setSelectedProjectId(data.project._id); // Auto-select new project
         } catch (err) {
             setError(err.response?.data?.error || 'Error creating project');
             toast.error('Project creation failed');
@@ -86,9 +90,8 @@ const ProjectLayer = () => {
             setLoading(false);
         }
     };
-    
 
-    const taskStatusOrder = ['To Do', 'In Progress', 'Done'];
+    const selectedProject = projects.find(p => p._id === selectedProjectId);
 
     return (
         <div className="container-fluid p-4">
@@ -99,6 +102,9 @@ const ProjectLayer = () => {
                 </button>
             </div>
 
+
+
+            {/* Add project form */}
             {showForm && (
                 <div className="card p-4 mb-4 shadow-sm">
                     <h5>Create New Project</h5>
@@ -175,36 +181,57 @@ const ProjectLayer = () => {
                 </div>
             )}
 
-            {/* Project Management Board */}
-            <div className="d-flex">
-                {taskStatusOrder.map(status => {
-                    const tasksInStatus = projects.flatMap(project => project.tasks.filter(task => task.status === status));
+            
+            {/* Tabs for project titles */}
+            <div className="mb-4 overflow-auto">
+    <ul className="nav nav-pills flex-nowrap gap-2" style={{ whiteSpace: 'nowrap', overflowX: 'auto' }}>
+        {projects.map((project) => (
+            <li className="nav-item" key={project._id}>
+                <button
+                    className={`nav-link ${selectedProjectId === project._id ? 'active' : ''}`}
+                    onClick={() => setSelectedProjectId(project._id)}
+                >
+                    {project.name}
+                </button>
+            </li>
+        ))}
+    </ul>
+            </div>
 
-                    return (
-                        <div className="col-md-4 mb-4" key={status}>
-                            <div className="card h-100 border">
-                                <div className="card-header bg-light">
-                                    <h6 className="mb-0">{status}</h6>
-                                    <small>{tasksInStatus.length} item(s)</small>
-                                </div>
-                                <div className="card-body">
-                                    {tasksInStatus.length > 0 ? (
-                                        tasksInStatus.map(task => (
-                                            <div key={task._id} className="mb-3 border rounded p-2">
-                                                <strong>{task.title}</strong>
-                                                <p className="small text-muted mb-1">{task.description}</p>
-                                                <small>Priority: {task.priority}</small>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p className="text-muted">No tasks in this category.</p>
-                                    )}
+            {/* Kanban board for selected project */}
+            {selectedProject ? (
+                <div className="d-flex">
+                    {taskStatusOrder.map((status) => {
+                        const tasksInStatus = (selectedProject.tasks || []).filter(task => task.status === status);
+
+                        return (
+                            <div className="col-md-4 mb-4" key={status}>
+                                <div className="card h-100 border">
+                                    <div className="card-header bg-light">
+                                        <h6 className="mb-0">{status}</h6>
+                                        <small>{tasksInStatus.length} item(s)</small>
+                                    </div>
+                                    <div className="card-body">
+                                        {tasksInStatus.length > 0 ? (
+                                            tasksInStatus.map(task => (
+                                                <div key={task._id} className="mb-3 border rounded p-2">
+                                                    <strong>{task.title}</strong>
+                                                    <p className="small text-muted mb-1">{task.description}</p>
+                                                    <small>Priority: {task.priority}</small>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p className="text-muted">No tasks in this category.</p>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
-            </div>
+                        );
+                    })}
+                </div>
+            ) : (
+                <p className="text-muted">No project selected or available.</p>
+            )}
         </div>
     );
 };
