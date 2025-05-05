@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as XLSX from 'xlsx';
 import MasterLayout from "../masterLayout/MasterLayout";
 
-const AccountingPlanPage = () => {
+const PlanComptablePage = () => {
     const [groupedEntries, setGroupedEntries] = useState({});
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
