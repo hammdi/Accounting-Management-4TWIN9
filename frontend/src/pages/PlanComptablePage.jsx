@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
@@ -12,7 +11,6 @@ const AccountingPlanPage = () => {
     useEffect(() => {
         fetchFilteredEntries();
     }, []);
-
 
     const fetchFilteredEntries = async () => {
         try {
@@ -71,13 +69,9 @@ const AccountingPlanPage = () => {
                 });
             });
         });
-      });
-    });
 
-    const worksheet = XLSX.utils.json_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-
-
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, 'Accounting Entries');
         XLSX.writeFile(workbook, 'Accounting_Plan_Export.xlsx');
     };
