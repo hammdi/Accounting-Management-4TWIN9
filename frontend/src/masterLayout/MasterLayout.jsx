@@ -1693,7 +1693,7 @@ const MasterLayout = ({ children }) => {
 
                 {/* ThemeToggleButton */}
                 <ThemeToggleButton />
-                <div className='dropdown d-none d-sm-inline-block'>
+               {/*  <div className='dropdown d-none d-sm-inline-block'>
                   <button
                     className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
                     type='button'
@@ -1705,7 +1705,7 @@ const MasterLayout = ({ children }) => {
                       className='w-24 h-24 object-fit-cover rounded-circle'
                     />
                   </button>
-                  <div className='dropdown-menu to-top dropdown-menu-sm'>
+                   <div className='dropdown-menu to-top dropdown-menu-sm'>
                     <div className='py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
                       <div>
                         <h6 className='text-lg text-primary-light fw-semibold mb-0'>
@@ -1899,15 +1899,18 @@ const MasterLayout = ({ children }) => {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> 
                 </div>
-                {/* Language dropdown end */}
+                */}
+
+
+                {/* Language dropdown end
                 <div className='dropdown'>
                   <button
                     className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
                     type='button'
                     data-bs-toggle='dropdown'
-                  >
+                  > 
                     <Icon
                       icon='mage:email'
                       className='text-primary-light text-xl'
@@ -2086,6 +2089,8 @@ const MasterLayout = ({ children }) => {
                     </div>
                   </div>
                 </div>
+                  */}
+                
                 {/* Message dropdown end */}
                 <div className='dropdown'>
                   <button
@@ -2236,6 +2241,7 @@ const MasterLayout = ({ children }) => {
                     </div>
                   </div>
                 </div>
+
                 {/* Notification dropdown end */}
                 <div className='dropdown'>
                   <button
@@ -2316,6 +2322,7 @@ const MasterLayout = ({ children }) => {
                     </ul>
                   </div>
                 </div>
+
                 {/* Profile dropdown end */}
               </div>
             </div>
