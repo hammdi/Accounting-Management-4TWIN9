@@ -19,7 +19,10 @@ if (!process.env.MONGO_URI) {
 
 // Middleware
 app.use(express.json({ limit: '10mb' }));
-app.use(cors());
+app.use(cors({
+    origin: ['https://accounting-management-4twin9-production.up.railway.app'],
+    credentials: true
+}));
 
 // Global request logger
 app.use((req, res, next) => {
@@ -59,20 +62,15 @@ app.use('/api/accounting-entries', require('./routes/accountingEntryRoutes'));
 const auth = require('./middleware/auth');
 app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
 
-//Bilan
+// Bilan
 const bilanRoute = require('./routes/bilanRoutes');
 app.use('/api/bilans', bilanRoute);
 
 // MongoDB connection
 mongoose.set('strictQuery', false);
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI, {
-            serverSelectionTimeoutMS: 5000,
-            socketTimeoutMS: 45000,
-            family: 4
-        });
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
         console.log("✅ MongoDB connected successfully");
 
         // Load models after successful MongoDB connection
@@ -99,25 +97,29 @@ const connectDB = async () => {
 
         // Start server after successful MongoDB connection
         const PORT = process.env.PORT || 5000;
-        app.listen(PORT, () => {
+        app.listen(PORT, '0.0.0.0', () => {
             console.log(`🚀 Server running on port ${PORT}`);
         });
-    } catch (error) {
-        console.error("❌ MongoDB connection error:", error);
+    })
+    .catch(err => {
+        console.error("❌ MongoDB connection error:", err);
         process.exit(1);
-    }
-};
+    });
 
-// Connect to MongoDB
-connectDB();
-
-// Error handling
-process.on('unhandledRejection', (err) => {
-    console.error("❌ Unhandled rejection:", err);
-    process.exit(1);
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({
+        message: 'Something went wrong!',
+        error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
 });
 
-process.on('uncaughtException', (err) => {
-    console.error("❌ Uncaught exception:", err);
-    process.exit(1);
+// 404 handler
+app.use((req, res) => {
+    res.status(404).json({
+        message: 'Resource not found'
+    });
 });
+
+module.exports = app;
