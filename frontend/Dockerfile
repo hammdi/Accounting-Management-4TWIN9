@@ -3,11 +3,15 @@ FROM node:18 as builder
 
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
 COPY package-lock.json ./
 RUN npm install
 
+# Copy source code
 COPY . .
+
+# Build for production
 RUN npm run build
 
 # Production stage
@@ -16,7 +20,7 @@ FROM nginx:alpine
 # Copy the build files
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Copy the nginx configuration
+# Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
