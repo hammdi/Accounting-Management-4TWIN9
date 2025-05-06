@@ -1,10 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const CompteComptableSchema = new mongoose.Schema({
-    Num: { type: Number },
-    Libelle: { type: String },
-    Level: { type: Number }
+    numero: String,
+    libelle: String,
+    niveau: Number,
+    solde: {
+        type: Number,
+        default: 0
+    }
 });
 
-const CompteComptable = mongoose.model("CompteComptable", CompteComptableSchema);
-module.exports = CompteComptable;
+module.exports = mongoose.model("CompteComptable", CompteComptableSchema);
