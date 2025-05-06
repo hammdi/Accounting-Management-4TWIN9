@@ -1,0 +1,593 @@
+2025-05-06T00:12:25.471Z [INFO]: POST /api/users/login
+2025-05-06T00:12:25.619Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T00:12:26.228Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.233Z [INFO]: GET /api/auth/me
+2025-05-06T00:12:26.845Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:26.850Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.862Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:26.865Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.876Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:26.879Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.890Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:26.893Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.904Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:26.907Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.917Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:26.919Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:26.928Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:32.806Z [INFO]: GET /api/comptes
+2025-05-06T00:12:37.416Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.419Z [INFO]: GET /api/auth/me
+2025-05-06T00:12:37.428Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:37.431Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.439Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:37.442Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.453Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:37.456Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.464Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:37.467Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.479Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:37.482Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.492Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:37.494Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:12:37.502Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:12:42.703Z [INFO]: GET /api/auth/me
+2025-05-06T00:12:42.713Z [INFO]: GET /api/accounting-entries
+2025-05-06T00:14:15.966Z [INFO]: GET /api/comptes
+2025-05-06T00:15:20.534Z [INFO]: GET /api/auth/me
+2025-05-06T00:15:20.542Z [INFO]: GET /api/comptes
+2025-05-06T00:15:28.225Z [INFO]: GET /api/auth/me
+2025-05-06T00:15:28.228Z [INFO]: GET /api/accounting-entries
+2025-05-06T00:15:29.102Z [INFO]: GET /api/auth/me
+2025-05-06T00:15:29.107Z [INFO]: GET /api/comptes
+2025-05-06T00:33:09.349Z [INFO]: GET /api/auth/me
+2025-05-06T00:33:09.353Z [INFO]: GET /api/projects/myprojects
+2025-05-06T00:33:09.362Z [INFO]: GET /api/auth/me
+2025-05-06T00:33:26.965Z [INFO]: POST /api/projects/addproject
+2025-05-06T00:33:27.084Z [INFO]: Project created: 681958d6d901a0a3d0519b21
+2025-05-06T00:47:57.679Z [INFO]: POST /api/users/login
+2025-05-06T00:47:57.758Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T00:47:57.817Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.820Z [INFO]: GET /api/auth/me
+2025-05-06T00:47:57.827Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:47:57.830Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.838Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:47:57.841Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.850Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:47:57.852Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.859Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:47:57.863Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.870Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:47:57.873Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.881Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:47:57.884Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T00:47:57.894Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T00:48:07.409Z [INFO]: GET /api/auth/me
+2025-05-06T00:48:07.415Z [INFO]: GET /api/comptes
+2025-05-06T00:50:32.259Z [INFO]: GET /api/auth/me
+2025-05-06T00:50:32.267Z [INFO]: GET /api/accounting-entries
+2025-05-06T01:02:40.481Z [INFO]: GET /api/auth/me
+2025-05-06T01:02:40.487Z [INFO]: GET /api/comptes
+2025-05-06T01:02:43.447Z [INFO]: GET /api/auth/me
+2025-05-06T01:02:43.459Z [INFO]: GET /api/comptes
+2025-05-06T01:08:25.200Z [INFO]: GET /api/auth/me
+2025-05-06T01:08:25.203Z [INFO]: GET /api/comptes
+2025-05-06T01:08:34.158Z [INFO]: GET /api/comptes
+2025-05-06T01:08:34.194Z [INFO]: GET /api/auth/me
+2025-05-06T01:09:35.853Z [INFO]: GET /api/auth/me
+2025-05-06T01:09:35.858Z [INFO]: GET /api/comptes
+2025-05-06T01:09:49.154Z [INFO]: GET /api/comptes
+2025-05-06T01:09:49.156Z [INFO]: GET /api/auth/me
+2025-05-06T01:10:36.938Z [INFO]: GET /api/comptes
+2025-05-06T01:12:04.923Z [INFO]: GET /api/comptes
+2025-05-06T01:14:01.923Z [INFO]: GET /api/comptes
+2025-05-06T01:14:29.689Z [INFO]: GET /api/comptes
+2025-05-06T01:22:25.364Z [INFO]: GET /api/auth/me
+2025-05-06T01:22:56.169Z [INFO]: GET /api/auth/me
+2025-05-06T01:22:56.987Z [INFO]: GET /api/auth/me
+2025-05-06T01:23:44.238Z [INFO]: GET /api/auth/me
+2025-05-06T01:23:49.478Z [INFO]: GET /api/auth/me
+2025-05-06T01:23:52.032Z [INFO]: GET /api/auth/me
+2025-05-06T01:23:52.044Z [INFO]: GET /api/accounting-entries
+2025-05-06T01:23:53.318Z [INFO]: GET /api/auth/me
+2025-05-06T01:23:53.325Z [INFO]: GET /api/comptes
+2025-05-06T01:27:44.573Z [INFO]: GET /api/auth/me
+2025-05-06T01:27:47.135Z [INFO]: GET /api/auth/me
+2025-05-06T01:27:52.239Z [INFO]: GET /api/auth/me
+2025-05-06T01:27:52.251Z [INFO]: GET /api/comptes
+2025-05-06T01:27:53.068Z [INFO]: GET /api/auth/me
+2025-05-06T01:32:23.028Z [INFO]: GET /api/auth/me
+2025-05-06T01:32:23.034Z [INFO]: GET /api/comptes
+2025-05-06T01:32:25.565Z [INFO]: GET /api/auth/me
+2025-05-06T01:32:25.570Z [INFO]: GET /api/comptes
+2025-05-06T01:32:54.823Z [INFO]: GET /api/comptes
+2025-05-06T01:32:54.824Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:14.405Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:20.522Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:22.564Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:23.223Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:23.782Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:24.740Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:24.747Z [INFO]: GET /api/comptes
+2025-05-06T01:34:27.869Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:28.563Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:28.572Z [INFO]: GET /api/comptes
+2025-05-06T01:34:29.968Z [INFO]: GET /api/auth/me
+2025-05-06T01:34:29.975Z [INFO]: GET /api/comptes
+2025-05-06T01:34:32.179Z [INFO]: GET /api/auth/me
+2025-05-06T01:37:39.502Z [INFO]: GET /api/auth/me
+2025-05-06T01:37:39.506Z [INFO]: GET /api/comptes
+2025-05-06T01:38:06.554Z [INFO]: GET /api/comptes
+2025-05-06T01:38:06.623Z [INFO]: GET /favicon.ico
+2025-05-06T01:42:52.777Z [INFO]: GET /api/auth/me
+2025-05-06T01:42:52.782Z [INFO]: GET /api/comptes
+2025-05-06T01:43:57.740Z [INFO]: GET /api/comptes
+2025-05-06T01:43:57.742Z [INFO]: GET /api/auth/me
+2025-05-06T01:44:08.689Z [INFO]: GET /api/auth/me
+2025-05-06T01:49:18.235Z [INFO]: GET /api/comptes
+2025-05-06T01:49:43.476Z [INFO]: GET /api/comptes
+2025-05-06T01:50:29.637Z [INFO]: GET /api/auth/me
+2025-05-06T01:50:42.756Z [INFO]: GET /api/auth/me
+2025-05-06T01:50:49.857Z [INFO]: POST /api/users/login
+2025-05-06T01:50:49.932Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T01:50:49.984Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:49.987Z [INFO]: GET /api/auth/me
+2025-05-06T01:50:49.996Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:49.999Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:50.007Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:50.009Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:50.015Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:50.017Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:50.023Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:50.025Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:50.030Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:50.033Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:50.040Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:50.043Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:50:50.051Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:50:53.854Z [INFO]: GET /api/auth/me
+2025-05-06T01:51:12.558Z [INFO]: GET /api/auth/me
+2025-05-06T01:51:28.124Z [INFO]: GET /api/auth/me
+2025-05-06T01:51:28.129Z [INFO]: GET /api/comptes
+2025-05-06T01:51:50.617Z [INFO]: GET /api/comptes
+2025-05-06T01:51:50.620Z [INFO]: GET /api/auth/me
+2025-05-06T01:51:55.726Z [INFO]: GET /api/auth/me
+2025-05-06T01:52:55.011Z [INFO]: GET /api/auth/me
+2025-05-06T01:52:55.014Z [INFO]: GET /api/comptes
+2025-05-06T01:52:58.857Z [INFO]: GET /api/auth/me
+2025-05-06T01:52:58.859Z [INFO]: GET /api/comptes
+2025-05-06T01:53:04.649Z [INFO]: GET /api/comptes
+2025-05-06T01:53:04.651Z [INFO]: GET /api/auth/me
+2025-05-06T01:53:13.620Z [INFO]: POST /api/users/login
+2025-05-06T01:53:13.693Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T01:53:13.741Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.745Z [INFO]: GET /api/auth/me
+2025-05-06T01:53:13.752Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:13.755Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.761Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:13.764Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.772Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:13.774Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.780Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:13.782Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.788Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:13.791Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.796Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:13.799Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T01:53:13.807Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T01:53:18.804Z [INFO]: GET /api/auth/me
+2025-05-06T01:53:18.812Z [INFO]: GET /api/comptes
+2025-05-06T01:55:58.309Z [INFO]: GET /api/comptes
+2025-05-06T01:56:00.824Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:00.827Z [INFO]: GET /api/comptes
+2025-05-06T01:56:14.619Z [INFO]: GET /api/accounting-entries
+2025-05-06T01:56:14.621Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:18.063Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:18.073Z [INFO]: GET /api/comptes
+2025-05-06T01:56:19.647Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:19.650Z [INFO]: GET /api/comptes
+2025-05-06T01:56:20.574Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:20.578Z [INFO]: GET /api/comptes
+2025-05-06T01:56:21.106Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:21.109Z [INFO]: GET /api/comptes
+2025-05-06T01:56:21.313Z [INFO]: GET /api/comptes
+2025-05-06T01:56:21.314Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:21.487Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:21.490Z [INFO]: GET /api/comptes
+2025-05-06T01:56:21.667Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:21.669Z [INFO]: GET /api/comptes
+2025-05-06T01:56:21.822Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:21.825Z [INFO]: GET /api/comptes
+2025-05-06T01:56:22.011Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:22.015Z [INFO]: GET /api/comptes
+2025-05-06T01:56:22.158Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:22.161Z [INFO]: GET /api/comptes
+2025-05-06T01:56:22.304Z [INFO]: GET /api/comptes
+2025-05-06T01:56:22.306Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:22.504Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:22.506Z [INFO]: GET /api/comptes
+2025-05-06T01:56:23.410Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:23.413Z [INFO]: GET /api/comptes
+2025-05-06T01:56:37.264Z [INFO]: GET /api/auth/me
+2025-05-06T01:56:37.274Z [INFO]: GET /api/auth/me
+2025-05-06T01:57:33.767Z [INFO]: GET /api/auth/me
+2025-05-06T01:57:33.773Z [INFO]: GET /api/comptes
+2025-05-06T01:57:45.679Z [INFO]: POST /api/ecritures
+2025-05-06T01:58:44.179Z [INFO]: GET /api/comptes
+2025-05-06T01:58:44.182Z [INFO]: GET /api/auth/me
+2025-05-06T01:58:52.579Z [INFO]: GET /api/auth/me
+2025-05-06T01:58:52.587Z [INFO]: GET /api/comptes
+2025-05-06T02:01:57.954Z [INFO]: POST /api/users/login
+2025-05-06T02:01:58.027Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T02:01:58.084Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.086Z [INFO]: GET /api/auth/me
+2025-05-06T02:01:58.093Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:01:58.095Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.101Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:01:58.103Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.110Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:01:58.113Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.120Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:01:58.122Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.129Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:01:58.131Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.138Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:01:58.140Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:01:58.146Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:01.973Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:01.984Z [INFO]: GET /api/comptes
+2025-05-06T02:02:04.468Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:04.470Z [INFO]: GET /api/comptes
+2025-05-06T02:02:06.564Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:06.566Z [INFO]: GET /api/comptes
+2025-05-06T02:02:07.389Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:07.393Z [INFO]: GET /api/comptes
+2025-05-06T02:02:07.620Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:07.623Z [INFO]: GET /api/comptes
+2025-05-06T02:02:07.760Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:07.761Z [INFO]: GET /api/comptes
+2025-05-06T02:02:08.146Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:08.148Z [INFO]: GET /api/comptes
+2025-05-06T02:02:08.784Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.786Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:08.794Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:08.797Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.805Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:08.808Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.816Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:08.819Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.827Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:08.829Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.835Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:08.837Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.843Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:08.845Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:08.851Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.771Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.777Z [INFO]: GET /api/auth/me
+2025-05-06T02:02:11.783Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.785Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.790Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.793Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.799Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.802Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.809Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.812Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.821Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.824Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.830Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:02:11.832Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:02:11.840Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:05:54.515Z [INFO]: GET /api/auth/me
+2025-05-06T02:05:54.525Z [INFO]: GET /api/comptes
+2025-05-06T02:06:14.612Z [INFO]: POST /api/ecritures
+2025-05-06T02:13:24.488Z [INFO]: GET /api/ecritures
+2025-05-06T02:13:33.505Z [INFO]: GET /api/comptes
+2025-05-06T02:13:45.147Z [INFO]: GET /api/comptes
+2025-05-06T02:13:54.637Z [INFO]: GET /api/ecritures
+2025-05-06T02:29:25.858Z [INFO]: POST /api/users/login
+2025-05-06T02:29:26.010Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T02:29:26.073Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.079Z [INFO]: GET /api/auth/me
+2025-05-06T02:29:26.385Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:26.388Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.399Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:26.403Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.415Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:26.419Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.440Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:26.446Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.458Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:26.462Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.475Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:26.478Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:26.489Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:30.480Z [INFO]: GET /api/auth/me
+2025-05-06T02:29:30.497Z [INFO]: GET /api/comptes
+2025-05-06T02:29:32.571Z [INFO]: GET /api/auth/me
+2025-05-06T02:29:32.574Z [INFO]: GET /api/comptes
+2025-05-06T02:29:34.621Z [INFO]: GET /api/auth/me
+2025-05-06T02:29:34.624Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.638Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:34.641Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.648Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:34.650Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.657Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:34.660Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.667Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:34.669Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.678Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:34.681Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.687Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:34.690Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:34.699Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.010Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.013Z [INFO]: GET /api/auth/me
+2025-05-06T02:29:37.022Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.025Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.032Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.034Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.042Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.045Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.054Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.057Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.068Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.072Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.085Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:37.089Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T02:29:37.102Z [INFO]: Fetched 1 invoices for user 68163ba1af55a4f933641918
+2025-05-06T02:29:43.333Z [INFO]: GET /api/auth/me
+2025-05-06T02:29:43.342Z [INFO]: GET /api/comptes
+2025-05-06T02:29:55.297Z [INFO]: POST /api/ecritures
+2025-05-06T02:30:12.854Z [INFO]: POST /api/ecritures
+2025-05-06T02:30:22.343Z [INFO]: GET /api/auth/me
+2025-05-06T02:30:28.471Z [INFO]: GET /api/auth/me
+2025-05-06T02:30:28.476Z [INFO]: GET /api/comptes
+2025-05-06T02:30:29.742Z [INFO]: GET /api/auth/me
+2025-05-06T02:30:29.749Z [INFO]: GET /api/comptes
+2025-05-06T02:30:30.868Z [INFO]: GET /api/auth/me
+2025-05-06T02:30:30.875Z [INFO]: GET /api/comptes
+2025-05-06T02:30:35.321Z [INFO]: GET /api/auth/me
+2025-05-06T02:30:35.328Z [INFO]: GET /api/accounting-entries
+2025-05-06T02:30:36.637Z [INFO]: GET /api/auth/me
+2025-05-06T02:30:36.648Z [INFO]: GET /api/comptes
+2025-05-06T02:36:41.377Z [INFO]: GET /api/ecritures
+2025-05-06T02:36:41.380Z [INFO]: GET /api/auth/me
+2025-05-06T02:36:52.925Z [INFO]: GET /api/ecritures
+2025-05-06T02:36:52.930Z [INFO]: GET /api/auth/me
+2025-05-06T02:43:22.568Z [INFO]: GET /api/ecritures
+2025-05-06T02:43:22.570Z [INFO]: GET /api/auth/me
+2025-05-06T02:43:30.711Z [INFO]: GET /api/ecritures/export/excel
+2025-05-06T02:43:33.044Z [INFO]: GET /api/ecritures
+2025-05-06T02:43:33.045Z [INFO]: GET /api/auth/me
+2025-05-06T02:44:15.687Z [INFO]: GET /api/ecritures
+2025-05-06T02:44:15.696Z [INFO]: GET /api/auth/me
+2025-05-06T02:44:20.476Z [INFO]: GET /api/ecritures/export/excel
+2025-05-06T02:45:03.734Z [INFO]: GET /api/auth/me
+2025-05-06T02:45:03.738Z [INFO]: GET /api/comptes
+2025-05-06T02:45:06.524Z [INFO]: GET /api/auth/me
+2025-05-06T02:45:06.527Z [INFO]: GET /api/ecritures
+2025-05-06T02:45:09.091Z [INFO]: GET /api/ecritures
+2025-05-06T02:45:09.097Z [INFO]: GET /api/auth/me
+2025-05-06T02:45:19.322Z [INFO]: GET /api/auth/me
+2025-05-06T02:45:19.328Z [INFO]: GET /api/comptes
+2025-05-06T02:45:36.537Z [INFO]: POST /api/ecritures
+2025-05-06T02:45:39.784Z [INFO]: GET /api/ecritures
+2025-05-06T02:45:39.786Z [INFO]: GET /api/auth/me
+2025-05-06T02:45:43.535Z [INFO]: GET /api/ecritures/export/excel
+2025-05-06T02:46:08.959Z [INFO]: GET /api/ecritures/export/excel
+2025-05-06T02:50:28.535Z [INFO]: GET /api/ecritures
+2025-05-06T02:50:28.537Z [INFO]: GET /api/auth/me
+2025-05-06T03:16:54.907Z [INFO]: POST /api/users/register
+2025-05-06T03:16:55.012Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:17:09.267Z [INFO]: POST /api/users/register
+2025-05-06T03:17:09.343Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:17:38.535Z [INFO]: POST /api/users/register
+2025-05-06T03:17:38.619Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:17:51.136Z [INFO]: POST /api/users/register
+2025-05-06T03:17:51.210Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:25:34.410Z [INFO]: POST /api/users/register
+2025-05-06T03:25:34.526Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:25:35.727Z [INFO]: POST /api/users/register
+2025-05-06T03:25:35.805Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:26:21.094Z [INFO]: POST /api/users/register
+2025-05-06T03:26:21.170Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:27:17.704Z [INFO]: POST /api/users/login
+2025-05-06T03:27:17.715Z [WARN]: Connexion échouée : utilisateur non trouvé (Skander.lrb@gmail.com)
+2025-05-06T03:27:34.035Z [INFO]: POST /api/users/register
+2025-05-06T03:27:34.151Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:20.874Z [INFO]: POST /api/users/register
+2025-05-06T03:31:21.112Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.271Z [INFO]: POST /api/users/register
+2025-05-06T03:31:24.353Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.453Z [INFO]: POST /api/users/register
+2025-05-06T03:31:24.528Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.695Z [INFO]: POST /api/users/register
+2025-05-06T03:31:24.776Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.943Z [INFO]: POST /api/users/register
+2025-05-06T03:31:25.024Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:29.519Z [INFO]: GET /api/auth/me
+2025-05-06T03:31:29.532Z [INFO]: GET /api/accounting-entries
+2025-05-06T03:31:32.794Z [INFO]: GET /api/auth/me
+2025-05-06T03:31:32.798Z [INFO]: GET /api/comptes
+2025-05-06T03:31:45.987Z [INFO]: GET /api/ecritures
+2025-05-06T03:31:45.991Z [INFO]: GET /api/auth/me
+2025-05-06T03:31:52.539Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:31:54.608Z [INFO]: GET /api/auth/me
+2025-05-06T03:31:54.611Z [INFO]: GET /api/ecritures
+2025-05-06T03:32:07.942Z [INFO]: GET /api/auth/me
+2025-05-06T03:32:07.952Z [INFO]: GET /api/comptes
+2025-05-06T03:32:21.250Z [INFO]: POST /api/ecritures
+2025-05-06T03:32:24.167Z [INFO]: GET /api/auth/me
+2025-05-06T03:32:24.173Z [INFO]: GET /api/comptes
+2025-05-06T03:32:27.611Z [INFO]: GET /api/auth/me
+2025-05-06T03:32:27.617Z [INFO]: GET /api/comptes
+2025-05-06T03:32:30.705Z [INFO]: GET /api/ecritures
+2025-05-06T03:32:30.708Z [INFO]: GET /api/auth/me
+2025-05-06T03:32:35.975Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:32:41.003Z [INFO]: GET /api/ecritures
+2025-05-06T03:32:41.014Z [INFO]: GET /api/auth/me
+2025-05-06T03:35:59.352Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:36:02.215Z [INFO]: GET /api/ecritures
+2025-05-06T03:36:02.218Z [INFO]: GET /api/auth/me
+2025-05-06T03:36:24.435Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:24.439Z [INFO]: GET /api/auth/me
+2025-05-06T03:36:24.442Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:24.446Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:24.450Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:24.454Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:24.457Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:24.461Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:36:33.363Z [INFO]: POST /api/users/login
+2025-05-06T03:36:33.366Z [WARN]: Connexion échouée : utilisateur non trouvé (Skander.lrb@gmail.com)
+2025-05-06T03:36:50.375Z [INFO]: POST /api/users/register
+2025-05-06T03:36:50.452Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:37:01.519Z [INFO]: GET /api/users/register
+2025-05-06T03:40:05.363Z [INFO]: POST /api/users/register
+2025-05-06T03:40:08.421Z [INFO]: Email de vérification envoyé à : Skander.lrb@gmail.com
+2025-05-06T03:40:08.422Z [INFO]: Nouvel utilisateur enregistré : Skander.lrb@gmail.com
+2025-05-06T03:40:22.942Z [INFO]: GET /api/users/verify/fb1067d01d197dbcef23a6eb643bc12351425b8008e26eb0b44e3e1ec686d580
+2025-05-06T03:40:29.458Z [INFO]: POST /api/users/login
+2025-05-06T03:40:29.539Z [INFO]: Connexion réussie pour l'utilisateur : Skander.lrb@gmail.com
+2025-05-06T03:40:29.611Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.617Z [INFO]: GET /api/auth/me
+2025-05-06T03:40:29.809Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:29.811Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.818Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:29.820Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.826Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:29.829Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.834Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:29.837Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.843Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:29.846Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.852Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:29.854Z [INFO]: GET /api/invoices/myinvoices
+2025-05-06T03:40:29.861Z [INFO]: Fetched 0 invoices for user 6819849528a2b0c29f28e696
+2025-05-06T03:40:40.505Z [INFO]: GET /api/auth/me
+2025-05-06T03:40:40.515Z [INFO]: GET /api/comptes
+2025-05-06T03:40:43.737Z [INFO]: GET /api/auth/me
+2025-05-06T03:40:43.741Z [INFO]: GET /api/ecritures
+2025-05-06T03:40:46.227Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:40:51.238Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:40:53.770Z [INFO]: GET /api/auth/me
+2025-05-06T03:40:53.775Z [INFO]: GET /api/ecritures
+2025-05-06T03:41:04.496Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:41:07.462Z [INFO]: GET /api/ecritures
+2025-05-06T03:41:07.464Z [INFO]: GET /api/auth/me
+2025-05-06T03:41:15.685Z [INFO]: GET /api/ecritures/export/excel
+2025-05-06T03:43:17.642Z [INFO]: GET /api/auth/me
+2025-05-06T03:43:17.651Z [INFO]: GET /api/comptes
+2025-05-06T03:45:53.517Z [INFO]: GET /api/comptes
+2025-05-06T03:45:53.529Z [INFO]: GET /api/auth/me
+2025-05-06T03:45:56.291Z [INFO]: GET /api/auth/me
+2025-05-06T03:45:56.296Z [INFO]: GET /api/comptes
+2025-05-06T03:46:01.694Z [INFO]: GET /api/ecritures
+2025-05-06T03:46:01.698Z [INFO]: GET /api/auth/me
+2025-05-06T03:46:12.725Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:46:16.547Z [INFO]: GET /api/ecritures
+2025-05-06T03:46:16.550Z [INFO]: GET /api/auth/me
+2025-05-06T03:51:45.151Z [INFO]: GET /api/ecritures
+2025-05-06T03:51:45.153Z [INFO]: GET /api/auth/me
+2025-05-06T03:52:02.180Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:52:08.720Z [INFO]: GET /api/ecritures
+2025-05-06T03:52:56.962Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:53:00.650Z [INFO]: GET /api/ecritures
+2025-05-06T03:53:08.194Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:53:11.377Z [INFO]: GET /api/ecritures
+2025-05-06T03:55:01.105Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:55:02.648Z [INFO]: GET /api/ecritures
+2025-05-06T03:55:06.072Z [INFO]: GET /api/ecritures
+2025-05-06T03:55:06.074Z [INFO]: GET /api/auth/me
+2025-05-06T03:55:52.595Z [INFO]: GET /api/ecritures
+2025-05-06T03:55:52.598Z [INFO]: GET /api/auth/me
+2025-05-06T03:55:57.480Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T03:55:58.906Z [INFO]: GET /api/ecritures
+2025-05-06T03:57:19.576Z [INFO]: GET /api/comptes
+2025-05-06T03:57:19.579Z [INFO]: GET /api/auth/me
+2025-05-06T03:57:32.224Z [INFO]: GET /api/ecritures
+2025-05-06T03:57:32.226Z [INFO]: GET /api/auth/me
+2025-05-06T03:57:37.696Z [INFO]: GET /api/comptes
+2025-05-06T03:57:37.733Z [INFO]: GET /api/auth/me
+2025-05-06T03:58:04.263Z [INFO]: GET /api/comptes
+2025-05-06T03:58:04.265Z [INFO]: GET /api/auth/me
+2025-05-06T03:58:16.334Z [INFO]: GET /api/auth/me
+2025-05-06T03:58:16.347Z [INFO]: GET /api/comptes
+2025-05-06T03:58:19.009Z [INFO]: GET /api/auth/me
+2025-05-06T03:58:19.013Z [INFO]: GET /api/ecritures
+2025-05-06T04:01:23.349Z [INFO]: GET /api/ecritures
+2025-05-06T04:01:23.373Z [INFO]: GET /api/auth/me
+2025-05-06T04:01:31.720Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T04:01:33.232Z [INFO]: GET /api/ecritures
+2025-05-06T04:01:35.618Z [INFO]: GET /api/auth/me
+2025-05-06T04:01:35.624Z [INFO]: GET /api/ecritures
+2025-05-06T04:02:08.036Z [INFO]: GET /api/auth/me
+2025-05-06T04:02:08.065Z [INFO]: GET /api/comptes
+2025-05-06T04:05:05.278Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T04:05:08.791Z [INFO]: GET /api/ecritures
+2025-05-06T04:05:11.207Z [INFO]: GET /api/auth/me
+2025-05-06T04:05:11.211Z [INFO]: GET /api/ecritures
+2025-05-06T04:05:16.648Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T04:05:18.718Z [INFO]: GET /api/ecritures
+2025-05-06T04:05:20.733Z [INFO]: GET /api/auth/me
+2025-05-06T04:05:20.737Z [INFO]: GET /api/ecritures
+2025-05-06T04:05:25.039Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T04:05:26.593Z [INFO]: GET /api/ecritures
+2025-05-06T04:05:30.899Z [INFO]: GET /api/auth/me
+2025-05-06T04:05:30.902Z [INFO]: GET /api/ecritures
+2025-05-06T04:09:36.642Z [INFO]: GET /api/ecritures
+2025-05-06T04:09:36.652Z [INFO]: GET /api/auth/me
+2025-05-06T04:09:47.322Z [INFO]: POST /api/ecritures/import/excel
+2025-05-06T04:09:48.841Z [INFO]: GET /api/ecritures
+2025-05-06T04:09:51.184Z [INFO]: GET /api/ecritures
+2025-05-06T04:09:51.186Z [INFO]: GET /api/auth/me
+2025-05-06T04:15:51.972Z [INFO]: GET /api/auth/me
+2025-05-06T04:15:51.977Z [INFO]: GET /api/comptes
+2025-05-06T04:15:56.332Z [INFO]: GET /api/auth/me
+2025-05-06T04:15:56.343Z [INFO]: GET /api/accounting-entries
+2025-05-06T04:15:58.822Z [INFO]: GET /api/auth/me
+2025-05-06T04:15:58.834Z [INFO]: GET /api/comptes
+2025-05-06T04:17:20.925Z [INFO]: GET /api/comptes
+2025-05-06T04:17:21.101Z [INFO]: GET /api/auth/me
+2025-05-06T04:17:21.104Z [INFO]: GET /api/comptes
+2025-05-06T04:17:25.161Z [INFO]: GET /api/auth/me
+2025-05-06T04:17:25.166Z [INFO]: GET /api/ecritures
+2025-05-06T04:17:40.528Z [INFO]: GET /api/auth/me
+2025-05-06T04:17:40.537Z [INFO]: GET /api/comptes
+2025-05-06T04:18:08.964Z [INFO]: POST /api/ecritures
+2025-05-06T04:18:11.600Z [INFO]: GET /api/auth/me
+2025-05-06T04:18:11.612Z [INFO]: GET /api/comptes
+2025-05-06T04:18:13.350Z [INFO]: GET /api/auth/me
+2025-05-06T04:18:13.355Z [INFO]: GET /api/comptes
+2025-05-06T04:18:16.238Z [INFO]: GET /api/ecritures
+2025-05-06T04:18:16.240Z [INFO]: GET /api/auth/me
+2025-05-06T04:18:42.157Z [INFO]: GET /api/auth/me
+2025-05-06T04:18:42.163Z [INFO]: GET /api/comptes
+2025-05-06T04:19:10.837Z [INFO]: GET /api/comptes
+2025-05-06T04:19:10.840Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:12.100Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:12.109Z [INFO]: GET /api/accounting-entries
+2025-05-06T04:19:14.344Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:14.353Z [INFO]: GET /api/comptes
+2025-05-06T04:19:22.664Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:22.669Z [INFO]: GET /api/comptes
+2025-05-06T04:19:23.603Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:23.611Z [INFO]: GET /api/accounting-entries
+2025-05-06T04:19:24.933Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:24.935Z [INFO]: GET /api/comptes
+2025-05-06T04:19:28.772Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:28.778Z [INFO]: GET /api/comptes
+2025-05-06T04:19:30.937Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:30.946Z [INFO]: GET /api/comptes
+2025-05-06T04:19:34.527Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:34.535Z [INFO]: GET /api/comptes
+2025-05-06T04:19:38.843Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:38.858Z [INFO]: GET /api/comptes
+2025-05-06T04:19:40.885Z [INFO]: GET /api/auth/me
+2025-05-06T04:19:40.891Z [INFO]: GET /api/comptes
+2025-05-06T04:22:53.196Z [INFO]: GET /api/auth/me
+2025-05-06T04:22:53.203Z [INFO]: GET /api/comptes
+2025-05-06T04:23:24.052Z [INFO]: GET /api/auth/me
+2025-05-06T04:23:24.056Z [INFO]: GET /api/comptes
+2025-05-06T04:27:00.103Z [INFO]: GET /api/comptes
+2025-05-06T04:27:00.105Z [INFO]: GET /api/auth/me

@@ -117,7 +117,10 @@ import ComptesListPage from "./pages/ComptesListPage";
 import PlanComptablePage from "./pages/PlanComptablePage";
 import HomePageA from "./pages/HomePageA"; // Import HomePageA
 import ProjectsPage from "./pages/ProjectsPage"; // Import HomePageA
-
+import BilanForm from './pages/BilanForm';
+import BilanList from './pages/BilanList';
+import EcritureForm from './pages/EcritureForm';
+import JournalPage from './pages/JournalPage';
 
 
 function App() {
@@ -326,7 +329,10 @@ function App() {
         <Route exact path='/plan-comptable' element={<PlanComptablePage />} />
         <Route exact path='/comptes' element={<ComptesListPage />} />
         <Route exact path='/projects' element={<ProjectsPage />} />
-
+        <Route path="/bilan/nouveau" element={<BilanForm />} />
+        <Route path="/bilan/liste" element={<BilanList />} />
+        <Route path="/ecritures/nouveau" element={<EcritureForm />} />
+        <Route path="/ecritures" element={<JournalPage />} />
 
           <Route exact path="*" element={<ErrorPage />} />
         </Routes>
