@@ -6,22 +6,22 @@ const dotenv = require('dotenv');
 const logger = require('./utils/logger');
 const compteComptableRoutes = require('./routes/compteComptableRoutes');
 
-// Charger les variables d'environnement
+// Load environment variables
 dotenv.config();
 
 const app = express();
 
-// Vérifier si la variable d'environnement MONGO_URI est bien définie
+// Check if MONGO_URI is defined
 if (!process.env.MONGO_URI) {
-    console.error("❌ ERREUR : La variable d'environnement MONGO_URI n'est pas définie.");
+    console.error("❌ ERROR: MONGO_URI environment variable is not defined.");
     process.exit(1);
 }
 
-// Middleware   app.use(express.json());
+// Middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(cors());
 
-// 🔥 Logger global des requêtes
+// Global request logger
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.originalUrl}`);
     next();
@@ -31,8 +31,9 @@ app.use((req, res, next) => {
 const chatRoutes = require('./routes/chat');
 const invoiceRoutes = require('./routes/invoiceRoutes');
 const smsRoutes = require('./routes/smsRoutes');
-const taskRoutes = require('./routes/taskRoutes'); // Import task routes
-const projectRoutes = require('./routes/projectRoutes'); // Project routes
+const taskRoutes = require('./routes/taskRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+
 // Use routes
 app.use('/api/chat', chatRoutes);
 app.use('/api/users', require('./routes/userRoutes'));
@@ -47,12 +48,9 @@ app.use('/api/aipredictons', require('./routes/aiPredictionRoutes'));
 app.use('/api/aidatasets', require('./routes/aiDatasetRoutes'));
 app.use('/api/auditlogs', require('./routes/auditLogRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
-app.use('/api/projects', projectRoutes);  // Project routes
-app.use('/api/tasks', taskRoutes); // Task routes
-// Ecriture Comptable
-const ecritureRoute = require('./routes/ecritureRoutes');
-app.use('/api/ecritures', ecritureRoute);
-//
+app.use('/api/projects', projectRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/ecritures', require('./routes/ecritureRoutes'));
 app.use('/api/comptes', compteComptableRoutes);
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/accounting-entries', require('./routes/accountingEntryRoutes'));
@@ -65,58 +63,61 @@ app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
 const bilanRoute = require('./routes/bilanRoutes');
 app.use('/api/bilans', bilanRoute);
 
-
-
-// Connexion à MongoDB avec authentification
+// MongoDB connection
 mongoose.set('strictQuery', false);
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log("✅ Connexion à MongoDB réussie");
-
-        // Charger les modèles après la connexion
-        require('./models/chat');
-        require('./models/userModel');          // User should be loaded first (referenced by many models)
-        require('./models/Company');            // Company depends on User
-        require('./models/Invoice');            // Invoice depends on Company and User
-        require('./models/Transaction');        // Transactions depend on Invoice & Company
-        require('./models/Payroll');            // Expense depends on Company
-        require('./models/Tax Compliance');     // Tax depends on Company & User (filedBy)
-        require('./models/AI Predictions');       // AI Prediction depends on Company
-        require('./models/AI Dataset');          // AI Dataset depends on Company
-        require('./models/Audit Logs');           // Audit Log depends on User
-        require('./models/Notification');       // Notification depends on User
-        require ('./models/CompteComptable'); // CompteComptable
-        require('./models/Product');            // Product depends on Company
-        require('./models/AccountingEntry');    // AccountingEntry depends on Invoice & Company
-        require('./routes/projectRoutes');     // Project depends on User
-        require('./routes/taskRoutes');    // Task depends on Project & User
-        require('./models/BilanComptable');              // Bilan depends on Company
-        require('./models/EcritureComptable');          // Ecriture depends on Company
-
-
-        console.log("📌 Modèles enregistrés :", mongoose.modelNames());
-
-        // Démarrer le serveur après la connexion MongoDB réussie
-        const PORT = process.env.PORT || 5000;
-        app.listen(PORT, '0.0.0.0', () => {
-            console.log(`🚀 Serveur backend démarré sur le port ${PORT}`);
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            serverSelectionTimeoutMS: 5000,
+            socketTimeoutMS: 45000,
+            family: 4
         });
-    })
-    .catch(err => {
-        console.error("❌ Erreur de connexion à MongoDB:", err);
-        process.exit(1); // Arrêter l'application en cas d'erreur critique
-    });
+        console.log("✅ MongoDB connected successfully");
 
-// Route principale
-app.get('/', (req, res) => {
-    res.send('🚀 Backend Node.js fonctionne !');
-});
+        // Load models after successful MongoDB connection
+        require('./models/chat');
+        require('./models/userModel');
+        require('./models/Company');
+        require('./models/Invoice');
+        require('./models/Transaction');
+        require('./models/Payroll');
+        require('./models/Tax Compliance');
+        require('./models/AI Predictions');
+        require('./models/AI Dataset');
+        require('./models/Audit Logs');
+        require('./models/Notification');
+        require('./models/CompteComptable');
+        require('./models/Product');
+        require('./models/AccountingEntry');
+        require('./routes/projectRoutes');
+        require('./routes/taskRoutes');
+        require('./models/BilanComptable');
+        require('./models/EcritureComptable');
 
-// Gestion globale des erreurs non gérées
+        console.log("📌 Models registered:", mongoose.modelNames());
+
+        // Start server after successful MongoDB connection
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+            console.log(`🚀 Server running on port ${PORT}`);
+        });
+    } catch (error) {
+        console.error("❌ MongoDB connection error:", error);
+        process.exit(1);
+    }
+};
+
+// Connect to MongoDB
+connectDB();
+
+// Error handling
 process.on('unhandledRejection', (err) => {
-    console.error("❌ Erreur non gérée :", err);
+    console.error("❌ Unhandled rejection:", err);
     process.exit(1);
 });
 
-module.exports = app;
+process.on('uncaughtException', (err) => {
+    console.error("❌ Uncaught exception:", err);
+    process.exit(1);
+});

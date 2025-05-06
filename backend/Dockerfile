@@ -1,20 +1,20 @@
-# Utiliser l'image officielle Node.js comme base
-FROM node:20.9.0
+# Use a more stable Node.js version
+FROM node:18
 
-# Définir le répertoire de travail à l'intérieur du conteneur
+# Set working directory
 WORKDIR /usr/src/app
 
-# Copier package.json et package-lock.json
+# Copy package files
 COPY package*.json ./
 
-# Installer les dépendances
+# Install dependencies
 RUN npm install
 
-# Copier le reste des fichiers du projet
+# Copy the rest of the application
 COPY . .
 
-# Exposer le port sur lequel l'application va écouter
+# Expose the port
 EXPOSE 5000
 
-# Lancer le script d'importation CSV avant le serveur principal
-CMD ["bash", "-c", "node ImportCSV.js && node app.js"]
+# Start the application
+CMD ["node", "app.js"]
