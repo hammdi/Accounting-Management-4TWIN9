@@ -591,3 +591,71 @@
 2025-05-06T04:23:24.056Z [INFO]: GET /api/comptes
 2025-05-06T04:27:00.103Z [INFO]: GET /api/comptes
 2025-05-06T04:27:00.105Z [INFO]: GET /api/auth/me
+2025-05-12T17:35:16.346Z [INFO]: POST /api/users/login
+2025-05-12T17:35:16.463Z [WARN]: Connexion échouée : utilisateur non trouvé (saidahmedboudali.s@gmail.com)
+2025-05-12T17:35:50.614Z [INFO]: POST /api/users/register
+2025-05-12T17:35:52.872Z [INFO]: Email de vérification envoyé à : saidahmedboudali.s@gmail.com
+2025-05-12T17:35:52.877Z [INFO]: Nouvel utilisateur enregistré : saidahmedboudali.s@gmail.com
+2025-05-12T17:36:50.045Z [INFO]: GET /api/users/verify/7a9c18e90a5ab441785e5857b3ffb3ff85a752f5a03066b0d410f42396d3f6f8
+2025-05-12T17:37:03.693Z [INFO]: POST /api/users/login
+2025-05-12T17:37:03.805Z [INFO]: Connexion réussie pour l'utilisateur : saidahmedboudali.s@gmail.com
+2025-05-12T17:37:03.912Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:03.926Z [INFO]: GET /api/auth/me
+2025-05-12T17:37:03.940Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:03.947Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:03.960Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:03.967Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:03.976Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:03.980Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:03.989Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:03.993Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:04.001Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:04.007Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:04.017Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:04.021Z [INFO]: GET /api/invoices/myinvoices
+2025-05-12T17:37:04.033Z [INFO]: Fetched 0 invoices for user 68223176f2fea7ad38c3c339
+2025-05-12T17:37:08.854Z [INFO]: GET /api/auth/me
+2025-05-12T17:37:07.485Z [INFO]: GET /api/auth/me
+2025-05-12T17:37:07.503Z [INFO]: GET /api/auth/me
+2025-05-12T17:37:07.518Z [INFO]: GET /api/projects/myprojects
+2025-05-12T17:37:14.041Z [INFO]: POST /api/projects
+2025-05-12T17:37:14.052Z [INFO]: Project created: 682231caf2fea7ad38c3c353
+2025-05-12T17:37:14.070Z [INFO]: GET /api/tasks/project/682231caf2fea7ad38c3c353
+2025-05-12T17:37:15.194Z [INFO]: POST /api/tasks/create
+2025-05-12T17:37:16.023Z [INFO]: PUT /api/tasks/682231cbf2fea7ad38c3c358
+2025-05-12T17:37:17.202Z [INFO]: PUT /api/tasks/682231cbf2fea7ad38c3c358
+2025-05-12T17:37:17.589Z [INFO]: PUT /api/tasks/682231cbf2fea7ad38c3c358
+2025-05-12T17:37:21.825Z [INFO]: PUT /api/tasks/682231cbf2fea7ad38c3c358
+2025-05-12T17:37:23.358Z [INFO]: DELETE /api/tasks/682231cbf2fea7ad38c3c358
+2025-05-12T17:37:23.371Z [INFO]: Task deleted: 682231cbf2fea7ad38c3c358
+2025-05-12T17:37:24.388Z [INFO]: POST /api/tasks/create
+2025-05-12T17:37:25.220Z [INFO]: DELETE /api/tasks/682231d4f2fea7ad38c3c375
+2025-05-12T17:37:25.233Z [INFO]: Task deleted: 682231d4f2fea7ad38c3c375
+2025-05-12T17:37:31.369Z [INFO]: PUT /api/projects/682231caf2fea7ad38c3c353
+2025-05-12T17:37:31.389Z [INFO]: GET /api/tasks/project/682231caf2fea7ad38c3c353
+2025-05-12T17:37:35.176Z [INFO]: DELETE /api/projects/682231caf2fea7ad38c3c353
+2025-05-12T17:38:14.292Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:19.793Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:26.416Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:29.314Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:31.425Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:29.718Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-12T17:38:29.734Z [INFO]: Fetched 0 invoices
+2025-05-12T17:38:29.806Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:31.795Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:31.815Z [INFO]: GET /api/comptes
+2025-05-12T17:38:32.420Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:32.434Z [INFO]: GET /api/comptes
+2025-05-12T17:38:33.520Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:33.541Z [INFO]: GET /api/accounting-entries
+2025-05-12T17:38:36.142Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:36.668Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:36.695Z [INFO]: GET /api/auth/me
+2025-05-12T17:38:36.730Z [INFO]: GET /api/projects/myprojects
+2025-05-12T17:39:43.769Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-12T17:39:43.797Z [INFO]: GET /api/auth/me
+2025-05-12T17:39:43.815Z [INFO]: Fetched 0 invoices
+2025-05-12T17:39:44.415Z [INFO]: GET /api/auth/me
+2025-05-12T17:39:45.501Z [INFO]: GET /api/auth/me
+2025-05-12T17:39:45.515Z [INFO]: GET /api/auth/me
+2025-05-12T17:39:45.533Z [INFO]: GET /api/projects/myprojects
