@@ -1,14 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const CompteComptable = require('../models/CompteComptable');
+const Compte = require("../models/CompteComptable");
 
-// GET all comptes
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
     try {
-        const comptes = await CompteComptable.find();
+        const comptes = await Compte.find();
         res.json(comptes);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ error: err.message });
     }
 });
 

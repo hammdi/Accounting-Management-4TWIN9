@@ -197,7 +197,7 @@ const MasterLayout = ({ children }) => {
 
     // Attach click event listeners to all dropdown triggers
     const dropdownTriggers = document.querySelectorAll(
-      ".sidebar-menu .dropdown > a, .sidebar-menu .dropdown > Link"
+        ".sidebar-menu .dropdown > a, .sidebar-menu .dropdown > Link"
     );
 
     dropdownTriggers.forEach((trigger) => {
@@ -210,8 +210,8 @@ const MasterLayout = ({ children }) => {
         const submenuLinks = dropdown.querySelectorAll(".sidebar-submenu li a");
         submenuLinks.forEach((link) => {
           if (
-            link.getAttribute("href") === location.pathname ||
-            link.getAttribute("to") === location.pathname
+              link.getAttribute("href") === location.pathname ||
+              link.getAttribute("to") === location.pathname
           ) {
             dropdown.classList.add("open");
             const submenu = dropdown.querySelector(".sidebar-submenu");
@@ -248,11 +248,11 @@ const MasterLayout = ({ children }) => {
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang); // Met à jour la langue sélectionnée
-    }
+  }
 
 
 
-  
+
 
   return (
 
@@ -263,8 +263,8 @@ const MasterLayout = ({ children }) => {
 
 
 
-    
-    <section className={mobileMenu ? "overlay active" : "overlay "}>
+
+      <section className={mobileMenu ? "overlay active" : "overlay "}>
 
 
 
@@ -291,109 +291,109 @@ const MasterLayout = ({ children }) => {
 
 
 
-      {/* sidebar */}
-      <aside
-        className={
-          sidebarActive
-            ? "sidebar active "
-            : mobileMenu
-            ? "sidebar sidebar-open"
-            : "sidebar"
-        }
-      >
-        <button
-          onClick={mobileMenuControl}
-          type='button'
-          className='sidebar-close-btn'
+        {/* sidebar */}
+        <aside
+            className={
+              sidebarActive
+                  ? "sidebar active "
+                  : mobileMenu
+                      ? "sidebar sidebar-open"
+                      : "sidebar"
+            }
         >
-          <Icon icon='radix-icons:cross-2' />
-        </button>
-        <div>
-          <Link to='/home' className='sidebar-logo'>
-          <img src="assets/images/logo.png"      alt="MiLiM Logo" className="mb-3" />
+          <button
+              onClick={mobileMenuControl}
+              type='button'
+              className='sidebar-close-btn'
+          >
+            <Icon icon='radix-icons:cross-2' />
+          </button>
+          <div>
+            <Link to='/home' className='sidebar-logo'>
+              <img src="assets/images/logo.png"      alt="MiLiM Logo" className="mb-3" />
 
-          </Link>
-        </div>
-        <div className='sidebar-menu-area'>
-          <ul className='sidebar-menu' id='sidebar-menu'>
-            <li className='dropdown'>
-              <Link to='#' id='menu-dashboard'>
-                <Icon
-                  icon='solar:home-smile-angle-outline'
-                  className='menu-icon'
-                />
-                <span>Dashboard</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                
+            </Link>
+          </div>
+          <div className='sidebar-menu-area'>
+            <ul className='sidebar-menu' id='sidebar-menu'>
+              <li className='dropdown'>
+                <Link to='#' id='menu-dashboard'>
+                  <Icon
+                      icon='solar:home-smile-angle-outline'
+                      className='menu-icon'
+                  />
+                  <span>Dashboard</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+
                   <li>
-                  <NavLink 
-                    to='/home'  
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />
-                   Invoices
-                  </NavLink>
-                </li> 
-                <li>
-                  <NavLink
-                    to='/index-2' 
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
-                    transactions
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/index-3'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
-                    Payroll
-                  </NavLink>
-                </li>
-             <li>
-                  <NavLink
-                    to='/index-4'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-danger-main w-auto' />
-                    Tax Compliance
-                  </NavLink>
-                </li>
-             
-                <li>
-                  <NavLink
-                    to='/index-5'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-success-main w-auto' />{" "}
-                    User
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/index-6'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-purple w-auto' />{" "}
-                    Company
-                  </NavLink>
-                </li>
-             {/*    <li>
+                    <NavLink
+                        to='/home'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />
+                      Invoices
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/index-2'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
+                      transactions
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/index-3'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                      Payroll
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/index-4'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-danger-main w-auto' />
+                      Tax Compliance
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink
+                        to='/index-5'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-success-main w-auto' />{" "}
+                      User
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/index-6'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-purple w-auto' />{" "}
+                      Company
+                    </NavLink>
+                  </li>
+                  {/*    <li>
                   <NavLink
                     to='/index-7'
                     className={(navData) =>
@@ -448,32 +448,32 @@ const MasterLayout = ({ children }) => {
                     Finance & Banking
                   </NavLink>
                 </li>*/}
-              </ul>
-            </li>
+                </ul>
+              </li>
 
-            <li className='sidebar-menu-group-title'>Application</li>
+              <li className='sidebar-menu-group-title'>Application</li>
 
 
-            <li>
-              <NavLink
-                to='/projects' id='menu-projects'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon icon='mdi:clipboard-check-outline' className='menu-icon' />
-                <span>Accounting Projects</span>
-              </NavLink>
-            </li>
+              <li>
+                <NavLink
+                    to='/projects' id='menu-projects'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon icon='mdi:clipboard-check-outline' className='menu-icon' />
+                  <span>Accounting Projects</span>
+                </NavLink>
+              </li>
 
-            <li>
-              <NavLink
-                to='/email' id='menu-emails'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon icon='mage:email' className='menu-icon' />
-                <span>Emails</span>
-              </NavLink>
-            </li>
-            {/* <li>
+              <li>
+                <NavLink
+                    to='/email' id='menu-emails'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon icon='mage:email' className='menu-icon' />
+                  <span>Emails</span>
+                </NavLink>
+              </li>
+              {/* <li>
               <NavLink
                 to='/chat-message'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -482,185 +482,194 @@ const MasterLayout = ({ children }) => {
                 <span>Chat</span>
               </NavLink>
             </li> */}
-            <li>
-              <NavLink
-                to='/calendar-main'  id='menu-calendar' 
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon icon='solar:calendar-outline' className='menu-icon' />
-                <span>Invoice Calendar</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to='/kanban'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon
-                  icon='material-symbols:map-outline'
-                  className='menu-icon'
-                />
-                <span>Kanban</span>
-              </NavLink>
-            </li>      
+              <li>
+                <NavLink
+                    to='/calendar-main'  id='menu-calendar'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon icon='solar:calendar-outline' className='menu-icon' />
+                  <span>Invoice Calendar</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                    to='/kanban'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon
+                      icon='material-symbols:map-outline'
+                      className='menu-icon'
+                  />
+                  <span>Kanban</span>
+                </NavLink>
+              </li>
 
-            {/* Invoice Dropdown */}
-            <li className='dropdown'>
-              <Link to='#'  id='menu-invoices'>
-                <Icon icon='hugeicons:invoice-03' className='menu-icon' />
-                <span>Invoice</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/invoice-list'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    List
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/invoice-add'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
-                    Add new
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
+              {/* Invoice Dropdown */}
+              <li className='dropdown'>
+                <Link to='#'  id='menu-invoices'>
+                  <Icon icon='hugeicons:invoice-03' className='menu-icon' />
+                  <span>Invoice</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/invoice-list'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/invoice-add'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                      Add new
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
 
-            {/* Transaction Dropdown */}
-            <li className='dropdown'>
-              <Link to='#' id='menu-transactions'>
-                <Icon icon='mdi:finance' className='menu-icon' />
-                <span>Transaction</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/transaction-list'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    List
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/transaction-add'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
-                    Add new
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-            {/* accounting Dropdown */}
-            <li className='dropdown'>
-              <Link to='#' id='menu-accounting'>
-                <Icon icon='mdi:dollar' className='menu-icon' />
-                <span>Accounting</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                      to='/comptes'
-                      className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                      }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    accounting plan
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                      to='/plan-comptable'
-                      className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                      }
-                  >
-                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
-                    financial statements
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-            {/* Company Dropdown */}
-            <li className='dropdown'>
-              <Link to='#' id='menu-companies'>
-                <Icon icon='mdi:briefcase' className='menu-icon' />
-                <span>Companies</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/my-companies'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    All Companies
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/company'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
-                    Add Company
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
+              {/* Transaction Dropdown */}
+              <li className='dropdown'>
+                <Link to='#' id='menu-transactions'>
+                  <Icon icon='mdi:finance' className='menu-icon' />
+                  <span>Transaction</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/transaction-list'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/transaction-add'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                      Add new
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              {/* accounting Dropdown */}
+              <li className='dropdown'>
+                <Link to='#' id='menu-accounting'>
+                  <Icon icon='mdi:dollar' className='menu-icon' />
+                  <span>Accounting</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/comptes'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      accounting plan
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/ecritures/nouveau'
+                        className={(navData) => (navData.isActive ? "active-page" : "")}
+                    >
+                      <i className='ri-circle-fill circle-icon text-info-main w-auto' />
+                      New Entry
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/plan-comptable'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
+                      financial statements
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              {/* Company Dropdown */}
+              <li className='dropdown'>
+                <Link to='#' id='menu-companies'>
+                  <Icon icon='mdi:briefcase' className='menu-icon' />
+                  <span>Companies</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/my-companies'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      All Companies
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/company'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
+                      Add Company
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
 
-            {/* Ai Application Dropdown */}
-            <li className='dropdown'>
-              <Link to='#'  id='menu-ai'>
-                <i className='ri-robot-2-line mr-10' />
+              {/* Ai Application Dropdown */}
+              <li className='dropdown'>
+                <Link to='#'  id='menu-ai'>
+                  <i className='ri-robot-2-line mr-10' />
 
-                <span>Ai Application</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/text-generator'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    Text Generator
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/code-generator'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
-                    Code Generator
-                  </NavLink>
-                </li>
-             {/*      <li>
+                  <span>Ai Application</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/text-generator'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      Text Generator
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/code-generator'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
+                      Code Generator
+                    </NavLink>
+                  </li>
+                  {/*      <li>
                   <NavLink
                     to='/image-generator'
                     className={(navData) =>
@@ -692,12 +701,12 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-success-main w-auto' />{" "}
                     Video Generator
                   </NavLink>
-                </li>   */}     
-              </ul>
-            </li>
+                </li>   */}
+                </ul>
+              </li>
 
-        {/* Crypto Currency Dropdown */}
-          {/*       <li className='dropdown'>
+              {/* Crypto Currency Dropdown */}
+              {/*       <li className='dropdown'>
               <Link to='#'>
                 <i className='ri-btc-line mr-10' />
                 <span>Crypto Currency</span>
@@ -753,7 +762,7 @@ const MasterLayout = ({ children }) => {
             <li className='sidebar-menu-group-title'>UI Elements</li>
 
             {/* Components Dropdown */}
-          {/*   <li className='dropdown'>
+              {/*   <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='solar:document-text-outline'
@@ -997,7 +1006,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Forms Dropdown */}
-       {/*      <li className='dropdown'>
+              {/*      <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='heroicons:document' className='menu-icon' />
                 <span>Forms</span>
@@ -1051,7 +1060,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Table Dropdown */}
-       {/*      <li className='dropdown'>
+              {/*      <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='mingcute:storage-line' className='menu-icon' />
                 <span>Table</span>
@@ -1083,7 +1092,7 @@ const MasterLayout = ({ children }) => {
             </li>
 
             {/* Chart Dropdown */}
-      {/*       <li className='dropdown'>
+              {/*       <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='solar:pie-chart-outline' className='menu-icon' />
                 <span>Chart</span>
@@ -1136,28 +1145,28 @@ const MasterLayout = ({ children }) => {
             </li>  */}
 
 
-            {/* Users Dropdown */}
-            <li className='dropdown'>
-              <Link to='#' id='menu-users'>
-                <Icon
-                  icon='flowbite:users-group-outline'
-                  className='menu-icon'
-                />
-                <span>Users</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/users-list'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    Users List
-                  </NavLink>
-                </li>
-          {/*        <li>
+              {/* Users Dropdown */}
+              <li className='dropdown'>
+                <Link to='#' id='menu-users'>
+                  <Icon
+                      icon='flowbite:users-group-outline'
+                      className='menu-icon'
+                  />
+                  <span>Users</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/users-list'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      Users List
+                    </NavLink>
+                  </li>
+                  {/*        <li>
                   <NavLink
                     to='/users-grid'
                     className={(navData) =>
@@ -1189,78 +1198,78 @@ const MasterLayout = ({ children }) => {
                     <i className='ri-circle-fill circle-icon text-danger-main w-auto' />{" "}
                     View Profile
                   </NavLink>
-                </li>*/}    
-              </ul>
-            </li>
-            <li className='dropdown'>
-              <Link to='#' id='menu-payroll'>
-                <Icon
-                  icon='simple-line-icons:vector'
-                  className='menu-icon'
-                />
-                <span>Payroll</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/payroll-list'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    Payroll List
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/add-payroll'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
-                    Add Payroll
-                  </NavLink>
-                </li>   
-              </ul>
-            </li>
-            <li className='dropdown'>
-              <Link to='#' id='menu-tax'>
-                <Icon
-                  icon='hugeicons:money-send-square'
-                  className='menu-icon'
-                />
-                <span>Tax Compliance</span>
-              </Link>
-              <ul className='sidebar-submenu'>
-                <li>
-                  <NavLink
-                    to='/taxcompliance-list'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    Tax Compliance List
-                  </NavLink>
-                </li> 
-                <li>
-                  <NavLink
-                    to='/add-taxcompliance'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
-                    Add Tax Compliance
-                  </NavLink>
-                </li>  
-              </ul>
-            </li>
+                </li>*/}
+                </ul>
+              </li>
+              <li className='dropdown'>
+                <Link to='#' id='menu-payroll'>
+                  <Icon
+                      icon='simple-line-icons:vector'
+                      className='menu-icon'
+                  />
+                  <span>Payroll</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/payroll-list'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      Payroll List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/add-payroll'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                      Add Payroll
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className='dropdown'>
+                <Link to='#' id='menu-tax'>
+                  <Icon
+                      icon='hugeicons:money-send-square'
+                      className='menu-icon'
+                  />
+                  <span>Tax Compliance</span>
+                </Link>
+                <ul className='sidebar-submenu'>
+                  <li>
+                    <NavLink
+                        to='/taxcompliance-list'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                      Tax Compliance List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                        to='/add-taxcompliance'
+                        className={(navData) =>
+                            navData.isActive ? "active-page" : ""
+                        }
+                    >
+                      <i className='ri-circle-fill circle-icon text-info-main w-auto' />{" "}
+                      Add Tax Compliance
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
 
-            {/* Role & Access Dropdown */}
-       {/*       <li className='dropdown'>
+              {/* Role & Access Dropdown */}
+              {/*       <li className='dropdown'>
               <Link to='#'>
                 <i className='ri-user-settings-line' />
                 <span>Role &amp; Access</span>
@@ -1289,12 +1298,12 @@ const MasterLayout = ({ children }) => {
                   </NavLink>
                 </li>
               </ul>
-            </li>   */}     
+            </li>   */}
 
-            <li className='sidebar-menu-group-title'>Application</li>
+              <li className='sidebar-menu-group-title'>Application</li>
 
-            {/* Authentication Dropdown */}
-        {/*         <li className='dropdown'>
+              {/* Authentication Dropdown */}
+              {/*         <li className='dropdown'>
               <Link to='#'>
                 <Icon icon='simple-line-icons:vector' className='menu-icon' />
                 <span>Authentication</span>
@@ -1338,7 +1347,7 @@ const MasterLayout = ({ children }) => {
 
             {/* gallery */}
 
-         {/*     <li className='dropdown'>
+              {/*     <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='flowbite:users-group-outline'
@@ -1393,23 +1402,23 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
-     */} 
-            <li>
-              <NavLink
-                to='/pricing'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon
-                  icon='hugeicons:money-send-square'
-                  className='menu-icon'
-                />
-                <span>Pricing</span>
-              </NavLink>
-            </li>
+     */}
+              <li>
+                <NavLink
+                    to='/pricing'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon
+                      icon='hugeicons:money-send-square'
+                      className='menu-icon'
+                  />
+                  <span>Pricing</span>
+                </NavLink>
+              </li>
 
-            {/* Blog */}
+              {/* Blog */}
 
-       {/*       <li className='dropdown'>
+              {/*       <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='flowbite:users-group-outline'
@@ -1453,33 +1462,33 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
- */}  
-            <li>
-              <NavLink
-                to='/testimonials'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon
-                  icon='mage:message-question-mark-round'
-                  className='menu-icon'
-                />
-              
+ */}
+              <li>
+                <NavLink
+                    to='/testimonials'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon
+                      icon='mage:message-question-mark-round'
+                      className='menu-icon'
+                  />
+
                   <span>Testimonials</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to='/faq'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon
-                  icon='mage:message-question-mark-round'
-                  className='menu-icon'
-                />
-                <span>FAQs.</span>
-              </NavLink>
-            </li>
-      {/*       <li>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                    to='/faq'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon
+                      icon='mage:message-question-mark-round'
+                      className='menu-icon'
+                  />
+                  <span>FAQs.</span>
+                </NavLink>
+              </li>
+              {/*       <li>
               <NavLink
                 to='/error'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -1487,17 +1496,17 @@ const MasterLayout = ({ children }) => {
                 <Icon icon='streamline:straight-face' className='menu-icon' />
                 <span>404</span>
               </NavLink>
-            </li>   */}     
-            <li>
-              <NavLink
-                to='/terms-condition'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <Icon icon='octicon:info-24' className='menu-icon' />
-                <span>Terms &amp; Conditions</span>
-              </NavLink>
-            </li>
- {/*              <li>
+            </li>   */}
+              <li>
+                <NavLink
+                    to='/terms-condition'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <Icon icon='octicon:info-24' className='menu-icon' />
+                  <span>Terms &amp; Conditions</span>
+                </NavLink>
+              </li>
+              {/*              <li>
               <NavLink
                 to='/coming-soon'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -1523,19 +1532,19 @@ const MasterLayout = ({ children }) => {
                 <i className='ri-hammer-line menu-icon'></i>
                 <span>Maintenance</span>
               </NavLink>
-            </li>  */}     
-            <li>
-              <NavLink
-                to='/blank-page'
-                className={(navData) => (navData.isActive ? "active-page" : "")}
-              >
-                <i className='ri-checkbox-multiple-blank-line menu-icon'></i>
-                <span>Blank Page</span>
-              </NavLink>
-            </li>
+            </li>  */}
+              <li>
+                <NavLink
+                    to='/blank-page'
+                    className={(navData) => (navData.isActive ? "active-page" : "")}
+                >
+                  <i className='ri-checkbox-multiple-blank-line menu-icon'></i>
+                  <span>Blank Page</span>
+                </NavLink>
+              </li>
 
-            {/* Settings Dropdown */}
-       {/*        <li className='dropdown'>
+              {/* Settings Dropdown */}
+              {/*        <li className='dropdown'>
               <Link to='#'>
                 <Icon
                   icon='icon-park-outline:setting-two'
@@ -1622,58 +1631,58 @@ const MasterLayout = ({ children }) => {
                   </NavLink>
                 </li>     
               </ul> 
-            </li>*/} 
-          </ul>
-        </div>
-      </aside>
+            </li>*/}
+            </ul>
+          </div>
+        </aside>
 
-      <main
-        className={sidebarActive ? "dashboard-main active" : "dashboard-main"}
-      >
-        <div className='navbar-header'>
-          <div className='row align-items-center justify-content-between'>
-            <div className='col-auto'>
-              <div className='d-flex flex-wrap align-items-center gap-4'>
-                <button
-                  type='button'
-                  className='sidebar-toggle'
-                  onClick={sidebarControl}
-                >
-                  {sidebarActive ? (
-                    <Icon
-                      icon='iconoir:arrow-right'
-                      className='icon text-2xl non-active'
-                    />
-                  ) : (
-                    <Icon
-                      icon='heroicons:bars-3-solid'
-                      className='icon text-2xl non-active '
-                    />
-                  )}
-                </button>
-                <button
-                  onClick={mobileMenuControl}
-                  type='button'
-                  className='sidebar-mobile-toggle'
-                >
-                  <Icon icon='heroicons:bars-3-solid' className='icon' />
-                </button>
-                <form className='navbar-search'>
-                  <input type='text' name='search' placeholder='Search' />
-                  <Icon icon='ion:search-outline' className='icon' />
-                </form>
+        <main
+            className={sidebarActive ? "dashboard-main active" : "dashboard-main"}
+        >
+          <div className='navbar-header'>
+            <div className='row align-items-center justify-content-between'>
+              <div className='col-auto'>
+                <div className='d-flex flex-wrap align-items-center gap-4'>
+                  <button
+                      type='button'
+                      className='sidebar-toggle'
+                      onClick={sidebarControl}
+                  >
+                    {sidebarActive ? (
+                        <Icon
+                            icon='iconoir:arrow-right'
+                            className='icon text-2xl non-active'
+                        />
+                    ) : (
+                        <Icon
+                            icon='heroicons:bars-3-solid'
+                            className='icon text-2xl non-active '
+                        />
+                    )}
+                  </button>
+                  <button
+                      onClick={mobileMenuControl}
+                      type='button'
+                      className='sidebar-mobile-toggle'
+                  >
+                    <Icon icon='heroicons:bars-3-solid' className='icon' />
+                  </button>
+                  <form className='navbar-search'>
+                    <input type='text' name='search' placeholder='Search' />
+                    <Icon icon='ion:search-outline' className='icon' />
+                  </form>
+                </div>
               </div>
-            </div>
-            <div className='col-auto'>
-              <div className='d-flex flex-wrap align-items-center gap-3'>
-                
- 
+              <div className='col-auto'>
+                <div className='d-flex flex-wrap align-items-center gap-3'>
+
+
                   {/* TUTO */}
                   <div className='dropdown d-none d-sm-inline-block'>
                     <button
-                      className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
-                      type='button'
-                      data-bs-toggle='dropdown'
+                        className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
+                        type='button'
+                        data-bs-toggle='dropdown'
                     >
                       <Icon className='text-black fs-5' icon="mdi:lightbulb-on" />
                     </button>
@@ -1688,12 +1697,12 @@ const MasterLayout = ({ children }) => {
                       <div className='max-h-400-px overflow-y-auto scroll-sm pe-8'>
                         <div className='d-flex align-items-center justify-content-between mb-16'>
                           <a
-                            href="#"
-                            className='text-black text-md fw-semibold d-flex align-items-center gap-3 hover-text-primary'
-                            onClick={(e) => {
-                              e.preventDefault();
-                              driverObj.drive();
-                            }}
+                              href="#"
+                              className='text-black text-md fw-semibold d-flex align-items-center gap-3 hover-text-primary'
+                              onClick={(e) => {
+                                e.preventDefault();
+                                driverObj.drive();
+                              }}
                           >
                             <Icon className='text-black' icon="mdi:lightbulb-on" />
                             Getting Started
@@ -1704,9 +1713,9 @@ const MasterLayout = ({ children }) => {
                   </div>
 
 
-                {/* ThemeToggleButton */}
-                <ThemeToggleButton />
-               {/*  <div className='dropdown d-none d-sm-inline-block'>
+                  {/* ThemeToggleButton */}
+                  <ThemeToggleButton />
+                  {/*  <div className='dropdown d-none d-sm-inline-block'>
                   <button
                     className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
                     type='button'
@@ -1917,7 +1926,7 @@ const MasterLayout = ({ children }) => {
                 */}
 
 
-                {/* Language dropdown end
+                  {/* Language dropdown end
                 <div className='dropdown'>
                   <button
                     className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
@@ -2105,261 +2114,261 @@ const MasterLayout = ({ children }) => {
                   
                 
                 {/* Message dropdown end */}
-                <div className='dropdown'>
-                  <button
-                    className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
-                    type='button'
-                    data-bs-toggle='dropdown'
-                  >
-                    <Icon
-                      icon='iconoir:bell'
-                      className='text-primary-light text-xl'
-                    />
-                  </button>
-                  <div className='dropdown-menu to-top dropdown-menu-lg p-0'>
-                    <div className='m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
-                      <div>
-                        <h6 className='text-lg text-primary-light fw-semibold mb-0'>
-                          Notifications
-                        </h6>
-                      </div>
-                      <span className='text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center'>
+                  <div className='dropdown'>
+                    <button
+                        className='has-indicator w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center'
+                        type='button'
+                        data-bs-toggle='dropdown'
+                    >
+                      <Icon
+                          icon='iconoir:bell'
+                          className='text-primary-light text-xl'
+                      />
+                    </button>
+                    <div className='dropdown-menu to-top dropdown-menu-lg p-0'>
+                      <div className='m-16 py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
+                        <div>
+                          <h6 className='text-lg text-primary-light fw-semibold mb-0'>
+                            Notifications
+                          </h6>
+                        </div>
+                        <span className='text-primary-600 fw-semibold text-lg w-40-px h-40-px rounded-circle bg-base d-flex justify-content-center align-items-center'>
                         05
                       </span>
-                    </div>
-                    <div className='max-h-400-px overflow-y-auto scroll-sm pe-4'>
-                      <Link
-                        to='#'
-                        className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between'
-                      >
-                        <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
+                      </div>
+                      <div className='max-h-400-px overflow-y-auto scroll-sm pe-4'>
+                        <Link
+                            to='#'
+                            className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between'
+                        >
+                          <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                           <span className='w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0'>
                             <Icon
-                              icon='bitcoin-icons:verify-outline'
-                              className='icon text-xxl'
+                                icon='bitcoin-icons:verify-outline'
+                                className='icon text-xxl'
                             />
                           </span>
-                          <div>
-                            <h6 className='text-md fw-semibold mb-4'>
-                              Congratulations
-                            </h6>
-                            <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
-                              Your profile has been Verified. Your profile has
-                              been Verified
-                            </p>
+                            <div>
+                              <h6 className='text-md fw-semibold mb-4'>
+                                Congratulations
+                              </h6>
+                              <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
+                                Your profile has been Verified. Your profile has
+                                been Verified
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <span className='text-sm text-secondary-light flex-shrink-0'>
+                          <span className='text-sm text-secondary-light flex-shrink-0'>
                           23 Mins ago
                         </span>
-                      </Link>
-                      <Link
-                        to='#'
-                        className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50'
-                      >
-                        <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
+                        </Link>
+                        <Link
+                            to='#'
+                            className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50'
+                        >
+                          <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                           <span className='w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0'>
                             <img
-                              src='assets/images/notification/profile-1.png'
-                              alt=''
+                                src='assets/images/notification/profile-1.png'
+                                alt=''
                             />
                           </span>
-                          <div>
-                            <h6 className='text-md fw-semibold mb-4'>
-                              Ronald Richards
-                            </h6>
-                            <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
-                              You can stitch between artboards
-                            </p>
+                            <div>
+                              <h6 className='text-md fw-semibold mb-4'>
+                                Ronald Richards
+                              </h6>
+                              <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
+                                You can stitch between artboards
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <span className='text-sm text-secondary-light flex-shrink-0'>
+                          <span className='text-sm text-secondary-light flex-shrink-0'>
                           23 Mins ago
                         </span>
-                      </Link>
-                      <Link
-                        to='#'
-                        className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between'
-                      >
-                        <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
+                        </Link>
+                        <Link
+                            to='#'
+                            className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between'
+                        >
+                          <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                           <span className='w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0'>
                             AM
                           </span>
-                          <div>
-                            <h6 className='text-md fw-semibold mb-4'>
-                              Arlene McCoy
-                            </h6>
-                            <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
-                              Invite you to prototyping
-                            </p>
+                            <div>
+                              <h6 className='text-md fw-semibold mb-4'>
+                                Arlene McCoy
+                              </h6>
+                              <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
+                                Invite you to prototyping
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <span className='text-sm text-secondary-light flex-shrink-0'>
+                          <span className='text-sm text-secondary-light flex-shrink-0'>
                           23 Mins ago
                         </span>
-                      </Link>
-                      <Link
-                        to='#'
-                        className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50'
-                      >
-                        <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
+                        </Link>
+                        <Link
+                            to='#'
+                            className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between bg-neutral-50'
+                        >
+                          <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                           <span className='w-44-px h-44-px bg-success-subtle text-success-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0'>
                             <img
-                              src='assets/images/notification/profile-2.png'
-                              alt=''
+                                src='assets/images/notification/profile-2.png'
+                                alt=''
                             />
                           </span>
-                          <div>
-                            <h6 className='text-md fw-semibold mb-4'>
-                              Annette Black
-                            </h6>
-                            <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
-                              Invite you to prototyping
-                            </p>
+                            <div>
+                              <h6 className='text-md fw-semibold mb-4'>
+                                Annette Black
+                              </h6>
+                              <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
+                                Invite you to prototyping
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <span className='text-sm text-secondary-light flex-shrink-0'>
+                          <span className='text-sm text-secondary-light flex-shrink-0'>
                           23 Mins ago
                         </span>
-                      </Link>
-                      <Link
-                        to='#'
-                        className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between'
-                      >
-                        <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
+                        </Link>
+                        <Link
+                            to='#'
+                            className='px-24 py-12 d-flex align-items-start gap-3 mb-2 justify-content-between'
+                        >
+                          <div className='text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'>
                           <span className='w-44-px h-44-px bg-info-subtle text-info-main rounded-circle d-flex justify-content-center align-items-center flex-shrink-0'>
                             DR
                           </span>
-                          <div>
-                            <h6 className='text-md fw-semibold mb-4'>
-                              Darlene Robertson
-                            </h6>
-                            <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
-                              Invite you to prototyping
-                            </p>
+                            <div>
+                              <h6 className='text-md fw-semibold mb-4'>
+                                Darlene Robertson
+                              </h6>
+                              <p className='mb-0 text-sm text-secondary-light text-w-200-px'>
+                                Invite you to prototyping
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <span className='text-sm text-secondary-light flex-shrink-0'>
+                          <span className='text-sm text-secondary-light flex-shrink-0'>
                           23 Mins ago
                         </span>
-                      </Link>
-                    </div>
-                    <div className='text-center py-12 px-16'>
-                      <Link
-                        to='#'
-                        className='text-primary-600 fw-semibold text-md'
-                      >
-                        See All Notification
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Notification dropdown end */}
-                <div className='dropdown'>
-                  <button
-                    className='d-flex justify-content-center align-items-center rounded-circle'
-                    type='button'
-                    data-bs-toggle='dropdown'
-                  >
-                    <img
-                        src={getUserAvatar(user? user.avatar:"")}
-
-                        alt='image_user'
-                      className='w-40-px h-40-px object-fit-cover rounded-circle'
-                    />
-                  </button>
-                  <div className='dropdown-menu to-top dropdown-menu-sm'>
-                    <div className='py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
-                      <div>
-                        <h6 className='text-lg text-primary-light fw-semibold mb-2'>
-                          Shaidul Islam
-                        </h6>
-                        <span className='text-secondary-light fw-medium text-sm'>
-                          Admin
-                        </span>
+                        </Link>
                       </div>
-                      <button type='button' className='hover-text-danger'>
-                        <Icon
-                          icon='radix-icons:cross-1'
-                          className='icon text-xl'
-                        />
-                      </button>
+                      <div className='text-center py-12 px-16'>
+                        <Link
+                            to='#'
+                            className='text-primary-600 fw-semibold text-md'
+                        >
+                          See All Notification
+                        </Link>
+                      </div>
                     </div>
-                    <ul className='to-top-list'>
-                      <li>
-                        <Link
-                          className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'
-                          to='/view-profile'
-                        >
-                          <Icon
-                            icon='solar:user-linear'
-                            className='icon text-xl'
-                          />{" "}
-                          My Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'
-                          to='/email'
-                        >
-                          <Icon
-                            icon='tabler:message-check'
-                            className='icon text-xl'
-                          />{" "}
-                          Inbox
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'
-                          to='/company'
-                        >
-                          <Icon
-                            icon='icon-park-outline:setting-two'
-                            className='icon text-xl'
-                          />
-                          Setting
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3'
-                          to='/'
-                        >
-                          <Icon icon='lucide:power' className='icon text-xl' />{" "}
-                          Log Out
-                        </Link>
-                      </li>
-                    </ul>
                   </div>
-                </div>
 
-                {/* Profile dropdown end */}
+                  {/* Notification dropdown end */}
+                  <div className='dropdown'>
+                    <button
+                        className='d-flex justify-content-center align-items-center rounded-circle'
+                        type='button'
+                        data-bs-toggle='dropdown'
+                    >
+                      <img
+                          src={getUserAvatar(user? user.avatar:"")}
+
+                          alt='image_user'
+                          className='w-40-px h-40-px object-fit-cover rounded-circle'
+                      />
+                    </button>
+                    <div className='dropdown-menu to-top dropdown-menu-sm'>
+                      <div className='py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2'>
+                        <div>
+                          <h6 className='text-lg text-primary-light fw-semibold mb-2'>
+                            {user?.name}
+                          </h6>
+                          <span className='text-secondary-light fw-medium text-sm'>
+                          Role : {user?.role}
+                        </span>
+                        </div>
+                        <button type='button' className='hover-text-danger'>
+                          <Icon
+                              icon='radix-icons:cross-1'
+                              className='icon text-xl'
+                          />
+                        </button>
+                      </div>
+                      <ul className='to-top-list'>
+                        <li>
+                          <Link
+                              className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'
+                              to='/view-profile'
+                          >
+                            <Icon
+                                icon='solar:user-linear'
+                                className='icon text-xl'
+                            />{" "}
+                            My Profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                              className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'
+                              to='/email'
+                          >
+                            <Icon
+                                icon='tabler:message-check'
+                                className='icon text-xl'
+                            />{" "}
+                            Inbox
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                              className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3'
+                              to='/company'
+                          >
+                            <Icon
+                                icon='icon-park-outline:setting-two'
+                                className='icon text-xl'
+                            />
+                            Setting
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                              className='dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3'
+                              to='/'
+                          >
+                            <Icon icon='lucide:power' className='icon text-xl' />{" "}
+                            Log Out
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Profile dropdown end */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* dashboard-main-body */}
-        <div className='dashboard-main-body'>{children}</div>
+          {/* dashboard-main-body */}
+          <div className='dashboard-main-body'>{children}</div>
 
-        {/* Footer section */}
-        <footer className='d-footer'>
-          <div className='row align-items-center justify-content-between'>
-            <div className='col-auto'>
-              <p className='mb-0'> 2024 WowDash. All Rights Reserved.</p>
+          {/* Footer section */}
+          <footer className='d-footer'>
+            <div className='row align-items-center justify-content-between'>
+              <div className='col-auto'>
+                <p className='mb-0'> 2024 WowDash. All Rights Reserved.</p>
+              </div>
+              <div className='col-auto'>
+                <p className='mb-0'>
+                  Made by <span className='text-primary-600'>wowtheme7</span>
+                </p>
+              </div>
             </div>
-            <div className='col-auto'>
-              <p className='mb-0'>
-                Made by <span className='text-primary-600'>wowtheme7</span>
-              </p>
-            </div>
-          </div>
-        </footer>
-      </main>
-    </section>
+          </footer>
+        </main>
+      </section>
   );
 };
 

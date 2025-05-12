@@ -49,6 +49,9 @@ app.use('/api/auditlogs', require('./routes/auditLogRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 app.use('/api/projects', projectRoutes);  // Project routes
 app.use('/api/tasks', taskRoutes); // Task routes
+// Ecriture Comptable
+const ecritureRoute = require('./routes/ecritureRoutes');
+app.use('/api/ecritures', ecritureRoute);
 //
 app.use('/api/comptes', compteComptableRoutes);
 app.use('/api/products', require('./routes/productRoutes'));
@@ -57,6 +60,12 @@ app.use('/api/accounting-entries', require('./routes/accountingEntryRoutes'));
 // AI Agent route (secured)
 const auth = require('./middleware/auth');
 app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
+
+//Bilan
+const bilanRoute = require('./routes/bilanRoutes');
+app.use('/api/bilans', bilanRoute);
+
+
 
 // Connexion à MongoDB avec authentification
 mongoose.set('strictQuery', false);
@@ -82,6 +91,9 @@ mongoose.connect(process.env.MONGO_URI)
         require('./models/AccountingEntry');    // AccountingEntry depends on Invoice & Company
         require('./routes/projectRoutes');     // Project depends on User
         require('./routes/taskRoutes');    // Task depends on Project & User
+        require('./models/BilanComptable');              // Bilan depends on Company
+        require('./models/EcritureComptable');          // Ecriture depends on Company
+
 
         console.log("📌 Modèles enregistrés :", mongoose.modelNames());
 

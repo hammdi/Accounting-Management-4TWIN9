@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +20,9 @@
     "jsonwebtoken": "^9.0.2",
     "langchain": "^0.3.21",
     "mongoose": "^8.10.1",
+    "multer": "^1.4.5-lts.2",
     "nodemailer": "^6.10.0",
+    "pdfkit": "^0.17.1",
     "twilio": "^5.4.5",
     "winston": "^3.17.0",
     "xlsx": "^0.18.5"
