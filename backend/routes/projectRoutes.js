@@ -1,3 +1,4 @@
+// routes/projectRoutes.js
 const express = require('express');
 const {
     createProject,
@@ -10,10 +11,11 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.post('/addproject', auth, createProject);
+// Corrected project routes
+router.post('/', auth, createProject);
 router.get('/myprojects', auth, getMyProjects);
-router.get('/allprojects', auth, getAllProjects); // <-- NEW ROUTE
-router.put('/updateproject/:id', auth, updateProject);
-router.delete('/deleteproject/:id', auth, deleteProject);
+router.get('/', auth, getAllProjects);
+router.put('/:id', auth, updateProject);
+router.delete('/:id', auth, deleteProject);
 
 module.exports = router;

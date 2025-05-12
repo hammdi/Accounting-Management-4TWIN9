@@ -491,6 +491,8 @@ const MasterLayout = ({ children }) => {
                   <span>Invoice Calendar</span>
                 </NavLink>
               </li>
+                  
+ {/* 
               <li>
                 <NavLink
                     to='/kanban'
@@ -502,7 +504,7 @@ const MasterLayout = ({ children }) => {
                   />
                   <span>Kanban</span>
                 </NavLink>
-              </li>
+              </li> */}
 
               {/* Invoice Dropdown */}
               <li className='dropdown'>
