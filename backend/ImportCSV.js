@@ -3,13 +3,11 @@ const path = require("path");
 const csvParser = require("csv-parser");
 const mongoose = require("mongoose");
 const Element = require("./models/CompteComptable");
+require("dotenv").config();
 
-const MONGO_URI = "mongodb://admin:password123@mongo:27017/accounting-db?authSource=admin";
+const MONGO_URI = process.env.MONGO_URI;
 
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(MONGO_URI)
     .then(() => console.log("🟢 Connecté à MongoDB"))
     .catch(err => {
         console.error("🔴 Erreur de connexion MongoDB :", err);
@@ -47,3 +45,4 @@ const importCSV = async () => {
 };
 
 importCSV();
+
