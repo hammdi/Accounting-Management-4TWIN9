@@ -5,24 +5,18 @@ const mongoose = require("mongoose");
 const Element = require("./models/CompteComptable");
 require("dotenv").config();
 
+// Load MongoDB URI from environment variable
 const MONGO_URI = process.env.MONGO_URI;
 
-mongoose.connect(MONGO_URI)
-    .then(() => console.log("🟢 Connecté à MongoDB"))
-    .catch(err => {
-        console.error("🔴 Erreur de connexion MongoDB :", err);
-        process.exit(1);
-    });
-
+// Path to your CSV file
 const filePath = path.join(__dirname, "Plan_comptable.csv");
 
+// Function to import data from CSV
 const importCSV = async () => {
     try {
-        console.log("🔄 Suppression des anciens comptes...");
-        await Element.deleteMany({});
-
         const results = [];
 
+        // Read and parse the CSV file
         fs.createReadStream(filePath)
             .pipe(csvParser())
             .on("data", (data) => {
@@ -34,6 +28,7 @@ const importCSV = async () => {
                 });
             })
             .on("end", async () => {
+                // Insert parsed data into MongoDB
                 await Element.insertMany(results);
                 console.log("✅ Comptes insérés avec succès !");
                 process.exit(0);
@@ -44,5 +39,16 @@ const importCSV = async () => {
     }
 };
 
-importCSV();
+// Connect to MongoDB and then run import
+mongoose.connect(MONGO_URI)
+    .then(() => {
+        console.log("🟢 Connecté à MongoDB");
+        importCSV();
+    })
+    .catch(err => {
+        console.error("🔴 Erreur de connexion MongoDB :", err);
+        process.exit(1);
+    });
+
+
 
