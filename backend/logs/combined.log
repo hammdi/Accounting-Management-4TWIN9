@@ -823,3 +823,22 @@
 2025-05-13T21:31:14.017Z [INFO]: GET /api/accounting-entries
 2025-05-13T21:31:15.101Z [INFO]: GET /api/auth/me
 2025-05-13T21:31:15.169Z [INFO]: GET /api/comptes
+2025-05-13T21:53:41.352Z [INFO]: POST /api/users/login
+2025-05-13T21:53:41.442Z [INFO]: Connexion réussie pour l'utilisateur : hmaidiala3210@gmail.com
+2025-05-13T21:53:41.574Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:41.580Z [INFO]: GET /api/auth/me
+2025-05-13T21:53:41.687Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:53:41.849Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:41.877Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:53:41.989Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:42.014Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:53:42.117Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:42.133Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:53:42.247Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:42.270Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:53:42.374Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:42.387Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:53:42.497Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:53:42.522Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T22:00:39.699Z [INFO]: POST /api/users/login
+2025-05-13T22:00:40.664Z [WARN]: Connexion échouée : utilisateur non trouvé (hmaidiala3210@gmail.com)
