@@ -22,10 +22,10 @@ const ProjectLayer = () => {
     const [showTaskForm, setShowTaskForm] = useState(false);
     const [editMode, setEditMode] = useState(false);
     const [editingTask, setEditingTask] = useState(null);
+    const [sendingSms, setSendingSms] = useState(false);
 
     const taskStatusOrder = ['To Do', 'In Progress', 'Done'];
 
-    // Fetch user and projects on component mount
     useEffect(() => {
         const fetchUserAndProjects = async () => {
             try {
@@ -48,7 +48,6 @@ const ProjectLayer = () => {
         fetchUserAndProjects();
     }, []);
 
-    // Fetch tasks when selected project changes
     useEffect(() => {
         const fetchTasks = async () => {
             if (!selectedProject) {
@@ -64,12 +63,124 @@ const ProjectLayer = () => {
                     }
                 );
                 setTasks(data);
+                checkDueTasks(data);
             } catch (err) {
                 toast.error('Failed to load tasks');
             }
         };
         fetchTasks();
     }, [selectedProject]);
+
+    const formatPhoneNumber = (phone) => {
+        if (!phone) return null;
+        let cleaned = phone.replace(/\D/g, '');
+        if (cleaned.length === 8 && !cleaned.startsWith('216')) {
+            cleaned = `216${cleaned}`;
+        }
+        return `+${cleaned}`;
+    };
+
+    const handleSendMessage = async (phoneNumber, message, task) => {
+        if (!phoneNumber) {
+            toast.error("Employee phone number is missing!");
+            return false;
+        }
+
+        const formattedPhone = formatPhoneNumber(phoneNumber);
+        if (!formattedPhone) {
+            toast.error("Invalid phone number format");
+            return false;
+        }
+
+        try {
+            setSendingSms(true);
+            const token = localStorage.getItem('token');
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/sms/send`,
+                { 
+                    to: formattedPhone, 
+                    message: message 
+                },
+                { 
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    } 
+                }
+            );
+
+            toast.success(`Reminder sent to ${task.assignedTo.name}`);
+            return true;
+        } catch (err) {
+            console.error('SMS Error:', err.response?.data || err.message);
+            toast.error(`Failed to send SMS: ${err.response?.data?.message || err.message}`);
+            return false;
+        } finally {
+            setSendingSms(false);
+        }
+    };
+
+    const checkDueTasks = async (tasks) => {
+        const today = new Date().toISOString().split('T')[0];
+        const dueTasks = tasks.filter(task => 
+            task.dueDate && 
+            task.dueDate.split('T')[0] === today && 
+            task.status !== 'Done'
+        );
+
+        for (const task of dueTasks) {
+            if (task.assignedTo?._id) {
+                try {
+                    const token = localStorage.getItem('token');
+const response = await axios.get(
+  `${process.env.REACT_APP_API_URL}/api/users/user/${task.assignedTo._id}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
+                    
+                    const user = response.data;
+                    if (user.phone) {
+                        const message = `Hello ${user.name}, your task "${task.title}" is due today. Please complete it as soon as possible.`;
+                        await handleSendMessage(user.phone, message, task);
+                    }
+                } catch (err) {
+                    console.error(`Notification failed for task ${task._id}:`, err);
+                }
+            }
+        }
+    };
+
+    const handleManualSendMessage = async (task) => {
+        if (!task.assignedTo?._id) {
+            toast.error("No employee assigned to this task");
+            return;
+        }
+
+        try {
+            const token = localStorage.getItem('token');
+const response = await axios.get(
+  `${process.env.REACT_APP_API_URL}/api/users/user/${task.assignedTo._id}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
+            
+            const user = response.data;
+            if (!user.phone) {
+                toast.error("No phone number available for this user");
+                return;
+            }
+
+            const confirmSend = window.confirm(
+                `Send reminder to ${user.name} about task "${task.title}"?`
+            );
+
+            if (confirmSend) {
+                const message = `Hello ${user.name}, please complete your task "${task.title}" by ${new Date(task.dueDate).toLocaleDateString()}.`;
+                await handleSendMessage(user.phone, message, task);
+            }
+        } catch (err) {
+            toast.error("Failed to fetch user details");
+            console.error("Error fetching user:", err);
+        }
+    };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -307,22 +418,16 @@ const ProjectLayer = () => {
     const onDragEnd = async (result) => {
         const { destination, source, draggableId } = result;
     
-        // If no destination, do nothing
         if (!destination) return;
-        
-        // If dropped in the same place, do nothing
         if (destination.droppableId === source.droppableId && destination.index === source.index) return;
     
-        // Create a copy of current tasks
         const updatedTasks = [...tasks];
         const taskToUpdate = updatedTasks.find(task => task._id === draggableId);
         
         if (!taskToUpdate) return;
     
-        // Store original task for rollback
         const originalTask = {...taskToUpdate};
     
-        // Moving within same column (reordering)
         if (destination.droppableId === source.droppableId) {
             const [removed] = updatedTasks.splice(source.index, 1);
             updatedTasks.splice(destination.index, 0, removed);
@@ -330,22 +435,17 @@ const ProjectLayer = () => {
             return;
         }
     
-        // Column change (status update)
         try {
-            // Optimistically update UI
             taskToUpdate.status = destination.droppableId;
             setTasks(updatedTasks);
     
             const token = localStorage.getItem('token');
             const { data } = await axios.put(
                 `${process.env.REACT_APP_API_URL}/api/tasks/${draggableId}`,
-                {
-                    status: destination.droppableId // Only send the status field
-                },
+                { status: destination.droppableId },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
     
-            // Update with server response
             setTasks(prevTasks => 
                 prevTasks.map(task => 
                     task._id === draggableId ? { ...task, ...data.updatedTask } : task
@@ -355,7 +455,6 @@ const ProjectLayer = () => {
             toast.success('Task status updated');
         } catch (err) {
             console.error('Drag and drop error:', err);
-            // Revert to original state
             setTasks(prevTasks => 
                 prevTasks.map(task => 
                     task._id === draggableId ? originalTask : task
@@ -690,7 +789,7 @@ const ProjectLayer = () => {
                                                                                                 Due: {new Date(task.dueDate).toLocaleDateString()}
                                                                                             </small>
                                                                                             <small className="text-muted">
-                                                                                                Assigned: {task.assignedTo?.name || 'You'}
+                                                                                                Assigned: {task.assignedTo?.name || 'Unassigned'}
                                                                                             </small>
                                                                                         </div>
                                                                                         <div className="d-flex justify-content-between align-items-center">
@@ -703,6 +802,13 @@ const ProjectLayer = () => {
                                                                                                     onClick={() => handleEditTask(task._id)}
                                                                                                 >
                                                                                                     Edit
+                                                                                                </button>
+                                                                                                <button 
+                                                                                                    className="btn btn-outline-primary"
+                                                                                                    onClick={() => handleManualSendMessage(task)}
+                                                                                                    disabled={!task.assignedTo?._id || sendingSms}
+                                                                                                >
+                                                                                                    {sendingSms ? 'Sending...' : 'Notify'}
                                                                                                 </button>
                                                                                                 <button 
                                                                                                     className="btn btn-outline-danger" 
