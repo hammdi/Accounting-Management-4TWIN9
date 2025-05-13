@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install the dependencies
 RUN npm install
 
+# Set the HOST environment variable so that React listens on all interfaces
+ENV HOST 0.0.0.0
+
 # Copy the rest of the application files to the container
 COPY . .
 
