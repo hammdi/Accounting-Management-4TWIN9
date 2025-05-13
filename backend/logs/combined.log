@@ -659,3 +659,167 @@
 2025-05-12T17:39:45.501Z [INFO]: GET /api/auth/me
 2025-05-12T17:39:45.515Z [INFO]: GET /api/auth/me
 2025-05-12T17:39:45.533Z [INFO]: GET /api/projects/myprojects
+2025-05-13T18:57:22.288Z [INFO]: POST /api/users/login
+2025-05-13T18:57:22.383Z [WARN]: Connexion échouée : mot de passe incorrect (hmaidiala3210@gmail.com)
+2025-05-13T18:57:32.472Z [INFO]: POST /api/users/login
+2025-05-13T18:57:32.544Z [INFO]: Connexion réussie pour l'utilisateur : hmaidiala3210@gmail.com
+2025-05-13T18:57:32.703Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:32.712Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:32.865Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:33.021Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:33.071Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:33.179Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:33.193Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:33.314Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:33.333Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:33.435Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:33.451Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:33.553Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:33.568Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:33.689Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:57:33.718Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:57:48.893Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:48.974Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:49.035Z [INFO]: GET /api/projects/myprojects
+2025-05-13T18:57:57.655Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:58.570Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:58.575Z [INFO]: GET /api/invoices/getallinvoice
+2025-05-13T18:57:58.653Z [INFO]: Fetched 2 invoices
+2025-05-13T18:57:59.072Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:59.128Z [INFO]: GET /api/auth/me
+2025-05-13T18:57:59.208Z [INFO]: GET /api/projects/myprojects
+2025-05-13T18:58:02.173Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:02.177Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:02.268Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:02.395Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:02.428Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:02.542Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:02.569Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:02.682Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:02.711Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:02.821Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:02.839Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:02.952Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:02.977Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:03.087Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:58:03.102Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:58:28.490Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:28.568Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:28.629Z [INFO]: GET /api/projects/myprojects
+2025-05-13T18:58:38.170Z [INFO]: GET /api/comptes
+2025-05-13T18:58:38.173Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:39.994Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:40.053Z [INFO]: GET /api/accounting-entries
+2025-05-13T18:58:41.124Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:41.188Z [INFO]: GET /api/comptes
+2025-05-13T18:58:42.940Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:42.944Z [INFO]: GET /api/comptes
+2025-05-13T18:58:48.134Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-13T18:58:48.143Z [INFO]: GET /api/payrolls/getallpayrolls?sort=-paymentDate&limit=5
+2025-05-13T18:58:48.162Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:48.232Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-13T18:58:48.248Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-13T18:58:48.260Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-13T18:58:48.272Z [INFO]: GET /api/payrolls/getallpayrolls
+2025-05-13T18:58:48.831Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:48.835Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:48.917Z [INFO]: GET /api/companies/mycompanies?populate=owner
+2025-05-13T18:58:49.195Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:49.648Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:49.863Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:50.088Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:50.307Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:55.262Z [INFO]: GET /api/companies/mycompanies
+2025-05-13T18:58:55.266Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:58.679Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:58.734Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:58.793Z [INFO]: GET /api/projects/myprojects
+2025-05-13T18:58:59.993Z [INFO]: GET /api/auth/me
+2025-05-13T18:58:59.996Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.061Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:59:00.175Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.194Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:59:00.309Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.350Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:59:00.447Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.459Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:59:00.556Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.571Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:59:00.692Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.705Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T18:59:00.813Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T18:59:00.831Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:27.865Z [INFO]: POST /api/users/login
+2025-05-13T20:39:27.958Z [INFO]: Connexion réussie pour l'utilisateur : hmaidiala3210@gmail.com
+2025-05-13T20:39:28.144Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:28.155Z [INFO]: GET /api/auth/me
+2025-05-13T20:39:28.377Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:28.532Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:28.569Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:28.689Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:28.706Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:28.825Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:28.848Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:28.985Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:29.034Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:29.185Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:29.214Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:29.400Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:39:29.449Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:39:32.473Z [INFO]: GET /api/auth/me
+2025-05-13T20:39:32.539Z [INFO]: GET /api/auth/me
+2025-05-13T20:39:32.613Z [INFO]: GET /api/projects/myprojects
+2025-05-13T20:39:36.942Z [INFO]: GET /api/comptes
+2025-05-13T20:39:36.946Z [INFO]: GET /api/auth/me
+2025-05-13T20:39:40.479Z [INFO]: GET /api/auth/me
+2025-05-13T20:39:40.581Z [INFO]: GET /api/accounting-entries
+2025-05-13T20:39:41.333Z [INFO]: GET /api/auth/me
+2025-05-13T20:39:41.337Z [INFO]: GET /api/comptes
+2025-05-13T20:45:05.727Z [INFO]: POST /api/users/login
+2025-05-13T20:45:05.816Z [INFO]: Connexion réussie pour l'utilisateur : hmaidiala3210@gmail.com
+2025-05-13T20:45:05.965Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:05.971Z [INFO]: GET /api/auth/me
+2025-05-13T20:45:06.108Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:06.285Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:06.344Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:06.469Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:06.493Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:06.628Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:06.676Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:06.785Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:06.809Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:06.946Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:06.980Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:07.114Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T20:45:07.132Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T20:45:07.750Z [INFO]: GET /api/auth/me
+2025-05-13T20:45:07.806Z [INFO]: GET /api/auth/me
+2025-05-13T20:45:07.875Z [INFO]: GET /api/projects/myprojects
+2025-05-13T20:45:09.662Z [INFO]: GET /api/auth/me
+2025-05-13T20:45:09.720Z [INFO]: GET /api/comptes
+2025-05-13T21:31:06.132Z [INFO]: POST /api/users/login
+2025-05-13T21:31:06.221Z [INFO]: Connexion réussie pour l'utilisateur : hmaidiala3210@gmail.com
+2025-05-13T21:31:06.357Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:06.363Z [INFO]: GET /api/auth/me
+2025-05-13T21:31:06.473Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:06.623Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:06.684Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:06.797Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:06.815Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:06.937Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:06.971Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:07.092Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:07.117Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:07.251Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:07.278Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:07.400Z [INFO]: GET /api/invoices/myinvoices
+2025-05-13T21:31:07.428Z [INFO]: Fetched 2 invoices for user 6807c7cb3c1141648e8a7d3f
+2025-05-13T21:31:08.254Z [INFO]: GET /api/auth/me
+2025-05-13T21:31:08.313Z [INFO]: GET /api/auth/me
+2025-05-13T21:31:08.372Z [INFO]: GET /api/projects/myprojects
+2025-05-13T21:31:11.188Z [INFO]: GET /api/auth/me
+2025-05-13T21:31:11.191Z [INFO]: GET /api/comptes
+2025-05-13T21:31:13.957Z [INFO]: GET /api/auth/me
+2025-05-13T21:31:14.017Z [INFO]: GET /api/accounting-entries
+2025-05-13T21:31:15.101Z [INFO]: GET /api/auth/me
+2025-05-13T21:31:15.169Z [INFO]: GET /api/comptes
