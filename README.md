@@ -119,6 +119,14 @@ Each push or pull request triggers:
 
 ---
 
+
+# 🎓 Esprit School of Engineering
+
+> This project was developed as part of my studies at **Esprit School of Engineering**, Tunisia.  
+> [www.esprit.tn](https://www.esprit.tn)
+
+---
+
 ## 📄 License
 
 MIT License. See `LICENSE` file for details.
