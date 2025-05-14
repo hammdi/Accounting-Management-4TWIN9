@@ -100,7 +100,7 @@ const ViewProfileLayer = () => {
     try {
       console.log("Sending updated user data:", user)
 
-      await axios.put(`http://localhost:5000/api/users/user/${user._id}`, user, {
+      await axios.put(`https://backend2-fix5.onrender.com/api/users/user/${user._id}`, user, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -123,7 +123,7 @@ const ViewProfileLayer = () => {
     const token = localStorage.getItem("token")
     try {
       await axios.put(
-        "http://localhost:5000/api/users/update-password",
+        "https://backend2-fix5.onrender.com/api/users/update-password",
         { password: newPassword },
         {
           headers: {
@@ -156,7 +156,7 @@ const ViewProfileLayer = () => {
         is_2fa_enabled: !user.is_2fa_enabled,
       }
 
-      await axios.put(`http://localhost:5000/api/users/user/${user._id}`, updatedUser, {
+      await axios.put(`https://backend2-fix5.onrender.com/api/users/user/${user._id}`, updatedUser, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const AccountsListPage = () => {
     const [accounts, setAccounts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/comptes')
+        axios.get('https://backend2-fix5.onrender.com/api/comptes')
             .then(res => setAccounts(res.data))
             .catch(err => console.error("❌ Error fetching accounts:", err));
     }, []);

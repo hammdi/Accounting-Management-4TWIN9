@@ -84,7 +84,7 @@ const TransactionListLayer = () => {
   const checkFraudRisk = async (transaction) => {
     try {
       setFraudCheckLoading((prev) => ({ ...prev, [transaction._id]: true }))
-      const aiUrl = process.env.REACT_APP_AI_URL || "http://localhost:5001"
+      const aiUrl = process.env.REACT_APP_AI_URL || "https://ai2-2ny8.onrender.com"
       const response = await axios.post(`${aiUrl}/api/fraud/predict`, {
         amount: transaction.amount,
         transaction_time: transaction.timestamp || transaction.date,

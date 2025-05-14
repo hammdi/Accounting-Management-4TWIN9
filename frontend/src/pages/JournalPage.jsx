@@ -12,7 +12,7 @@ const JournalPage = () => {
 
     const fetchEcritures = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/ecritures');
+            const res = await axios.get('https://backend2-fix5.onrender.com/api/ecritures');
             setEcritures(res.data);
         } catch (err) {
             console.error("❌ Erreur chargement écritures :", err);
@@ -30,7 +30,7 @@ const JournalPage = () => {
         formData.append("file", file);
 
         try {
-            const res = await axios.post("http://localhost:5000/api/ecritures/import/excel", formData);
+            const res = await axios.post("https://backend2-fix5.onrender.com/api/ecritures/import/excel", formData);
             alert(`✅ ${res.data.count} écritures importées avec succès`);
             fetchEcritures(); // recharger après import
         } catch (err) {
@@ -49,7 +49,7 @@ const JournalPage = () => {
                         <input type="file" ref={fileInput} accept=".xlsx" className="form-control" />
                         <button className="btn btn-outline-success" onClick={importExcel}> Importer Excel</button>
                     </div>
-                    <a href="http://localhost:5000/api/ecritures/export/excel" className="btn btn-outline-primary">
+                    <a href="https://backend2-fix5.onrender.com/api/ecritures/export/excel" className="btn btn-outline-primary">
                          Exporter en Excel
                     </a>
                 </div>

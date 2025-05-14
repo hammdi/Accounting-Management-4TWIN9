@@ -12,9 +12,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password123
-    #  - MONGO_URI=mongodb://mongo:27017/accounting-db
-    #command: mongod --quiet --logpath /dev/null
-
 
   backend:
     build: ./backend
@@ -23,15 +20,14 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://admin:password123@mongo:27017/accounting-db?authSource=admin
+      - MONGO_URI=mongodb+srv://hmaidiala3210:tyCJIY47krilbxxn@cluster0.ih7dukp.mongodb.net/accounting-db?retryWrites=true&w=majority&appName=Cluster0
       - PORT=5000
       - NODE_ENV=development
     depends_on:
-      - mongo
+      - mongo  # Optional if you're using Atlas
     volumes:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
-
 
   frontend:
     build: ./frontend
@@ -48,16 +44,11 @@ services:
     stdin_open: true
     tty: true
 
-  
-
-
   ai_module:
     build: ./ai
     ports:
       - "5001:5001"
     restart: always
-
-
 
   ollama:
     image: ollama/ollama
@@ -76,3 +67,4 @@ volumes:
     driver: local
 
   ollama_data:
+

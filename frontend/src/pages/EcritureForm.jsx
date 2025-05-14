@@ -15,7 +15,7 @@ const EcritureForm = () => {
     const [comptes, setComptes] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/comptes')
+        axios.get('https://backend2-fix5.onrender.com/api/comptes')
             .then(res => {
                 console.log("✅ Comptes chargés :", res.data);
                 setComptes(res.data);
@@ -29,7 +29,7 @@ const EcritureForm = () => {
 
     const submitEcriture = async () => {
         try {
-            await axios.post('http://localhost:5000/api/ecritures', {
+            await axios.post('https://backend2-fix5.onrender.com/api/ecritures', {
                 ...form,
                 montant: parseFloat(form.montant)
             });

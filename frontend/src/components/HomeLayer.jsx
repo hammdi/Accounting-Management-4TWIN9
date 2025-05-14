@@ -173,7 +173,7 @@ const HomeLayer = () => {
           <div className="row align-items-center">
             <div className="col-lg-6 animate-on-scroll">
               <h1 className="display-6 fw-bold mb-4 lh-sm" style={{ color: colorPalette.greyDark }}>
-                Simplify your financial operations
+                Esprit Esprit
               </h1>
               <p className="lead mb-4 fs-5" style={{ color: colorPalette.greyDark }}>
                 MiLiM is a secure, cloud-based accounting platform powered by artificial intelligence. We help you automate tedious tasks, ensure tax compliance, and gain real-time insights—so you can focus on growing your business.

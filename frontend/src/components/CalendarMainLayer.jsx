@@ -40,7 +40,7 @@ const CalendarMainLayer = () => {
                 return;
             }
     
-            const response = await fetch('http://localhost:5000/api/invoices/getallinvoice', {
+            const response = await fetch('https://backend2-fix5.onrender.com/api/invoices/getallinvoice', {
                 headers: {
                     Authorization: `Bearer ${token}`, // Ajout du jeton dans les en-têtes
                     'Content-Type': 'application/json',

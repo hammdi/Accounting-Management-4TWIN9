@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/auth"; // Change selon ton backend
+const API_URL = "https://backend2-fix5.onrender.com/api/auth"; // Change selon ton backend
 
 export const getCurrentUser = async () => {
   try {
