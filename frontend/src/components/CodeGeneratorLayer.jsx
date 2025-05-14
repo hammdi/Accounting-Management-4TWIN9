@@ -3,6 +3,52 @@ import React, { useState, useRef, useEffect } from "react";
 import { getCurrentUser } from "../services/authService";
 import { formatDistanceToNow } from "date-fns";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Link } from 'react-router-dom'; // Importer le composant Link de React Router
+
+
+
+// Ajoutez cette fonction à vos utilitaires
+const processMessageText = (text, currentUserName) => {
+  const parts = text.split(/\[(view_invoice|download_pdf):([^\]]+)\]/g);
+  
+  return parts.map((part, i) => {
+    if (i % 3 === 1) { // Type de lien (view_invoice ou download_pdf)
+      const linkType = part;
+      const linkValue = parts[i+1];
+      i++; // On saute la valeur du lien
+      
+      if (linkType === 'view_invoice') {
+        return (
+          <Link
+            key={i}
+            to={`/invoice-preview/${linkValue}`}
+            style={{ color: 'blue', textDecoration: 'underline' }}
+          >
+            Click here to view
+          </Link>
+        );
+      } else if (linkType === 'download_pdf') {
+        return (
+          <a
+            key={i}
+            href={`${process.env.REACT_APP_API_URL}${linkValue}`}
+            style={{ color: 'blue', textDecoration: 'underline' }}
+            download
+          >
+            Download PDF Report
+          </a>
+        );
+      }
+    }
+    return part;
+  });
+};
+
+
+
+
+
+
 const getUserAvatar = (avatar) => {
   if (avatar) {
     // Vérifie si l'avatar est déjà une chaîne Base64
@@ -54,7 +100,7 @@ const CodeGeneratorLayer = () => {
   const isMounted = useRef(true);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ name: 'You', avatar: 'assets/images/logo.png' });
+  const [currentUser, setCurrentUser] = useState({ name: 'You', avatar: 'assets/images/user.png' });
   const chatEndRef = useRef(null);
   const [user, setUser] = useState(null);
 useEffect(() => {
@@ -210,7 +256,7 @@ useEffect(() => {
                 {messages.map((msg, idx) => {
                   const isUser = msg.sender === 'user';
                   const senderName = isUser ? currentUser.name : 'MiLLIM AI';
-                  const avatarSrc = isUser ? currentUser.avatar : 'assets/images/logo.png';
+                  const avatarSrc = isUser ? currentUser.avatar : 'assets/images/user.png';
                   return (
                     <div key={idx} className={`chat-message mb-16 ${isUser ? 'user-message' : 'bot-message'}`}>
                       <div className="message-content p-16 radius-8">
@@ -218,9 +264,18 @@ useEffect(() => {
                           <img src={avatarSrc} alt={senderName} className="w-44-px h-44-px rounded-circle object-fit-cover me-8" />
                           <strong className="text-lg">{senderName}</strong>
                         </div>
-                        <div className="message-text mb-8">
-                          {isUser ? msg.text : `Mister ${currentUser.name}, ${msg.text}`}
-                        </div>
+                        {/* <div className="message-text mb-8">
+                          {isUser ? msg.text : `Mr/Mrs ${currentUser.name}, ${msg.text}`}
+                        </div> */}
+<div className="message-text mb-8">
+  {isUser ? (
+    msg.text
+  ) : (
+    <>
+      Mr/Mrs {currentUser.name}, {processMessageText(msg.text, currentUser.name)}
+    </>
+  )}
+</div>
                         {msg.timestamp && (
                           <small className="message-time text-muted">
                             {formatDistanceToNow(new Date(msg.timestamp), { addSuffix: true })}

@@ -1,0 +1,31 @@
+
+
+Financial	Report
+Generated	for	user:
+6814a3a6da441b8857e532f4
+Generated	on:	5/13/2025
+Invoice	Summary
+You	have	3	pending	invoices:
+You	have	a	pending	invoice:	Will	Marthas	-	Amount:	$1190	-	Due	Date:	
+5/11/2025	-	Status:	Pending	[view_invoice:681745c961e34cb720384208]
+You	have	a	pending	invoice:	Will	Marthas	-	Amount:	$2965	-	Due	Date:	
+6/12/2025	-	Status:	Pending	[view_invoice:68193d4631f26a14711960a9]
+You	have	a	pending	invoice:	mehdi	-	Amount:	$1190	-	Due	Date:	
+5/12/2025	-	Status:	Pending	[view_invoice:6819415b31f26a147119631f]
+Payroll	Summary
+ATB:
+Total	Payroll:	$30.00
+Employees:	1
+Pending	Payments:	1
+Latest	Payment:	5/3/2025
+esprit:
+Total	Payroll:	$500.00
+Employees:	1
+Pending	Payments:	0
+Latest	Payment:	5/22/2025
+Valve:
+Total	Payroll:	$500.00
+Employees:	1
+Pending	Payments:	0
+
+Latest	Payment:	5/5/2025
