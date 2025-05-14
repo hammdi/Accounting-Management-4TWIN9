@@ -41,7 +41,7 @@ const sendVerificationEmail = async (email, token) => {
         },
     });
 
-    const verificationLink = `http://localhost:5000/api/users/verify/${token}`;
+    const verificationLink = `https://backend2-fix5.onrender.com/api/users/verify/${token}`;
 
     const mailOptions = {
         from: "hamdikbaier8@gmail.com",

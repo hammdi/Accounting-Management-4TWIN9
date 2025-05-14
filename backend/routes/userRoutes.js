@@ -31,7 +31,7 @@ router.get("/verify/:token", async (req, res) => {
         user.status = 'Active';
         user.verificationToken = null; // Remove token after activation
         await user.save();
-        return res.redirect("http://localhost:3000/?accountActivated=true");
+        return res.redirect("https://frontend2-l576.onrender.com/?accountActivated=true");
 
         //res.json({ message: "Account activated successfully! You can now log in." });
     } catch (error) {
