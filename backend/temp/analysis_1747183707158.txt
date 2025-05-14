@@ -1,0 +1,22 @@
+
+
+Financial	Report
+Generated	for	user:
+6814a3a6da441b8857e532f4
+Generated	on:	5/13/2025
+Payroll	Summary
+ATB:
+Total	Payroll:	$30.00
+Employees:	1
+Pending	Payments:	1
+Latest	Payment:	5/3/2025
+esprit:
+Total	Payroll:	$500.00
+Employees:	1
+Pending	Payments:	0
+Latest	Payment:	5/22/2025
+Valve:
+Total	Payroll:	$500.00
+Employees:	1
+Pending	Payments:	0
+Latest	Payment:	5/5/2025

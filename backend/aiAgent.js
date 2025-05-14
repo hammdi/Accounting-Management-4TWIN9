@@ -9,6 +9,17 @@ const Company = require('./models/Company');
 const Payroll = require('./models/Payroll');
 const TaxCompliance = require('./models/Tax Compliance');
 
+
+
+const pdf = require('html-pdf');
+const fs = require('fs');
+const path = require('path');
+
+
+
+
+
+
 // Ollama LLM config
 const llm = new Ollama({
     baseUrl: 'http://host.docker.internal:11434',
@@ -23,6 +34,84 @@ function logContext(context) {
     });
     console.log('-----------------------------');
 }
+
+
+
+
+
+
+// Nouvelle fonction pour générer un PDF
+const generateReportPDF = async (userId, reportData) => {
+    console.log('[PDF] Starting generation for user:', userId);
+    console.log('[PDF] Report data:', JSON.stringify(reportData, null, 2));
+
+    try {
+        const htmlContent = `
+            <h1>Financial Report</h1>
+            <h2>Generated for user: ${userId}</h2>
+            <h3>Generated on: ${new Date().toLocaleDateString()}</h3>
+            
+            ${reportData.map(section => `
+                <div style="margin-bottom: 20px;">
+                    <h4>${section.title}</h4>
+                    <pre style="font-family: Arial; white-space: pre-wrap;">${section.content}</pre>
+                </div>
+            `).join('')}
+        `;
+
+        console.log('[PDF] HTML content generated');
+
+        const options = {
+            format: 'A4',
+            orientation: 'portrait',
+            border: '20mm',
+            timeout: 60000
+        };
+
+        const tempDir = path.join(__dirname, 'temp');
+        if (!fs.existsSync(tempDir)) {
+            console.log('[PDF] Creating temp directory');
+            fs.mkdirSync(tempDir, { recursive: true });
+        }
+
+        const filename = `report_${userId}_${Date.now()}.pdf`;
+        const filePath = path.join(tempDir, filename);
+
+        console.log('[PDF] Will save to:', filePath);
+
+        return new Promise((resolve, reject) => {
+            pdf.create(htmlContent, options).toFile(filePath, (err, res) => {
+                if (err) {
+                    console.error('[PDF] Generation error:', err);
+                    reject(err);
+                } else {
+                    console.log('[PDF] Successfully generated at:', res.filename);
+                    resolve({
+                        filePath: res.filename,
+                        downloadUrl: `/api/download-report?file=${filename}`
+                    });
+                }
+            });
+        });
+    } catch (err) {
+        console.error('[PDF] Unexpected error:', err);
+        throw err;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Tool: Get user transactions summary
 const getUserTransactions = async (userId) => {
@@ -42,6 +131,7 @@ const getUserTransactions = async (userId) => {
 };
 
 // Tool: Get user invoices summary
+
 const getUserInvoices = async (userId) => {
     if (!ObjectId.isValid(userId)) return 'Invalid user ID.';
     const invoices = await Invoice.find({ issuedBy: new ObjectId(userId) }).lean();
@@ -52,18 +142,19 @@ const getUserInvoices = async (userId) => {
     
     const pending = invoices.filter(i => i.status === 'Pending');
     if (!pending.length) return 'You have no pending invoices.';
-
+    
     const summary = pending.slice(0, 5).map(inv => {
         const due = inv.dueDate ? new Date(inv.dueDate).toLocaleDateString() : 'N/A';
         const totalAmt = inv.totalAmount ?? 
             ((inv.subtotal || (inv.items || []).reduce((s, it) => s + (it.total || 0), 0)) + 
              (inv.taxAmount || 0) - (inv.discount || 0));
         
-        return `- Client: ${inv.clientName}, Amount: $${totalAmt}, Due: ${due}, Status: ${inv.status}`;
-    }).join('\n');
-
-    return `You have ${pending.length} pending invoice(s):\n${summary}`;
+        return `You have a pending invoice: ${inv.clientName} - Amount: $${totalAmt} - Due Date: ${due} - Status: ${inv.status} [view_invoice:${inv._id}]`;
+    }).join('\n\n');
+    
+    return `You have ${pending.length} pending invoices:\n\n${summary}`;
 };
+
 
 // Tool: Get user company info
 const getUserCompany = async (userId) => {
@@ -234,9 +325,88 @@ function detectIntents(userMessage) {
 
 // Main AI assistant function
 async function runAgent(userMessage, userId) {
+
+
     const intents = detectIntents(userMessage);
     let context = '';
     
+
+
+
+
+
+  // Détecter si l'utilisateur demande un rapport PDF
+    const wantsPDF = userMessage.toLowerCase().includes('pdf report') || 
+                    userMessage.toLowerCase().includes('generate report')||
+                    userMessage.toLowerCase().includes('pdf') || 
+                userMessage.toLowerCase().includes('report') ||
+                userMessage.toLowerCase().includes('download') ||
+                userMessage.toLowerCase().includes('generate');
+                    
+                    
+
+    if (wantsPDF) {
+        const intents = detectIntents(userMessage);
+        const reportSections = [];
+
+        // Collecter les données pour le rapport
+        if (intents.includes('transactions')) {
+            const txSummary = await getUserTransactions(userId);
+            reportSections.push({
+                title: 'Transactions Summary',
+                content: txSummary
+            });
+        }
+        
+        if (intents.includes('invoices')) {
+            const invoiceSummary = await getUserInvoices(userId);
+            reportSections.push({
+                title: 'Invoice Summary',
+                content: invoiceSummary
+            });
+        }
+        if (intents.includes('company')) {
+            const companySummary = await getUserCompany(userId);
+            reportSections.push({
+                title: 'Company Info',
+                content: companySummary
+            });
+        }
+        if (intents.includes('payroll')) {
+            const payrollSummary = await getUserPayroll(userId);
+            reportSections.push({
+                title: 'Payroll Summary',
+                content: payrollSummary
+            });
+        }
+        if (intents.includes('tax')) {
+            const taxSummary = await getUserTaxCompliance(userId);
+            reportSections.push({
+                title: 'Tax Compliance',
+                content: taxSummary
+            });
+        }
+           if (reportSections.length === 0) {
+            return "Please specify what data you want in your report (transactions, invoices, etc.)";
+        }
+
+        try {
+            const { downloadUrl } = await generateReportPDF(userId, reportSections);
+           return `Your financial report is ready: [download_pdf:${downloadUrl}]`;
+        } catch (err) {
+            console.error('PDF generation error:', err);
+            return "Sorry, I couldn't generate the PDF report. Please try again later.";
+        }
+    }
+
+
+
+
+
+
+
+
+
     // Gather all relevant information based on intents
     if (intents.includes('transactions')) {
         const txSummary = await getUserTransactions(userId);

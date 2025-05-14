@@ -57,6 +57,14 @@ app.use('/api/comptes', compteComptableRoutes);
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/accounting-entries', require('./routes/accountingEntryRoutes'));
 
+
+
+// Après les autres imports de routes
+const downloadRoutes = require('./routes/downloadRoute');
+app.use('/api', downloadRoutes);
+
+
+
 // AI Agent route (secured)
 const auth = require('./middleware/auth');
 app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
@@ -64,6 +72,7 @@ app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
 //Bilan
 const bilanRoute = require('./routes/bilanRoutes');
 app.use('/api/bilans', bilanRoute);
+
 
 
 
