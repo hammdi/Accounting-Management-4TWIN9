@@ -14,7 +14,7 @@ const PlanComptablePage = () => {
 
   const fetchFilteredEntries = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/accounting-entries");
+      const res = await axios.get("https://backend2-fix5.onrender.com/api/accounting-entries");
       const entries = res.data;
 
       const from = fromDate ? new Date(fromDate) : null;

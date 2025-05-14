@@ -225,7 +225,7 @@ const InvoiceListLayer = () => {
 
   const sendMessage = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/sms/send", {
+      const response = await fetch("https://backend2-fix5.onrender.com/api/sms/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ to: phoneNumber, message }),
@@ -257,7 +257,7 @@ const InvoiceListLayer = () => {
     const message = `Bonjour ${clientName},\n\nVotre facture est disponible.\nMontant total : ${totalAmount} DT\nDate d'échéance : ${new Date(dueDate).toLocaleDateString()}\n\nMerci pour votre confiance.`
 
     try {
-      const response = await fetch("http://localhost:5000/api/sms/send", {
+      const response = await fetch("https://backend2-fix5.onrender.com/api/sms/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ to: formattedPhone, message }),
