@@ -65,6 +65,46 @@ app.use('/api', downloadRoutes);
 
 
 
+
+
+//pdf import
+// Add PDF processing middleware
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+const pdf = require('pdf-parse');
+
+// PDF upload route
+app.post('/api/upload-pdf',  upload.single('pdf'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No PDF file uploaded' });
+    }
+    
+    // Extract text from PDF
+    const data = await pdf(req.file.buffer);
+    
+    res.json({ 
+      success: true,
+      text: data.text,
+      pages: data.numpages 
+    });
+    
+  } catch (err) {
+    console.error('PDF processing error:', err);
+    res.status(500).json({ error: 'Failed to process PDF' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 // AI Agent route (secured)
 const auth = require('./middleware/auth');
 app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
@@ -72,6 +112,13 @@ app.use('/api/ai-agent', auth, require('./routes/aiAgent'));
 //Bilan
 const bilanRoute = require('./routes/bilanRoutes');
 app.use('/api/bilans', bilanRoute);
+
+
+
+
+
+
+
 
 
 

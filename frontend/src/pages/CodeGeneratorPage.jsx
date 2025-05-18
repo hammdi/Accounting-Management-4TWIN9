@@ -11,7 +11,7 @@ const CodeGeneratorPage = () => {
       <MasterLayout>
 
         {/* Breadcrumb */}
-        <Breadcrumb title="Code Generator" />
+        <Breadcrumb title="AI accounting assistant" />
 
         {/* CodeGeneratorLayer */}
         <CodeGeneratorLayer />

@@ -2,3 +2,21 @@
 2025-05-01T10:29:00.536Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "52626516" }
 2025-05-03T17:22:18.088Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "125689" }
 2025-05-03T17:22:31.386Z [ERROR]: Error creating company: E11000 duplicate key error collection: accounting-db.companies index: taxNumber_1 dup key: { taxNumber: "125689" }
+2025-05-05T20:19:12.382Z [ERROR]: Error creating project: Project validation failed: name: Path `name` is required.
+2025-05-05T20:23:20.829Z [ERROR]: Error creating project: Project validation failed: name: Path `name` is required.
+2025-05-05T20:24:30.976Z [ERROR]: Error creating project: Project validation failed: name: Path `name` is required.
+2025-05-05T20:25:04.855Z [ERROR]: Error creating project: Project validation failed: name: Path `name` is required.
+2025-05-06T03:16:55.012Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:17:09.343Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:17:38.619Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:17:51.210Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:25:34.526Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:25:35.805Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:26:21.170Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:27:34.151Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:21.112Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.353Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.528Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:24.776Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:31:25.024Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
+2025-05-06T03:36:50.452Z [ERROR]: Erreur lors de l'inscription : User validation failed: role: `user` is not a valid enum value for path `role`.
