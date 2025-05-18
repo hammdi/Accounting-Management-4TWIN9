@@ -6,6 +6,11 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from 'react-router-dom'; // Importer le composant Link de React Router
 
 
+// Add these new imports at the top
+import { uploadPdf } from "../services/pdfService"; // We'll create this service
+import { toast } from 'react-toastify';
+
+
 
 // Ajoutez cette fonction à vos utilitaires
 const processMessageText = (text, currentUserName) => {
@@ -79,6 +84,105 @@ const arrayBufferToBase64 = (uint8Array) => {
   return window.btoa(binary); // Convertir en Base64
 };//////////////////////
 const CodeGeneratorLayer = () => {
+
+
+
+
+
+// Add these state variables inside the component
+const [pdfFile, setPdfFile] = useState(null);
+const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+
+// Add these handler functions
+const handlePdfUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  if (file.type !== 'application/pdf') {
+    toast.error('Please upload a PDF file');
+    return;
+  }
+
+  setPdfFile(file);
+  toast.success('PDF uploaded successfully!');
+};
+
+const analyzePdf = async () => {
+  if (!pdfFile) {
+    toast.error('Please upload a PDF first');
+    return;
+  }
+
+  setIsAnalyzing(true);
+  
+  try {
+    // Upload PDF and get text content
+    const pdfText = await uploadPdf(pdfFile);
+    
+    // Send to AI for analysis
+    const timestamp = new Date();
+    const userMsg = { 
+      sender: "user", 
+      text: `[PDF Analysis Request] Please analyze this financial document: ${pdfFile.name}`,
+      timestamp 
+    };
+    
+    const stored = JSON.parse(localStorage.getItem("codeChatMessages")) || [];
+    const updated = [...stored, userMsg];
+    localStorage.setItem("codeChatMessages", JSON.stringify(updated));
+    setMessages(updated);
+    
+    // Call AI agent with the PDF text
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/ai-agent`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({ 
+        message: `Analyze this financial document and provide insights: ${pdfText}`,
+        isPdfAnalysis: true 
+      })
+    });
+    
+    const data = await res.json();
+    const aiText = data.answer || data.response || data.message || '[No response]';
+    
+    const botMsg = { 
+      sender: "assistant", 
+      text: aiText, 
+      timestamp: new Date() 
+    };
+    const updated2 = [...updated, botMsg];
+    localStorage.setItem("codeChatMessages", JSON.stringify(updated2));
+    setMessages(updated2);
+    
+  } catch (err) {
+    console.error('PDF analysis error:', err);
+    toast.error('Failed to analyze PDF');
+  } finally {
+    setIsAnalyzing(false);
+    setPdfFile(null);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // ...
   // Delete chat from history
   const handleDeleteChat = (index) => {
@@ -276,6 +380,7 @@ useEffect(() => {
     </>
   )}
 </div>
+
                         {msg.timestamp && (
                           <small className="message-time text-muted">
                             {formatDistanceToNow(new Date(msg.timestamp), { addSuffix: true })}
@@ -291,8 +396,70 @@ useEffect(() => {
                     <span className="spinner-border spinner-border-sm" />
                   </div>
                 )}
+
                 <div ref={chatEndRef} />
               </div>
+
+
+
+
+
+  <div className="chat-input-actions d-flex justify-content-between align-items-center p-24 border-top">
+    <div className="d-flex align-items-center gap-16">
+      <label className="btn btn-outline-primary px-12" style={{ cursor: 'pointer' }}>
+        <Icon icon="ri:upload-line" className="me-2" />
+        Import PDF
+        <input 
+          type="file" 
+          accept="application/pdf" 
+          onChange={handlePdfUpload}
+          style={{ display: 'none' }}
+        />
+      </label>
+      
+      {pdfFile && (
+        <button 
+          onClick={analyzePdf}
+          className="btn btn-primary px-12"
+          disabled={isAnalyzing}
+        >
+          {isAnalyzing ? (
+            <>
+              <span className="spinner-border spinner-border-sm me-2" />
+              Analyzing...
+            </>
+          ) : (
+            <>
+              <Icon icon="ri:ai-generate" className="me-2" />
+              Analyze with AI
+            </>
+          )}
+        </button>
+      )}
+    </div>
+    
+    {pdfFile && (
+      <div className="text-sm text-muted">
+        <Icon icon="ri:file-pdf-line" className="me-1" />
+        {pdfFile.name}
+        <button 
+          onClick={() => setPdfFile(null)}
+          className="btn btn-link btn-sm text-danger p-0 ms-2"
+        >
+          <Icon icon="ri:close-line" />
+        </button>
+      </div>
+    )}
+  </div>
+
+
+
+
+
+
+
+
+              
               <div className="chat-input p-24 border-top">
                 <form onSubmit={sendMessage} className="d-flex gap-16">
                   <input

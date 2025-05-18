@@ -658,7 +658,7 @@ const MasterLayout = ({ children }) => {
                   <span>Ai Application</span>
                 </Link>
                 <ul className='sidebar-submenu'>
-                  <li>
+       {/*           <li>
                     <NavLink
                         to='/text-generator'
                         className={(navData) =>
@@ -668,7 +668,7 @@ const MasterLayout = ({ children }) => {
                       <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
                       Text Generator
                     </NavLink>
-                  </li>
+                  </li>*/}
                   <li>
                     <NavLink
                         to='/code-generator'
@@ -677,7 +677,7 @@ const MasterLayout = ({ children }) => {
                         }
                     >
                       <i className='ri-circle-fill circle-icon text-warning-main w-auto' />{" "}
-                      Code Generator
+                      AI accounting assistant
                     </NavLink>
                   </li>
                   {/*      <li>
@@ -1473,7 +1473,7 @@ const MasterLayout = ({ children }) => {
                 </li>
               </ul>
             </li>
- */}
+
               <li>
                 <NavLink
                     to='/testimonials'
@@ -1486,7 +1486,7 @@ const MasterLayout = ({ children }) => {
 
                   <span>Testimonials</span>
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                     to='/faq'
@@ -1543,7 +1543,7 @@ const MasterLayout = ({ children }) => {
                 <i className='ri-hammer-line menu-icon'></i>
                 <span>Maintenance</span>
               </NavLink>
-            </li>  */}
+            </li>  
               <li>
                 <NavLink
                     to='/blank-page'
@@ -1552,7 +1552,7 @@ const MasterLayout = ({ children }) => {
                   <i className='ri-checkbox-multiple-blank-line menu-icon'></i>
                   <span>Blank Page</span>
                 </NavLink>
-              </li>
+              </li>*/}
 
               {/* Settings Dropdown */}
               {/*        <li className='dropdown'>

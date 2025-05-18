@@ -5,7 +5,7 @@ const PricingPlanMultipleColor = () => {
     return (
         <div className="card h-100 p-0 radius-12 overflow-hidden">
             <div className="card-header border-bottom bg-base py-16 px-24">
-                <h6 className="mb-0 text-lg">Pricing Plan Multiple Color</h6>
+                <h6 className="mb-0 text-lg">Pricing Plan</h6>
             </div>
             <div className="card-body p-40">
                 <div className="row justify-content-center">
